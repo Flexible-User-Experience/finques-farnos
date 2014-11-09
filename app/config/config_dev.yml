@@ -47,6 +47,11 @@ assetic:
 #swiftmailer:
 #    delivery_address: me@example.com
 
+doctrine:
+    dbal:
+        driver: "pdo_sqlite"
+        path:   "%kernel.root_dir%/databases/devel.db3"
+
 hautelook_alice:
     locale: es_ES
     seed: 2
