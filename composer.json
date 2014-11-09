@@ -17,6 +17,9 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
+        "cypresslab/gitelephant-bundle": "dev-develop",
+        "endroid/qrcode-bundle": "1.*",
+        "raulfraile/ladybug-bundle": "1.*",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {
@@ -46,6 +49,7 @@
     "config": {
         "bin-dir": "bin"
     },
+    "minimum-stability": "stable",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
