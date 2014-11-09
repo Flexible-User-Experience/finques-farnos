@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -61,6 +61,17 @@ doctrine:
 doctrine_migrations:
     dir_name:   "%kernel.root_dir%/../src/FinquesFarnos/AppBundle/DoctrineMigrations"
     namespace:  AppBundle\Migrations
+
+# Stof Doctrine Extensions
+stof_doctrine_extensions:
+    default_locale:         "%locale%"
+    translation_fallback:   true
+    orm:
+        default:
+            translatable:   true
+            softdeleteable: true
+            timestampable:  true
+            sluggable:      true
 
 # Swiftmailer Configuration
 swiftmailer:
