@@ -3,7 +3,9 @@
 namespace FinquesFarnos\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category class
@@ -14,12 +16,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\CategoryRepository")
  * @ORM\Table(name="category")
+ * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\CategoryTranslation")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  */
 class Category extends Base
 {
 	/**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
+     * @Gedmo\Translatable
      * @var string
      */
     private $name;
@@ -30,6 +34,36 @@ class Category extends Base
      * @var string
      */
     private $nameSlug;
+
+	/**
+     * @ORM\OneToMany(
+     *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\CategoryTranslation",
+     *     mappedBy="object",
+     *     cascade={"persist", "remove"}
+     * )
+     * @Assert\Valid(deep = true)
+     * @var ArrayCollection
+     */
+    protected $translations;
+
+	/**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->translations = new ArrayCollection();
+    }
+
+	/**
+     * To String
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name ? $this->name : '---';
+    }
 
     /**
      * Set name
@@ -77,5 +111,60 @@ class Category extends Base
     public function getNameSlug()
     {
         return $this->nameSlug;
+    }
+
+    /**
+     * Add translation
+     *
+     * @param Translations\CategoryTranslation $translation
+     *
+     * @return $this
+     */
+    public function addTranslation(Translations\CategoryTranslation $translation)
+    {
+        if ($translation->getContent()) {
+            $translation->setObject($this);
+            $this->translations[] = $translation;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove translation
+     *
+     * @param Translations\CategoryTranslation $translation
+     *
+     * @return $this
+     */
+    public function removeTranslation(Translations\CategoryTranslation $translation)
+    {
+        $this->translations->removeElement($translation);
+
+        return $this;
+    }
+
+    /**
+     * Set translations
+     *
+     * @param ArrayCollection $translations
+     *
+     * @return $this
+     */
+    public function setTranslations($translations)
+    {
+        $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * Get translations
+     *
+     * @return ArrayCollection
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
     }
 }
