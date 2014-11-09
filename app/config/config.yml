@@ -57,6 +57,11 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+# Doctrine Migrations
+doctrine_migrations:
+    dir_name:   "%kernel.root_dir%/../src/FinquesFarnos/AppBundle/DoctrineMigrations"
+    namespace:  AppBundle\Migrations
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
