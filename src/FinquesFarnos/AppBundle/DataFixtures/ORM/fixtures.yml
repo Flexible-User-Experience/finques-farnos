@@ -1,0 +1,17 @@
+FinquesFarnos\AppBundle\Entity\Category:
+    category0:
+        name: "obra nova"
+    category1:
+        name: "segona mà"
+
+FinquesFarnos\AppBundle\Entity\Translations\CategoryTranslation:
+    categoryEs0:
+        object: @category0
+        locale: "es"
+        field: "name"
+        content: "obra nueva"
+    categoryEs1:
+        object: @category1
+        locale: "es"
+        field: "name"
+        content: "segunda mano"
