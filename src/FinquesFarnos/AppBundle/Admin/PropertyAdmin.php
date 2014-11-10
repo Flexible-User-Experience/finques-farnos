@@ -40,14 +40,14 @@ class PropertyAdmin extends BaseAdmin
                     'expanded' => false,
                     'multiple' => true,
                     'label' => 'Categories',
-                    'btn_add' => false,
+                    'btn_add' => true,
                 ))
             ->add('type', 'sonata_type_model', array(
                     'required' => true,
                     'expanded' => false,
                     'multiple' => false,
                     'label' => 'Tipus',
-                    'btn_add' => false,
+                    'btn_add' => true,
                 ))
             ->add('price', null, array('label' => 'Preu'))
             ->add('oldPrice', null, array('label' => 'Preu anterior'))
