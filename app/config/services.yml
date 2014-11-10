@@ -11,3 +11,13 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle] ]
+    sonata.admin.type:
+        class: FinquesFarnos\AppBundle\Admin\TypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Tipus" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\Type
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]

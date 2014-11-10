@@ -7,20 +7,20 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * CategoryAdmin class
+ * TypeAdmin class
  *
  * @category Admin
  * @package  FinquesFarnos\AppBundle\Admin
  * @author   David Romaní <david@flux.cat>
  */
-class CategoryAdmin extends BaseAdmin
+class TypeAdmin extends BaseAdmin
 {
     /**
      * Base admin route pattern
      *
      * @var string
      */
-    protected $baseRoutePattern = 'category';
+    protected $baseRoutePattern = 'type';
 
     /**
      * Form view
@@ -30,9 +30,9 @@ class CategoryAdmin extends BaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Categoria')
+            ->with('Tipus')
             ->add('name', 'text', array('label' => 'Nom'))
-            ->add('enabled', 'checkbox', array('label' => 'Activa', 'required' => false));
+            ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false));
     }
 
     /**
@@ -43,8 +43,8 @@ class CategoryAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, array('label' => 'Categoria', 'editable' => true))
-            ->add('enabled', null, array('label' => 'Activa', 'editable' => true))
+            ->add('name', null, array('label' => 'Tipus', 'editable' => true))
+            ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'edit' => array(),
