@@ -42,6 +42,26 @@ class Image extends Base
      */
     protected $imageName;
 
+    /**
+     * @ORM\Column(type="string", length=255, name="meta_title", nullable=true)
+     * @Gedmo\Translatable
+     * @var string
+     */
+    protected $metaTitle;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="meta_alt", nullable=true)
+     * @Gedmo\Translatable
+     * @var string
+     */
+    protected $metaAlt;
+
+    /**
+     * @ORM\Column(name="position", type="integer", nullable=false)
+     * @var integer
+     */
+    protected $position = 1;
+
 	/**
      * @ORM\OneToMany(
      *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation",
@@ -120,6 +140,78 @@ class Image extends Base
     public function getImageName()
     {
         return $this->imageName;
+    }
+
+    /**
+     * Set Position
+     *
+     * @param int $position position
+     *
+     * @return $this
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get Position
+     *
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Set meta alt
+     *
+     * @param string $metaAlt
+     *
+     * @return $this
+     */
+    public function setMetaAlt($metaAlt)
+    {
+        $this->metaAlt = $metaAlt;
+
+        return $this;
+    }
+
+    /**
+     * Get meta alt
+     *
+     * @return string
+     */
+    public function getMetaAlt()
+    {
+        return $this->metaAlt;
+    }
+
+    /**
+     * Set meta title
+     *
+     * @param string $metaTitle
+     *
+     * @return $this
+     */
+    public function setMetaTitle($metaTitle)
+    {
+        $this->metaTitle = $metaTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get meta title
+     *
+     * @return string
+     */
+    public function getMetaTitle()
+    {
+        return $this->metaTitle;
     }
 
     /**
