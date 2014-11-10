@@ -31,3 +31,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle] ]
+    sonata.admin.property:
+        class: FinquesFarnos\AppBundle\Admin\PropertyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Immobles" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\Property
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]
+
