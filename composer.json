@@ -24,6 +24,8 @@
         "raulfraile/ladybug-bundle": "1.*",
         "hautelook/alice-bundle": "0.*",
         "stof/doctrine-extensions-bundle": "1.*",
+        "sonata-project/admin-bundle": "2.3.*",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {
