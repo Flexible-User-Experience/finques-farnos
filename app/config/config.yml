@@ -91,8 +91,8 @@ sonata_admin:
         use_select2:    true
         pager_links:    5
     persist_filters: true
-#    templates:
-#        layout:     MuseumsAdminBundle:Sonata:standard_layout.html.twig     # overrides default layout
+    templates:
+        layout:     ::Admin/custom_layout.html.twig     # overrides default layout
 #        list_block: MuseumsAdminBundle:Sonata:block_admin_list.html.twig    # overrides dashboard layout
 #        add_block:  MuseumsAdminBundle:Sonata:add_block.html.twig           # overrides top nav collpased menu
 #        edit:       MuseumsAdminBundle:Sonata:edit.html.twig                # include tinymce init
