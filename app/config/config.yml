@@ -105,5 +105,5 @@ sonata_block:
             contexts:   [admin]
 
 # Sonata Themes
-raindrop_sonata_theme:
-    theme: united       # cerulean (light), slate (dark), default (blue), united (red)
+#raindrop_sonata_theme:
+#    theme: united       # cerulean (light), slate (dark), default (blue), united (red)

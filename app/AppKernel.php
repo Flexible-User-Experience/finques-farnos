@@ -20,11 +20,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
-            new Sonata\jQueryBundle\SonatajQueryBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
-            new Raindrop\SonataThemeBundle\RaindropSonataThemeBundle('SonataAdminBundle'),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new FinquesFarnos\AppBundle\AppBundle(),
         );
@@ -35,6 +33,8 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Hautelook\AliceBundle\HautelookAliceBundle();
+            $bundles[] = new Cypress\GitElephantBundle\CypressGitElephantBundle();
+            $bundles[] = new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle();
         }
 
         return $bundles;
