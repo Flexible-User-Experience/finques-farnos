@@ -55,6 +55,8 @@ class PropertyAdmin extends BaseAdmin
                     'sort_field_mapping' => array('fieldName' => 'name'),
                     'sort_parent_association_mappings' => array(array('fieldName' => 'type')),
                 ))
+            ->add('price', 'integer', array('label' => 'Preu', 'editable' => true))
+            ->add('imagesCount', 'integer', array('label' => 'Imatges', 'template' => '::Admin/property_images_count_list_field.html.twig'))
             ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(
@@ -76,8 +78,8 @@ class PropertyAdmin extends BaseAdmin
             ->add('type', null, array('label' => 'Tipus'), null, array(
                     'expanded' => false,
                     'multiple' => true,
-//                    'query_builder' => $this->getRelatedOwnerMuseumsQueryBuilder(),
                 ))
+            ->add('price', null, array('label' => 'Preu'))
             ->add('enabled', null, array('label' => 'Actiu'));
     }
 }

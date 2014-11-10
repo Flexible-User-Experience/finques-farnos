@@ -47,6 +47,7 @@ class TypeAdmin extends BaseAdmin
     {
         $listMapper
             ->add('name', null, array('label' => 'Tipus', 'editable' => true))
+            ->add('propertiesCount', 'integer', array('label' => 'Immobles', 'template' => '::Admin/type_list_field.html.twig'))
             ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(
