@@ -3,6 +3,7 @@
 namespace FinquesFarnos\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
@@ -46,7 +47,14 @@ class PropertyAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, array('label' => 'Tipus', 'editable' => true))
+            ->add('name', null, array('label' => 'Immoble', 'editable' => true))
+            ->addIdentifier('type', null, array(
+                    'label' => 'Tipus',
+                    'editable' => false,
+                    'sortable' => true,
+                    'sort_field_mapping' => array('fieldName' => 'name'),
+                    'sort_parent_association_mappings' => array(array('fieldName' => 'type')),
+                ))
             ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(
@@ -54,5 +62,22 @@ class PropertyAdmin extends BaseAdmin
                     ),
                     'label' => 'Accions',
                 ));
+    }
+
+    /**
+     * List filters
+     *
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('name', null, array('label' => 'Immoble'))
+            ->add('type', null, array('label' => 'Tipus'), null, array(
+                    'expanded' => false,
+                    'multiple' => true,
+//                    'query_builder' => $this->getRelatedOwnerMuseumsQueryBuilder(),
+                ))
+            ->add('enabled', null, array('label' => 'Actiu'));
     }
 }
