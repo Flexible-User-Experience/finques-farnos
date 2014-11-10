@@ -34,6 +34,13 @@ class ImageAdmin extends BaseAdmin
     {
         $formMapper
             ->with('Imatge', array('class' => 'col-md-6'))
+            ->add('property', 'sonata_type_model', array(
+                    'required' => true,
+                    'expanded' => false,
+                    'multiple' => false,
+                    'label' => 'Immoble',
+                    'btn_add' => false,
+                ))
             ->add('imageFile', 'file', array(
                     'label' => 'Imatge',
                     'required' => false,
@@ -57,7 +64,14 @@ class ImageAdmin extends BaseAdmin
     {
         $listMapper
             ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/image_list_field.html.twig'))
-            ->add('metaTitle', null, array('label' => 'Títol (SEO)', 'editable' => false))
+            ->addIdentifier('property', null, array(
+                    'label' => 'Immoble',
+                    'editable' => false,
+                    'sortable' => true,
+                    'sort_field_mapping' => array('fieldName' => 'name'),
+                    'sort_parent_association_mappings' => array(array('fieldName' => 'property')),
+                ))
+//            ->add('metaTitle', null, array('label' => 'Títol (SEO)', 'editable' => false))
             ->add('metaAlt', null, array('label' => 'Alt (SEO)', 'editable' => false))
             ->add('position', null, array('label' => 'Posició', 'editable' => true))
             ->add('enabled', null, array('label' => 'Activa', 'editable' => true))
@@ -77,9 +91,22 @@ class ImageAdmin extends BaseAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('property', null, array('label' => 'Immoble'), null, array(
+                    'expanded' => false,
+                    'multiple' => true,
+                ))
             ->add('position', null, array('label' => 'Posició'))
             ->add('enabled', null, array('label' => 'Activa'));
     }
+
+    /**
+     * Datagrid list view
+     *
+     * @var array
+     */
+    public $datagridValues = array(
+        '_sort_by' => 'property.name',
+    );
 
     /**
      * Get image helper form mapper with thumbnail
