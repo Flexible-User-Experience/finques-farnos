@@ -33,9 +33,11 @@ class ImageAdmin extends BaseAdmin
             ->with('Imatge', array('class' => 'col-md-6'))
             ->add('imageFile', 'file', array(
                     'label' => 'Imatge',
-                    'required' => true,
+                    'required' => false,
                     'help' => $this->getImageHelperFormMapperWithThumbnail(),
                 ))
+            ->add('metaTitle', null, array('label' => 'Títol (SEO)'))
+            ->add('metaAlt', null, array('label' => 'Alt (SEO)'))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('position', null, array('label' => 'Posició', 'required' => true))
@@ -52,6 +54,8 @@ class ImageAdmin extends BaseAdmin
     {
         $listMapper
             ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/image_list_field.html.twig'))
+            ->add('metaTitle', null, array('label' => 'Títol (SEO)', 'editable' => false))
+            ->add('metaAlt', null, array('label' => 'Alt (SEO)', 'editable' => false))
             ->add('position', null, array('label' => 'Posició', 'editable' => true))
             ->add('enabled', null, array('label' => 'Activa', 'editable' => true))
             ->add('_action', 'actions', array(

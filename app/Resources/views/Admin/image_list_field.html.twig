@@ -4,8 +4,7 @@
     {% spaceless %}
         <div>
             {% if object.imageName %}
-                {#<img src="{{ vich_uploader_asset(object, 'logoFile') | imagine_filter('60x60') }}" alt="">#}
-                +++
+                <img src="{{ vich_uploader_asset(object, 'property_image') | imagine_filter('60x60') }}" alt="{{ object.metaAlt }}">
             {% else %}
                 ---
             {% endif %}
