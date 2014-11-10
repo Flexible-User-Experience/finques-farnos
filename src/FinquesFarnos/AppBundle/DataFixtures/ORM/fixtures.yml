@@ -15,3 +15,42 @@ FinquesFarnos\AppBundle\Entity\Translations\CategoryTranslation:
         locale: "es"
         field: "name"
         content: "segunda mano"
+
+FinquesFarnos\AppBundle\Entity\Type:
+    type0:
+        name: "àtic"
+    type1:
+        name: "casa"
+    type2:
+        name: "local comercial"
+    type3:
+        name: "pis"
+    type4:
+        name: "apartament"
+
+FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation:
+    typeEs0:
+        object: @type0
+        locale: "es"
+        field: "name"
+        content: "ático"
+    typeEs1:
+        object: @type1
+        locale: "es"
+        field: "name"
+        content: "casa"
+    typeEs2:
+        object: @type2
+        locale: "es"
+        field: "name"
+        content: "local comercial"
+    typeEs3:
+        object: @type3
+        locale: "es"
+        field: "name"
+        content: "piso"
+    typeEs4:
+        object: @type4
+        locale: "es"
+        field: "name"
+        content: "apartamento"
