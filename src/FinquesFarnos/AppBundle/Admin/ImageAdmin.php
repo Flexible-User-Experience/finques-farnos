@@ -30,11 +30,16 @@ class ImageAdmin extends BaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Tipus', array('class' => 'col-md-6'))
-            ->add('name', 'text', array('label' => 'Nom'))
+            ->with('Imatge', array('class' => 'col-md-6'))
+            ->add('imageFile', 'file', array(
+                    'label' => 'Imatge',
+                    'required' => true,
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                ))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
-            ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
+            ->add('position', null, array('label' => 'Posició', 'required' => true))
+            ->add('enabled', 'checkbox', array('label' => 'Activa', 'required' => false))
             ->end();
     }
 
@@ -46,13 +51,24 @@ class ImageAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, array('label' => 'Tipus', 'editable' => true))
-            ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
+            ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/image_list_field.html.twig'))
+            ->add('position', null, array('label' => 'Posició', 'editable' => true))
+            ->add('enabled', null, array('label' => 'Activa', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'edit' => array(),
                     ),
                     'label' => 'Accions',
                 ));
+    }
+
+    /**
+     * Get image helper form mapper with thumbnail
+     *
+     * @return string
+     */
+    private function getImageHelperFormMapperWithThumbnail()
+    {
+        return '<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
     }
 }
