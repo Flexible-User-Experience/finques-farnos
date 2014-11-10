@@ -469,7 +469,7 @@ class Property extends Base
      */
     public function addCategory(Category $category)
     {
-        $category->setProperty($this);
+        $category->addProperty($this);
         $this->categories[] = $category;
 
         return $this;

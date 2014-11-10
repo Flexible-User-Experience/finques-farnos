@@ -48,6 +48,7 @@ class PropertyAdmin extends BaseAdmin
     {
         $listMapper
             ->add('name', null, array('label' => 'Immoble', 'editable' => true))
+            ->add('categories', null, array('label' => 'Categories', 'editable' => true))
             ->addIdentifier('type', null, array(
                     'label' => 'Tipus',
                     'editable' => false,

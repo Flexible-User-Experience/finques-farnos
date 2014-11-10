@@ -47,6 +47,7 @@ class CategoryAdmin extends BaseAdmin
     {
         $listMapper
             ->add('name', null, array('label' => 'Categoria', 'editable' => true))
+            ->add('propertiesCount', 'integer', array('label' => 'Immobles', 'template' => '::Admin/category_list_field.html.twig'))
             ->add('enabled', null, array('label' => 'Activa', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(

@@ -120,6 +120,34 @@ class Category extends Base
     }
 
     /**
+     * Add property
+     *
+     * @param Property $property
+     *
+     * @return $this
+     */
+    public function addProperty(Property $property)
+    {
+        $this->properties[] = $property;
+
+        return $this;
+    }
+
+    /**
+     * Remove property
+     *
+     * @param Property $property
+     *
+     * @return $this
+     */
+    public function removeExtension(Property $property)
+    {
+        $this->properties->removeElement($property);
+
+        return $this;
+    }
+
+    /**
      * Set properties
      *
      * @param ArrayCollection $properties
