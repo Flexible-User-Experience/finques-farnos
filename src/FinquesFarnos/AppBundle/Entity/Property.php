@@ -28,6 +28,12 @@ class Property extends Base
      */
     protected $type;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="property", cascade={"persist"})
+     * @var ArrayCollection
+     */
+    protected $images;
+
 	/**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
      * @Gedmo\Translatable
@@ -121,6 +127,7 @@ class Property extends Base
      */
     public function __construct()
     {
+        $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
@@ -444,6 +451,59 @@ class Property extends Base
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Add image
+     *
+     * @param Image $image
+     *
+     * @return $this
+     */
+    public function addImage(Image $image)
+    {
+        $image->setProperty($this);
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param Image $image
+     *
+     * @return $this
+     */
+    public function removeImage(Image $image)
+    {
+        $this->images->removeElement($image);
+
+        return $this;
+    }
+
+    /**
+     * Set Images
+     *
+     * @param ArrayCollection $images images
+     *
+     * @return $this
+     */
+    public function setImages($images)
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Get Images
+     *
+     * @return ArrayCollection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 
     /**

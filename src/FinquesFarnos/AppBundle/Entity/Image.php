@@ -26,6 +26,13 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class Image extends Base
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Property", inversedBy="images")
+     * @ORM\JoinColumns({@ORM\JoinColumn(name="image_id", referencedColumnName="id")})
+     * @var Property
+     */
+    protected $property;
+
+    /**
      * @Vich\UploadableField(mapping="property_image", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize = "10M",
@@ -89,6 +96,30 @@ class Image extends Base
     public function __toString()
     {
         return $this->imageName ? $this->imageName : '---';
+    }
+
+    /**
+     * Set property
+     *
+     * @param Property $property property
+     *
+     * @return $this
+     */
+    public function setProperty($property)
+    {
+        $this->property = $property;
+
+        return $this;
+    }
+
+    /**
+     * Get property
+     *
+     * @return Property
+     */
+    public function getProperty()
+    {
+        return $this->property;
     }
 
     /**
