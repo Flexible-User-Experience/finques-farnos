@@ -3,8 +3,11 @@
 namespace FinquesFarnos\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
  * ImageAdmin class
@@ -67,12 +70,28 @@ class ImageAdmin extends BaseAdmin
     }
 
     /**
+     * List filters
+     *
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('position', null, array('label' => 'Posició'))
+            ->add('enabled', null, array('label' => 'Activa'));
+    }
+
+    /**
      * Get image helper form mapper with thumbnail
      *
      * @return string
      */
     private function getImageHelperFormMapperWithThumbnail()
     {
-        return '<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+        /** @var CacheManager $lis */
+        $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
+        /** @var UploaderHelper $vus */
+        $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
+        return ($this->getSubject()->getImageName() ? '<img src="' . $lis->getBrowserPath($vus->asset($this->getSubject(), 'property_image'), '300xY') . '" class="admin-preview" alt=""/>' : '') . '<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
     }
 }
