@@ -21,6 +21,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Type extends Base
 {
+    /**
+     * @ORM\OneToMany(targetEntity="Property", mappedBy="type", cascade={"persist"})
+     * @var ArrayCollection
+     */
+    protected $properties;
+
 	/**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
      * @Gedmo\Translatable
@@ -51,6 +57,7 @@ class Type extends Base
      */
     public function __construct()
     {
+        $this->properties = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
@@ -110,6 +117,59 @@ class Type extends Base
     public function getNameSlug()
     {
         return $this->nameSlug;
+    }
+
+    /**
+     * Add property
+     *
+     * @param Property $property
+     *
+     * @return $this
+     */
+    public function addProperty(Property $property)
+    {
+        $property->setType($this);
+        $this->properties[] = $property;
+
+        return $this;
+    }
+
+    /**
+     * Remove property
+     *
+     * @param Property $property
+     *
+     * @return $this
+     */
+    public function removeExtension(Property $property)
+    {
+        $this->properties->removeElement($property);
+
+        return $this;
+    }
+
+    /**
+     * Set Properties
+     *
+     * @param ArrayCollection $properties
+     *
+     * @return $this
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Get Properties
+     *
+     * @return ArrayCollection
+     */
+    public function getProperties()
+    {
+        return $this->properties;
     }
 
     /**

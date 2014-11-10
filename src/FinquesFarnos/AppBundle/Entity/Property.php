@@ -21,6 +21,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Property extends Base
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties")
+     * @ORM\JoinColumns({@ORM\JoinColumn(name="property_id", referencedColumnName="id")})
+     * @var Type
+     */
+    protected $type;
+
 	/**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
      * @Gedmo\Translatable
@@ -173,6 +180,270 @@ class Property extends Base
     public function getNameSlug()
     {
         return $this->nameSlug;
+    }
+
+    /**
+     * Set Bathrooms
+     *
+     * @param int $bathrooms bathrooms
+     *
+     * @return $this
+     */
+    public function setBathrooms($bathrooms)
+    {
+        $this->bathrooms = $bathrooms;
+
+        return $this;
+    }
+
+    /**
+     * Get Bathrooms
+     *
+     * @return int
+     */
+    public function getBathrooms()
+    {
+        return $this->bathrooms;
+    }
+
+    /**
+     * Set Description
+     *
+     * @param string $description description
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get Description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set EnergyClass
+     *
+     * @param int $energyClass energyClass
+     *
+     * @return $this
+     */
+    public function setEnergyClass($energyClass)
+    {
+        $this->energyClass = $energyClass;
+
+        return $this;
+    }
+
+    /**
+     * Get EnergyClass
+     *
+     * @return int
+     */
+    public function getEnergyClass()
+    {
+        return $this->energyClass;
+    }
+
+    /**
+     * Set GpsLatitude
+     *
+     * @param float $gpsLatitude gpsLatitude
+     *
+     * @return $this
+     */
+    public function setGpsLatitude($gpsLatitude)
+    {
+        $this->gpsLatitude = $gpsLatitude;
+
+        return $this;
+    }
+
+    /**
+     * Get GpsLatitude
+     *
+     * @return float
+     */
+    public function getGpsLatitude()
+    {
+        return $this->gpsLatitude;
+    }
+
+    /**
+     * Set GpsLongitude
+     *
+     * @param float $gpsLongitude gpsLongitude
+     *
+     * @return $this
+     */
+    public function setGpsLongitude($gpsLongitude)
+    {
+        $this->gpsLongitude = $gpsLongitude;
+
+        return $this;
+    }
+
+    /**
+     * Get GpsLongitude
+     *
+     * @return float
+     */
+    public function getGpsLongitude()
+    {
+        return $this->gpsLongitude;
+    }
+
+    /**
+     * Set OfferDiscount
+     *
+     * @param boolean $offerDiscount offerDiscount
+     *
+     * @return $this
+     */
+    public function setOfferDiscount($offerDiscount)
+    {
+        $this->offerDiscount = $offerDiscount;
+
+        return $this;
+    }
+
+    /**
+     * Get OfferDiscount
+     *
+     * @return boolean
+     */
+    public function getOfferDiscount()
+    {
+        return $this->offerDiscount;
+    }
+
+    /**
+     * Set OfferSpecial
+     *
+     * @param boolean $offerSpecial offerSpecial
+     *
+     * @return $this
+     */
+    public function setOfferSpecial($offerSpecial)
+    {
+        $this->offerSpecial = $offerSpecial;
+
+        return $this;
+    }
+
+    /**
+     * Get OfferSpecial
+     *
+     * @return boolean
+     */
+    public function getOfferSpecial()
+    {
+        return $this->offerSpecial;
+    }
+
+    /**
+     * Set OldPrice
+     *
+     * @param float $oldPrice oldPrice
+     *
+     * @return $this
+     */
+    public function setOldPrice($oldPrice)
+    {
+        $this->oldPrice = $oldPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get OldPrice
+     *
+     * @return float
+     */
+    public function getOldPrice()
+    {
+        return $this->oldPrice;
+    }
+
+    /**
+     * Set Price
+     *
+     * @param float $price price
+     *
+     * @return $this
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get Price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set Rooms
+     *
+     * @param int $rooms rooms
+     *
+     * @return $this
+     */
+    public function setRooms($rooms)
+    {
+        $this->rooms = $rooms;
+
+        return $this;
+    }
+
+    /**
+     * Get Rooms
+     *
+     * @return int
+     */
+    public function getRooms()
+    {
+        return $this->rooms;
+    }
+
+    /**
+     * Set Type
+     *
+     * @param \FinquesFarnos\AppBundle\Entity\Type $type type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get Type
+     *
+     * @return \FinquesFarnos\AppBundle\Entity\Type
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
