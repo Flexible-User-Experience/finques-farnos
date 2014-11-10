@@ -7,20 +7,20 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * TypeAdmin class
+ * ImageAdmin class
  *
  * @category Admin
  * @package  FinquesFarnos\AppBundle\Admin
  * @author   David Romaní <david@flux.cat>
  */
-class TypeAdmin extends BaseAdmin
+class ImageAdmin extends BaseAdmin
 {
     /**
      * Base admin route pattern
      *
      * @var string
      */
-    protected $baseRoutePattern = 'type';
+    protected $baseRoutePattern = 'image';
 
     /**
      * Form view
@@ -54,15 +54,5 @@ class TypeAdmin extends BaseAdmin
                     ),
                     'label' => 'Accions',
                 ));
-    }
-
-    /**
-     * Export formats
-     *
-     * @return array
-     */
-    public function getExportFormats()
-    {
-        return array();
     }
 }

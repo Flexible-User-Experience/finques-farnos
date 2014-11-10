@@ -30,9 +30,12 @@ class CategoryAdmin extends BaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Categoria')
+            ->with('Categoria', array('class' => 'col-md-6'))
             ->add('name', 'text', array('label' => 'Nom'))
-            ->add('enabled', 'checkbox', array('label' => 'Activa', 'required' => false));
+            ->end()
+            ->with('Controls', array('class' => 'col-md-6'))
+            ->add('enabled', 'checkbox', array('label' => 'Activa', 'required' => false))
+            ->end();
     }
 
     /**

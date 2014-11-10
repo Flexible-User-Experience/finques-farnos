@@ -14,7 +14,7 @@ use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
  * @author   David Romaní <david@flux.cat>
  *
  * @ORM\Entity
- * @ORM\Table(name="type_translation",
+ * @ORM\Table(name="image_translation",
  *   uniqueConstraints={@ORM\UniqueConstraint(name="lookup_image_unique_idx", columns={
  *     "locale", "object_id", "field"
  *   })}
