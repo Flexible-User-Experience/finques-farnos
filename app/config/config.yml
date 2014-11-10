@@ -104,6 +104,11 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts:   [admin]
 
-# Sonata Themes
-#raindrop_sonata_theme:
-#    theme: united       # cerulean (light), slate (dark), default (blue), united (red)
+# Vich Uploader
+vich_uploader:
+    db_driver: orm
+    mappings:
+        property_image:
+            namer:              vich_uploader.namer_origname
+            uri_prefix:         /uploads/images
+            upload_destination: %kernel.root_dir%/../web/uploads/images
