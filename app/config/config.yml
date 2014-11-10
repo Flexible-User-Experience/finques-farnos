@@ -81,9 +81,29 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+# Sonata Admin
+sonata_admin:
+    title:      "Finques Farnós"
+    title_logo: "bundles/app/images/dashboard.png"
+    options:
+        html5_validate: true
+        confirm_exit:   true
+        use_select2:    true
+        pager_links:    5
+    persist_filters: true
+#    templates:
+#        layout:     MuseumsAdminBundle:Sonata:standard_layout.html.twig     # overrides default layout
+#        list_block: MuseumsAdminBundle:Sonata:block_admin_list.html.twig    # overrides dashboard layout
+#        add_block:  MuseumsAdminBundle:Sonata:add_block.html.twig           # overrides top nav collpased menu
+#        edit:       MuseumsAdminBundle:Sonata:edit.html.twig                # include tinymce init
+
 # Sonata Block
 sonata_block:
     default_contexts: [cms]
     blocks:
         sonata.admin.block.admin_list:
             contexts:   [admin]
+
+# Sonata Themes
+raindrop_sonata_theme:
+    theme: united       # cerulean (light), slate (dark), default (blue), united (red)

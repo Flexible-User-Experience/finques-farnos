@@ -31,10 +31,9 @@ class CategoryAdmin extends BaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('Dades generals', array('class' => 'col-md-6'))
-            ->add('name', 'text', array('label' => 'Categoria'))
-            ->with('Administració', array('class' => 'col-md-6'))
-            ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false));
+            ->with('Categoria')
+            ->add('name', 'text', array('label' => 'Nom'))
+            ->add('enabled', 'checkbox', array('label' => 'Activa', 'required' => false));
     }
 
     /**
@@ -53,5 +52,15 @@ class CategoryAdmin extends BaseAdmin
                     ),
                     'label' => 'Accions',
                 ));
+    }
+
+    /**
+     * Export formats
+     *
+     * @return array
+     */
+    public function getExportFormats()
+    {
+        return array();
     }
 }
