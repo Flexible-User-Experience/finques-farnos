@@ -21,6 +21,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Category extends Base
 {
+    /**
+     * @ORM\ManyToMany(targetEntity="Property", mappedBy="categories", cascade={"persist"})
+     * @var ArrayCollection
+     */
+    protected $properties;
+
 	/**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
      * @Gedmo\Translatable
@@ -51,6 +57,7 @@ class Category extends Base
      */
     public function __construct()
     {
+        $this->properties = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
@@ -110,6 +117,30 @@ class Category extends Base
     public function getNameSlug()
     {
         return $this->nameSlug;
+    }
+
+    /**
+     * Set properties
+     *
+     * @param ArrayCollection $properties
+     *
+     * @return $this
+     */
+    public function setProperties($properties)
+    {
+        $this->properties = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Get properties
+     *
+     * @return ArrayCollection
+     */
+    public function getProperties()
+    {
+        return $this->properties;
     }
 
     /**

@@ -22,6 +22,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Property extends Base
 {
     /**
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"})
+     * @var ArrayCollection
+     */
+    protected $categories;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="property_id", referencedColumnName="id")})
      * @var Type
@@ -127,6 +133,7 @@ class Property extends Base
      */
     public function __construct()
     {
+        $this->categories = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
@@ -451,6 +458,59 @@ class Property extends Base
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Add category
+     *
+     * @param Category $category
+     *
+     * @return $this
+     */
+    public function addCategory(Category $category)
+    {
+        $category->setProperty($this);
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param Category $category
+     *
+     * @return $this
+     */
+    public function removeCategory(Category $category)
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * Set categories
+     *
+     * @param ArrayCollection $categories
+     *
+     * @return $this
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Get categories
+     *
+     * @return ArrayCollection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 
     /**
