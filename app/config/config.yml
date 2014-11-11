@@ -86,10 +86,12 @@ sonata_admin:
         html5_validate: true
         confirm_exit:   true
         use_select2:    true
-        pager_links:    5
+        pager_links:    10
     persist_filters: true
     templates:
-        layout: ::Admin/custom_layout.html.twig
+        layout:     ::Admin/custom_layout.html.twig
+        list_block: ::Admin/block_admin_list.html.twig
+        add_block:  ::Admin/add_block.html.twig
     dashboard:
         blocks:
             -
@@ -108,10 +110,10 @@ sonata_admin:
 sonata_block:
     default_contexts: [admin]
     blocks:
-        sonata.admin.block.admin_list:
+        sonata.user.block.menu:
+        sonata.user.block.account:
         sonata.block.service.text:
-        sonata.user.block.menu:    # used to display the menu in profile pages
-        sonata.user.block.account: # used to display menu option (login option)
+        sonata.admin.block.admin_list:
 
 # Sonata User
 sonata_user:

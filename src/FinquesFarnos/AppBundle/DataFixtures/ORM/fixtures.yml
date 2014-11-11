@@ -227,4 +227,4 @@ Application\Sonata\UserBundle\Entity\User:
         lastname: Palomeque
         enabled: true
         roles:
-            - ROLE_ADMIN
+            - ROLE_USER
