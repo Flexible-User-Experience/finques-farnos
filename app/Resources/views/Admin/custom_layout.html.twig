@@ -3,6 +3,51 @@
 {# removes top search bar #}
 {% block sonata_sidebar_search %}{% endblock %}
 
+{# custom sidebar #}
+{% block side_bar_nav %}
+    {% if app.security.token %}
+        <ul class="sidebar-menu">
+            {% for group in admin_pool.dashboardgroups %}
+                {% set display = (group.roles is empty or is_granted('ROLE_SUPER_ADMIN') ) %}
+                {% for role in group.roles if not display %}
+                    {% set display = is_granted(role) %}
+                {% endfor %}
+                {# Do not display the group label if no item in group is available #}
+                {% set item_count = 0 %}
+                {% if display %}
+                    {% for admin in group.items if item_count == 0 %}
+                        {% if admin.hasroute('list') and admin.isGranted('LIST') and (is_granted('ROLE_ADMIN') and group.label == 'sonata_user' or is_granted('ROLE_USER') and group.label != 'sonata_user') %}
+                            {% set item_count = item_count+1 %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if display and (item_count > 0) %}
+                    {% set active = false %}
+                    {% for admin in group.items %}
+                        {% if admin.hasroute('list') and admin.isGranted('LIST') and app.request.get('_sonata_admin') == admin.code %}
+                            {% set active = true %}
+                        {% endif %}
+                    {% endfor %}
+                    <li class="treeview{% if active %} active{% endif %}">
+                        <a href="#">
+                            {% if group.icon|default() %}{{ group.icon|raw }}{% endif %}
+                            <span>{{ group.label|trans({}, group.label_catalogue) }}</span>
+                            <i class="fa pull-right fa-angle-left"></i>
+                        </a>
+                        <ul class="treeview-menu{% if active %} active{% endif %}">
+                            {% for admin in group.items %}
+                                {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                                    <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}><a href="{{ admin.generateUrl('list')}}"><i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock side_bar_nav %}
+
 {# custom sidebar footer #}
 {% block side_bar_after_nav %}
 <p class="text-left small" style="border-top: 1px solid #444444;padding:50px 0 0 20px;color:#EEE;">Desenvolupat per <a href="http://www.flux.cat" rel="noreferrer" target="_blank">www.flux.cat</a><br>&copy;{{ 'now' | date('Y') }} Finques Farnós</p>
