@@ -20,7 +20,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\ImageRepository")
  * @ORM\Table(name="image")
  * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation")
- * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  * @Vich\Uploadable
  */
 class Image extends Base

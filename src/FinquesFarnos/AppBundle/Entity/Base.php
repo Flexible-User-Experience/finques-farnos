@@ -43,12 +43,6 @@ abstract class Base
     protected $updatedAt;
 
     /**
-     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
-     * @var \DateTime
-     */
-    protected $deletedAt;
-
-    /**
      * Get id
      *
      * @return int
@@ -128,29 +122,5 @@ abstract class Base
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * Set deletedAt
-     *
-     * @param \DateTime $deletedAt
-     *
-     * @return $this
-     */
-    public function setDeletedAt(\DateTime $deletedAt)
-    {
-        $this->deletedAt = $deletedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get deletedAt
-     *
-     * @return \DateTime
-     */
-    public function getDeletedAt()
-    {
-        return $this->deletedAt;
     }
 }

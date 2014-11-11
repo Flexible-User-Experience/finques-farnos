@@ -15,6 +15,16 @@ FinquesFarnos\AppBundle\Entity\Translations\CategoryTranslation:
         locale: "es"
         field: "name"
         content: "segunda mano"
+    categoryEn0:
+        object: @category0
+        locale: "en"
+        field: "name"
+        content: "new build"
+    categoryEn1:
+        object: @category1
+        locale: "en"
+        field: "name"
+        content: "second hand"
 
 FinquesFarnos\AppBundle\Entity\Type:
     type0:
@@ -54,13 +64,39 @@ FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation:
         locale: "es"
         field: "name"
         content: "apartamento"
+    typeEn0:
+        object: @type0
+        locale: "en"
+        field: "name"
+        content: "attic"
+    typeEn1:
+        object: @type1
+        locale: "en"
+        field: "name"
+        content: "house"
+    typeEn2:
+        object: @type2
+        locale: "en"
+        field: "name"
+        content: "business premises"
+    typeEn3:
+        object: @type3
+        locale: "en"
+        field: "name"
+        content: "flat"
+    typeEn4:
+        object: @type4
+        locale: "en"
+        field: "name"
+        content: "apartment"
 
 FinquesFarnos\AppBundle\Entity\Property:
     property{1..200}:
         categories:
             - @category0
-        reference: <numerify('######')>
+        reference: <bothify('####??')>
         showInHomepage: <boolean(3)>
+        showPriceOnlyWithNumbers: <boolean(85)>
         city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
@@ -79,8 +115,9 @@ FinquesFarnos\AppBundle\Entity\Property:
     property{101..299}:
         categories:
             - @category1
-        reference: <numerify('######')>
+        reference: <bothify('####??')>
         showInHomepage: <boolean(3)>
+        showPriceOnlyWithNumbers: <boolean(85)>
         city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
@@ -100,8 +137,9 @@ FinquesFarnos\AppBundle\Entity\Property:
         categories:
             - @category0
             - @category1
-        reference: <numerify('######')>
+        reference: <bothify('####??')>
         showInHomepage: <boolean(3)>
+        showPriceOnlyWithNumbers: <boolean(85)>
         city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
@@ -118,6 +156,38 @@ FinquesFarnos\AppBundle\Entity\Property:
         gpsLatitude: <randomFloat(14, 40.49709237269567, 42.884014670442525)>
         enabled: <boolean(90)>
 
+FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation:
+    propertyNameEs{1..300}:
+        object: @property<current()>
+        locale: "es"
+        field: "name"
+        content: ESP-<sentence(4)>
+    propertyDescriptionEs{1..300}:
+        object: @property<current()>
+        locale: "es"
+        field: "description"
+        content: ESP-<sentence(40)>
+    propertyCityEs{1..300}:
+        object: @property<current()>
+        locale: "es"
+        field: "city"
+        content: ESP-<city()>
+    propertyNameEn{1..300}:
+        object: @property<current()>
+        locale: "en"
+        field: "name"
+        content: ENG-<sentence(4)>
+    propertyDescriptionEn{1..300}:
+        object: @property<current()>
+        locale: "en"
+        field: "description"
+        content: ENG-<sentence(40)>
+    propertyCityEn{1..300}:
+        object: @property<current()>
+        locale: "en"
+        field: "city"
+        content: ENG-<city()>
+
 FinquesFarnos\AppBundle\Entity\Image:
     image{1..500}:
         property: @property<numberBetween(1, 300)>
@@ -125,3 +195,25 @@ FinquesFarnos\AppBundle\Entity\Image:
         metaTitle: <sentence(3)>
         metaAlt: <sentence(3)>
         position: <numberBetween(1, 5)>
+
+FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation:
+    imageMetaTitleEs{1..500}:
+        object: @image<current()>
+        locale: "es"
+        field: "metaTitle"
+        content: ESP-<sentence(3)>
+    imageMetaAltEs{1..500}:
+        object: @image<current()>
+        locale: "es"
+        field: "metaAlt"
+        content: ESP-<sentence(3)>
+    imageMetaTitleEn{1..500}:
+        object: @image<current()>
+        locale: "en"
+        field: "metaTitle"
+        content: ENG-<sentence(3)>
+    imageMetaAltEn{1..500}:
+        object: @image<current()>
+        locale: "en"
+        field: "metaAlt"
+        content: ENG-<sentence(3)>

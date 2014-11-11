@@ -33,6 +33,16 @@ class TypeAdmin extends BaseAdmin
             ->with('Tipus', array('class' => 'col-md-6'))
             ->add('name', 'text', array('label' => 'Nom'))
             ->end()
+            ->with('Traduccions', array('class' => 'col-md-6'))
+            ->add('translations', 'a2lix_translations_gedmo', array(
+                    'required' => false,
+                    'label' => ' ',
+                    'translatable_class' => 'FinquesFarnos\AppBundle\Entity\Translation\TypeTranslation',
+                    'fields' => array(
+                        'name' => array('label' => 'Nom', 'required' => false),
+                    )
+                ))
+            ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
             ->end();

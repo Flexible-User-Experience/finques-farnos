@@ -17,7 +17,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\CategoryRepository")
  * @ORM\Table(name="category")
  * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\CategoryTranslation")
- * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  */
 class Category extends Base
 {
