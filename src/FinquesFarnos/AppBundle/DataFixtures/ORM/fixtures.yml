@@ -59,7 +59,7 @@ FinquesFarnos\AppBundle\Entity\Property:
     property{1..200}:
         categories:
             - @category0
-        reference: <md5()>
+        reference: <numerify('######')>
         showInHomepage: <boolean(3)>
         city: <city()>
         type: @type<numberBetween(0, 4)>
@@ -78,7 +78,7 @@ FinquesFarnos\AppBundle\Entity\Property:
     property{101..299}:
         categories:
             - @category1
-        reference: <md5()>
+        reference: <numerify('######')>
         showInHomepage: <boolean(3)>
         city: <city()>
         type: @type<numberBetween(0, 4)>
@@ -98,7 +98,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         categories:
             - @category0
             - @category1
-        reference: <md5()>
+        reference: <numerify('######')>
         showInHomepage: <boolean(3)>
         city: <city()>
         type: @type<numberBetween(0, 4)>

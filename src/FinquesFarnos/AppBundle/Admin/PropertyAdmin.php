@@ -33,6 +33,7 @@ class PropertyAdmin extends BaseAdmin
     {
         $formMapper
             ->with('Immoble', array('class' => 'col-md-6'))
+            ->add('reference', 'text', array('label' => 'Referència'))
             ->add('name', 'text', array('label' => 'Nom'))
             ->add('description', 'textarea', array('label' => 'Descripció'))
             ->add('categories', 'sonata_type_model', array(
@@ -49,12 +50,25 @@ class PropertyAdmin extends BaseAdmin
                     'label' => 'Tipus',
                     'btn_add' => true,
                 ))
+            ->end()
+            ->with('Propietats', array('class' => 'col-md-6'))
             ->add('price', null, array('label' => 'Preu'))
             ->add('oldPrice', null, array('label' => 'Preu anterior'))
-            ->end()
-            ->with('Controls', array('class' => 'col-md-6'))
             ->add('rooms', null, array('label' => 'Habitacions', 'required' => false))
             ->add('bathrooms', null, array('label' => 'Banys', 'required' => false))
+            ->add('energyClass', null, array('label' => 'Classificació energètica', 'required' => false))
+            ->end()
+            ->with('Imatges', array('class' => 'col-md-6'))
+            ->add('images', 'sonata_type_model', array(
+                    'required' => false,
+                    'expanded' => false,
+                    'multiple' => true,
+                    'label' => 'Imatges',
+                    'btn_add' => true,
+                ))
+            ->end()
+            ->with('Controls', array('class' => 'col-md-6'))
+            ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar a homepage', 'required' => false))
             ->add('offerDiscount', 'checkbox', array('label' => 'Oferta descompte', 'required' => false))
             ->add('offerSpecial', 'checkbox', array('label' => 'Oferta especial', 'required' => false))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
@@ -69,6 +83,7 @@ class PropertyAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('reference', null, array('label' => 'Ref.', 'editable' => false))
             ->add('name', null, array('label' => 'Immoble', 'editable' => true))
             ->add('categories', null, array('label' => 'Categories'))
             ->add('type', null, array(
@@ -96,6 +111,7 @@ class PropertyAdmin extends BaseAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('reference', null, array('label' => 'Referència'))
             ->add('name', null, array('label' => 'Immoble'))
             ->add('categories', null, array('label' => 'Categories'), null, array(
                     'expanded' => false,

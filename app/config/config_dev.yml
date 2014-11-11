@@ -54,4 +54,4 @@ doctrine:
 
 hautelook_alice:
     locale: es_ES
-    seed: 2
+    seed: 3
