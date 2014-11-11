@@ -6,6 +6,10 @@ app:
 _liip_imagine:
     resource: '@LiipImagineBundle/Resources/config/routing.xml'
 
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix:   /admin
+
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix:   /admin

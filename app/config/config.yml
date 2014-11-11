@@ -48,6 +48,8 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
@@ -108,6 +110,24 @@ sonata_block:
     blocks:
         sonata.admin.block.admin_list:
         sonata.block.service.text:
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+
+# Sonata User
+sonata_user:
+    security_acl: false
+    manager_type: orm
+
+# FOS User
+fos_user:
+    db_driver:      orm
+    firewall_name:  main
+    user_class:     Sonata\UserBundle\Entity\BaseUser
+    group:
+        group_class:   Sonata\UserBundle\Entity\BaseGroup
+        group_manager: sonata.user.orm.group_manager
+    service:
+        user_manager: sonata.user.orm.user_manager
 
 # Vich Uploader
 vich_uploader:
