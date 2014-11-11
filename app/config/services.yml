@@ -4,7 +4,7 @@ services:
     sonata.admin.category:
         class: FinquesFarnos\AppBundle\Admin\CategoryAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Categories" }
+            - { name: sonata.admin, manager_type: orm, group: "Menú", label: "Categories" }
         arguments:
             - ~
             - FinquesFarnos\AppBundle\Entity\Category
@@ -14,7 +14,7 @@ services:
     sonata.admin.type:
         class: FinquesFarnos\AppBundle\Admin\TypeAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Tipus" }
+            - { name: sonata.admin, manager_type: orm, group: "Menú", label: "Tipus" }
         arguments:
             - ~
             - FinquesFarnos\AppBundle\Entity\Type
@@ -24,7 +24,7 @@ services:
     sonata.admin.image:
         class: FinquesFarnos\AppBundle\Admin\ImageAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Imatges" }
+            - { name: sonata.admin, manager_type: orm, group: "Menú", label: "Imatges" }
         arguments:
             - ~
             - FinquesFarnos\AppBundle\Entity\Image
@@ -34,7 +34,7 @@ services:
     sonata.admin.property:
         class: FinquesFarnos\AppBundle\Admin\PropertyAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Immobles" }
+            - { name: sonata.admin, manager_type: orm, group: "Menú", label: "Immobles" }
         arguments:
             - ~
             - FinquesFarnos\AppBundle\Entity\Property

@@ -19,15 +19,19 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new FOS\UserBundle\FOSUserBundle('FOSUserBundle'),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\UserBundle\SonataUserBundle(),
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
+            new Hautelook\AliceBundle\HautelookAliceBundle(),
             new FinquesFarnos\AppBundle\AppBundle(),
         );
 
@@ -36,7 +40,6 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new Hautelook\AliceBundle\HautelookAliceBundle();
             $bundles[] = new Cypress\GitElephantBundle\CypressGitElephantBundle();
             $bundles[] = new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle();
         }
