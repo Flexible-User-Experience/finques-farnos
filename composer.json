@@ -8,15 +8,27 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.6.x-dev",
-        "doctrine/orm": "~2.2,>=2.2.3",
-        "doctrine/doctrine-bundle": "~1.2",
-        "twig/extensions": "~1.0",
+        "symfony/symfony": "2.6.*@dev",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle": "~1.2",
+        "doctrine/migrations": "1.0.*@dev",
+        "doctrine/doctrine-migrations-bundle": "1.*",
+        "twig/extensions": "~1.0",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
+        "cypresslab/gitelephant-bundle": "dev-develop",
+        "endroid/qrcode-bundle": "1.*",
+        "raulfraile/ladybug-bundle": "1.*",
+        "hautelook/alice-bundle": "0.*",
+        "stof/doctrine-extensions-bundle": "1.*",
+        "sonata-project/admin-bundle": "2.3.*",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
+        "vich/uploader-bundle": "1.0.*@dev",
+        "liip/imagine-bundle": "1.*",
+        "oh/google-map-form-type-bundle": "dev-master",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {
@@ -46,6 +58,7 @@
     "config": {
         "bin-dir": "bin"
     },
+    "minimum-stability": "stable",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",

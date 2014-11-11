@@ -4,8 +4,7 @@ imports:
     - { resource: services.yml }
 
 framework:
-    #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -15,12 +14,10 @@ framework:
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
-        # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
     fragments:       ~
     http_method_override: true
@@ -29,19 +26,17 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - "::OhGoogleMaps/google_maps_form_widget.html.twig"
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ ]
-    #java: /usr/bin/java
     filters:
         cssrewrite: ~
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
 # Doctrine Configuration
 doctrine:
@@ -53,16 +48,25 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+
+# Doctrine Migrations
+doctrine_migrations:
+    dir_name:   "%kernel.root_dir%/../src/FinquesFarnos/AppBundle/DoctrineMigrations"
+    namespace:  AppBundle\Migrations
+
+# Stof Doctrine Extensions
+stof_doctrine_extensions:
+    default_locale:         "%locale%"
+    translation_fallback:   true
+    orm:
+        default:
+            translatable:   true
+            softdeleteable: true
+            timestampable:  true
+            sluggable:      true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -71,3 +75,48 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Sonata Admin
+sonata_admin:
+    title:      "Finques Farnós"
+    title_logo: "bundles/app/images/logo-ff-mini.jpg"
+    options:
+        html5_validate: true
+        confirm_exit:   true
+        use_select2:    true
+        pager_links:    5
+    persist_filters: true
+    templates:
+        layout: ::Admin/custom_layout.html.twig
+
+# Sonata Block
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+# Vich Uploader
+vich_uploader:
+    db_driver: orm
+    mappings:
+        property_image:
+            namer:              vich_uploader.namer_origname
+            uri_prefix:         /uploads/images
+            upload_destination: %kernel.root_dir%/../web/uploads/images
+
+# Liip Imagine
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+    filter_sets:
+        cache: ~
+        60x60:
+            quality: 90
+            filters:
+                thumbnail: { size: [60, 60], mode: outbound }
+        300xY:
+            quality: 75
+            filters:
+                thumbnail: { size: [300, null], mode: outbound }

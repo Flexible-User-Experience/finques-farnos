@@ -1,9 +1,44 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    sonata.admin.category:
+        class: FinquesFarnos\AppBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Categories" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\Category
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]
+    sonata.admin.type:
+        class: FinquesFarnos\AppBundle\Admin\TypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Tipus" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\Type
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]
+    sonata.admin.image:
+        class: FinquesFarnos\AppBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Imatges" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\Image
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]
+    sonata.admin.property:
+        class: FinquesFarnos\AppBundle\Admin\PropertyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Administrador", label: "Immobles" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\Property
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]
+

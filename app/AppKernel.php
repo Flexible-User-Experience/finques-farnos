@@ -15,7 +15,19 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
+            new FinquesFarnos\AppBundle\AppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -23,6 +35,9 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Hautelook\AliceBundle\HautelookAliceBundle();
+            $bundles[] = new Cypress\GitElephantBundle\CypressGitElephantBundle();
+            $bundles[] = new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle();
         }
 
         return $bundles;
