@@ -39,7 +39,7 @@ class PropertyAdmin extends BaseAdmin
             ->with('Immoble', array('class' => 'col-md-6'))
             ->add('reference', 'text', array('label' => 'Referència'))
             ->add('name', 'text', array('label' => 'Nom'))
-            ->add('description', 'textarea', array('label' => 'Descripció'))
+            ->add('description', 'textarea', array('label' => 'Descripció', 'attr' => array('style' => 'height:150px')))
             ->add('categories', 'sonata_type_model', array(
                     'required' => true,
                     'expanded' => false,
@@ -60,7 +60,17 @@ class PropertyAdmin extends BaseAdmin
             ->add('oldPrice', null, array('label' => 'Preu anterior'))
             ->add('rooms', null, array('label' => 'Habitacions', 'required' => false))
             ->add('bathrooms', null, array('label' => 'Banys', 'required' => false))
-            ->add('energyClass', null, array('label' => 'Classificació energètica', 'required' => false))
+            ->add('energyClass', 'choice', array('label' => 'Classificació energètica', 'required' => false, 'choices' => array(
+                    0 => 'sense clasificació',
+                    1 => 'en tràmit',
+                    2 => 'A',
+                    3 => 'B',
+                    4 => 'C',
+                    5 => 'D',
+                    6 => 'E',
+                    7 => 'F',
+                    8 => 'G',
+                )))
             ->end()
             ->with('Imatges', array('class' => 'col-md-6'))
             ->add('images', 'sonata_type_model', array(
