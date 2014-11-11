@@ -2,11 +2,15 @@
 
 namespace FinquesFarnos\AppBundle\Admin;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use FinquesFarnos\AppBundle\Entity\Image;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
  * PropertyAdmin class
@@ -41,14 +45,14 @@ class PropertyAdmin extends BaseAdmin
                     'expanded' => false,
                     'multiple' => true,
                     'label' => 'Categories',
-                    'btn_add' => true,
+                    'btn_add' => false,
                 ))
             ->add('type', 'sonata_type_model', array(
                     'required' => true,
                     'expanded' => false,
                     'multiple' => false,
                     'label' => 'Tipus',
-                    'btn_add' => true,
+                    'btn_add' => false,
                 ))
             ->end()
             ->with('Propietats', array('class' => 'col-md-6'))
@@ -64,7 +68,9 @@ class PropertyAdmin extends BaseAdmin
                     'expanded' => false,
                     'multiple' => true,
                     'label' => 'Imatges',
-                    'btn_add' => true,
+                    'btn_add' => false,
+                    'disabled' => true,
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
                 ))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
@@ -133,5 +139,30 @@ class PropertyAdmin extends BaseAdmin
     public function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('show');
+    }
+
+    /**
+     * Get image helper form mapper with thumbnail
+     *
+     * @return string
+     */
+    private function getImageHelperFormMapperWithThumbnail()
+    {
+        /** @var CacheManager $lis */
+        $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
+        /** @var UploaderHelper $vus */
+        $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
+        /** @var ArrayCollection $images */
+        $images = $this->getSubject()->getImages();
+        if ($images->count() > 0) {
+            $result = '';
+            /** @var Image $image */
+            foreach ($images as $image) {
+                $result .= '<img src="' . $lis->getBrowserPath($vus->asset($image, 'property_image'), '60x60') . '" class="admin-preview" style="margin-right:10px" alt="' . $image->getMetaAlt() . '"/>';
+            }
+            return $result;
+        }
+
+        return '';
     }
 }
