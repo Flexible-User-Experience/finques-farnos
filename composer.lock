@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5aff45e11e46c6453a44821c9f2ecfa5",
+    "hash": "50fdc24efb35d8ba071e6eec4660a215",
     "packages": [
         {
             "name": "cypresslab/gitelephant",
@@ -3219,7 +3219,7 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "dev-master",
+            "version": "2.6.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
@@ -3448,12 +3448,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "6946af2845b7977e70f4d03240dabada7e9bb161"
+                "reference": "d66637b12cf823d3437f074feb3fb734624f48f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/6946af2845b7977e70f4d03240dabada7e9bb161",
-                "reference": "6946af2845b7977e70f4d03240dabada7e9bb161",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/d66637b12cf823d3437f074feb3fb734624f48f5",
+                "reference": "d66637b12cf823d3437f074feb3fb734624f48f5",
                 "shasum": ""
             },
             "require": {
@@ -3511,7 +3511,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-11-09 11:18:24"
+            "time": "2014-11-11 08:40:41"
         }
     ],
     "packages-dev": [],
