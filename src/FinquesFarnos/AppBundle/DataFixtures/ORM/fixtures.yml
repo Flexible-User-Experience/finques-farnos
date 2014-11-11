@@ -217,3 +217,14 @@ FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation:
         locale: "en"
         field: "metaAlt"
         content: ENG-<sentence(3)>
+
+Application\Sonata\UserBundle\Entity\User:
+    admin:
+        username: admin
+        plainPassword: jbMF7CZW
+        email: "admin@admin.com"
+        firstname: Roberto
+        lastname: Palomeque
+        enabled: true
+        roles:
+            - ROLE_ADMIN
