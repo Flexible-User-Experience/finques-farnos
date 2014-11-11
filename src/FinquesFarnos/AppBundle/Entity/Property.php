@@ -43,7 +43,7 @@ class Property extends Base
     private $images;
 
     /**
-     * @ORM\Column(type="string", length=10, name="reference", nullable=false, unique=true)
+     * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=false)
      * @var string
      */
     private $reference;
@@ -119,6 +119,12 @@ class Property extends Base
     private $showInHomepage = false;
 
     /**
+     * @ORM\Column(name="show_price_only_with_numbers", type="boolean", nullable=false)
+     * @var boolean
+     */
+    private $showPriceOnlyWithNumbers = true;
+
+    /**
      * @ORM\Column(name="energy_class", type="integer", nullable=true)
      * @var integer
      */
@@ -172,7 +178,7 @@ class Property extends Base
      */
     public function __toString()
     {
-        return $this->name ? $this->name : '---';
+        return $this->reference ? $this->reference . ' · ' . $this->name : '---';
     }
 
     /**
@@ -742,6 +748,30 @@ class Property extends Base
     public function getShowMapType()
     {
         return $this->showMapType;
+    }
+
+    /**
+     * Set showPriceOnlyWithNumbers
+     *
+     * @param boolean $showPriceOnlyWithNumbers
+     *
+     * @return $this
+     */
+    public function setShowPriceOnlyWithNumbers($showPriceOnlyWithNumbers)
+    {
+        $this->showPriceOnlyWithNumbers = $showPriceOnlyWithNumbers;
+
+        return $this;
+    }
+
+    /**
+     * Get showPriceOnlyWithNumbers
+     *
+     * @return boolean
+     */
+    public function getShowPriceOnlyWithNumbers()
+    {
+        return $this->showPriceOnlyWithNumbers;
     }
 
     /**

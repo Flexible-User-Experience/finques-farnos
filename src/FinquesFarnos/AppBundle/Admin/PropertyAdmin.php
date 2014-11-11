@@ -85,16 +85,18 @@ class PropertyAdmin extends BaseAdmin
             ->end()
             ->with('Geolocalització', array('class' => 'col-md-6'))
             ->add('latLng', 'oh_google_maps', array('label' => 'Mapa', 'required' => false))
-            ->add('showMapType', 'choice', array('label' => 'Mostrar mapa', 'required' => true, 'choices' => array(
-                    0 => 'mostrar tot',
-                    1 => 'mostrar només carrer',
-                    2 => 'mostrar només àrea',
+            ->add('city', null, array('label' => 'Població'))
+            ->add('showMapType', 'choice', array('label' => 'Al mostrar els mapa de l\'immoble', 'required' => true, 'choices' => array(
+                    0 => 'mostrar-ho tot',
+                    1 => 'mostrar només el carrer',
+                    2 => 'mostrar només l\'àrea',
                 )))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
-            ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar a la homepage', 'required' => false))
-            ->add('offerDiscount', 'checkbox', array('label' => 'Oferta descompte', 'required' => false))
-            ->add('offerSpecial', 'checkbox', array('label' => 'Oferta especial', 'required' => false))
+            ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar l\'immoble a la homepage', 'required' => false))
+            ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
+            ->add('offerDiscount', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb descompte', 'required' => false))
+            ->add('offerSpecial', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb preu rebaixat', 'required' => false))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
             ->end();
     }

@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20141111124329 extends AbstractMigration
+class Version20141111163133 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
@@ -19,8 +19,7 @@ class Version20141111124329 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_64C19C15E237E06 ON category (name)');
         $this->addSql('CREATE TABLE image (id INTEGER NOT NULL, image_id INTEGER DEFAULT NULL, image_name VARCHAR(255) NOT NULL, meta_title VARCHAR(255) DEFAULT NULL, meta_alt VARCHAR(255) DEFAULT NULL, position INTEGER NOT NULL, enabled BOOLEAN NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, deleted_at DATETIME DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_C53D045F3DA5256D ON image (image_id)');
-        $this->addSql('CREATE TABLE property (id INTEGER NOT NULL, property_id INTEGER DEFAULT NULL, reference VARCHAR(10) NOT NULL, name VARCHAR(255) NOT NULL, name_slug VARCHAR(255) NOT NULL, description CLOB DEFAULT NULL, city VARCHAR(255) DEFAULT NULL, price DOUBLE PRECISION DEFAULT NULL, price_old DOUBLE PRECISION DEFAULT NULL, rooms INTEGER DEFAULT NULL, bathrooms INTEGER DEFAULT NULL, offer_discount BOOLEAN NOT NULL, offer_special BOOLEAN NOT NULL, show_in_homepage BOOLEAN NOT NULL, energy_class INTEGER DEFAULT NULL, show_map_type INTEGER NOT NULL, gps_longitude DOUBLE PRECISION NOT NULL, gps_latitude DOUBLE PRECISION NOT NULL, enabled BOOLEAN NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, deleted_at DATETIME DEFAULT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_8BF21CDEAEA34913 ON property (reference)');
+        $this->addSql('CREATE TABLE property (id INTEGER NOT NULL, property_id INTEGER DEFAULT NULL, reference VARCHAR(16) NOT NULL, name VARCHAR(255) NOT NULL, name_slug VARCHAR(255) NOT NULL, description CLOB DEFAULT NULL, city VARCHAR(255) DEFAULT NULL, price DOUBLE PRECISION DEFAULT NULL, price_old DOUBLE PRECISION DEFAULT NULL, rooms INTEGER DEFAULT NULL, bathrooms INTEGER DEFAULT NULL, offer_discount BOOLEAN NOT NULL, offer_special BOOLEAN NOT NULL, show_in_homepage BOOLEAN NOT NULL, show_price_only_with_numbers BOOLEAN NOT NULL, energy_class INTEGER DEFAULT NULL, show_map_type INTEGER NOT NULL, gps_longitude DOUBLE PRECISION NOT NULL, gps_latitude DOUBLE PRECISION NOT NULL, enabled BOOLEAN NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, deleted_at DATETIME DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8BF21CDE5E237E06 ON property (name)');
         $this->addSql('CREATE INDEX IDX_8BF21CDE549213EC ON property (property_id)');
         $this->addSql('CREATE TABLE property_category (property_id INTEGER NOT NULL, category_id INTEGER NOT NULL, PRIMARY KEY(property_id, category_id))');

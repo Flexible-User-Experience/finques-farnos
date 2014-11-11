@@ -94,8 +94,9 @@ FinquesFarnos\AppBundle\Entity\Property:
     property{1..200}:
         categories:
             - @category0
-        reference: <numerify('######')>
+        reference: <bothify('######')>
         showInHomepage: <boolean(3)>
+        showPriceOnlyWithNumbers: <boolean(85)>
         city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
@@ -114,8 +115,9 @@ FinquesFarnos\AppBundle\Entity\Property:
     property{101..299}:
         categories:
             - @category1
-        reference: <numerify('######')>
+        reference: <bothify('######')>
         showInHomepage: <boolean(3)>
+        showPriceOnlyWithNumbers: <boolean(85)>
         city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
@@ -135,8 +137,9 @@ FinquesFarnos\AppBundle\Entity\Property:
         categories:
             - @category0
             - @category1
-        reference: <numerify('######')>
+        reference: <bothify('######')>
         showInHomepage: <boolean(3)>
+        showPriceOnlyWithNumbers: <boolean(85)>
         city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>

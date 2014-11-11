@@ -49,6 +49,17 @@ class ImageAdmin extends BaseAdmin
             ->add('metaTitle', null, array('label' => 'Títol (SEO)'))
             ->add('metaAlt', null, array('label' => 'Alt (SEO)'))
             ->end()
+            ->with('Traduccions', array('class' => 'col-md-6'))
+            ->add('translations', 'a2lix_translations_gedmo', array(
+                    'required' => false,
+                    'label' => ' ',
+                    'translatable_class' => 'FinquesFarnos\AppBundle\Entity\Translation\ImageTranslation',
+                    'fields' => array(
+                        'metaTitle' => array('label' => 'Títol (SEO)', 'required' => false),
+                        'metaAlt' => array('label' => 'Alt (SEO)', 'required' => false),
+                    )
+                ))
+            ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('position', null, array('label' => 'Posició', 'required' => true))
             ->add('enabled', 'checkbox', array('label' => 'Activa', 'required' => false))
