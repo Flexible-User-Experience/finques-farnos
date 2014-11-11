@@ -76,7 +76,7 @@ swiftmailer:
 # Sonata Admin
 sonata_admin:
     title:      "Finques Farnós"
-    title_logo: "bundles/app/images/dashboard.png"
+    title_logo: "bundles/app/images/logo-ff-mini.jpg"
     options:
         html5_validate: true
         confirm_exit:   true
