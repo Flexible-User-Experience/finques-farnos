@@ -28,6 +28,7 @@
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "vich/uploader-bundle": "1.0.*@dev",
         "liip/imagine-bundle": "1.*",
+        "oh/google-map-form-type-bundle": "dev-master",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {

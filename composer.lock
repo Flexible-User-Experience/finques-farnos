@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "50fdc24efb35d8ba071e6eec4660a215",
+    "hash": "014f31e81942f42a723793aae960d8db",
     "packages": [
         {
             "name": "cypresslab/gitelephant",
@@ -1851,6 +1851,50 @@
             "time": "2014-10-10 13:07:37"
         },
         {
+            "name": "oh/google-map-form-type-bundle",
+            "version": "dev-master",
+            "target-dir": "Oh/GoogleMapFormTypeBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ollieLtd/OhGoogleMapFormTypeBundle.git",
+                "reference": "86a66a856aca163980f6b59ece7cf6a324ac7d0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ollieLtd/OhGoogleMapFormTypeBundle/zipball/86a66a856aca163980f6b59ece7cf6a324ac7d0c",
+                "reference": "86a66a856aca163980f6b59ece7cf6a324ac7d0c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "symfony/framework-bundle": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Oh\\GoogleMapFormTypeBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ollie Harridge",
+                    "email": "code@oll.ie"
+                }
+            ],
+            "description": "Set latitude and longitude values on a form using Google Maps",
+            "homepage": "https://github.com/ollieLtd/OhGoogleMapFormTypeBundle",
+            "keywords": [
+                "form",
+                "google maps",
+                "symfony"
+            ],
+            "time": "2014-06-03 16:15:55"
+        },
+        {
             "name": "phpcollection/phpcollection",
             "version": "0.4.0",
             "source": {
@@ -3521,7 +3565,8 @@
         "symfony/symfony": 20,
         "doctrine/migrations": 20,
         "cypresslab/gitelephant-bundle": 20,
-        "vich/uploader-bundle": 20
+        "vich/uploader-bundle": 20,
+        "oh/google-map-form-type-bundle": 20
     },
     "prefer-stable": false,
     "platform": {

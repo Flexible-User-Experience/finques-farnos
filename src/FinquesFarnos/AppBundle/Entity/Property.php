@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
 
 /**
  * Property class
@@ -710,5 +711,36 @@ class Property extends Base
     public function getTranslations()
     {
         return $this->translations;
+    }
+
+    /**
+     * Set LatLng
+     *
+     * @param array $latlng
+     *
+     * @return $this
+     */
+    public function setLatLng($latlng)
+    {
+        $this->setGpsLatitude($latlng['lat']);
+        $this->setGpsLongitude($latlng['lng']);
+
+        return $this;
+    }
+
+    /**
+     * Get LatLng
+     *
+     * @Assert\NotBlank()
+     * @OhAssert\LatLng()
+     *
+     * @return array
+     */
+    public function getLatLng()
+    {
+        return array(
+            'lat' => $this->getGpsLatitude(),
+            'lng' => $this->getGpsLongitude(),
+        );
     }
 }

@@ -83,6 +83,9 @@ class PropertyAdmin extends BaseAdmin
                     'help' => $this->getImageHelperFormMapperWithThumbnail(),
                 ))
             ->end()
+            ->with('Geolocalització', array('class' => 'col-md-6'))
+            ->add('latLng', 'oh_google_maps', array('label' => 'Mapa', 'required' => false))
+            ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar a homepage', 'required' => false))
             ->add('offerDiscount', 'checkbox', array('label' => 'Oferta descompte', 'required' => false))
