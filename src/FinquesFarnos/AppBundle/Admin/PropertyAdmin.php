@@ -92,6 +92,18 @@ class PropertyAdmin extends BaseAdmin
                     2 => 'mostrar només l\'àrea',
                 )))
             ->end()
+            ->with('Traduccions', array('class' => 'col-md-6'))
+            ->add('translations', 'a2lix_translations_gedmo', array(
+                    'required' => false,
+                    'label' => ' ',
+                    'translatable_class' => 'FinquesFarnos\AppBundle\Entity\Translation\PropertyTranslation',
+                    'fields' => array(
+                        'name' => array('label' => 'Nom', 'required' => false),
+                        'description' => array('label' => 'Descripció', 'required' => false),
+                        'city' => array('label' => 'Població', 'required' => false),
+                    )
+                ))
+            ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar l\'immoble a la homepage', 'required' => false))
             ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
