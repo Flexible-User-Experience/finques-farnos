@@ -29,6 +29,7 @@
         "vich/uploader-bundle": "1.0.*@dev",
         "liip/imagine-bundle": "1.*",
         "oh/google-map-form-type-bundle": "dev-master",
+        "a2lix/translation-form-bundle": "1.*",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {

@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new FinquesFarnos\AppBundle\AppBundle(),
         );
 
