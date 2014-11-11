@@ -124,6 +124,12 @@ class Property extends Base
     private $energyClass = 0;
 
     /**
+     * @ORM\Column(name="show_map_type", type="integer", nullable=false)
+     * @var integer
+     */
+    private $showMapType = 0;
+
+    /**
      * @ORM\Column(type="float", precision=14, name="gps_longitude", nullable=false)
      * @Assert\Range(min = -180, max = 180)
      * @var float
@@ -711,6 +717,30 @@ class Property extends Base
     public function getTranslations()
     {
         return $this->translations;
+    }
+
+    /**
+     * Set showMapType
+     *
+     * @param int $showMapType
+     *
+     * @return $this
+     */
+    public function setShowMapType($showMapType)
+    {
+        $this->showMapType = $showMapType;
+
+        return $this;
+    }
+
+    /**
+     * Get showMapType
+     *
+     * @return int
+     */
+    public function getShowMapType()
+    {
+        return $this->showMapType;
     }
 
     /**

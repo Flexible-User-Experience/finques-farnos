@@ -85,9 +85,14 @@ class PropertyAdmin extends BaseAdmin
             ->end()
             ->with('Geolocalització', array('class' => 'col-md-6'))
             ->add('latLng', 'oh_google_maps', array('label' => 'Mapa', 'required' => false))
+            ->add('showMapType', 'choice', array('label' => 'Mostrar mapa', 'required' => true, 'choices' => array(
+                    0 => 'mostrar tot',
+                    1 => 'mostrar només carrer',
+                    2 => 'mostrar només àrea',
+                )))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
-            ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar a homepage', 'required' => false))
+            ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar a la homepage', 'required' => false))
             ->add('offerDiscount', 'checkbox', array('label' => 'Oferta descompte', 'required' => false))
             ->add('offerSpecial', 'checkbox', array('label' => 'Oferta especial', 'required' => false))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
