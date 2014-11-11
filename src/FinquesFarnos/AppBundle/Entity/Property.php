@@ -18,7 +18,6 @@ use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
  * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\PropertyRepository")
  * @ORM\Table(name="property")
  * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation")
- * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  */
 class Property extends Base
 {
@@ -36,7 +35,7 @@ class Property extends Base
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="property", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="property", cascade={"persist","remove"})
      * @ORM\OrderBy({"position" = "ASC"})
      * @var ArrayCollection
      */

@@ -64,7 +64,7 @@ stof_doctrine_extensions:
     orm:
         default:
             translatable:   true
-            softdeleteable: true
+            softdeleteable: false
             timestampable:  true
             sluggable:      true
 

@@ -17,7 +17,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\TypeRepository")
  * @ORM\Table(name="type")
  * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation")
- * @Gedmo\SoftDeleteable(fieldName="deletedAt")
  */
 class Type extends Base
 {
