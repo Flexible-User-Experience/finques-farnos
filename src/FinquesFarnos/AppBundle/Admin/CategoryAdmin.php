@@ -35,13 +35,13 @@ class CategoryAdmin extends BaseAdmin
             ->end()
             ->with('Traduccions', array('class' => 'col-md-6'))
             ->add('translations', 'a2lix_translations_gedmo', array(
+                'required' => false,
                 'label' => ' ',
                 'translatable_class' => 'FinquesFarnos\AppBundle\Entity\Translation\CategoryTranslation',
                 'fields' => array(
                     'name' => array('label' => 'Nom', 'required' => false),
                 )
             ))
-                //$this->getMuseumsTranslationsFormMapperArray('Museums\ModelBundle\Entity\Translation\MuseumTranslation'))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('enabled', 'checkbox', array('label' => 'Activa', 'required' => false))

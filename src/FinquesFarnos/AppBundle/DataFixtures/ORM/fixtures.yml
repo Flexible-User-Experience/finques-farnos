@@ -15,6 +15,16 @@ FinquesFarnos\AppBundle\Entity\Translations\CategoryTranslation:
         locale: "es"
         field: "name"
         content: "segunda mano"
+    categoryEn0:
+        object: @category0
+        locale: "en"
+        field: "name"
+        content: "new build"
+    categoryEn1:
+        object: @category1
+        locale: "en"
+        field: "name"
+        content: "second hand"
 
 FinquesFarnos\AppBundle\Entity\Type:
     type0:
@@ -54,6 +64,31 @@ FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation:
         locale: "es"
         field: "name"
         content: "apartamento"
+    typeEn0:
+        object: @type0
+        locale: "en"
+        field: "name"
+        content: "attic"
+    typeEn1:
+        object: @type1
+        locale: "en"
+        field: "name"
+        content: "house"
+    typeEn2:
+        object: @type2
+        locale: "en"
+        field: "name"
+        content: "business premises"
+    typeEn3:
+        object: @type3
+        locale: "en"
+        field: "name"
+        content: "flat"
+    typeEn4:
+        object: @type4
+        locale: "en"
+        field: "name"
+        content: "apartment"
 
 FinquesFarnos\AppBundle\Entity\Property:
     property{1..200}:
