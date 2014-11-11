@@ -88,13 +88,26 @@ sonata_admin:
     persist_filters: true
     templates:
         layout: ::Admin/custom_layout.html.twig
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+            -
+                position: right
+                type: sonata.block.service.text
+                settings:
+                    content: >
+                        <h1 style="margin: 0 0 10px 0">Administrador de continguts</h1>
+                        <h4 style="margin: 0 0 40px 0">Benvingut a l'administrador de continguts de la pàgina web <a href="http://www.finquesfarnos.com" target="_blank">www.finquesfarnos.com</a></h4>
+                        <p>Escull una opció del menú per continuar. Per rebre assitència tècnica o ajuda envieu un missatge a <a href="mailto:suport@flux.cat">suport@flux.cat</a></p>
 
 # Sonata Block
 sonata_block:
-    default_contexts: [cms]
+    default_contexts: [admin]
     blocks:
         sonata.admin.block.admin_list:
-            contexts:   [admin]
+        sonata.block.service.text:
 
 # Vich Uploader
 vich_uploader:
