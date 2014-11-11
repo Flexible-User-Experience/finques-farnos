@@ -25,7 +25,7 @@ class Type extends Base
      * @ORM\OneToMany(targetEntity="Property", mappedBy="type", cascade={"persist"})
      * @var ArrayCollection
      */
-    protected $properties;
+    private $properties;
 
 	/**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
@@ -50,7 +50,7 @@ class Type extends Base
      * @Assert\Valid(deep = true)
      * @var ArrayCollection
      */
-    protected $translations;
+    private $translations;
 
 	/**
      * Constructor

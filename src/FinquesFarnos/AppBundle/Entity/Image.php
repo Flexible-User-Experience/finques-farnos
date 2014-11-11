@@ -30,7 +30,7 @@ class Image extends Base
      * @ORM\JoinColumns({@ORM\JoinColumn(name="image_id", referencedColumnName="id")})
      * @var Property
      */
-    protected $property;
+    private $property;
 
     /**
      * @Vich\UploadableField(mapping="property_image", fileNameProperty="imageName")
@@ -41,33 +41,33 @@ class Image extends Base
      * @Assert\Image(minWidth = 1200)
      * @var File $imageFile
      */
-    protected $imageFile;
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255, name="image_name")
      * @var string $imageName
      */
-    protected $imageName;
+    private $imageName;
 
     /**
      * @ORM\Column(type="string", length=255, name="meta_title", nullable=true)
      * @Gedmo\Translatable
      * @var string
      */
-    protected $metaTitle;
+    private $metaTitle;
 
     /**
      * @ORM\Column(type="string", length=255, name="meta_alt", nullable=true)
      * @Gedmo\Translatable
      * @var string
      */
-    protected $metaAlt;
+    private $metaAlt;
 
     /**
      * @ORM\Column(name="position", type="integer", nullable=false)
      * @var integer
      */
-    protected $position = 1;
+    private $position = 1;
 
 	/**
      * @ORM\OneToMany(
@@ -78,7 +78,7 @@ class Image extends Base
      * @Assert\Valid(deep = true)
      * @var ArrayCollection
      */
-    protected $translations;
+    private $translations;
 
 	/**
      * Constructor

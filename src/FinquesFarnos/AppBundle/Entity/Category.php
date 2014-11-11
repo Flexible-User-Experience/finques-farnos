@@ -25,7 +25,7 @@ class Category extends Base
      * @ORM\ManyToMany(targetEntity="Property", mappedBy="categories", cascade={"persist"})
      * @var ArrayCollection
      */
-    protected $properties;
+    private $properties;
 
 	/**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
@@ -50,7 +50,7 @@ class Category extends Base
      * @Assert\Valid(deep = true)
      * @var ArrayCollection
      */
-    protected $translations;
+    private $translations;
 
 	/**
      * Constructor

@@ -70,10 +70,9 @@ class PropertyAdmin extends BaseAdmin
     {
         $listMapper
             ->add('name', null, array('label' => 'Immoble', 'editable' => true))
-            ->add('categories', null, array('label' => 'Categories', 'editable' => true))
-            ->addIdentifier('type', null, array(
+            ->add('categories', null, array('label' => 'Categories'))
+            ->add('type', null, array(
                     'label' => 'Tipus',
-                    'editable' => false,
                     'sortable' => true,
                     'sort_field_mapping' => array('fieldName' => 'name'),
                     'sort_parent_association_mappings' => array(array('fieldName' => 'type')),

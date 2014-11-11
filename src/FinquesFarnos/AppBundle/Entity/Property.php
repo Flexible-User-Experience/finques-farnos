@@ -25,20 +25,26 @@ class Property extends Base
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"})
      * @var ArrayCollection
      */
-    protected $categories;
+    private $categories;
 
     /**
      * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="property_id", referencedColumnName="id")})
      * @var Type
      */
-    protected $type;
+    private $type;
 
     /**
      * @ORM\OneToMany(targetEntity="Image", mappedBy="property", cascade={"persist"})
      * @var ArrayCollection
      */
-    protected $images;
+    private $images;
+
+    /**
+     * @ORM\Column(type="string", length=10, name="reference", nullable=false, unique=true)
+     * @var string
+     */
+    private $reference;
 
 	/**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
@@ -59,63 +65,76 @@ class Property extends Base
      * @Gedmo\Translatable
      * @var string
      */
-    protected $description;
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="city", nullable=true)
+     * @Gedmo\Translatable
+     * @var string
+     */
+    private $city;
 
     /**
      * @ORM\Column(name="price", type="float", precision=2, nullable=true)
      * @var float
      */
-    protected $price = 0.0;
+    private $price = 0.0;
 
     /**
      * @ORM\Column(name="price_old", type="float", precision=2, nullable=true)
      * @var float
      */
-    protected $oldPrice = 0.0;
+    private $oldPrice = 0.0;
 
     /**
      * @ORM\Column(name="rooms", type="integer", nullable=true)
      * @var integer
      */
-    protected $rooms = 0;
+    private $rooms = 0;
 
     /**
      * @ORM\Column(name="bathrooms", type="integer", nullable=true)
      * @var integer
      */
-    protected $bathrooms = 0;
+    private $bathrooms = 0;
 
     /**
      * @ORM\Column(name="offer_discount", type="boolean", nullable=false)
      * @var boolean
      */
-    protected $offerDiscount = false;
+    private $offerDiscount = false;
 
     /**
      * @ORM\Column(name="offer_special", type="boolean", nullable=false)
      * @var boolean
      */
-    protected $offerSpecial = false;
+    private $offerSpecial = false;
+
+    /**
+     * @ORM\Column(name="show_in_homepage", type="boolean", nullable=false)
+     * @var boolean
+     */
+    private $showInHomepage = false;
 
     /**
      * @ORM\Column(name="energy_class", type="integer", nullable=true)
      * @var integer
      */
-    protected $energyClass = 0;
+    private $energyClass = 0;
 
     /**
      * @ORM\Column(type="float", precision=14, name="gps_longitude", nullable=false)
      * @Assert\Range(min = -180, max = 180)
      * @var float
      */
-    protected $gpsLongitude;
+    private $gpsLongitude;
 
     /**
      * @ORM\Column(type="float", precision=14, name="gps_latitude", nullable=false)
      * @Assert\Range(min = -90, max = 90)
      * @var float
      */
-    protected $gpsLatitude;
+    private $gpsLatitude;
 
 	/**
      * @ORM\OneToMany(
@@ -126,7 +145,7 @@ class Property extends Base
      * @Assert\Valid(deep = true)
      * @var ArrayCollection
      */
-    protected $translations;
+    private $translations;
 
 	/**
      * Constructor
@@ -160,6 +179,30 @@ class Property extends Base
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     *
+     * @return $this
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
     }
 
     /**
@@ -434,6 +477,54 @@ class Property extends Base
     public function getRooms()
     {
         return $this->rooms;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     *
+     * @return $this
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set showInHomepage
+     *
+     * @param boolean $showInHomepage
+     *
+     * @return $this
+     */
+    public function setShowInHomepage($showInHomepage)
+    {
+        $this->showInHomepage = $showInHomepage;
+
+        return $this;
+    }
+
+    /**
+     * Get showInHomepage
+     *
+     * @return boolean
+     */
+    public function getShowInHomepage()
+    {
+        return $this->showInHomepage;
     }
 
     /**

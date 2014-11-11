@@ -59,6 +59,9 @@ FinquesFarnos\AppBundle\Entity\Property:
     property{1..200}:
         categories:
             - @category0
+        reference: <md5()>
+        showInHomepage: <boolean(3)>
+        city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
@@ -75,6 +78,9 @@ FinquesFarnos\AppBundle\Entity\Property:
     property{101..299}:
         categories:
             - @category1
+        reference: <md5()>
+        showInHomepage: <boolean(3)>
+        city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
@@ -92,6 +98,9 @@ FinquesFarnos\AppBundle\Entity\Property:
         categories:
             - @category0
             - @category1
+        reference: <md5()>
+        showInHomepage: <boolean(3)>
+        city: <city()>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
@@ -105,3 +114,11 @@ FinquesFarnos\AppBundle\Entity\Property:
         gpsLongitude: <randomFloat(14, 0.3076171875, 3.33984375)>
         gpsLatitude: <randomFloat(14, 40.49709237269567, 42.884014670442525)>
         enabled: <boolean(90)>
+
+FinquesFarnos\AppBundle\Entity\Image:
+    image{1..500}:
+        property: @property<numberBetween(1, 300)>
+        imageName: <numberBetween(1, 5)>.jpg
+        metaTitle: <sentence(3)>
+        metaAlt: <sentence(3)>
+        position: <numberBetween(1, 5)>
