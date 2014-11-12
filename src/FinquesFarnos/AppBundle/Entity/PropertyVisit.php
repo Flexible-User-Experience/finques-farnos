@@ -25,6 +25,16 @@ class PropertyVisit extends Base
     protected $property;
 
     /**
+     * To String
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->createdAt ? $this->getCreatedAt()->format('Y') : '---'; // TODO fix property visit date format
+    }
+
+    /**
      * Set property
      *
      * @param Property $property

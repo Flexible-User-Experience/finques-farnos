@@ -104,6 +104,17 @@ class PropertyAdmin extends BaseAdmin
                     )
                 ))
             ->end()
+            ->with('Visites', array('class' => 'col-md-6'))
+            ->add('totalVisits', null, array('label' => 'Visites totals', 'required' => false, 'disabled' => true))
+            ->add('visits', 'sonata_type_model', array(
+                    'required' => false,
+                    'expanded' => false,
+                    'multiple' => true,
+                    'label' => 'Visites',
+                    'btn_add' => false,
+                    'disabled' => true,
+                ))
+            ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar l\'immoble a la homepage', 'required' => false))
             ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
@@ -132,6 +143,7 @@ class PropertyAdmin extends BaseAdmin
                 ))
             ->add('price', 'integer', array('label' => 'Preu', 'editable' => true))
             ->add('imagesCount', 'integer', array('label' => 'Imatges', 'template' => '::Admin/property_images_count_list_field.html.twig'))
+            ->add('totalVisits', 'integer', array('label' => 'Visites', 'editable' => false))
             ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(
@@ -161,6 +173,7 @@ class PropertyAdmin extends BaseAdmin
                     'multiple' => true,
                 ))
             ->add('price', null, array('label' => 'Preu'))
+            ->add('totalVisits', null, array('label' => 'Visites'))
             ->add('enabled', null, array('label' => 'Actiu'));
     }
 
