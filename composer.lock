@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0e68aec2428c14d63cdd1e7f0af7ff37",
+    "hash": "002e6b077ee8b825d9b20333213a2d53",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -2403,6 +2403,54 @@
             "time": "2014-06-03 16:15:55"
         },
         {
+            "name": "orkestra/pdf-bundle",
+            "version": "dev-develop",
+            "target-dir": "Orkestra/Bundle/PdfBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orkestra/OrkestraPdfBundle.git",
+                "reference": "ad24885129ae6ef281cf18379727c04937b55f6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orkestra/OrkestraPdfBundle/zipball/ad24885129ae6ef281cf18379727c04937b55f6a",
+                "reference": "ad24885129ae6ef281cf18379727c04937b55f6a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/options-resolver": "~2.3"
+            },
+            "require-dev": {
+                "symfony/symfony": "~2.3",
+                "tecnick.com/tcpdf": "~6.0",
+                "zendframework/zend-stdlib": "2.*",
+                "zendframework/zendpdf": "2.*"
+            },
+            "suggest": {
+                "tcpdf": "Support for good but slow PDF generation",
+                "wkhtmltopdf": "Supports PDF generation using the webkit HTML rendering engine",
+                "zend/pdf": "Support for some basic PDF generation functionality, notably merging PDFs"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-develop": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Orkestra\\Bundle\\PdfBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Provides integration between Symfony and PDF generation libraries",
+            "time": "2014-02-26 03:46:25"
+        },
+        {
             "name": "phpcollection/phpcollection",
             "version": "0.4.0",
             "source": {
@@ -4054,12 +4102,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "ad74db991610fb6a43e4058cf80a715aace35144"
+                "reference": "dba2f5fe549ce9fac3f7c7b4468394018e15d2c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/ad74db991610fb6a43e4058cf80a715aace35144",
-                "reference": "ad74db991610fb6a43e4058cf80a715aace35144",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/dba2f5fe549ce9fac3f7c7b4468394018e15d2c2",
+                "reference": "dba2f5fe549ce9fac3f7c7b4468394018e15d2c2",
                 "shasum": ""
             },
             "require": {
@@ -4162,7 +4210,70 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-09 07:50:20"
+            "time": "2014-11-12 12:06:33"
+        },
+        {
+            "name": "tecnick.com/tcpdf",
+            "version": "6.0.098",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tecnickcom/TCPDF.git",
+                "reference": "de89c0d7fdc0e5bcb757a608cba3f9ef802060e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/de89c0d7fdc0e5bcb757a608cba3f9ef802060e7",
+                "reference": "de89c0d7fdc0e5bcb757a608cba3f9ef802060e7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "fonts",
+                    "config",
+                    "include",
+                    "tcpdf.php",
+                    "tcpdf_parser.php",
+                    "tcpdf_import.php",
+                    "tcpdf_barcodes_1d.php",
+                    "tcpdf_barcodes_2d.php",
+                    "include/tcpdf_colors.php",
+                    "include/tcpdf_filters.php",
+                    "include/tcpdf_font_data.php",
+                    "include/tcpdf_fonts.php",
+                    "include/tcpdf_images.php",
+                    "include/tcpdf_static.php",
+                    "include/barcodes/datamatrix.php",
+                    "include/barcodes/pdf417.php",
+                    "include/barcodes/qrcode.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Asuni",
+                    "email": "info@tecnick.com",
+                    "homepage": "http://nicolaasuni.tecnick.com"
+                }
+            ],
+            "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+            "homepage": "http://www.tcpdf.org/",
+            "keywords": [
+                "PDFD32000-2008",
+                "TCPDF",
+                "barcodes",
+                "datamatrix",
+                "pdf",
+                "pdf417",
+                "qrcode"
+            ],
+            "time": "2014-11-08 11:12:39"
         },
         {
             "name": "twig/extensions",
@@ -4444,7 +4555,8 @@
         "sonata-project/user-bundle": 20,
         "sonata-project/datagrid-bundle": 20,
         "vich/uploader-bundle": 20,
-        "oh/google-map-form-type-bundle": 20
+        "oh/google-map-form-type-bundle": 20,
+        "orkestra/pdf-bundle": 20
     },
     "prefer-stable": false,
     "platform": {
