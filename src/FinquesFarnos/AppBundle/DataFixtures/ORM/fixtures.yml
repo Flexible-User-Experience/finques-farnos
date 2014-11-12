@@ -188,6 +188,10 @@ FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation:
         field: "city"
         content: ENG-<city()>
 
+FinquesFarnos\AppBundle\Entity\PropertyVisit:
+    visit{1..900}:
+        property: @property<numberBetween(1, 300)>
+
 FinquesFarnos\AppBundle\Entity\ImageProperty:
     image{1..500}:
         property: @property<numberBetween(1, 300)>

@@ -1,10 +1,18 @@
 parameters:
 
 services:
+
+# Doctrine Listeners
+    app.doctrine_listener:
+        class: FinquesFarnos\AppBundle\EventListener\DoctrineListeners
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+
 # Orkestra PDF
     app.property_pdf_generator:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyGenerator
         arguments: [ @orkestra.pdf.factory_registry, @templating ]
+
 # Sonata
     sonata.admin.slide:
         class: FinquesFarnos\AppBundle\Admin\ImageSliderAdmin
