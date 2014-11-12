@@ -149,6 +149,18 @@ class Property extends Base
      */
     private $gpsLatitude;
 
+    /**
+     * @ORM\OneToMany(targetEntity="FinquesFarnos\AppBundle\Entity\PropertyVisit", mappedBy="property", cascade={"persist"})
+     * @var ArrayCollection
+     */
+    protected $visits;
+
+    /**
+     * @ORM\Column(name="total_visits", type="integer", nullable=true)
+     * @var integer
+     */
+    protected $totalVisits = 0;
+
 	/**
      * @ORM\OneToMany(
      *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation",
@@ -168,6 +180,7 @@ class Property extends Base
         $this->categories = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
+        $this->visits = new ArrayCollection();
     }
 
 	/**
@@ -723,6 +736,83 @@ class Property extends Base
     public function getTranslations()
     {
         return $this->translations;
+    }
+
+    /**
+     * Set visits
+     *
+     * @param ArrayCollection $visits
+     *
+     * @return $this
+     */
+    public function setVisits($visits)
+    {
+        $this->visits = $visits;
+
+        return $this;
+    }
+
+    /**
+     * Get visits
+     *
+     * @return ArrayCollection
+     */
+    public function getVisits()
+    {
+        return $this->visits;
+    }
+
+    /**
+     * Add visit
+     *
+     * @param PropertyVisit $visit
+     *
+     * @return $this
+     */
+    public function addVisit(PropertyVisit $visit)
+    {
+        $visit->setProperty($this);
+        $this->visits[] = $visit;
+
+        return $this;
+    }
+
+    /**
+     * Remove visit
+     *
+     * @param PropertyVisit $visit
+     *
+     * @return $this
+     */
+    public function removeVisit(PropertyVisit $visit)
+    {
+        $this->visits->removeElement($visit);
+
+        return $this;
+    }
+
+    /**
+     * Set totalVisits
+     *
+     * @param int $totalVisits
+     *
+     * @return $this
+     */
+    public function setTotalVisits($totalVisits)
+    {
+        $this->totalVisits = $totalVisits;
+
+        return $this;
+    }
+
+    /**
+     * Get totalVisits
+     *
+     * @return int
+     */
+    public function getTotalVisits()
+    {
+        return $this->totalVisits;
     }
 
     /**
