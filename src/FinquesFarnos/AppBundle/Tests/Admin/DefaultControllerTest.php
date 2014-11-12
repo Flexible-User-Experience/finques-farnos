@@ -55,6 +55,9 @@ class DefaultControllerTest extends WebTestCase
     {
         return array(
             array('/admin/dashboard'),
+            array('/admin/slide/list'),
+            array('/admin/slide/create'),
+            array('/admin/slide/1/edit'),
             array('/admin/category/list'),
             array('/admin/category/create'),
             array('/admin/category/1/edit'),

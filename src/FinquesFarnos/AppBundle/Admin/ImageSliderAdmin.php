@@ -3,27 +3,26 @@
 namespace FinquesFarnos\AppBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
- * ImagePropertyAdmin class
+ * ImageSliderAdmin class
  *
  * @category Admin
  * @package  FinquesFarnos\AppBundle\Admin
  * @author   David Romaní <david@flux.cat>
  */
-class ImagePropertyAdmin extends BaseAdmin
+class ImageSliderAdmin extends BaseAdmin
 {
     /**
      * Base admin route pattern
      *
      * @var string
      */
-    protected $baseRoutePattern = 'image';
+    protected $baseRoutePattern = 'slide';
 
     /**
      * Form view
@@ -34,18 +33,12 @@ class ImagePropertyAdmin extends BaseAdmin
     {
         $formMapper
             ->with('Imatge', array('class' => 'col-md-6'))
-            ->add('property', 'sonata_type_model', array(
-                    'required' => true,
-                    'expanded' => false,
-                    'multiple' => false,
-                    'label' => 'Immoble',
-                    'btn_add' => false,
-                ))
             ->add('imageFile', 'file', array(
                     'label' => 'Imatge',
                     'required' => false,
                     'help' => $this->getImageHelperFormMapperWithThumbnail(),
                 ))
+            ->add('link', null, array('label' => 'Enllaç'))
             ->add('metaTitle', null, array('label' => 'Títol (SEO)'))
             ->add('metaAlt', null, array('label' => 'Alt (SEO)'))
             ->end()
@@ -75,14 +68,7 @@ class ImagePropertyAdmin extends BaseAdmin
     {
         $listMapper
             ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/image_list_field.html.twig'))
-            ->addIdentifier('property', null, array(
-                    'label' => 'Immoble',
-                    'editable' => false,
-                    'sortable' => true,
-                    'sort_field_mapping' => array('fieldName' => 'name'),
-                    'sort_parent_association_mappings' => array(array('fieldName' => 'property')),
-                ))
-//            ->add('metaTitle', null, array('label' => 'Títol (SEO)', 'editable' => false))
+            ->add('link', null, array('label' => 'Enllaç', 'editable' => true))
             ->add('metaAlt', null, array('label' => 'Alt (SEO)', 'editable' => true))
             ->add('position', null, array('label' => 'Posició', 'editable' => true))
             ->add('enabled', null, array('label' => 'Activa', 'editable' => true))
@@ -95,28 +81,12 @@ class ImagePropertyAdmin extends BaseAdmin
     }
 
     /**
-     * List filters
-     *
-     * @param DatagridMapper $datagridMapper
-     */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('property', null, array('label' => 'Immoble'), null, array(
-                    'expanded' => false,
-                    'multiple' => true,
-                ))
-            ->add('position', null, array('label' => 'Posició'))
-            ->add('enabled', null, array('label' => 'Activa'));
-    }
-
-    /**
      * Datagrid list view
      *
      * @var array
      */
     public $datagridValues = array(
-        '_sort_by' => 'property.name',
+        '_sort_by' => 'position',
     );
 
     /**
@@ -130,6 +100,6 @@ class ImagePropertyAdmin extends BaseAdmin
         $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
         /** @var UploaderHelper $vus */
         $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
-        return ($this->getSubject()->getImageName() ? '<img src="' . $lis->getBrowserPath($vus->asset($this->getSubject(), 'property_image'), '300xY') . '" class="admin-preview" alt=""/>' : '') . '<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+        return ($this->getSubject()->getImageName() ? '<img src="' . $lis->getBrowserPath($vus->asset($this->getSubject(), 'slide_image'), '300xY') . '" class="admin-preview" alt=""/>' : '') . '<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
     }
 }
