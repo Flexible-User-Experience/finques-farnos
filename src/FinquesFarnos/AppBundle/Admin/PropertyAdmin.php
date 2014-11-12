@@ -3,7 +3,7 @@
 namespace FinquesFarnos\AppBundle\Admin;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use FinquesFarnos\AppBundle\Entity\Image;
+use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -60,7 +60,7 @@ class PropertyAdmin extends BaseAdmin
             ->add('oldPrice', null, array('label' => 'Preu anterior'))
             ->add('rooms', null, array('label' => 'Habitacions', 'required' => false))
             ->add('bathrooms', null, array('label' => 'Banys', 'required' => false))
-            ->add('energyClass', 'choice', array('label' => 'Classificació energètica', 'required' => false, 'choices' => array(
+            ->add('energyClass', 'choice', array('label' => 'Classificació energètica', 'required' => true, 'choices' => array(
                     0 => 'sense clasificació',
                     1 => 'en tràmit',
                     2 => 'A',
@@ -188,7 +188,7 @@ class PropertyAdmin extends BaseAdmin
         $images = $this->getSubject()->getImages();
         if ($images->count() > 0) {
             $result = '';
-            /** @var Image $image */
+            /** @var ImageProperty $image */
             foreach ($images as $image) {
                 $result .= '<img src="' . $lis->getBrowserPath($vus->asset($image, 'property_image'), '60x60') . '" class="admin-preview" style="margin-right:10px" alt="' . $image->getMetaAlt() . '"/>';
             }

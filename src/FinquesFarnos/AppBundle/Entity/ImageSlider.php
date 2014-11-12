@@ -11,28 +11,21 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Image class
+ * ImageSlider class
  *
  * @category Entity
  * @package  FinquesFarnos\AppBundle\Entity
  * @author   David Romaní <david@flux.cat>
  *
- * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\ImageRepository")
- * @ORM\Table(name="image")
- * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation")
+ * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\ImageSliderRepository")
+ * @ORM\Table(name="image_slider")
+ * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\ImageSliderTranslation")
  * @Vich\Uploadable
  */
-class Image extends Base
+class ImageSlider extends Base
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Property", inversedBy="images")
-     * @ORM\JoinColumns({@ORM\JoinColumn(name="image_id", referencedColumnName="id")})
-     * @var Property
-     */
-    private $property;
-
-    /**
-     * @Vich\UploadableField(mapping="property_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="slider_image", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize = "10M",
      *     mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"},
@@ -47,6 +40,13 @@ class Image extends Base
      * @var string $imageName
      */
     private $imageName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url()
+     * @var string
+     */
+    protected $link;
 
     /**
      * @ORM\Column(type="string", length=255, name="meta_title", nullable=true)
@@ -70,7 +70,7 @@ class Image extends Base
 
 	/**
      * @ORM\OneToMany(
-     *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation",
+     *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\ImageSliderTranslation",
      *     mappedBy="object",
      *     cascade={"persist", "remove"}
      * )
@@ -95,30 +95,6 @@ class Image extends Base
     public function __toString()
     {
         return $this->imageName ? $this->imageName : '---';
-    }
-
-    /**
-     * Set property
-     *
-     * @param Property $property property
-     *
-     * @return $this
-     */
-    public function setProperty($property)
-    {
-        $this->property = $property;
-
-        return $this;
-    }
-
-    /**
-     * Get property
-     *
-     * @return Property
-     */
-    public function getProperty()
-    {
-        return $this->property;
     }
 
     /**
@@ -170,6 +146,30 @@ class Image extends Base
     public function getImageName()
     {
         return $this->imageName;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return $this
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 
     /**
@@ -247,11 +247,11 @@ class Image extends Base
     /**
      * Add translation
      *
-     * @param Translations\ImageTranslation $translation
+     * @param Translations\ImageSliderTranslation $translation
      *
      * @return $this
      */
-    public function addTranslation(Translations\ImageTranslation $translation)
+    public function addTranslation(Translations\ImageSliderTranslation $translation)
     {
         if ($translation->getContent()) {
             $translation->setObject($this);
@@ -264,11 +264,11 @@ class Image extends Base
     /**
      * Remove translation
      *
-     * @param Translations\ImageTranslation $translation
+     * @param Translations\ImageSliderTranslation $translation
      *
      * @return $this
      */
-    public function removeTranslation(Translations\ImageTranslation $translation)
+    public function removeTranslation(Translations\ImageSliderTranslation $translation)
     {
         $this->translations->removeElement($translation);
 

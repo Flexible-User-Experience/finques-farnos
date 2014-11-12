@@ -10,13 +10,13 @@ use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
- * ImageAdmin class
+ * ImagePropertyAdmin class
  *
  * @category Admin
  * @package  FinquesFarnos\AppBundle\Admin
  * @author   David Romaní <david@flux.cat>
  */
-class ImageAdmin extends BaseAdmin
+class ImagePropertyAdmin extends BaseAdmin
 {
     /**
      * Base admin route pattern
@@ -83,7 +83,7 @@ class ImageAdmin extends BaseAdmin
                     'sort_parent_association_mappings' => array(array('fieldName' => 'property')),
                 ))
 //            ->add('metaTitle', null, array('label' => 'Títol (SEO)', 'editable' => false))
-            ->add('metaAlt', null, array('label' => 'Alt (SEO)', 'editable' => false))
+            ->add('metaAlt', null, array('label' => 'Alt (SEO)', 'editable' => true))
             ->add('position', null, array('label' => 'Posició', 'editable' => true))
             ->add('enabled', null, array('label' => 'Activa', 'editable' => true))
             ->add('_action', 'actions', array(

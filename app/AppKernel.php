@@ -25,13 +25,13 @@ class AppKernel extends Kernel
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new Sonata\UserBundle\SonataUserBundle(),
-            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new Hautelook\AliceBundle\HautelookAliceBundle(),
+            new FinquesFarnos\UserBundle\UserBundle(),
             new FinquesFarnos\AppBundle\AppBundle(),
         );
 

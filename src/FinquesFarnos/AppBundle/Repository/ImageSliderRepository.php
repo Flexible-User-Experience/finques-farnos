@@ -5,12 +5,12 @@ namespace FinquesFarnos\AppBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * ImageRepository class
+ * ImageSliderRepository class
  *
  * @category Repository
  * @package  FinquesFarnos\AppBundle\Repository
  * @author   David Romaní <david@flux.cat>
  */
-class ImageRepository extends EntityRepository
+class ImageSliderRepository extends EntityRepository
 {
 }
