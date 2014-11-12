@@ -53,9 +53,14 @@ class PropertyGenerator extends AbstractPdfGenerator
         $builder->addPage();
 
         // CAPÇALERA
-        $builder->SetTextColor(221, 0, 153);
+        $builder->SetTextColor(164, 81, 0);
         $builder->SetFont('dejavusans', 'B', 30, '', true);
         $builder->Text(35, 15, 'Finques Farnós');
+        // CONTINUGT
+        $builder->SetTextColor(107, 107, 107);
+        $builder->SetFont('dejavusans', 'B', 9, '', true);
+        $builder->Text(35, 52, 'Fitxa immoble ref. ' . $property . ' per a imprimir a l\'aparador');
+        $builder->Text(35, 32, '(en desenvolupament)');
 
         // Return the original PDF, calling getContents to retrieve the rendered content
         return $pdf;
