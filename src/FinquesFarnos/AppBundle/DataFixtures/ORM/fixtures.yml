@@ -218,6 +218,36 @@ FinquesFarnos\AppBundle\Entity\Translations\ImagePropertyTranslation:
         field: "metaAlt"
         content: ENG-<sentence(3)>
 
+FinquesFarnos\AppBundle\Entity\ImageSlider:
+    slider{1..5}:
+        imageName: <current()>.jpg
+        metaTitle: <sentence(3)>
+        metaAlt: <sentence(3)>
+        link: <url()>
+        position: <current()>
+
+FinquesFarnos\AppBundle\Entity\Translations\ImageSliderTranslation:
+    sliderMetaTitleEs{1..5}:
+        object: @slider<current()>
+        locale: "es"
+        field: "metaTitle"
+        content: ESP-<sentence(3)>
+    sliderMetaAltEs{1..5}:
+        object: @slider<current()>
+        locale: "es"
+        field: "metaAlt"
+        content: ESP-<sentence(3)>
+    sliderMetaTitleEn{1..5}:
+        object: @slider<current()>
+        locale: "en"
+        field: "metaTitle"
+        content: ENG-<sentence(3)>
+    sliderMetaAltEn{1..5}:
+        object: @slider<current()>
+        locale: "en"
+        field: "metaAlt"
+        content: ENG-<sentence(3)>
+
 FinquesFarnos\UserBundle\Entity\User:
     admin:
         username: admin
