@@ -67,7 +67,7 @@ class ImageSliderAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/image_list_field.html.twig'))
+            ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/slide_list_field.html.twig'))
             ->add('link', null, array('label' => 'Enllaç', 'editable' => true))
             ->add('metaAlt', null, array('label' => 'Alt (SEO)', 'editable' => true))
             ->add('position', null, array('label' => 'Posició', 'editable' => true))
@@ -100,6 +100,16 @@ class ImageSliderAdmin extends BaseAdmin
         $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
         /** @var UploaderHelper $vus */
         $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
-        return ($this->getSubject()->getImageName() ? '<img src="' . $lis->getBrowserPath($vus->asset($this->getSubject(), 'slide_image'), '300xY') . '" class="admin-preview" alt=""/>' : '') . '<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+        return ($this->getSubject()->getImageName() ? '<img src="' . $lis->getBrowserPath($vus->asset($this->getSubject(), 'slider_image'), '300xY') . '" class="admin-preview" alt=""/>' : '') . '<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+    }
+
+    /**
+     * Export formats
+     *
+     * @return array
+     */
+    public function getExportFormats()
+    {
+        return array();
     }
 }
