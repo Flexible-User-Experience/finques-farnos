@@ -218,7 +218,7 @@ FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation:
         field: "metaAlt"
         content: ENG-<sentence(3)>
 
-Application\Sonata\UserBundle\Entity\User:
+FinquesFarnos\UserBundle\Entity\User:
     admin:
         username: admin
         plainPassword: jbMF7CZW
