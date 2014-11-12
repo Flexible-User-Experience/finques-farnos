@@ -78,7 +78,7 @@ class PropertyAdmin extends BaseAdmin
                     'expanded' => false,
                     'multiple' => true,
                     'label' => 'Imatges',
-                    'btn_add' => false,
+                    'btn_add' => true,
                     'disabled' => true,
                     'help' => $this->getImageHelperFormMapperWithThumbnail(),
                 ))
