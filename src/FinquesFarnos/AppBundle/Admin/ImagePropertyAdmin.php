@@ -10,13 +10,13 @@ use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
- * ImageAdmin class
+ * ImagePropertyAdmin class
  *
  * @category Admin
  * @package  FinquesFarnos\AppBundle\Admin
  * @author   David Romaní <david@flux.cat>
  */
-class ImageAdmin extends BaseAdmin
+class ImagePropertyAdmin extends BaseAdmin
 {
     /**
      * Base admin route pattern

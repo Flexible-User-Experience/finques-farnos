@@ -11,18 +11,18 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Image class
+ * ImageProperty class
  *
  * @category Entity
  * @package  FinquesFarnos\AppBundle\Entity
  * @author   David Romaní <david@flux.cat>
  *
- * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\ImageRepository")
- * @ORM\Table(name="image")
- * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation")
+ * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\ImagePropertyRepository")
+ * @ORM\Table(name="image_property")
+ * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\ImagePropertyTranslation")
  * @Vich\Uploadable
  */
-class Image extends Base
+class ImageProperty extends Base
 {
     /**
      * @ORM\ManyToOne(targetEntity="Property", inversedBy="images")
@@ -70,7 +70,7 @@ class Image extends Base
 
 	/**
      * @ORM\OneToMany(
-     *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation",
+     *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\ImagePropertyTranslation",
      *     mappedBy="object",
      *     cascade={"persist", "remove"}
      * )
@@ -247,11 +247,11 @@ class Image extends Base
     /**
      * Add translation
      *
-     * @param Translations\ImageTranslation $translation
+     * @param Translations\ImagePropertyTranslation $translation
      *
      * @return $this
      */
-    public function addTranslation(Translations\ImageTranslation $translation)
+    public function addTranslation(Translations\ImagePropertyTranslation $translation)
     {
         if ($translation->getContent()) {
             $translation->setObject($this);
@@ -264,11 +264,11 @@ class Image extends Base
     /**
      * Remove translation
      *
-     * @param Translations\ImageTranslation $translation
+     * @param Translations\ImagePropertyTranslation $translation
      *
      * @return $this
      */
-    public function removeTranslation(Translations\ImageTranslation $translation)
+    public function removeTranslation(Translations\ImagePropertyTranslation $translation)
     {
         $this->translations->removeElement($translation);
 

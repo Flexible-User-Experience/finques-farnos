@@ -35,7 +35,7 @@ class Property extends Base
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="Image", mappedBy="property", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist","remove"})
      * @ORM\OrderBy({"position" = "ASC"})
      * @var ArrayCollection
      */

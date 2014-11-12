@@ -188,7 +188,7 @@ FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation:
         field: "city"
         content: ENG-<city()>
 
-FinquesFarnos\AppBundle\Entity\Image:
+FinquesFarnos\AppBundle\Entity\ImageProperty:
     image{1..500}:
         property: @property<numberBetween(1, 300)>
         imageName: <numberBetween(1, 5)>.jpg
@@ -196,7 +196,7 @@ FinquesFarnos\AppBundle\Entity\Image:
         metaAlt: <sentence(3)>
         position: <numberBetween(1, 5)>
 
-FinquesFarnos\AppBundle\Entity\Translations\ImageTranslation:
+FinquesFarnos\AppBundle\Entity\Translations\ImagePropertyTranslation:
     imageMetaTitleEs{1..500}:
         object: @image<current()>
         locale: "es"

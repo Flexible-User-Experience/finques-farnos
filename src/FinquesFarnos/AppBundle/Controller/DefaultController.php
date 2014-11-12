@@ -3,10 +3,14 @@
 namespace FinquesFarnos\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+/**
+ * Class DefaultController
+ *
+ * @category Controller
+ * @package  FinquesFarnos\AppBundle\Controller
+ * @author   David Romaní <david@flux.cat>
+ */
 class DefaultController extends Controller
 {
-
 }

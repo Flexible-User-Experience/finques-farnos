@@ -22,12 +22,12 @@ services:
         calls:
             - [ setTranslationDomain, [AppBundle] ]
     sonata.admin.image:
-        class: FinquesFarnos\AppBundle\Admin\ImageAdmin
+        class: FinquesFarnos\AppBundle\Admin\ImagePropertyAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Menú", label: "Imatges" }
         arguments:
             - ~
-            - FinquesFarnos\AppBundle\Entity\Image
+            - FinquesFarnos\AppBundle\Entity\ImageProperty
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle] ]
