@@ -48,7 +48,6 @@ services:
         arguments:
             - ~
             - FinquesFarnos\AppBundle\Entity\Property
-            - ~
+            - AppBundle:Admin/PropertyAdmin
         calls:
             - [ setTranslationDomain, [AppBundle] ]
-

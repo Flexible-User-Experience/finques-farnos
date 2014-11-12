@@ -136,6 +136,7 @@ class PropertyAdmin extends BaseAdmin
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'edit' => array(),
+                        'pdf' => array('template' => '::Admin/list__action_property_pdf_button.html.twig'),
                     ),
                     'label' => 'Accions',
                 ));
@@ -171,6 +172,7 @@ class PropertyAdmin extends BaseAdmin
     public function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('show');
+        $collection->add('pdf', $this->getRouterIdParameter() . '/pdf');
     }
 
     /**
