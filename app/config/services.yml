@@ -1,6 +1,11 @@
 parameters:
 
 services:
+# Orkestra PDF
+    app.property_pdf_generator:
+        class: FinquesFarnos\AppBundle\PdfGenerator\PropertyGenerator
+        arguments: [ @orkestra.pdf.factory_registry, @templating ]
+# Sonata
     sonata.admin.slide:
         class: FinquesFarnos\AppBundle\Admin\ImageSliderAdmin
         tags:
@@ -48,7 +53,6 @@ services:
         arguments:
             - ~
             - FinquesFarnos\AppBundle\Entity\Property
-            - ~
+            - AppBundle:Admin/PropertyAdmin
         calls:
             - [ setTranslationDomain, [AppBundle] ]
-

@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new Hautelook\AliceBundle\HautelookAliceBundle(),
+            new Orkestra\Bundle\PdfBundle\OrkestraPdfBundle(),
             new FinquesFarnos\UserBundle\UserBundle(),
             new FinquesFarnos\AppBundle\AppBundle(),
         );
