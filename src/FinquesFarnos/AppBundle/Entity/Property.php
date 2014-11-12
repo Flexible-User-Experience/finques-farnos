@@ -620,11 +620,11 @@ class Property extends Base
     /**
      * Add image
      *
-     * @param Image $image
+     * @param ImageProperty $image
      *
      * @return $this
      */
-    public function addImage(Image $image)
+    public function addImage(ImageProperty $image)
     {
         $image->setProperty($this);
         $this->images[] = $image;
@@ -635,11 +635,11 @@ class Property extends Base
     /**
      * Remove image
      *
-     * @param Image $image
+     * @param ImageProperty $image
      *
      * @return $this
      */
-    public function removeImage(Image $image)
+    public function removeImage(ImageProperty $image)
     {
         $this->images->removeElement($image);
 
