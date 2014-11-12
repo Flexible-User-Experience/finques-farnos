@@ -60,7 +60,7 @@ class PropertyAdmin extends BaseAdmin
             ->add('oldPrice', null, array('label' => 'Preu anterior'))
             ->add('rooms', null, array('label' => 'Habitacions', 'required' => false))
             ->add('bathrooms', null, array('label' => 'Banys', 'required' => false))
-            ->add('energyClass', 'choice', array('label' => 'Classificació energètica', 'required' => false, 'choices' => array(
+            ->add('energyClass', 'choice', array('label' => 'Classificació energètica', 'required' => true, 'choices' => array(
                     0 => 'sense clasificació',
                     1 => 'en tràmit',
                     2 => 'A',
