@@ -275,3 +275,4 @@ FinquesFarnos\AppBundle\Entity\ContactMessage:
         contact: @contact<numberBetween(1, 50)>
         property: @property<numberBetween(1, 300)>
         text: <sentence(10)>
+        createdAt: <dateTimeThisYear()>
