@@ -34,6 +34,7 @@
         "a2lix/translation-form-bundle": "1.*",
         "orkestra/pdf-bundle": "1.0.*@dev",
         "tecnick.com/tcpdf": "6.0.*",
+        "egulias/email-validator": "1.2.*",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {
