@@ -216,6 +216,11 @@ class PropertyAdmin extends BaseAdmin
         return '';
     }
 
+    /**
+     * Get Visits Helper Form Mapper
+     *
+     * @return string
+     */
     private function getVisitsHelperFormMapper()
     {
         /** @var ArrayCollection $visits */

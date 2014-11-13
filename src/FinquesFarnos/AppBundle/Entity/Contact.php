@@ -21,6 +21,7 @@ class Contact extends Base
 {
     /**
      * @ORM\OneToMany(targetEntity="ContactMessage", mappedBy="contact", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"createdAt" = "ASC"})
      * @var ArrayCollection
      */
     private $messages;
