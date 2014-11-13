@@ -33,6 +33,7 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle] ]
+            - [ setTemplate, [edit, ::Admin/Edit/edit_contact_form.html.twig]]
     sonata.admin.category:
         class: FinquesFarnos\AppBundle\Admin\CategoryAdmin
         tags:

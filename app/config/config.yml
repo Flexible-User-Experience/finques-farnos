@@ -100,7 +100,7 @@ sonata_admin:
                 class: col-md-12
                 settings:
                     content: >
-                        <h1 style="margin: -40px 0 10px 0">Administrador de continguts</h1>
+                        <h1 style="margin: -20px 0 10px 0">Administrador de continguts</h1>
                         <h4 style="margin-bottom: 40px">Benvingut a l'administrador de continguts de la pàgina web <a href="http://www.finquesfarnos.com" target="_blank">www.finquesfarnos.com</a></h4>
 
             -
