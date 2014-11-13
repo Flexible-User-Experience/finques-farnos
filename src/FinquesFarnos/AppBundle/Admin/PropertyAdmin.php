@@ -221,7 +221,7 @@ class PropertyAdmin extends BaseAdmin
         /** @var ArrayCollection $visits */
         $visits = $this->getSubject()->getVisits();
         if ($visits->count() > 0) {
-            return implode(' · ', $visits->toArray());
+            return implode(' ||| ', $visits->toArray());
         }
 
         return '';

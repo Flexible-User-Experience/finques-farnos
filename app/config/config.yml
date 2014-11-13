@@ -95,16 +95,29 @@ sonata_admin:
     dashboard:
         blocks:
             -
+                position: top
+                type: sonata.block.service.text
+                class: col-md-12
+                settings:
+                    content: >
+                        <h1 style="margin: -40px 0 10px 0">Administrador de continguts</h1>
+                        <h4 style="margin-bottom: 40px">Benvingut a l'administrador de continguts de la pàgina web <a href="http://www.finquesfarnos.com" target="_blank">www.finquesfarnos.com</a></h4>
+
+            -
                 position: left
                 type: sonata.admin.block.admin_list
             -
                 position: right
+                type: sonata.admin.block.visit_stats
+                settings:
+                    title: "Immobles més visitats"
+            -
+                position: bottom
                 type: sonata.block.service.text
+                class: col-md-12
                 settings:
                     content: >
-                        <h1 style="margin: 0 0 10px 0">Administrador de continguts</h1>
-                        <h4 style="margin: 0 0 40px 0">Benvingut a l'administrador de continguts de la pàgina web <a href="http://www.finquesfarnos.com" target="_blank">www.finquesfarnos.com</a></h4>
-                        <p>Per rebre assistència tècnica o ajuda envieu un missatge a <a href="mailto:suport@flux.cat">suport@flux.cat</a></p>
+                        <div class="well" style="margin: 40px 0">Per rebre assistència tècnica o ajuda envieu un missatge a <a href="mailto:suport@flux.cat">suport@flux.cat</a></div>
 
 # Sonata Block
 sonata_block:
@@ -114,6 +127,7 @@ sonata_block:
         sonata.user.block.account:
         sonata.block.service.text:
         sonata.admin.block.admin_list:
+        sonata.admin.block.visit_stats:
 
 # Sonata User
 sonata_user:
