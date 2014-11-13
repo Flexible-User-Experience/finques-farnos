@@ -6,7 +6,7 @@
             <h3 class="box-title">{{ settings.title }}</h3>
         </div>
         <div class="box-body">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th class="text-right">Referència</th>
@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                 {% for property in topVisitedProperties %}
-                    <tr>
+                    <tr class="clickableRow" data-href="{{ path('admin_finquesfarnos_app_property_edit', {id: property.id}) }}" style="cursor:pointer">
                         <td class="text-right">{{ property.reference }}</td>
                         <td>{{ property.name }}</td>
                         <td class="text-right">{{ property.totalVisits }}</td>
@@ -26,4 +26,11 @@
             </table>
         </div>
     </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('.clickableRow').click(function() {
+                window.document.location = $(this).attr('data-href');
+            });
+        });
+    </script>
 {% endblock %}
