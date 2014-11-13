@@ -12,7 +12,7 @@ services:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyGenerator
         arguments: [ @orkestra.pdf.factory_registry, @templating ]
 
-# Sonata
+# Sonata Admin
     sonata.admin.slide:
         class: FinquesFarnos\AppBundle\Admin\ImageSliderAdmin
         tags:
@@ -63,3 +63,12 @@ services:
             - AppBundle:Admin/PropertyAdmin
         calls:
             - [ setTranslationDomain, [AppBundle] ]
+
+# Sonata Block
+    sonata.admin.block.visit_stats:
+        class: FinquesFarnos\AppBundle\Admin\Block\VisitStatsBlockService
+        tags:
+            - { name: sonata.block }
+        arguments:
+            - sonata.admin.block.visit_stats
+            - @templating
