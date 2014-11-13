@@ -151,6 +151,7 @@ class Property extends Base
 
     /**
      * @ORM\OneToMany(targetEntity="FinquesFarnos\AppBundle\Entity\PropertyVisit", mappedBy="property", cascade={"persist"})
+     * @ORM\OrderBy({"createdAt" = "ASC"})
      * @var ArrayCollection
      */
     protected $visits;

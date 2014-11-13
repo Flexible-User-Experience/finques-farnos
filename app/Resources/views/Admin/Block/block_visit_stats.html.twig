@@ -9,7 +9,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="text-right">Referència</th>
+                        <th>Referència</th>
                         <th>Immoble</th>
                         <th class="text-right">Visites</th>
                     </tr>
@@ -17,7 +17,7 @@
                 <tbody>
                 {% for property in topVisitedProperties %}
                     <tr class="clickableRow" data-href="{{ path('admin_finquesfarnos_app_property_edit', {id: property.id}) }}" style="cursor:pointer">
-                        <td class="text-right">{{ property.reference }}</td>
+                        <td>{{ property.reference }}</td>
                         <td>{{ property.name }}</td>
                         <td class="text-right">{{ property.totalVisits }}</td>
                     </tr>

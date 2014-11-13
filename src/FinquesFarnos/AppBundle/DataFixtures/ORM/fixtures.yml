@@ -191,6 +191,7 @@ FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation:
 FinquesFarnos\AppBundle\Entity\PropertyVisit:
     visit{1..900}:
         property: @property<numberBetween(1, 300)>
+        createdAt: <dateTimeThisYear()>
 
 FinquesFarnos\AppBundle\Entity\ImageProperty:
     image{1..500}:
