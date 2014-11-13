@@ -25,13 +25,18 @@ class PropertyVisit extends Base
     protected $property;
 
     /**
+     * @var boolean
+     */
+    protected $enabled;
+
+    /**
      * To String
      *
      * @return string
      */
     public function __toString()
     {
-        return $this->createdAt ? $this->getCreatedAt()->format('Y') : '---'; // TODO fix property visit date format
+        return $this->createdAt ? $this->getCreatedAt()->format('d/m/Y H:i:s') : '---';
     }
 
     /**
@@ -56,5 +61,29 @@ class PropertyVisit extends Base
     public function getProperty()
     {
         return $this->property;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return $this
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 }

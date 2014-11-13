@@ -4,6 +4,7 @@ namespace FinquesFarnos\AppBundle\Admin;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
+use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -11,6 +12,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
 /**
  * PropertyAdmin class
@@ -78,7 +80,8 @@ class PropertyAdmin extends BaseAdmin
                     'expanded' => false,
                     'multiple' => true,
                     'label' => 'Imatges',
-                    'btn_add' => true,
+                    'btn_add' => 'afegir',
+                    'btn_list' => true,
                     'disabled' => true,
                     'help' => $this->getImageHelperFormMapperWithThumbnail(),
                 ))
@@ -105,14 +108,11 @@ class PropertyAdmin extends BaseAdmin
                 ))
             ->end()
             ->with('Visites', array('class' => 'col-md-6'))
-            ->add('totalVisits', null, array('label' => 'Visites totals', 'required' => false, 'disabled' => true))
-            ->add('visits', 'sonata_type_model', array(
+            ->add('totalVisits', null, array(
+                    'label' => 'Visites totals',
                     'required' => false,
-                    'expanded' => false,
-                    'multiple' => true,
-                    'label' => 'Visites',
-                    'btn_add' => false,
                     'disabled' => true,
+                    'help' => $this->getVisitsHelperFormMapper(),
                 ))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
@@ -186,6 +186,7 @@ class PropertyAdmin extends BaseAdmin
     {
         $collection->remove('show');
         $collection->add('pdf', $this->getRouterIdParameter() . '/pdf');
+        $collection->add('removeImage', $this->getRouterIdParameter() . '/remove-image/{iid}');
     }
 
     /**
@@ -195,6 +196,8 @@ class PropertyAdmin extends BaseAdmin
      */
     private function getImageHelperFormMapperWithThumbnail()
     {
+        /** @var Router $rs */
+        $rs = $this->getConfigurationPool()->getContainer()->get('router');
         /** @var CacheManager $lis */
         $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
         /** @var UploaderHelper $vus */
@@ -202,12 +205,23 @@ class PropertyAdmin extends BaseAdmin
         /** @var ArrayCollection $images */
         $images = $this->getSubject()->getImages();
         if ($images->count() > 0) {
-            $result = '';
+            $result = '<div class="images-wrapper" style="float:left;margin-bottom:40px">';
             /** @var ImageProperty $image */
             foreach ($images as $image) {
-                $result .= '<img src="' . $lis->getBrowserPath($vus->asset($image, 'property_image'), '60x60') . '" class="admin-preview" style="margin-right:10px" alt="' . $image->getMetaAlt() . '"/>';
+                $result .= '<div class="image-panel-wrapper" style="float:left;position:relative"><span><a href="' . $rs->generate('admin_finquesfarnos_app_imageproperty_edit', array('id' => $image->getId())) . '" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute" title="edita"><i class="fa fa-pencil"></i></a></span><span><a href="' . $rs->generate('admin_finquesfarnos_app_property_removeImage', array('id' => $this->getSubject()->getId(), 'iid' => $image->getId())) . '" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute;left:69px" title="esborra"><i class="fa fa-times"></i></a></span><img src="' . $lis->getBrowserPath($vus->asset($image, 'property_image'), '100x100') . '" class="admin-preview" style="margin:0 10px 10px 0;float:left" alt="' . $image->getMetaAlt() . '"/></div>';
             }
-            return $result;
+            return $result . '</div>';
+        }
+
+        return '';
+    }
+
+    private function getVisitsHelperFormMapper()
+    {
+        /** @var ArrayCollection $visits */
+        $visits = $this->getSubject()->getVisits();
+        if ($visits->count() > 0) {
+            return implode(' · ', $visits->toArray());
         }
 
         return '';

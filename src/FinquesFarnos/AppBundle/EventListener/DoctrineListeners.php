@@ -18,12 +18,12 @@ use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 class DoctrineListeners
 {
     /**
-     * Post persist event listener.
+     * Pre persist event listener.
      * - set property visit counter
      *
      * @param LifecycleEventArgs $args
      */
-    public function postPersist(LifecycleEventArgs $args)
+    public function prePersist(LifecycleEventArgs $args)
     {
         /** @var PropertyVisit $entity */
         $entity = $args->getEntity();
