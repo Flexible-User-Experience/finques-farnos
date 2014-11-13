@@ -72,3 +72,4 @@ services:
         arguments:
             - sonata.admin.block.visit_stats
             - @templating
+            - @doctrine.orm.entity_manager

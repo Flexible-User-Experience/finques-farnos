@@ -1,10 +1,29 @@
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-    <h3 class="sonata-feed-title">{{ settings.title }}</h3>
-    <div class="sonata-feeds-container">
+    <div class="well">
         <div>
-            <strong>{{ settings.content }}</strong>
+            <table class="table">
+                <caption><h3>{{ settings.title }}</h3></caption>
+                <thead>
+                    <tr>
+                        <th class="text-right"></th>
+                        <th class="text-right">Referència</th>
+                        <th>Immoble</th>
+                        <th class="text-right">Visites</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for property in topVisitedProperties %}
+                    <tr>
+                        <td class="text-right">{{ loop.index }}</td>
+                        <td class="text-right">{{ property.reference }}</td>
+                        <td>{{ property.name }}</td>
+                        <td class="text-right">{{ property.totalVisits }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

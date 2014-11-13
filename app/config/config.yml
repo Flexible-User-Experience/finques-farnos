@@ -110,15 +110,14 @@ sonata_admin:
                 position: right
                 type: sonata.admin.block.visit_stats
                 settings:
-                    title: "MyTitle"
-                    content: "MyContent"
+                    title: "Immobles més visitats"
             -
                 position: bottom
                 type: sonata.block.service.text
                 class: col-md-12
                 settings:
                     content: >
-                        <div class="well">Per rebre assistència tècnica o ajuda envieu un missatge a <a href="mailto:suport@flux.cat">suport@flux.cat</a></div>
+                        <div class="well" style="margin: 40px 0">Per rebre assistència tècnica o ajuda envieu un missatge a <a href="mailto:suport@flux.cat">suport@flux.cat</a></div>
 
 # Sonata Block
 sonata_block:
