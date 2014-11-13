@@ -32,7 +32,8 @@ class PropertyRepository extends EntityRepository
         $qb->select('p')
             ->from('FinquesFarnos\AppBundle\Entity\Property', 'p')
             ->where('p.enabled = 1')
-            ->orderBy('p.totalVisits', 'DESC');
+            ->addOrderBy('p.totalVisits', 'DESC')
+            ->addOrderBy('p.name', 'ASC');
 
         return $qb->getQuery();
     }

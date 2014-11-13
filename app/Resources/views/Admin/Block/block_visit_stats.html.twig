@@ -1,13 +1,14 @@
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-    <div class="well">
-        <div>
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">{{ settings.title }}</h3>
+        </div>
+        <div class="box-body">
             <table class="table">
-                <caption><h3>{{ settings.title }}</h3></caption>
                 <thead>
                     <tr>
-                        <th class="text-right"></th>
                         <th class="text-right">Referència</th>
                         <th>Immoble</th>
                         <th class="text-right">Visites</th>
@@ -16,7 +17,6 @@
                 <tbody>
                 {% for property in topVisitedProperties %}
                     <tr>
-                        <td class="text-right">{{ loop.index }}</td>
                         <td class="text-right">{{ property.reference }}</td>
                         <td>{{ property.name }}</td>
                         <td class="text-right">{{ property.totalVisits }}</td>
