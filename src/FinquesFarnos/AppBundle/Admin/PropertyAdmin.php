@@ -108,13 +108,9 @@ class PropertyAdmin extends BaseAdmin
                 ))
             ->end()
             ->with('Visites', array('class' => 'col-md-6'))
-            ->add('totalVisits', null, array('label' => 'Visites totals', 'required' => false, 'disabled' => true))
-            ->add('visits', 'sonata_type_model', array(
+            ->add('totalVisits', null, array(
+                    'label' => 'Visites totals',
                     'required' => false,
-                    'expanded' => false,
-                    'multiple' => true,
-                    'label' => 'Visites',
-                    'btn_add' => false,
                     'disabled' => true,
                     'help' => $this->getVisitsHelperFormMapper(),
                 ))
