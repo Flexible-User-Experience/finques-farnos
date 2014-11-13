@@ -1,12 +1,11 @@
 parameters:
 
 services:
-
 # Doctrine Listeners
     app.doctrine_listener:
         class: FinquesFarnos\AppBundle\EventListener\DoctrineListeners
         tags:
-            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_listener, event: prePersist }
 
 # Orkestra PDF
     app.property_pdf_generator:
