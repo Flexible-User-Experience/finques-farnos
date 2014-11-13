@@ -23,6 +23,16 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle] ]
+    sonata.admin.contact:
+        class: FinquesFarnos\AppBundle\Admin\ContactAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Web", label: "Contactes" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\Contact
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]
     sonata.admin.category:
         class: FinquesFarnos\AppBundle\Admin\CategoryAdmin
         tags:

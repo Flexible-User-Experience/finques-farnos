@@ -267,8 +267,8 @@ FinquesFarnos\UserBundle\Entity\User:
 FinquesFarnos\AppBundle\Entity\Contact:
     contact{1..50}:
         name: <firstName()> <lastName()>
-        phone: <phoneNumber>
-        email: <safeEmail()>
+        phone: <phoneNumber()>
+        email: <email()>
 
 FinquesFarnos\AppBundle\Entity\ContactMessage:
     contactMessage{1..150}:
