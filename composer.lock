@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "002e6b077ee8b825d9b20333213a2d53",
+    "hash": "22475cbd9f951256e87ebfd187ce96b9",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -1004,6 +1004,56 @@
                 "orm"
             ],
             "time": "2014-10-06 13:22:50"
+        },
+        {
+            "name": "egulias/email-validator",
+            "version": "1.2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "518f80a0ff7c1a35780e7702f4262c8c6f2b807f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/518f80a0ff7c1a35780e7702f4262c8c6f2b807f",
+                "reference": "518f80a0ff7c1a35780e7702f4262c8c6f2b807f",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/lexer": "~1.0",
+                "php": ">= 5.3.3"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Egulias\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
+            "description": "A library for validating emails",
+            "homepage": "https://github.com/egulias/EmailValidator",
+            "keywords": [
+                "email",
+                "validation",
+                "validator"
+            ],
+            "time": "2014-11-06 08:59:44"
         },
         {
             "name": "endroid/qrcode",
@@ -4390,12 +4440,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "b8bef1bb96a19441fb9d47a602761833b95bd156"
+                "reference": "d017b2090bc7aa5d4d376df4cbfa7c92348e32aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/b8bef1bb96a19441fb9d47a602761833b95bd156",
-                "reference": "b8bef1bb96a19441fb9d47a602761833b95bd156",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/d017b2090bc7aa5d4d376df4cbfa7c92348e32aa",
+                "reference": "d017b2090bc7aa5d4d376df4cbfa7c92348e32aa",
                 "shasum": ""
             },
             "require": {
@@ -4453,7 +4503,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-11-12 11:15:47"
+            "time": "2014-11-13 13:29:57"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
