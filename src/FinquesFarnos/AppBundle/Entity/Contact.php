@@ -20,6 +20,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Contact extends Base
 {
     /**
+     * @ORM\OneToMany(targetEntity="ContactMessage", mappedBy="contact", cascade={"persist", "remove"})
+     * @var ArrayCollection
+     */
+    private $messages;
+
+    /**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=false)
      * @var string
      */
@@ -81,6 +87,35 @@ class Contact extends Base
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Add message
+     *
+     * @param ContactMessage $message
+     *
+     * @return $this
+     */
+    public function addMessage(ContactMessage $message)
+    {
+        $message->setContact($this);
+        $this->messages[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param ContactMessage $message
+     *
+     * @return $this
+     */
+    public function removeMessage(ContactMessage $message)
+    {
+        $this->messages->removeElement($message);
+
+        return $this;
     }
 
     /**

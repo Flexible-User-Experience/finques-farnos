@@ -269,3 +269,8 @@ FinquesFarnos\AppBundle\Entity\Contact:
         name: <firstName()> <lastName()>
         phone: <phoneNumber>
         email: <safeEmail()>
+
+FinquesFarnos\AppBundle\Entity\ContactMessage:
+    contactMessage{1..150}:
+        contact: @contact<numberBetween(1, 50)>
+        text: <sentence(10)>
