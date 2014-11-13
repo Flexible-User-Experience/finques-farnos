@@ -263,3 +263,9 @@ FinquesFarnos\UserBundle\Entity\User:
         enabled: true
         roles:
             - ROLE_USER
+
+FinquesFarnos\AppBundle\Entity\Contact:
+    contact{1..50}:
+        name: <firstName()> <lastName()>
+        phone: <phoneNumber>
+        email: <safeEmail()>
