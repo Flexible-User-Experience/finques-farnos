@@ -273,4 +273,5 @@ FinquesFarnos\AppBundle\Entity\Contact:
 FinquesFarnos\AppBundle\Entity\ContactMessage:
     contactMessage{1..150}:
         contact: @contact<numberBetween(1, 50)>
+        property: @property<numberBetween(1, 300)>
         text: <sentence(10)>

@@ -27,6 +27,13 @@ class ContactMessage extends Base
     private $contact;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Property")
+     * @ORM\JoinColumns({@ORM\JoinColumn(name="property_id", referencedColumnName="id", nullable=true)})
+     * @var Property
+     */
+    private $property;
+
+    /**
      * @ORM\Column(type="text", length=4000, name="text", nullable=false)
      * @var string
      */
@@ -78,6 +85,30 @@ class ContactMessage extends Base
     public function getContact()
     {
         return $this->contact;
+    }
+
+    /**
+     * Set Property
+     *
+     * @param Property $property
+     *
+     * @return $this
+     */
+    public function setProperty($property)
+    {
+        $this->property = $property;
+
+        return $this;
+    }
+
+    /**
+     * Get Property
+     *
+     * @return Property
+     */
+    public function getProperty()
+    {
+        return $this->property;
     }
 
 	/**

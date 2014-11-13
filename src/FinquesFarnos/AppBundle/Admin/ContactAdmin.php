@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Routing\Router;
 
 /**
  * ContactAdmin class
@@ -38,7 +39,10 @@ class ContactAdmin extends BaseAdmin
             ->add('phone', null, array('label' => 'Telèfon'))
             ->add('email', null, array('label' => 'Email'))
             ->end()
-            ->with('Missatges', array('class' => 'col-md-6'))
+            ->with('Controls', array('class' => 'col-md-6'))
+            ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
+            ->end()
+            ->with('Missatges', array('class' => 'col-md-12'))
             ->add('messages2', 'text', array(
                     'required' => false,
                     'mapped' => false,
@@ -47,9 +51,6 @@ class ContactAdmin extends BaseAdmin
                     'label_render' => false,
                     'help' => $this->getMessagesHelperFormMapper(),
                 ))
-            ->end()
-            ->with('Controls', array('class' => 'col-md-6'))
-            ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
             ->end();
     }
 
@@ -90,13 +91,15 @@ class ContactAdmin extends BaseAdmin
 
     private function getMessagesHelperFormMapper()
     {
+        /** @var Router $rs */
+        $rs = $this->getConfigurationPool()->getContainer()->get('router');
         /** @var ArrayCollection $messages */
         $messages = $this->getSubject()->getMessages();
         if ($messages->count() > 0) {
-            $result = '<table class="table table-hover"><thead><tr><th>Data</th><th>Text</th></tr></thead><tbody>';
+            $result = '<table class="table table-hover"><thead><tr><th>Data</th><th>Immoble</th><th>Text</th></tr></thead><tbody>';
             /** @var ContactMessage $message */
             foreach ($messages as $message) {
-                $result .= '<tr><td>' . $message->getCreatedAt()->format('d/m/Y H:i:s') . '</td><td>' . $message->getText() . '</td></tr>';
+                $result .= '<tr><td>' . $message->getCreatedAt()->format('d/m/Y H:i:s') . '</td><td><a href="' . $rs->generate('admin_finquesfarnos_app_property_edit', array('id' => $message->getProperty()->getId())) . '">' . $message->getProperty()->getReference() . '</a></td><td>' . $message->getText() . '</td></tr>';
             }
 
             return $result . '</tbody></table>';
