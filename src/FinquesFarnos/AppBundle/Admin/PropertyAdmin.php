@@ -11,6 +11,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
 /**
  * PropertyAdmin class
@@ -187,6 +188,7 @@ class PropertyAdmin extends BaseAdmin
     {
         $collection->remove('show');
         $collection->add('pdf', $this->getRouterIdParameter() . '/pdf');
+        $collection->add('removeImage', $this->getRouterIdParameter() . '/remove-image/{iid}');
     }
 
     /**
@@ -196,6 +198,8 @@ class PropertyAdmin extends BaseAdmin
      */
     private function getImageHelperFormMapperWithThumbnail()
     {
+        /** @var Router $rs */
+        $rs = $this->getConfigurationPool()->getContainer()->get('router');
         /** @var CacheManager $lis */
         $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
         /** @var UploaderHelper $vus */
@@ -206,7 +210,7 @@ class PropertyAdmin extends BaseAdmin
             $result = '<div class="images-wrapper" style="float:left;margin-bottom:40px">';
             /** @var ImageProperty $image */
             foreach ($images as $image) {
-                $result .= '<div class="image-panel-wrapper" style="float:left;position:relative"><span><a class="btn btn-success btn-sm sonata-ba-action" style="position:absolute" title="edita"><i class="fa fa-pencil"></i></a></span><span><a class="btn btn-success btn-sm sonata-ba-action" style="position:absolute;left:69px" title="esborra"><i class="fa fa-times"></i></a></span><img src="' . $lis->getBrowserPath($vus->asset($image, 'property_image'), '100x100') . '" class="admin-preview" style="margin:0 10px 10px 0;float:left" alt="' . $image->getMetaAlt() . '"/></div>';
+                $result .= '<div class="image-panel-wrapper" style="float:left;position:relative"><span><a class="btn btn-success btn-sm sonata-ba-action" style="position:absolute" title="edita"><i class="fa fa-pencil"></i></a></span><span><a href="' . $rs->generate('admin_finquesfarnos_app_property_removeImage', array('id' => $this->getSubject()->getId(), 'iid' => $image->getId())) . '" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute;left:69px" title="esborra"><i class="fa fa-times"></i></a></span><img src="' . $lis->getBrowserPath($vus->asset($image, 'property_image'), '100x100') . '" class="admin-preview" style="margin:0 10px 10px 0;float:left" alt="' . $image->getMetaAlt() . '"/></div>';
             }
             return $result . '</div>';
         }
