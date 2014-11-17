@@ -50,7 +50,7 @@ class ImageSliderAdmin extends BaseAdmin
                     'fields' => array(
                         'metaTitle' => array('label' => 'Títol (SEO)', 'required' => false),
                         'metaAlt' => array('label' => 'Alt (SEO)', 'required' => false),
-                    )
+                    ),
                 ))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
@@ -100,7 +100,8 @@ class ImageSliderAdmin extends BaseAdmin
         $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
         /** @var UploaderHelper $vus */
         $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
-        return ($this->getSubject()->getImageName() ? '<img src="' . $lis->getBrowserPath($vus->asset($this->getSubject(), 'slider_image'), '300xY') . '" class="admin-preview" alt=""/>' : '') . '<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+
+        return ($this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'slider_image'), '300xY').'" class="admin-preview" alt=""/>' : '').'<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
     }
 
     /**

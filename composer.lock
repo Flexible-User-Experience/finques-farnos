@@ -4152,12 +4152,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "dba2f5fe549ce9fac3f7c7b4468394018e15d2c2"
+                "reference": "75d8d8f9990d41eb85127b71498958c3fe93671f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/dba2f5fe549ce9fac3f7c7b4468394018e15d2c2",
-                "reference": "dba2f5fe549ce9fac3f7c7b4468394018e15d2c2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/75d8d8f9990d41eb85127b71498958c3fe93671f",
+                "reference": "75d8d8f9990d41eb85127b71498958c3fe93671f",
                 "shasum": ""
             },
             "require": {
@@ -4260,20 +4260,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-12 12:06:33"
+            "time": "2014-11-16 17:46:24"
         },
         {
             "name": "tecnick.com/tcpdf",
-            "version": "6.0.098",
+            "version": "6.0.099",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "de89c0d7fdc0e5bcb757a608cba3f9ef802060e7"
+                "reference": "75e7ad39458e060d0cae6fcb7d50a2c9f3af1b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/de89c0d7fdc0e5bcb757a608cba3f9ef802060e7",
-                "reference": "de89c0d7fdc0e5bcb757a608cba3f9ef802060e7",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/75e7ad39458e060d0cae6fcb7d50a2c9f3af1b01",
+                "reference": "75e7ad39458e060d0cae6fcb7d50a2c9f3af1b01",
                 "shasum": ""
             },
             "require": {
@@ -4323,7 +4323,7 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2014-11-08 11:12:39"
+            "time": "2014-11-15 12:35:49"
         },
         {
             "name": "twig/extensions",
@@ -4440,12 +4440,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "d017b2090bc7aa5d4d376df4cbfa7c92348e32aa"
+                "reference": "d2cc9442fbbcf60b465912cbfb26e16d42ea66ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/d017b2090bc7aa5d4d376df4cbfa7c92348e32aa",
-                "reference": "d017b2090bc7aa5d4d376df4cbfa7c92348e32aa",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/d2cc9442fbbcf60b465912cbfb26e16d42ea66ac",
+                "reference": "d2cc9442fbbcf60b465912cbfb26e16d42ea66ac",
                 "shasum": ""
             },
             "require": {
@@ -4503,7 +4503,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-11-13 13:29:57"
+            "time": "2014-11-14 12:30:08"
         },
         {
             "name": "willdurand/jsonp-callback-validator",

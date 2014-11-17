@@ -9,12 +9,13 @@ namespace FinquesFarnos\AppBundle\PdfGenerator;
  * @package  FinquesFarnos\AppBundle\PdfGenerator
  * @author   David Romaní <david@flux.cat>
  */
-class CustomTcpdf extends \TCPDF {
-
+class CustomTcpdf extends \TCPDF
+{
     /**
      * Page header
      */
-    public function Header() {
+    public function Header()
+    {
         // Set font
         $this->SetFont('dejavusans', 'B', 20);
         $this->SetTextColor(0, 137, 0);
@@ -25,7 +26,8 @@ class CustomTcpdf extends \TCPDF {
     /**
      * Page footer
      */
-    public function Footer() {
+    public function Footer()
+    {
         // Position at 15 mm from bottom
         $this->SetY(-15);
         // Set font

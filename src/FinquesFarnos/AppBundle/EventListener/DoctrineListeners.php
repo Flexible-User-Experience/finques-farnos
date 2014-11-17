@@ -3,8 +3,6 @@
 namespace FinquesFarnos\AppBundle\EventListener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\Routing\Router;
 use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 

@@ -6,7 +6,6 @@ use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\PdfGenerator\PropertyGenerator;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
@@ -42,7 +41,7 @@ class PropertyAdminController extends Controller
     /**
      * Remove image from property
      *
-     * @param int $id property ID
+     * @param int $id  property ID
      * @param int $iid image ID
      *
      * @return Response

@@ -4,7 +4,6 @@ namespace FinquesFarnos\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -48,7 +47,7 @@ class Contact extends Base
      */
     private $email;
 
-	/**
+    /**
      * Constructor
      */
     public function __construct()
@@ -56,7 +55,7 @@ class Contact extends Base
         $this->messages = new ArrayCollection();
     }
 
-	/**
+    /**
      * To String
      *
      * @return string
