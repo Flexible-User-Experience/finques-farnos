@@ -84,3 +84,16 @@ services:
             - sonata.admin.block.visit_stats
             - @templating
             - @doctrine.orm.entity_manager
+
+# KNP Menu
+    app.menu.frontmenu:
+        class: FinquesFarnos\AppBundle\Menu\FrontendMenu
+        arguments: ["@knp_menu.factory"]
+    app.menu.main:
+        class: Knp\Menu\MenuItem
+        factory_service: app.menu.frontmenu
+        factory_method: createMainMenu
+        arguments: ["@request"]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: frontend }
