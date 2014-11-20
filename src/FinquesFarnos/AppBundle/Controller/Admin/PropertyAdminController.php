@@ -8,6 +8,7 @@ use FinquesFarnos\AppBundle\PdfGenerator\PropertyGenerator;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * PropertyAdminController class
  *
