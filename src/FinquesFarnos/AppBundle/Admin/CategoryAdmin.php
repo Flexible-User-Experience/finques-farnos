@@ -40,7 +40,7 @@ class CategoryAdmin extends BaseAdmin
                 'translatable_class' => 'FinquesFarnos\AppBundle\Entity\Translation\CategoryTranslation',
                 'fields' => array(
                     'name' => array('label' => 'Nom', 'required' => false),
-                )
+                ),
             ))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))

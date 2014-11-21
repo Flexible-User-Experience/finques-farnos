@@ -4,7 +4,6 @@ namespace FinquesFarnos\AppBundle\Admin;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
-use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -104,7 +103,7 @@ class PropertyAdmin extends BaseAdmin
                         'name' => array('label' => 'Nom', 'required' => false),
                         'description' => array('label' => 'Descripció', 'required' => false),
                         'city' => array('label' => 'Població', 'required' => false),
-                    )
+                    ),
                 ))
             ->end()
             ->with('Visites', array('class' => 'col-md-6'))
@@ -185,8 +184,8 @@ class PropertyAdmin extends BaseAdmin
     public function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('show');
-        $collection->add('pdf', $this->getRouterIdParameter() . '/pdf');
-        $collection->add('removeImage', $this->getRouterIdParameter() . '/remove-image/{iid}');
+        $collection->add('pdf', $this->getRouterIdParameter().'/pdf');
+        $collection->add('removeImage', $this->getRouterIdParameter().'/remove-image/{iid}');
     }
 
     /**
@@ -208,9 +207,10 @@ class PropertyAdmin extends BaseAdmin
             $result = '<div class="images-wrapper" style="float:left;margin-bottom:40px">';
             /** @var ImageProperty $image */
             foreach ($images as $image) {
-                $result .= '<div class="image-panel-wrapper" style="float:left;position:relative"><span><a href="' . $rs->generate('admin_finquesfarnos_app_imageproperty_edit', array('id' => $image->getId())) . '" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute" title="edita"><i class="fa fa-pencil"></i></a></span><span><a href="' . $rs->generate('admin_finquesfarnos_app_property_removeImage', array('id' => $this->getSubject()->getId(), 'iid' => $image->getId())) . '" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute;left:69px" title="esborra"><i class="fa fa-times"></i></a></span><img src="' . $lis->getBrowserPath($vus->asset($image, 'property_image'), '100x100') . '" class="admin-preview" style="margin:0 10px 10px 0;float:left" alt="' . $image->getMetaAlt() . '"/></div>';
+                $result .= '<div class="image-panel-wrapper" style="float:left;position:relative"><span><a href="'.$rs->generate('admin_finquesfarnos_app_imageproperty_edit', array('id' => $image->getId())).'" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute" title="edita"><i class="fa fa-pencil"></i></a></span><span><a href="'.$rs->generate('admin_finquesfarnos_app_property_removeImage', array('id' => $this->getSubject()->getId(), 'iid' => $image->getId())).'" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute;left:69px" title="esborra"><i class="fa fa-times"></i></a></span><img src="'.$lis->getBrowserPath($vus->asset($image, 'property_image'), '100x100').'" class="admin-preview" style="margin:0 10px 10px 0;float:left" alt="'.$image->getMetaAlt().'"/></div>';
             }
-            return $result . '</div>';
+
+            return $result.'</div>';
         }
 
         return '';

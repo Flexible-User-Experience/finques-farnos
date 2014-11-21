@@ -68,7 +68,7 @@ class ImageSlider extends Base
      */
     private $position = 1;
 
-	/**
+    /**
      * @ORM\OneToMany(
      *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\ImageSliderTranslation",
      *     mappedBy="object",
@@ -79,7 +79,7 @@ class ImageSlider extends Base
      */
     private $translations;
 
-	/**
+    /**
      * Constructor
      */
     public function __construct()
@@ -87,7 +87,7 @@ class ImageSlider extends Base
         $this->translations = new ArrayCollection();
     }
 
-	/**
+    /**
      * To String
      *
      * @return string

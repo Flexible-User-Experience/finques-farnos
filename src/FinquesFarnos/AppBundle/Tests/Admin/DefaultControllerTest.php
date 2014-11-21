@@ -38,7 +38,7 @@ class DefaultControllerTest extends WebTestCase
         $form = $crawler->selectButton('_submit')->form(
             array(
                 '_username' => 'admin',
-                '_password' => 'jbMF7CZW'
+                '_password' => 'jbMF7CZW',
             )
         );
         $client->submit($form);

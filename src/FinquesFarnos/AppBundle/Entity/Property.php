@@ -47,7 +47,7 @@ class Property extends Base
      */
     private $reference;
 
-	/**
+    /**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
      * @Gedmo\Translatable
      * @var string
@@ -162,7 +162,7 @@ class Property extends Base
      */
     protected $totalVisits = 0;
 
-	/**
+    /**
      * @ORM\OneToMany(
      *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation",
      *     mappedBy="object",
@@ -173,7 +173,7 @@ class Property extends Base
      */
     private $translations;
 
-	/**
+    /**
      * Constructor
      */
     public function __construct()
@@ -184,14 +184,14 @@ class Property extends Base
         $this->visits = new ArrayCollection();
     }
 
-	/**
+    /**
      * To String
      *
      * @return string
      */
     public function __toString()
     {
-        return $this->reference ? $this->reference . ' · ' . $this->name : '---';
+        return $this->reference ? $this->reference.' · '.$this->name : '---';
     }
 
     /**

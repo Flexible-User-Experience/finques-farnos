@@ -73,7 +73,7 @@ class VisitStatsBlockService extends BaseBlockService
             array(
                 'title'    => 'Default title',
                 'content'  => 'Default content',
-                'template' => '::Admin/Block/block_visit_stats.html.twig'
+                'template' => '::Admin/Block/block_visit_stats.html.twig',
             )
         );
     }

@@ -99,10 +99,10 @@ class ContactAdmin extends BaseAdmin
             $result = '<table class="table table-hover"><thead><tr><th>Data</th><th>Immoble</th><th>Text</th></tr></thead><tbody>';
             /** @var ContactMessage $message */
             foreach ($messages as $message) {
-                $result .= '<tr><td>' . $message->getCreatedAt()->format('d/m/Y H:i:s') . '</td><td><a href="' . $rs->generate('admin_finquesfarnos_app_property_edit', array('id' => $message->getProperty()->getId())) . '">' . $message->getProperty()->getReference() . '</a></td><td>' . $message->getText() . '</td></tr>';
+                $result .= '<tr><td>'.$message->getCreatedAt()->format('d/m/Y H:i:s').'</td><td><a href="'.$rs->generate('admin_finquesfarnos_app_property_edit', array('id' => $message->getProperty()->getId())).'">'.$message->getProperty()->getReference().'</a></td><td>'.$message->getText().'</td></tr>';
             }
 
-            return $result . '</tbody></table>';
+            return $result.'</tbody></table>';
         }
 
         return '';

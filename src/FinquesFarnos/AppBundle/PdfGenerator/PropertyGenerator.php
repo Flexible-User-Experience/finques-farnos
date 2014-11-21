@@ -34,18 +34,18 @@ class PropertyGenerator extends AbstractPdfGenerator
         /** @var \TCPDF $builder */
         $builder = $pdf->getNativeObject();
         $builder->SetAuthor('Finques Farnós, S.L.');
-        $builder->SetTitle('Immoble ' . $property->getReference());
+        $builder->SetTitle('Immoble '.$property->getReference());
         $builder->SetSubject('Immoble en PDF');
         $builder->SetKeywords('PDF, immoble');
         $builder->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH);
-        $builder->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-        $builder->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $builder->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $builder->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
         $builder->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
         $builder->SetMargins(35, 30, 30); // (left, top, right)
         $builder->SetHeaderMargin(PDF_MARGIN_HEADER);
         $builder->SetFooterMargin(PDF_MARGIN_FOOTER);
         //$builder->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-        $builder->SetAutoPageBreak(FALSE, PDF_MARGIN_BOTTOM);
+        $builder->SetAutoPageBreak(false, PDF_MARGIN_BOTTOM);
         $builder->setImageScale(PDF_IMAGE_SCALE_RATIO);
         $builder->setFontSubsetting(true);
         // set JPEG quality
@@ -59,7 +59,7 @@ class PropertyGenerator extends AbstractPdfGenerator
         // CONTINUGT
         $builder->SetTextColor(107, 107, 107);
         $builder->SetFont('dejavusans', 'B', 9, '', true);
-        $builder->Text(35, 52, 'Fitxa immoble ref. ' . $property . ' per a imprimir a l\'aparador');
+        $builder->Text(35, 52, 'Fitxa immoble ref. '.$property.' per a imprimir a l\'aparador');
         $builder->Text(35, 32, '(en desenvolupament)');
 
         // Return the original PDF, calling getContents to retrieve the rendered content

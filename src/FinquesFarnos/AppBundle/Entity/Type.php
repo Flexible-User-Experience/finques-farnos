@@ -26,7 +26,7 @@ class Type extends Base
      */
     private $properties;
 
-	/**
+    /**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
      * @Gedmo\Translatable
      * @var string
@@ -40,7 +40,7 @@ class Type extends Base
      */
     private $nameSlug;
 
-	/**
+    /**
      * @ORM\OneToMany(
      *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation",
      *     mappedBy="object",
@@ -51,7 +51,7 @@ class Type extends Base
      */
     private $translations;
 
-	/**
+    /**
      * Constructor
      */
     public function __construct()
@@ -60,7 +60,7 @@ class Type extends Base
         $this->translations = new ArrayCollection();
     }
 
-	/**
+    /**
      * To String
      *
      * @return string

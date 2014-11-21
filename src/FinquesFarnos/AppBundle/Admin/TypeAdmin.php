@@ -40,7 +40,7 @@ class TypeAdmin extends BaseAdmin
                     'translatable_class' => 'FinquesFarnos\AppBundle\Entity\Translation\TypeTranslation',
                     'fields' => array(
                         'name' => array('label' => 'Nom', 'required' => false),
-                    )
+                    ),
                 ))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
