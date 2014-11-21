@@ -21,4 +21,12 @@ class DefaultController extends Controller
     {
         return $this->render('::Front/homepage.html.twig');
     }
+
+    /**
+     * @Route("/properties/", name="front_properties")
+     */
+    public function propertiesAction()
+    {
+        return $this->render('::Front/properties.html.twig');
+    }
 }

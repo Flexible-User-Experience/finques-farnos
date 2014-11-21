@@ -1,6 +1,2 @@
-# Desc: /admin/sonata/user/user/list
-#admin_sonata_user_user_list: /admin/sonata/user/user/list
-# Desc: /admin/sonata/user/user/{id}/show
-#admin_sonata_user_user_show: '/admin/sonata/user/user/{id}/show'
-
 front_homepage: '/'
+front_properties: '/inmuebles'

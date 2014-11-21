@@ -43,7 +43,7 @@ class FrontendMenu
         $menu->setExtras(array('firstClass' => null));
 
         $menu->addChild('Home', array('route' => 'front_homepage'));
-        $menu->addChild('Flats', array('route' => 'front_homepage'));
+        $menu->addChild('Properties', array('route' => 'front_properties'));
         $menu->addChild('About us', array('route' => 'front_homepage'));
         $menu->addChild('Contact', array('route' => 'front_homepage'));
 
