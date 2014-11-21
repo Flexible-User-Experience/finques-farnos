@@ -38,7 +38,14 @@ class FrontendMenu
     public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
+        $menu->setChildrenAttribute('id', 'nav-accordion');
+        $menu->setExtras(array('firstClass' => null));
+
         $menu->addChild('Home', array('route' => 'front_homepage'));
+        $menu->addChild('Flats', array('route' => 'front_homepage'));
+        $menu->addChild('About us', array('route' => 'front_homepage'));
+        $menu->addChild('Contact', array('route' => 'front_homepage'));
 
         return $menu;
     }
