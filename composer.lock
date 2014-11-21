@@ -3158,17 +3158,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.8",
+            "version": "v3.0.9",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "bc5e96bb4faf6bee7121085951d11b89488952f5"
+                "reference": "82d85b032db66163568ad988e630e5ad74138c72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/bc5e96bb4faf6bee7121085951d11b89488952f5",
-                "reference": "bc5e96bb4faf6bee7121085951d11b89488952f5",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/82d85b032db66163568ad988e630e5ad74138c72",
+                "reference": "82d85b032db66163568ad988e630e5ad74138c72",
                 "shasum": ""
             },
             "require": {
@@ -3207,7 +3207,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2014-11-03 21:16:34"
+            "time": "2014-11-21 15:36:24"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -4333,12 +4333,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "f288a69ae5faccaccb798ca24b681e73657339d5"
+                "reference": "31792b01f1d3d2e66b9606476120d2cc1926fe92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/f288a69ae5faccaccb798ca24b681e73657339d5",
-                "reference": "f288a69ae5faccaccb798ca24b681e73657339d5",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/31792b01f1d3d2e66b9606476120d2cc1926fe92",
+                "reference": "31792b01f1d3d2e66b9606476120d2cc1926fe92",
                 "shasum": ""
             },
             "require": {
@@ -4441,7 +4441,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-20 13:24:23"
+            "time": "2014-11-21 16:08:03"
         },
         {
             "name": "tecnick.com/tcpdf",
