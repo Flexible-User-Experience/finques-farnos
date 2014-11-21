@@ -29,4 +29,20 @@ class DefaultController extends Controller
     {
         return $this->render('::Front/properties.html.twig');
     }
+
+    /**
+     * @Route("/about-us/", name="front_about")
+     */
+    public function aboutAction()
+    {
+        return $this->render('::Front/about.html.twig');
+    }
+
+    /**
+     * @Route("/contact/", name="front_contact")
+     */
+    public function contactAction()
+    {
+        return $this->render('::Front/contact.html.twig');
+    }
 }

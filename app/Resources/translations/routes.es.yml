@@ -1,2 +1,4 @@
 front_homepage: '/'
 front_properties: '/inmuebles'
+front_about: '/quien-somos'
+front_contact: '/contacto'

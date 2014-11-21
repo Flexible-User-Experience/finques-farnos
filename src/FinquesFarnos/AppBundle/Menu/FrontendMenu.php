@@ -44,8 +44,8 @@ class FrontendMenu
 
         $menu->addChild('Home', array('route' => 'front_homepage'));
         $menu->addChild('Properties', array('route' => 'front_properties'));
-        $menu->addChild('About us', array('route' => 'front_homepage'));
-        $menu->addChild('Contact', array('route' => 'front_homepage'));
+        $menu->addChild('About us', array('route' => 'front_about'));
+        $menu->addChild('Contact', array('route' => 'front_contact'));
 
         return $menu;
     }
