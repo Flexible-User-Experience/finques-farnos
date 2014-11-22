@@ -5,6 +5,7 @@ namespace FinquesFarnos\AppBundle\Menu;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Translation\Translator;
 
 /**
  * Class MenuBuilder
@@ -21,11 +22,20 @@ class FrontendMenu
     private $factory;
 
     /**
-     * @param FactoryInterface $factory
+     * @var Translator
      */
-    public function __construct(FactoryInterface $factory)
+    private $translator;
+
+    /**
+     * Contructor
+     *
+     * @param FactoryInterface $factory
+     * @param Translator       $translator
+     */
+    public function __construct(FactoryInterface $factory, Translator $translator)
     {
         $this->factory = $factory;
+        $this->translator = $translator;
     }
 
     /**
@@ -42,10 +52,22 @@ class FrontendMenu
         $menu->setChildrenAttribute('id', 'nav-accordion');
         $menu->setExtras(array('firstClass' => null));
 
-        $menu->addChild('Home', array('route' => 'front_homepage'));
-        $menu->addChild('Properties', array('route' => 'front_properties'));
-        $menu->addChild('About us', array('route' => 'front_about'));
-        $menu->addChild('Contact', array('route' => 'front_contact'));
+        $menu->addChild('home', array(
+                'label' => $this->translator->trans('menu.home'),
+                'route' => 'front_homepage',
+            ));
+        $menu->addChild('properties', array(
+                'label' => $this->translator->trans('menu.properties'),
+                'route' => 'front_properties',
+            ));
+        $menu->addChild('about', array(
+                'label' => $this->translator->trans('menu.about'),
+                'route' => 'front_about',
+            ));
+        $menu->addChild('contact', array(
+                'label' => $this->translator->trans('menu.contact'),
+                'route' => 'front_contact',
+            ));
 
         return $menu;
     }
