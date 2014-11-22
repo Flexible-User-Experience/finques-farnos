@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a04835b3fc614730dae5d8545ddfefbf",
+    "hash": "e5252fbfb06795d4603ca321ad1268df",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -123,14 +123,8 @@
             "target-dir": "Cypress/GitElephantBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/matteosister/GitElephantBundle.git",
-                "reference": "cf5cf6a6b66d67bc0a0e41c64435fe5545aa6deb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/matteosister/GitElephantBundle/zipball/cf5cf6a6b66d67bc0a0e41c64435fe5545aa6deb",
-                "reference": "cf5cf6a6b66d67bc0a0e41c64435fe5545aa6deb",
-                "shasum": ""
+                "url": "git@github.com:davidromani/GitElephantBundle.git",
+                "reference": "03548f4485f5fe69ecdf95c2213ff363c00d2d3b"
             },
             "require": {
                 "cypresslab/gitelephant": "*",
@@ -148,7 +142,6 @@
                     "Cypress\\GitElephantBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0+"
             ],
@@ -163,7 +156,7 @@
             "keywords": [
                 "git"
             ],
-            "time": "2014-11-17 19:50:16"
+            "time": "2014-11-22 18:26:31"
         },
         {
             "name": "doctrine/annotations",
