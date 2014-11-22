@@ -50,3 +50,9 @@ assetic:
 hautelook_alice:
     locale: es_ES
     seed: 4
+
+cypress_git_elephant:
+    enable_profiler: true
+    profiler_repository_path: "%kernel.root_dir%/../"
+    repositories:
+        "FinquesFarnos": "%cypress_git_repository%"
