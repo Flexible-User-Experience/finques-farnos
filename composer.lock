@@ -124,7 +124,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:davidromani/GitElephantBundle.git",
-                "reference": "03548f4485f5fe69ecdf95c2213ff363c00d2d3b"
+                "reference": "cba6fb8f2e9f5d59a93919b7728394c1c13680f0"
             },
             "require": {
                 "cypresslab/gitelephant": "*",
@@ -156,7 +156,7 @@
             "keywords": [
                 "git"
             ],
-            "time": "2014-11-22 18:26:31"
+            "time": "2014-11-22 19:36:38"
         },
         {
             "name": "doctrine/annotations",
