@@ -45,7 +45,17 @@
                     {% endif %}
 
                     <p>{{ property.description }}</p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                    <div class="btn-group" role="group" data-aria-label="icons">
+                        {% if property.offerSpecial %}
+                            <button type="button" class="btn btn-default">{{ 'homepage.property.offer.special' | trans }}</button>
+                        {% endif %}
+                        {% if property.offerDiscount and not property.offerSpecial %}
+                            <button type="button" class="btn btn-default">{{ 'homepage.property.offer.discount' | trans }}</button>
+                        {% endif %}
+                        {#<button type="button" class="btn btn-default">&#123;&#35; property.squareMeters &#35;&#125;</button>#}
+                        <button type="button" class="btn btn-default">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
+                        <button type="button" class="btn btn-default">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
+                    </div>
                 </div>
                 {% if loop.index % 3 == 0 %}
                         </div>

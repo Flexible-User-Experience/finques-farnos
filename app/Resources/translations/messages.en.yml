@@ -8,3 +8,8 @@ homepage:
   property:
     before: before
     since: since
+    rooms: rooms
+    bathrooms: bathrooms
+    offer:
+      special: special
+      discount: discount

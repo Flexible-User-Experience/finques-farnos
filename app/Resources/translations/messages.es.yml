@@ -8,3 +8,8 @@ homepage:
   property:
     before: antes
     since: desde
+    rooms: habitaciones
+    bathrooms: baños
+    offer:
+      special: oferta
+      discount: rebajado

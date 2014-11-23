@@ -8,3 +8,8 @@ homepage:
   property:
     before: abans
     since: des de
+    rooms: habitacions
+    bathrooms: banys
+    offer:
+      special: oferta
+      discount: rebaixat
