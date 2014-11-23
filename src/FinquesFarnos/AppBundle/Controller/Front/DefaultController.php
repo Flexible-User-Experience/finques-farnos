@@ -2,6 +2,8 @@
 
 namespace FinquesFarnos\AppBundle\Controller\Front;
 
+use Doctrine\ORM\EntityManager;
+use FinquesFarnos\AppBundle\Entity\ContactMessage;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -56,10 +58,28 @@ class DefaultController extends Controller
         $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Contact $contactForm */
+            $contactForm = $form->getData();
+            /** @var EntityManager $em */
             $em = $this->getDoctrine()->getManager();
-//            $em->persist($post);
-//            $em->flush();
-//
+            /** @var Contact $contactToBePersisted */
+            $contactToBePersisted = $em->getRepository('AppBundle:Contact')->findOneBy(array('email' => $contactForm->getEmail()));
+            if ($contactToBePersisted) {
+                $contactToBePersisted
+                    ->setName($contactForm->getName())
+                    ->setPhone($contactForm->getPhone())
+                    ->setEnabled(true);
+            } else {
+                $contactToBePersisted = $contactForm;
+            }
+            /** @var ContactMessage $message */
+            $message = new ContactMessage();
+            $message->setContact($contactToBePersisted)->setText($request->get('message'));
+            $contactToBePersisted->addMessage($message);
+            $em->persist($contactToBePersisted);
+            $em->persist($message);
+            $em->flush();
+
 //            return $this->redirect($this->generateUrl(
 //                    'admin_post_show',
 //                    array('id' => $post->getId())
