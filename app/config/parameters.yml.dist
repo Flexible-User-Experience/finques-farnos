@@ -27,4 +27,4 @@ parameters:
     node: /usr/bin/node
     node_paths: /usr/local/lib/node_modules
     uglifyjs: /usr/local/bin/uglifyjs
-    uglifycss: /usr/local/bin/uglifyjs
+    uglifycss: /usr/local/bin/uglifycss

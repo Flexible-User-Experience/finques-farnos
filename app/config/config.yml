@@ -58,7 +58,7 @@ assetic:
             filters:
                 - less
                 - cssrewrite
-#                - uglifycss
+                - uglifycss
             output: css/front.css
         front_js:
             inputs:
