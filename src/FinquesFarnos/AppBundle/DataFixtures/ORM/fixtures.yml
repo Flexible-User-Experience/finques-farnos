@@ -101,6 +101,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
+        squareMeters: <numberBetween(40, 300)>
         price: <numberBetween(60000, 300000)>
         oldPrice: <numberBetween(60000, 300000)>
         rooms: <numberBetween(2, 5)>
@@ -122,6 +123,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
+        squareMeters: <numberBetween(40, 300)>
         price: <numberBetween(60000, 300000)>
         oldPrice: <numberBetween(60000, 300000)>
         rooms: <numberBetween(2, 5)>
@@ -144,6 +146,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
+        squareMeters: <numberBetween(40, 300)>
         price: <numberBetween(60000, 300000)>
         oldPrice: <numberBetween(60000, 300000)>
         rooms: <numberBetween(2, 5)>
