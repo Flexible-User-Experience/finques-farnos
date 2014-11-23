@@ -41,6 +41,11 @@ monolog:
         #    type:   chromephp
         #    level:  info
 
+# Twig Configuration
+twig:
+    globals:
+        google_analytics_enabled: false
+
 assetic:
     use_controller: true
 

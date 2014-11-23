@@ -29,6 +29,9 @@ twig:
     form:
         resources:
             - "::OhGoogleMaps/google_maps_form_widget.html.twig"
+    globals:
+        google_analytics_enabled: %google_analytics_enabled%
+        google_analytics_account: "%google_analytics_account%"
 
 # Assetic Configuration
 assetic:
