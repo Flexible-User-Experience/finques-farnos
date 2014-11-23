@@ -36,6 +36,7 @@
         "tecnick.com/tcpdf": "6.0.*",
         "egulias/email-validator": "1.2.*",
         "jms/i18n-routing-bundle": "1.1.*",
+        "twitter/bootstrap": "3.*",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {

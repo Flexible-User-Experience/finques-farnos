@@ -23,3 +23,8 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     cypress_git_repository: "/path/to/project/root"
+
+    node: /usr/bin/node
+    node_paths: /usr/local/lib/node_modules
+    uglifyjs: /usr/local/bin/uglifyjs
+    uglifycss: /usr/local/bin/uglifyjs
