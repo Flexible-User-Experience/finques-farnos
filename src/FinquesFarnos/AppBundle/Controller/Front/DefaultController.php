@@ -2,6 +2,8 @@
 
 namespace FinquesFarnos\AppBundle\Controller\Front;
 
+use FinquesFarnos\AppBundle\Form\Type\ContactType;
+use FinquesFarnos\AppBundle\Entity\Contact;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -49,7 +51,12 @@ class DefaultController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('::Front/contact.html.twig');
+        $contact = new Contact();
+        $form = $this->createForm(new ContactType(), $contact);
+
+        return $this->render('::Front/contact.html.twig', array(
+                'form' => $form->createView(),
+            ));
     }
 
     /**

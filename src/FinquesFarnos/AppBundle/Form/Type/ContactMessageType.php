@@ -7,13 +7,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * ContactType class
+ * ContactMessageType class
  *
  * @category FormType
  * @package  FinsquesFarnos\AppBundle\Form\Type
  * @author   David Romaní <david@flux.cat>
  */
-class ContactType extends AbstractType
+class ContactMessageType extends AbstractType
 {
     /**
      * Build form
@@ -24,10 +24,7 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('phone')
-            ->add('email')
-//            ->add('message', new ContactMessageType())
+            ->add('text')
         ;
     }
 
@@ -39,7 +36,7 @@ class ContactType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-                'data_class' => 'FinquesFarnos\AppBundle\Entity\Contact',
+                'data_class' => 'FinquesFarnos\AppBundle\Entity\ContactMessage',
             ));
     }
 
@@ -50,6 +47,6 @@ class ContactType extends AbstractType
      */
     public function getName()
     {
-        return 'contact';
+        return 'message';
     }
 }
