@@ -62,7 +62,11 @@
                 API logos
             </div>
             <div class="col-md-4">
-                Language selector
+                <div class="btn-group pull-right" role="group" data-aria-label="languageSelector">
+                    {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default">català</a>{% endif %}
+                    {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default">español</a>{% endif %}
+                    {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default">english</a>{% endif %}
+                </div>
             </div>
         </div>
     </div>
