@@ -2,6 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -13,7 +14,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class ImageSliderRepository extends EntityRepository
 {
-    public function getHomepageSlides()
+    /**
+     * Get homepage items
+     *
+     * @return ArrayCollection
+     */
+    public function getHomepageItems()
     {
         return $this->createQueryBuilder('s')
             ->where('s.enabled = :enabled')

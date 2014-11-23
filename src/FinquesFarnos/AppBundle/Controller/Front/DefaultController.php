@@ -19,9 +19,13 @@ class DefaultController extends Controller
      */
     public function homepageAction()
     {
-        $slides = $this->getDoctrine()->getRepository('AppBundle:ImageSlider')->getHomepageSlides();
+        $slides = $this->getDoctrine()->getRepository('AppBundle:ImageSlider')->getHomepageItems();
+        $properties = $this->getDoctrine()->getRepository('AppBundle:Property')->getHomepageItems();
 
-        return $this->render('::Front/homepage.html.twig', array('slides' => $slides));
+        return $this->render('::Front/homepage.html.twig', array(
+                'slides' => $slides,
+                'properties' => $properties,
+            ));
     }
 
     /**
