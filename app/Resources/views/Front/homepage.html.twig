@@ -37,30 +37,36 @@
         <div class="row">
             {% for property in properties %}
                 <div class="col-md-4">
-                    <h2>{{ property.name }}</h2>
-                    {% if property.showPriceOnlyWithNumbers %}
-                        <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <span>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</span>{% endif %}</h3>
-                    {% else %}
-                        <h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
-                    {% endif %}
-
-                    <p>{{ property.description }}</p>
-                    <div class="btn-group" role="group" data-aria-label="icons">
-                        {% if property.offerSpecial %}
-                            <button type="button" class="btn btn-default">{{ 'homepage.property.offer.special' | trans }}</button>
+                    <div class="thumbnail">
+                        {% if property.firstEnabledImage %}
+                            <img src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
                         {% endif %}
-                        {% if property.offerDiscount and not property.offerSpecial %}
-                            <button type="button" class="btn btn-default">{{ 'homepage.property.offer.discount' | trans }}</button>
-                        {% endif %}
-                        {% if property.squareMeters %}
-                            <button type="button" class="btn btn-default">{{ property.squareMeters }} m<sup>2</sup></button>
-                        {% endif %}
-                        {% if property.rooms %}
-                            <button type="button" class="btn btn-default">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
-                        {% endif %}
-                        {% if property.bathrooms %}
-                            <button type="button" class="btn btn-default">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
-                        {% endif %}
+                        <div class="caption">
+                            <h2>{{ property.name }}</h2>
+                            {% if property.showPriceOnlyWithNumbers %}
+                                <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <span>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</span>{% endif %}</h3>
+                            {% else %}
+                                <h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
+                            {% endif %}
+                            <p>{{ property.description }}</p>
+                            <div class="btn-group" role="group" data-aria-label="icons">
+                                {% if property.offerSpecial %}
+                                    <button type="button" class="btn btn-default">{{ 'homepage.property.offer.special' | trans }}</button>
+                                {% endif %}
+                                {% if property.offerDiscount and not property.offerSpecial %}
+                                    <button type="button" class="btn btn-default">{{ 'homepage.property.offer.discount' | trans }}</button>
+                                {% endif %}
+                                {% if property.squareMeters %}
+                                    <button type="button" class="btn btn-default">{{ property.squareMeters }} m<sup>2</sup></button>
+                                {% endif %}
+                                {% if property.rooms %}
+                                    <button type="button" class="btn btn-default">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
+                                {% endif %}
+                                {% if property.bathrooms %}
+                                    <button type="button" class="btn btn-default">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 {% if loop.index % 3 == 0 %}

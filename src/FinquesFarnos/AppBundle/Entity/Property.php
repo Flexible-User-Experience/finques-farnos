@@ -924,4 +924,23 @@ class Property extends Base
             'lng' => $this->getGpsLongitude(),
         );
     }
+
+    /**
+     * Get first enabled image. The collection is sorted by position (see line #39)
+     *
+     * @return ImageProperty|null
+     */
+    public function getFirstEnabledImage()
+    {
+        $firstImage = null;
+        /** @var ImageProperty $image */
+        foreach ($this->images as $image) {
+            if ($image->getEnabled()) {
+                $firstImage = $image;
+                break;
+            }
+        }
+
+        return $firstImage;
+    }
 }
