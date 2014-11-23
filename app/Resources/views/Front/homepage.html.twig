@@ -13,9 +13,9 @@
                 {#<!-- Wrapper for slides -->#}
                 <div class="carousel-inner" role="listbox">
                     {% for slide in slides %}
-                        <div class="item active">
-                            {{ slide.position }} {{ slide.imageName }} {{ slide.link }}
-                            <img src="#" alt="{{ slide.metaAlt }}" title="{{ slide.metaTitle }}">
+                        <div class="item{% if loop.first %} active{% endif %}">
+                            {#{{ slide.position }} {{ slide.imageName }} {{ slide.link }}#}
+                            <img src="{{ vich_uploader_asset(slide, 'slider_image') | imagine_filter('300xY') }}" alt="{{ slide.metaAlt }}" title="{{ slide.metaTitle }}">
                             {#<div class="carousel-caption">...</div>#}
                         </div>
                     {% endfor %}
