@@ -52,9 +52,15 @@
                         {% if property.offerDiscount and not property.offerSpecial %}
                             <button type="button" class="btn btn-default">{{ 'homepage.property.offer.discount' | trans }}</button>
                         {% endif %}
-                        {#<button type="button" class="btn btn-default">&#123;&#35; property.squareMeters &#35;&#125;</button>#}
-                        <button type="button" class="btn btn-default">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
-                        <button type="button" class="btn btn-default">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
+                        {% if property.squareMeters %}
+                            <button type="button" class="btn btn-default">{{ property.squareMeters }} m<sup>2</sup></button>
+                        {% endif %}
+                        {% if property.rooms %}
+                            <button type="button" class="btn btn-default">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
+                        {% endif %}
+                        {% if property.bathrooms %}
+                            <button type="button" class="btn btn-default">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
+                        {% endif %}
                     </div>
                 </div>
                 {% if loop.index % 3 == 0 %}
