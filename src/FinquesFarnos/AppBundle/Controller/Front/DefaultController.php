@@ -51,4 +51,20 @@ class DefaultController extends Controller
     {
         return $this->render('::Front/contact.html.twig');
     }
+
+    /**
+     * @Route("/privacy/", name="front_privacy")
+     */
+    public function privacyAction()
+    {
+        return $this->render('::Front/privacy.html.twig');
+    }
+
+    /**
+     * @Route("/legal/", name="front_legal")
+     */
+    public function legalAction()
+    {
+        return $this->render('::Front/legal.html.twig');
+    }
 }

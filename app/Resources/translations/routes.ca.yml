@@ -4,6 +4,8 @@
 #admin_sonata_user_user_show: '/admin/sonata/user/user/{id}/show'
 
 front_homepage: '/'
-front_properties: '/immobles'
-front_about: '/qui-som'
-front_contact: '/contacte'
+front_properties: '/immobles/'
+front_about: '/qui-som/'
+front_contact: '/contacte/'
+front_privacy: '/privacitat/'
+front_legal: '/avis-legal/'
