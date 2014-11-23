@@ -19,7 +19,9 @@ class DefaultController extends Controller
      */
     public function homepageAction()
     {
-        return $this->render('::Front/homepage.html.twig');
+        $slides = $this->getDoctrine()->getRepository('AppBundle:ImageSlider')->getHomepageSlides();
+
+        return $this->render('::Front/homepage.html.twig', array('slides' => $slides));
     }
 
     /**
