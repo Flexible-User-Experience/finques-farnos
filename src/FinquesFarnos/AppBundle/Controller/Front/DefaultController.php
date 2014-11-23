@@ -6,6 +6,7 @@ use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class DefaultController
@@ -49,10 +50,21 @@ class DefaultController extends Controller
     /**
      * @Route("/contact/", name="front_contact")
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
         $contact = new Contact();
         $form = $this->createForm(new ContactType(), $contact);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+//            $em->persist($post);
+//            $em->flush();
+//
+//            return $this->redirect($this->generateUrl(
+//                    'admin_post_show',
+//                    array('id' => $post->getId())
+//                ));
+        }
 
         return $this->render('::Front/contact.html.twig', array(
                 'form' => $form->createView(),

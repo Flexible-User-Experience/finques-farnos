@@ -17,3 +17,12 @@ homepage:
     offer:
       special: special
       discount: discount
+
+contact:
+  form:
+    title: contact form
+    name: name
+    phone: phone
+    email: email
+    message: message
+    send: send

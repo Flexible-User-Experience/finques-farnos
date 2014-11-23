@@ -17,3 +17,12 @@ homepage:
     offer:
       special: oferta
       discount: rebaixat
+
+contact:
+  form:
+    title: formulari de contacte
+    name: nom
+    phone: telèfon
+    email: email
+    message: missatge
+    send: enviar
