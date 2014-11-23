@@ -59,9 +59,10 @@ assetic:
                 - less
                 - cssrewrite
 #                - uglifycss
-            output: css/bootstrap.css
+            output: css/front.css
         front_js:
             inputs:
+                - %kernel.root_dir%/../vendor/components/jquery/jquery.js
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/js/affix.js
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/js/alert.js
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/js/button.js
@@ -77,7 +78,7 @@ assetic:
                 - '@AppBundle/Resources/public/js/main.js'
             filters:
                 - uglifyjs2
-            output: js/bootstrap.js
+            output: js/front.js
 
 # Doctrine Configuration
 doctrine:
