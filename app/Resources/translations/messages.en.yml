@@ -3,3 +3,8 @@ menu:
   properties: properties
   about: about us
   contact: contact
+
+homepage:
+  property:
+    before: before
+    since: since

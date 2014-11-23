@@ -3,3 +3,8 @@ menu:
   properties: immobles
   about: qui som
   contact: contacte
+
+homepage:
+  property:
+    before: abans
+    since: des de

@@ -3,3 +3,8 @@ menu:
   properties: inmuebles
   about: quien somos
   contact: contacto
+
+homepage:
+  property:
+    before: antes
+    since: desde
