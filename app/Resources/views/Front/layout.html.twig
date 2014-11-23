@@ -12,10 +12,7 @@
     <meta name="author" content="www.flux.cat">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block stylesheets %}
-        {#<link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">#}
-        {#<link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap-theme.min.css') }}">#}
-        {#<link rel="stylesheet" href="{{ asset('bundles/app/css/main.css') }}">#}
-        {% stylesheets '@bootstrap_css' %}
+        {% stylesheets '@front_css' %}
             <link rel="stylesheet" href="{{ asset_url }}">
         {% endstylesheets %}
     {% endblock %}
@@ -96,10 +93,8 @@
 {% block javascriptsbody %}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ asset('bundles/app/js/vendor/jquery-1.11.1.min.js') }}"><\/script>')</script>
-    {#<script src="{{ asset('bundles/app/js/vendor/bootstrap.min.js') }}"></script>#}
-    {#<script src="{{ asset('bundles/app/js/main.js') }}"></script>#}
-    {% javascripts '@bootstrap_js' filter="" %}
-    <script src="{{ asset_url }}"></script>
+    {% javascripts '@front_js' %}
+        <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
 </body>

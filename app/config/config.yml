@@ -48,16 +48,19 @@ assetic:
         uglifyjs2:
             bin: "%uglifyjs%"
             apply_to: "\.js$"
+        uglifycss:
+            bin: "%uglifycss%"
     assets:
-        bootstrap_css:
+        front_css:
             inputs:
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less
-                - %kernel.root_dir%/../vendor/twitter/bootstrap/less/theme.less
+                - '@AppBundle/Resources/public/css/main.less'
             filters:
                 - less
                 - cssrewrite
+#                - uglifycss
             output: css/bootstrap.css
-        bootstrap_js:
+        front_js:
             inputs:
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/js/affix.js
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/js/alert.js
@@ -71,6 +74,7 @@ assetic:
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/js/scrollspy.js
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/js/tab.js
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/js/transition.js
+                - '@AppBundle/Resources/public/js/main.js'
             filters:
                 - uglifyjs2
             output: js/bootstrap.js
