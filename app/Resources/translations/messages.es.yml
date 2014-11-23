@@ -4,6 +4,10 @@ menu:
   about: quien somos
   contact: contacto
 
+frontend:
+  privacy: privacidad
+  legal: aviso legal
+
 homepage:
   property:
     before: antes

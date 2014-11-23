@@ -4,6 +4,10 @@ menu:
   about: about us
   contact: contact
 
+frontend:
+  privacy: privacy
+  legal: legal
+
 homepage:
   property:
     before: before

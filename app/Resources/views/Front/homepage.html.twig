@@ -48,7 +48,7 @@
                         <div class="caption">
                             <h2>{{ property.name }}</h2>
                             {% if property.showPriceOnlyWithNumbers %}
-                                <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <span>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</span>{% endif %}</h3>
+                                <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
                             {% else %}
                                 <h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
                             {% endif %}

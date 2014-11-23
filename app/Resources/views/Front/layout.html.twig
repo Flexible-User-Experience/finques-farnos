@@ -48,11 +48,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                FINQUES FARNÓS, SL<br>
-                C. Corsini, 61<br>
-                43870 Amposta (Tarragona)<br>
-                Spain<br>
-                (+34) 977 702 721
+                <address>
+                    <strong>FINQUES FARNÓS, SL</strong><br>
+                    C. Corsini, 61<br>
+                    43870 Amposta (Tarragona)<br>
+                    Spain<br>
+                    (+34) 977 702 721
+                </address>
             </div>
             <div class="col-md-2">
                 FB icon
@@ -66,6 +68,13 @@
                     {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default">català</a>{% endif %}
                     {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default">español</a>{% endif %}
                     {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default">english</a>{% endif %}
+                </div>
+                <br>
+                <div style="display:block;width:100%;text-align:right;margin-top:50px;">{# TODO find a better BS approach #}
+                    <ul class="list-inline">
+                        <li><a href="{{ path('front_privacy', {'_locale': app.request.locale}) }}">{{ 'frontend.privacy' | trans }}</a></li>
+                        <li><a href="{{ path('front_legal', {'_locale': app.request.locale}) }}">{{ 'frontend.legal' | trans }}</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
