@@ -12,7 +12,10 @@
             </div>
             <div class="col-md-4">
                 <div class="well well-lg">
-                    {{ form(form) }}
+                    <form method="POST" action="#" {{ form_enctype(form) }}>
+                        {{ form_widget(form) }}
+                        <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-default pull-right">
+                    </form>
                 </div>
             </div>
         </div>
