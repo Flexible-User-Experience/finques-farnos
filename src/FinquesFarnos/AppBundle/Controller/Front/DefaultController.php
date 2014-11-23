@@ -72,9 +72,10 @@ class DefaultController extends Controller
             } else {
                 $contactToBePersisted = $contactForm;
             }
+            $fc = $request->get('contact');
             /** @var ContactMessage $message */
             $message = new ContactMessage();
-            $message->setContact($contactToBePersisted)->setText($request->get('message'));
+            $message->setContact($contactToBePersisted)->setText($fc['message']);
             $contactToBePersisted->addMessage($message);
             $em->persist($contactToBePersisted);
             $em->persist($message);
