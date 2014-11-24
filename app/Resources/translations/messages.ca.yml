@@ -29,7 +29,7 @@ about:
         L'experiència, capacitació tècnica i professional, ens permet oferir un servei de qualitat avalat per la confiança que els nostres clients han dipositat en la nostra gestió durant tots aquests anys.<br><br>
         A <strong>Finques Farnós</strong> som <a target="_blank" href="http://www.apitarragona.com">Agents de la Propietat Immobiliària (API)</a> una garantia més que avala la nostra professionalitat i formació acadèmica.
     services:
-      title: els nosters serveis
+      title: els nostres serveis
       text: |
         <ul>
         <li>Gestió en la compra-venda de finques rústiques i urbanes.</li>
@@ -40,6 +40,7 @@ about:
         <li>Informes de situació urbanística i registral.</li>
         <li>Assessorament sobre inversions.</li>
         </ul>
+
 contact:
   form:
     title: formulari de contacte

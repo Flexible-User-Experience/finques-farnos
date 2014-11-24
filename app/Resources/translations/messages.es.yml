@@ -18,6 +18,29 @@ homepage:
       special: oferta
       discount: rebajado
 
+about:
+  left:
+    main: <strong>Finques Farnós</strong> inicia su trayectoria profesional en 1984, como empresa familiar, ofreciendo sus servicios immobiliarios desde <strong>Amposta</strong> a todo el <strong>Delta del Ebro</strong>, con una continuidad que garantiza el conocimiento de la profesión.
+  right:
+    company:
+      title: empresa
+      text: |
+        Nuestra filosofía se basa en actuar con total transparencia, trabajando con profesionalidad y honradez, de esta manera conseguimos que nuestra gestión deje satisfechos a compradores y vendedores.<br><br>
+        La experiencia, capacitación técnica y profesional, nos permite ofrecer un servicio de calidad garantizado por la confianza que nuestros clientes depositan en nuestra gestión durante todos estos años.<br><br>
+        En <strong>Finques Farnós</strong> somos <a target="_blank" href="http://www.apitarragona.com">Agentes de la Propiedad Inmobiliaria (API)</a> una garantía más que avala nuestra profesionalidad y formación académica.
+    services:
+      title: nuestros servicios
+      text: |
+        <ul>
+        <li>Gestión en la compra-venta de fincas rústicas y urbanas.</li>
+        <li>Permutas y traspasos.</li>
+        <li>Alquileres.</li>
+        <li>Valoraciones.</li>
+        <li>Financiamiento: gestión en la concesión de hipotecas.</li>
+        <li>Informes de situación urbanística y registral.</li>
+        <li>Asesoramiento sobre inversiones.</li>
+        </ul>
+
 contact:
   form:
     title: formulario de contacto
