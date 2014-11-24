@@ -55,6 +55,9 @@ class DefaultControllerTest extends WebTestCase
             array('/ca/avis-legal/'),
             array('/es/aviso-legal/'),
             array('/en/legal/'),
+            array('/ca/credits/'),
+            array('/es/creditos/'),
+            array('/en/credits/'),
         );
     }
 }

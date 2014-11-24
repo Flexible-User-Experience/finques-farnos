@@ -131,4 +131,12 @@ class DefaultController extends Controller
     {
         return $this->render('::Front/legal.html.twig');
     }
+
+    /**
+     * @Route("/credits/", name="front_credits")
+     */
+    public function creditsAction()
+    {
+        return $this->render('::Front/credits.html.twig');
+    }
 }
