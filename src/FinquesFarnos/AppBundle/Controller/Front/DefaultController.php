@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
+use Knp\Component\Pager\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,7 +39,14 @@ class DefaultController extends Controller
      */
     public function propertiesAction()
     {
-        return $this->render('::Front/properties.html.twig');
+        $query = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPropertiesSortedByPriceQuery();
+        /** @var Paginator $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($query, $this->get('request')->query->get('page', 1));
+
+        return $this->render('::Front/properties.html.twig', array(
+                'pagination' => $pagination
+            ));
     }
 
     /**

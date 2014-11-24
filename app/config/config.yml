@@ -235,3 +235,9 @@ jms_i18n_routing:
     default_locale: ca
     locales:        [ ca, es, en ]
     strategy:       prefix
+
+# KNP Paginator
+knp_paginator:
+    page_range: 10
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig

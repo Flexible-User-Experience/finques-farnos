@@ -5,11 +5,55 @@
 {% block metakeywords %}{% endblock %}
 
 {% block main %}
-    <div class="jumbotron">
-        <div class="container">
-            <h1>{{ 'menu.properties' | trans }}</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ 'menu.properties' | trans }}</h1>
+            </div>
+        </div>
+        {% for property in pagination %}
+            <div class="row">
+                <div class="col-md-4">
+                    {% if property.firstEnabledImage %}
+                        <img src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
+                    {% endif %}
+                </div>
+                <div class="col-md-4">
+                    <h2>{{ property.name }}</h2>
+                    {% if property.showPriceOnlyWithNumbers %}
+                        <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
+                    {% else %}
+                        <h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
+                    {% endif %}
+                    <div class="btn-group" role="group" data-aria-label="icons">
+                        {% if property.offerSpecial %}
+                            <button type="button" class="btn btn-default">{{ 'homepage.property.offer.special' | trans }}</button>
+                        {% endif %}
+                        {% if property.offerDiscount and not property.offerSpecial %}
+                            <button type="button" class="btn btn-default">{{ 'homepage.property.offer.discount' | trans }}</button>
+                        {% endif %}
+                        {% if property.squareMeters %}
+                            <button type="button" class="btn btn-default">{{ property.squareMeters }} m<sup>2</sup></button>
+                        {% endif %}
+                        {% if property.rooms %}
+                            <button type="button" class="btn btn-default">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
+                        {% endif %}
+                        {% if property.bathrooms %}
+                            <button type="button" class="btn btn-default">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <p>{{ property.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="paginator pull-right">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

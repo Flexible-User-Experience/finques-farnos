@@ -33,6 +33,20 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
+     * Get enabled properties sorted by price query
+     *
+     * @return Query
+     */
+    public function getEnabledPropertiesSortedByPriceQuery()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('p.price', 'ASC')
+            ->getQuery();
+    }
+
+    /**
      * Get top 10 visited array
      *
      * @return array
