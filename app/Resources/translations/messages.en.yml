@@ -21,9 +21,11 @@ homepage:
 
 properties:
   list:
-    more:
-      button: more info
-
+    button:
+      more: more info
+      back: back to list
+      prev: previous
+      next: next
 about:
   left:
     main: <strong>Finques Farnós</strong> began his professional career in 1984 as a family business, offering its state agent services from <strong>Amposta</strong> throughout the <strong>Delta del Ebro</strong>, with a continuity that guarantees a good knowledge of the profession.

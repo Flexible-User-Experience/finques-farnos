@@ -21,8 +21,11 @@ homepage:
 
 properties:
   list:
-    more:
-      button: més informació
+    button:
+      more: més informació
+      back: tornar al llistat
+      prev: anterior
+      next: següent
 
 about:
   left:
