@@ -5,6 +5,7 @@ namespace FinquesFarnos\AppBundle\Controller\Front;
 use Doctrine\ORM\EntityManager;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
 use FinquesFarnos\AppBundle\Entity\Property;
+use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use Knp\Component\Pager\Paginator;
@@ -56,8 +57,19 @@ class DefaultController extends Controller
      * @Route("/property/{type}/{name}/", name="front_property")
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"name": "nameSlug"}})
      */
-    public function propertyAction(Property $property)
+    public function propertyAction(Request $request, Property $property)
     {
+        $adminListPropertiesRoute = $this->generateUrl('admin_finquesfarnos_app_property_list');
+        if (strpos($request->headers->get('referer'), $adminListPropertiesRoute) == 0) {
+            // Referer request is not an admin route so add a visit record
+            /** @var EntityManager $em */
+            $em = $this->getDoctrine()->getManager();
+            $visit = new PropertyVisit();
+            $visit->setProperty($property);
+            $em->persist($visit);
+            $em->flush();
+        }
+
         return $this->render('::Front/property.html.twig', array(
                 'property' => $property,
             ));
