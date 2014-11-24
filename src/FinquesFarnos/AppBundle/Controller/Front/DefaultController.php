@@ -80,16 +80,22 @@ class DefaultController extends Controller
             $em->persist($contactToBePersisted);
             $em->persist($message);
             $em->flush();
+            // TODO send email
 
-//            return $this->redirect($this->generateUrl( TODO redirect to thank you & send email
-//                    'admin_post_show',
-//                    array('id' => $post->getId())
-//                ));
+            return $this->redirect($this->generateUrl('front_contact_thankyou'));
         }
 
         return $this->render('::Front/contact.html.twig', array(
                 'form' => $form->createView(),
             ));
+    }
+
+    /**
+     * @Route("/contact/thank-you/", name="front_contact_thankyou")
+     */
+    public function contactThankYouAction()
+    {
+        return $this->render('::Front/contact_thank_you.html.twig');
     }
 
     /**
