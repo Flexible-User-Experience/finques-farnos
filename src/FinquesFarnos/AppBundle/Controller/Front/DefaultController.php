@@ -69,9 +69,16 @@ class DefaultController extends Controller
             $em->persist($visit);
             $em->flush();
         }
+        $contact = new Contact();
+        $form = $this->createForm(new ContactType(), $contact);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+        }
 
         return $this->render('::Front/property.html.twig', array(
                 'property' => $property,
+                'form' => $form->createView(),
             ));
     }
 

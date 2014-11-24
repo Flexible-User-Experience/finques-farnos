@@ -29,6 +29,7 @@ properties:
 
 property:
   localization: localization
+  form: have any questions about this property?
   energy:
     efficiency: energy efficiency
     noclass: without class

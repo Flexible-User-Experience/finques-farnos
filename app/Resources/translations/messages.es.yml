@@ -29,6 +29,7 @@ properties:
 
 property:
   localization: localitzación
+  form: ¿tienes alguna duda sobre este inmueble?
   energy:
     efficiency: eficiencia energética
     noclass: sin clasificación

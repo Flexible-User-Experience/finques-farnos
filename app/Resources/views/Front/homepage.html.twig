@@ -43,7 +43,7 @@
                 <div class="col-md-4">
                     <div class="thumbnail">
                         {% if property.firstEnabledImage %}
-                            <img src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
+                            <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
                         {% endif %}
                         <div class="caption">
                             <h2>{{ property.name }}</h2>

@@ -27,6 +27,13 @@
                     <img src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
                 {% endif %}
                 <h2>{{ property.name }}</h2>
+                <div class="btn-group" role="group" data-aria-label="icons">
+                    <button type="button" class="btn btn-default btn-sm">FB</button>
+                    <button type="button" class="btn btn-default btn-sm">TW</button>
+                    <button type="button" class="btn btn-default btn-sm">EM</button>
+                    <button type="button" class="btn btn-default btn-sm">DW</button>
+                </div>
+                <hr>
                 <p>{{ property.description }}</p>
                 <hr>
                 <h2>{{ 'property.localization' | trans }}</h2>
@@ -71,7 +78,11 @@
                     {% endfor %}
                 {% endif %}
                 <hr>
-                <p>contact form</p>
+                <h4>{{ 'property.form' | trans }}</h4>
+                <form method="POST" {{ form_enctype(form) }}>
+                    {{ form_widget(form) }}
+                    <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-default pull-right">
+                </form>
             </div>
         </div>
     </div>
