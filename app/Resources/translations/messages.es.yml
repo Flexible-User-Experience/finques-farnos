@@ -29,3 +29,6 @@ contact:
     thankyou:
       title: Gracias
       message: Tu mensaje se ha enviado correctamente, le responderemos lo antes posible. Muchas gracias por contactar con Finques Farnós.
+
+errors.anerroroccurred: Se ha producido un error
+errors.theserverreturneda: El servidor ha devuelto el mensaje

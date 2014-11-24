@@ -89,6 +89,11 @@ class ContactAdmin extends BaseAdmin
             ->add('enabled', null, array('label' => 'Actiu'));
     }
 
+    /**
+     * Get messages helper form mapper
+     *
+     * @return string
+     */
     private function getMessagesHelperFormMapper()
     {
         /** @var Router $rs */

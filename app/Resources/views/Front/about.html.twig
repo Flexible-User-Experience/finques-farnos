@@ -4,12 +4,28 @@
 {% block metadescription %}{% endblock %}
 {% block metakeywords %}{% endblock %}
 
+            {#<h1>{{ 'menu.about' | trans }}</h1>#}
 {% block main %}
-    <div class="jumbotron">
-        <div class="container">
-            <h1>{{ 'menu.about' | trans }}</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="http://lorempixel.com/c/1140/300/nature/" alt="dummy"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="well well-lg">
+                    <p class="lead">{{ 'about.left.main' | trans | raw }}</p>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="well well-lg">
+                    <h2>{{ 'about.right.company.title' | trans }}</h2>
+                    <p>{{ 'about.right.company.text' | trans | raw }}</p>
+                    <h2>{{ 'about.right.services.title' | trans }}</h2>
+                    <p>{{ 'about.right.services.text' | trans | raw }}</p>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
