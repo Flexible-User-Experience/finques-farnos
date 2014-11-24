@@ -1,11 +1,30 @@
 {% extends '::Front/layout.html.twig' %}
 
+{% block title %}{{ 'menu.contact' | trans }} · {{ parent() }}{% endblock %}
+{% block metadescription %}{% endblock %}
+{% block metakeywords %}{% endblock %}
+
 {% block main %}
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Contact</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.259842959079!2d0.5805489999999973!3d40.71229600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a0fe750387ed8d%3A0x3255725413b90f22!2sFINQUES+FARN%C3%93S+-+API!5e0!3m2!1ses!2ses!4v1416764569771" width="100%" height="450" data-frameborder="0" style="border:0"></iframe>
+            </div>
+            <div class="col-md-4">
+                <div class="well well-lg">
+                    {% block contactform %}
+                        <h4>{{ 'contact.form.title' | trans }}</h4>
+                        <form method="POST" {{ form_enctype(form) }}>
+                            {{ form_widget(form) }}
+                            <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-default pull-right">
+                        </form>
+                    {% endblock %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
+
+{% block footlangca %}{{ path('front_contact', {'_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('front_contact', {'_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('front_contact', {'_locale': 'en'}) }}{% endblock %}

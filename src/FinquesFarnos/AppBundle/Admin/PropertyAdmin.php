@@ -57,6 +57,7 @@ class PropertyAdmin extends BaseAdmin
                 ))
             ->end()
             ->with('Propietats', array('class' => 'col-md-6'))
+            ->add('squareMeters', null, array('label' => 'Metres cuadrats'))
             ->add('price', null, array('label' => 'Preu'))
             ->add('oldPrice', null, array('label' => 'Preu anterior'))
             ->add('rooms', null, array('label' => 'Habitacions', 'required' => false))
@@ -140,6 +141,7 @@ class PropertyAdmin extends BaseAdmin
                     'sort_field_mapping' => array('fieldName' => 'name'),
                     'sort_parent_association_mappings' => array(array('fieldName' => 'type')),
                 ))
+            ->add('squareMeters', 'integer', array('label' => 'Metres cuadrats', 'editable' => true))
             ->add('price', 'integer', array('label' => 'Preu', 'editable' => true))
             ->add('imagesCount', 'integer', array('label' => 'Imatges', 'template' => '::Admin/property_images_count_list_field.html.twig'))
             ->add('totalVisits', 'integer', array('label' => 'Visites', 'editable' => false))
@@ -171,6 +173,7 @@ class PropertyAdmin extends BaseAdmin
                     'expanded' => false,
                     'multiple' => true,
                 ))
+            ->add('squareMeters', null, array('label' => 'Metres cuadrats'))
             ->add('price', null, array('label' => 'Preu'))
             ->add('totalVisits', null, array('label' => 'Visites'))
             ->add('enabled', null, array('label' => 'Actiu'));

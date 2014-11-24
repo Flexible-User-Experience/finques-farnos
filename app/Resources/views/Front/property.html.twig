@@ -1,0 +1,65 @@
+{% extends '::Front/layout.html.twig' %}
+
+{% block title %}{{ 'menu.properties' | trans }} · {{ parent() }}{% endblock %}
+{% block metadescription %}{% endblock %}
+{% block metakeywords %}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <p><a class="btn btn-default" role="button" href="{{ path('front_properties') }}"><span class="glyphicon glyphicon-circle-arrow-left" data-aria-hidden="true"></span> {{ 'properties.list.button.back' | trans }}</a></p>
+            </div>
+            <div class="col-md-4">
+                <div class="btn-group pull-right" role="group" data-aria-label="propertiesPager">
+                    <button type="button" class="btn btn-default" data-aria-label="{{ 'properties.list.button.prev' | trans }}">
+                        <span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default" data-aria-label="{{ 'properties.list.button.next' | trans }}">
+                        <span class="glyphicon glyphicon-chevron-right" data-aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                {% if property.firstEnabledImage %}
+                    <img src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
+                {% endif %}
+                <h2>{{ property.name }}</h2>
+                <p>{{ property.description }}</p>
+                <hr>
+                <h2>{{ 'property.localization' | trans }}</h2>
+            </div>
+            <div class="col-md-4">
+                <h2>{{ property.name }}</h2>
+                {% if property.showPriceOnlyWithNumbers %}
+                    <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
+                {% else %}
+                    <h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
+                {% endif %}
+                <div class="btn-group" role="group" data-aria-label="icons">
+                    {% if property.offerSpecial %}
+                        <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
+                    {% endif %}
+                    {% if property.offerDiscount and not property.offerSpecial %}
+                        <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
+                    {% endif %}
+                    {% if property.squareMeters %}
+                        <button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>
+                    {% endif %}
+                    {% if property.rooms %}
+                        <button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
+                    {% endif %}
+                    {% if property.bathrooms %}
+                        <button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footlangca %}{{ path('front_properties', {'_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('front_properties', {'_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('front_properties', {'_locale': 'en'}) }}{% endblock %}

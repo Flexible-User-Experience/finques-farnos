@@ -29,7 +29,7 @@ class Property extends Base
 
     /**
      * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties")
-     * @ORM\JoinColumns({@ORM\JoinColumn(name="property_id", referencedColumnName="id")})
+     * @ORM\JoinColumns({@ORM\JoinColumn(name="type_id", referencedColumnName="id")})
      * @var Type
      */
     private $type;
@@ -67,6 +67,12 @@ class Property extends Base
      * @var string
      */
     private $description;
+
+    /**
+     * @ORM\Column(name="square_meters", type="integer", nullable=true)
+     * @var integer
+     */
+    private $squareMeters = 0;
 
     /**
      * @ORM\Column(type="string", length=255, name="city", nullable=true)
@@ -312,6 +318,30 @@ class Property extends Base
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set SquareMeters
+     *
+     * @param int $squareMeters
+     *
+     * @return $this
+     */
+    public function setSquareMeters($squareMeters)
+    {
+        $this->squareMeters = $squareMeters;
+
+        return $this;
+    }
+
+    /**
+     * Get SquareMeters
+     *
+     * @return int
+     */
+    public function getSquareMeters()
+    {
+        return $this->squareMeters;
     }
 
     /**
@@ -893,5 +923,24 @@ class Property extends Base
             'lat' => $this->getGpsLatitude(),
             'lng' => $this->getGpsLongitude(),
         );
+    }
+
+    /**
+     * Get first enabled image. The collection is sorted by position (see line #39)
+     *
+     * @return ImageProperty|null
+     */
+    public function getFirstEnabledImage()
+    {
+        $firstImage = null;
+        /** @var ImageProperty $image */
+        foreach ($this->images as $image) {
+            if ($image->getEnabled()) {
+                $firstImage = $image;
+                break;
+            }
+        }
+
+        return $firstImage;
     }
 }

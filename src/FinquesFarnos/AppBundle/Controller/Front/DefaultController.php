@@ -2,8 +2,16 @@
 
 namespace FinquesFarnos\AppBundle\Controller\Front;
 
+use Doctrine\ORM\EntityManager;
+use FinquesFarnos\AppBundle\Entity\ContactMessage;
+use FinquesFarnos\AppBundle\Entity\Property;
+use FinquesFarnos\AppBundle\Form\Type\ContactType;
+use FinquesFarnos\AppBundle\Entity\Contact;
+use Knp\Component\Pager\Paginator;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Class DefaultController
@@ -19,15 +27,40 @@ class DefaultController extends Controller
      */
     public function homepageAction()
     {
-        return $this->render('::Front/homepage.html.twig');
+        $slides = $this->getDoctrine()->getRepository('AppBundle:ImageSlider')->getHomepageItems();
+        $properties = $this->getDoctrine()->getRepository('AppBundle:Property')->getHomepageItems();
+
+        return $this->render('::Front/homepage.html.twig', array(
+                'slides' => $slides,
+                'properties' => $properties,
+            ));
     }
 
     /**
      * @Route("/properties/", name="front_properties")
+     * @Route("/properties/{page}", name="front_properties_page", defaults={"page" = 2})
      */
     public function propertiesAction()
     {
-        return $this->render('::Front/properties.html.twig');
+        $query = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPropertiesSortedByPriceQuery();
+        /** @var Paginator $paginator */
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate($query, $this->get('request')->query->get('page', 1));
+
+        return $this->render('::Front/properties.html.twig', array(
+                'pagination' => $pagination
+            ));
+    }
+
+    /**
+     * @Route("/property/{type}/{name}/", name="front_property")
+     * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"name": "nameSlug"}})
+     */
+    public function propertyAction(Property $property)
+    {
+        return $this->render('::Front/property.html.twig', array(
+                'property' => $property,
+            ));
     }
 
     /**
@@ -41,8 +74,91 @@ class DefaultController extends Controller
     /**
      * @Route("/contact/", name="front_contact")
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        return $this->render('::Front/contact.html.twig');
+        $contact = new Contact();
+        $form = $this->createForm(new ContactType(), $contact);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Contact $contactForm */
+            $contactForm = $form->getData();
+            /** @var EntityManager $em */
+            $em = $this->getDoctrine()->getManager();
+            /** @var Contact $contactToBePersisted */
+            $contactToBePersisted = $em->getRepository('AppBundle:Contact')->findOneBy(array('email' => $contactForm->getEmail()));
+            if ($contactToBePersisted) {
+                $contactToBePersisted
+                    ->setName($contactForm->getName())
+                    ->setPhone($contactForm->getPhone())
+                    ->setEnabled(true);
+            } else {
+                $contactToBePersisted = $contactForm;
+            }
+            $fc = $request->get('contact');
+            /** @var ContactMessage $message */
+            $message = new ContactMessage();
+            $message->setContact($contactToBePersisted)->setText($fc['message']);
+            $contactToBePersisted->addMessage($message);
+            $em->persist($contactToBePersisted);
+            $em->persist($message);
+            $em->flush();
+            // Send email
+            /** @var \Swift_Message $emailMessage */
+            $emailMessage = \Swift_Message::newInstance()
+                ->setSubject('Formulari de contacte pàgina web www.finquesfarnos.com')
+                ->setFrom('webapp@finquesfarnos.com')
+                ->setTo('info@fiquesfarnos.com')
+                ->setBody(
+                    $this->renderView(
+                        '::Front/contact.email.html.twig',
+                        array(
+                            'form' => $contactForm,
+                            'message' => $fc['message']
+                        )
+                    )
+                )
+                ->setCharset('UTF-8')
+                ->setContentType('text/html')
+            ;
+            $this->get('mailer')->send($emailMessage);
+
+            return $this->redirect($this->generateUrl('front_contact_thankyou'));
+        }
+
+        return $this->render('::Front/contact.html.twig', array(
+                'form' => $form->createView(),
+            ));
+    }
+
+    /**
+     * @Route("/contact/thank-you/", name="front_contact_thankyou")
+     */
+    public function contactThankYouAction()
+    {
+        return $this->render('::Front/contact_thank_you.html.twig');
+    }
+
+    /**
+     * @Route("/privacy/", name="front_privacy")
+     */
+    public function privacyAction()
+    {
+        return $this->render('::Front/privacy.html.twig');
+    }
+
+    /**
+     * @Route("/legal/", name="front_legal")
+     */
+    public function legalAction()
+    {
+        return $this->render('::Front/legal.html.twig');
+    }
+
+    /**
+     * @Route("/credits/", name="front_credits")
+     */
+    public function creditsAction()
+    {
+        return $this->render('::Front/credits.html.twig');
     }
 }

@@ -1,0 +1,29 @@
+<p>Has rebut aquest missatge a través de la pàgina web <a href="{{ app.request.getSchemeAndHttpHost() }}">{{ app.request.getSchemeAndHttpHost() }}</a></p>
+<table style="margin:20px auto;padding:8px;background:#A45100;color:#FFF">
+    <thead>
+    <tr>
+        <th style="padding:8px;margin:10px;"></th>
+        <th colspan="6" style="padding:8px;margin:10px;">Formulari de contacte</th>
+        <th style="padding:8px;margin:10px;"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="padding:8px;margin:10px;"></td>
+        <td style="padding:8px;margin:10px;">Nom:</td>
+        <td style="padding:8px;background:#FFF;color:#000;margin:10px;">{{ form.name }}</td>
+        <td style="padding:8px;margin:10px;">Email:</td>
+        <td style="padding:8px;background:#FFF;color:#000;margin:10px;"><a href="mailto:{{ form.email }}">{{ form.email }}</a></td>
+        <td style="padding:8px;margin:10px;">Telèfon:</td>
+        <td style="padding:8px;background:#FFF;color:#000;margin:10px;">{{ form.phone }}</td>
+        <td style="padding:8px;margin:10px;"></td>
+    </tr>
+    <tr>
+        <td style="padding:8px;margin:10px;"></td>
+        <td style="padding:8px;margin:10px;">Missatge:</td>
+        <td colspan="5" style="padding:8px;background:#FFF;color:#000;margin:10px;">{{ message | raw }}</td>
+        <td style="padding:8px;margin:10px;"></td>
+    </tr>
+    </tbody>
+</table>
+<p>No respondre aquest missatge, ha estat generat automàticament per una màquina. Per atendre correctament a la persona que sol·icita la informació ha de respondre a <a href="mailto:{{ form.email }}">{{ form.email }}</a></p>

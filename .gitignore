@@ -1,5 +1,7 @@
 /web/bundles/
 /web/media/cache/
+/web/css/dev/*
+/web/js/dev/*
 !web/media/.gitkeep
 /app/bootstrap.php.cache
 /app/cache/*

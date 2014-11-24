@@ -3,3 +3,63 @@ menu:
   properties: properties
   about: about us
   contact: contact
+
+frontend:
+  privacy: privacy
+  legal: legal
+  credits: credits
+
+homepage:
+  property:
+    before: before
+    since: since
+    rooms: rooms
+    bathrooms: bathrooms
+    offer:
+      special: special
+      discount: discount
+
+properties:
+  list:
+    button:
+      more: more info
+      back: back to list
+      prev: previous
+      next: next
+about:
+  left:
+    main: <strong>Finques Farnós</strong> began his professional career in 1984 as a family business, offering its state agent services from <strong>Amposta</strong> throughout the <strong>Delta del Ebro</strong>, with a continuity that guarantees a good knowledge of the profession.
+  right:
+    company:
+      title: company
+      text: |
+        Our philosophy is to act with full transparency, working with professionalism and honesty, so we get our management do buyers and sellers satisfied.<br><br>
+        Our experience, technical skills and professionalism, allow us to offer a quality service backed by the trust of our customers that they have placed in our management during all of these years.<br><br>
+        At <strong>Finques Farnós</strong> we are <a target="_blank" href="http://www.apitarragona.com">Agentes de la Propiedad Inmobiliaria (API)</a> that supports a further guarantee of our professionalism and academic training.
+    services:
+      title: services
+      text: |
+        <ul>
+        <li>Management on the sale of rural and urban places.</li>
+        <li>Exchanges and transfers.</li>
+        <li>Rentals.</li>
+        <li>Valuation.</li>
+        <li>Funding: management in mortgage lending</li>
+        <li>Situation reports and planning register.</li>
+        <li>Investment advisory services.</li>
+        </ul>
+
+contact:
+  form:
+    title: contact form
+    name: name
+    phone: phone
+    email: email
+    message: message
+    send: send
+    thankyou:
+      title: Thank you
+      message: Your message has been sent, we will reply as soon as possible. Thank you very much for contacting Farnós Properties.
+
+errors.anerroroccurred: There was an error
+errors.theserverreturneda: The server returned the message

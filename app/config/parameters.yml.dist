@@ -16,7 +16,15 @@ parameters:
 
     locale:            en
 
+    google_analytics_enabled:   false
+    google_analytics_account:   "UA-xxxxxxxx-x"
+
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     cypress_git_repository: "/path/to/project/root"
+
+    node: /usr/bin/node
+    node_paths: /usr/local/lib/node_modules
+    uglifyjs: /usr/local/bin/uglifyjs
+    uglifycss: /usr/local/bin/uglifycss

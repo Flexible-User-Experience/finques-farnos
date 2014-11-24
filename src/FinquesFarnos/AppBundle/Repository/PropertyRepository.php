@@ -2,6 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -15,6 +16,41 @@ use Doctrine\ORM\QueryBuilder;
  */
 class PropertyRepository extends EntityRepository
 {
+    /**
+     * Get homepage items
+     *
+     * @return ArrayCollection
+     */
+    public function getHomepageItems()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->andWhere('p.showInHomepage = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('p.price', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Get enabled properties sorted by price query
+     *
+     * @return Query
+     */
+    public function getEnabledPropertiesSortedByPriceQuery()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('p.price', 'ASC')
+            ->getQuery();
+    }
+
+    /**
+     * Get top 10 visited array
+     *
+     * @return array
+     */
     public function getTop10VisitedArray()
     {
         return $this->getMostVisitedQuery()->setMaxResults(10)->getArrayResult();
@@ -28,10 +64,9 @@ class PropertyRepository extends EntityRepository
     private function getMostVisitedQuery()
     {
         /** @var QueryBuilder $qb */
-        $qb = $this->getEntityManager()->createQueryBuilder();
-        $qb->select('p')
-            ->from('FinquesFarnos\AppBundle\Entity\Property', 'p')
-            ->where('p.enabled = 1')
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->setParameter('enabled', true)
             ->addOrderBy('p.totalVisits', 'DESC')
             ->addOrderBy('p.name', 'ASC');
 
