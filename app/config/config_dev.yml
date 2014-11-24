@@ -60,8 +60,8 @@ assetic:
                 - uglifyjs2
             output: js/dev/front.js
 
-#swiftmailer:
-#    delivery_address: me@example.com
+swiftmailer:
+    delivery_address: david@flux.cat
 
 hautelook_alice:
     locale: es_ES

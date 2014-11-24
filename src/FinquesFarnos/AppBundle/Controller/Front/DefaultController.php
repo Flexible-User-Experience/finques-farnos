@@ -80,7 +80,25 @@ class DefaultController extends Controller
             $em->persist($contactToBePersisted);
             $em->persist($message);
             $em->flush();
-            // TODO send email
+            // Send email
+            /** @var \Swift_Message $emailMessage */
+            $emailMessage = \Swift_Message::newInstance()
+                ->setSubject('Formulari de contacte pàgina web www.finquesfarnos.com')
+                ->setFrom('webapp@finquesfarnos.com')
+                ->setTo('info@fiquesfarnos.com')
+                ->setBody(
+                    $this->renderView(
+                        '::Front/contact.email.html.twig',
+                        array(
+                            'form' => $contactForm,
+                            'message' => $fc['message']
+                        )
+                    )
+                )
+                ->setCharset('UTF-8')
+                ->setContentType('text/html')
+            ;
+            $this->get('mailer')->send($emailMessage);
 
             return $this->redirect($this->generateUrl('front_contact_thankyou'));
         }

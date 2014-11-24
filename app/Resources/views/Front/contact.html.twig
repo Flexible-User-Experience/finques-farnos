@@ -14,7 +14,7 @@
                 <div class="well well-lg">
                     {% block contactform %}
                         <h4>{{ 'contact.form.title' | trans }}</h4>
-                        <form method="POST" action="#" {{ form_enctype(form) }}>
+                        <form method="POST" {{ form_enctype(form) }}>
                             {{ form_widget(form) }}
                             <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-default pull-right">
                         </form>
