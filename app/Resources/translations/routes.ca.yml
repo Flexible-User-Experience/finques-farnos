@@ -5,6 +5,7 @@
 
 front_homepage: '/'
 front_properties: '/immobles/'
+front_properties_page: '/immobles/{page}'
 front_about: '/qui-som/'
 front_contact: '/contacte/'
 front_contact_thankyou: '/contacte/gracies/'

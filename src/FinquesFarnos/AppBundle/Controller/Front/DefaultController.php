@@ -36,6 +36,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/properties/", name="front_properties")
+     * @Route("/properties/{page}", name="front_properties_page", defaults={"page" = 2})
      */
     public function propertiesAction()
     {

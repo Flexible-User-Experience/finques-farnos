@@ -1,5 +1,6 @@
 front_homepage: '/'
 front_properties: '/properties/'
+front_properties_page: '/properties/{page}'
 front_about: '/about-us/'
 front_contact: '/contact/'
 front_contact_thankyou: '/contact/thank-you/'
