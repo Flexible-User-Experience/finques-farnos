@@ -27,11 +27,19 @@ about:
       text: |
         La nostra filosofia es basa en actuar amb total transparència, treballant amb professionalitat i honradesa, d'aquesta manera aconseguim que la nostra gestió deixi satisfets a compradors i venedors.<br><br>
         L'experiència, capacitació tècnica i professional, ens permet oferir un servei de qualitat avalat per la confiança que els nostres clients han dipositat en la nostra gestió durant tots aquests anys.<br><br>
-        A Finques Farnós som Agents de la Propietat Immobiliària (API) una garantia més que avala la nostra professionalitat i formació acadèmica.
+        A <strong>Finques Farnós</strong> som <a target="_blank" href="http://www.apitarragona.com">Agents de la Propietat Immobiliària (API)</a> una garantia més que avala la nostra professionalitat i formació acadèmica.
     services:
       title: els nosters serveis
-      text: Gestió en la compra-venda de finques rústiques i urbanes. Permutes i traspassos. Lloguers. Valoracions. Finançament; gestió en la concessió d´hipoteques. Informes de situació urbanística i registral. Assessorament sobre inversions.
-
+      text: |
+        <ul>
+        <li>Gestió en la compra-venda de finques rústiques i urbanes.</li>
+        <li>Permutes i traspassos.</li>
+        <li>Lloguers.</li>
+        <li>Valoracions.</li>
+        <li>Finançament: gestió en la concessió d´hipoteques.</li>
+        <li>Informes de situació urbanística i registral.</li>
+        <li>Assessorament sobre inversions.</li>
+        </ul>
 contact:
   form:
     title: formulari de contacte
