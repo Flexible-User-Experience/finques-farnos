@@ -24,7 +24,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="front_homepage")
+     * @Route("/", name="front_homepage", options={"sitemap" = true})
      */
     public function homepageAction()
     {
@@ -38,7 +38,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/properties/", name="front_properties")
+     * @Route("/properties/", name="front_properties", options={"sitemap" = true})
      * @Route("/properties/{page}", name="front_properties_page", defaults={"page" = 2})
      */
     public function propertiesAction()
@@ -83,7 +83,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/about-us/", name="front_about")
+     * @Route("/about-us/", name="front_about", options={"sitemap" = true})
      */
     public function aboutAction()
     {
@@ -91,7 +91,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/contact/", name="front_contact")
+     * @Route("/contact/", name="front_contact", options={"sitemap" = true})
      */
     public function contactAction(Request $request)
     {
@@ -150,7 +150,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/contact/thank-you/", name="front_contact_thankyou")
+     * @Route("/contact/thank-you/", name="front_contact_thankyou", options={"sitemap" = true})
      */
     public function contactThankYouAction()
     {
@@ -158,7 +158,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/privacy/", name="front_privacy")
+     * @Route("/privacy/", name="front_privacy", options={"sitemap" = true})
      */
     public function privacyAction()
     {
@@ -166,7 +166,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/legal/", name="front_legal")
+     * @Route("/legal/", name="front_legal", options={"sitemap" = true})
      */
     public function legalAction()
     {
@@ -174,7 +174,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/credits/", name="front_credits")
+     * @Route("/credits/", name="front_credits", options={"sitemap" = true})
      */
     public function creditsAction()
     {
