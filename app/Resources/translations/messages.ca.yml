@@ -27,6 +27,13 @@ properties:
       prev: anterior
       next: següent
 
+property:
+  localization: localització
+  energy:
+    efficiency: eficiència energètica
+    noclass: sense classificació
+    pending: en tràmit
+
 about:
   left:
     main: <strong>Finques Farnós</strong> inicia la seva trajectòria professional el 1984 com empresa familiar, oferint els seus serveis immobiliaris des d'<strong>Amposta</strong> al <strong>Delta</strong> i <strong>Terres de l'Ebre</strong>, amb una continuitat des d'aleshores, que garantitza el coneixement de la professió.

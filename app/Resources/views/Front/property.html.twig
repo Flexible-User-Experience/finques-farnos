@@ -55,6 +55,23 @@
                         <button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
                     {% endif %}
                 </div>
+                <hr>
+                <h4>{{ 'property.energy.efficiency' | trans }}</h4>
+                {% if property.energyClass == 0 %}
+                    <div class="well">{{ 'property.energy.noclass' | trans }}</div>
+                {% elseif property.energyClass == 1 %}
+                    <div class="well">{{ 'property.energy.pending' | trans }}</div>
+                {% else %}
+                    {% for i in 2..8 %}
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning{% if property.energyClass == i %} progress-bar-striped{% endif %}" role="progressbar" aria-valuenow="{{ (i - 1) * 14 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ (i - 1) * 14 }}%">
+                                <span class="sr-only">{{ (i - 1) * 14 }}% Complete</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <hr>
+                <p>contact form</p>
             </div>
         </div>
     </div>
