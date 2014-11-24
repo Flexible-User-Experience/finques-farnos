@@ -18,7 +18,7 @@
                 <div class="carousel-inner" role="listbox">
                     {% for slide in slides %}
                         <div class="item{% if loop.first %} active{% endif %}">
-                            <img src="{{ vich_uploader_asset(slide, 'slider_image') | imagine_filter('300xY') }}" alt="{{ slide.metaAlt }}" title="{{ slide.metaTitle }}">
+                            <img class="img-responsive" src="{{ vich_uploader_asset(slide, 'slider_image') | imagine_filter('300xY') }}" alt="{{ slide.metaAlt }}" title="{{ slide.metaTitle }}">
                             {#<div class="carousel-caption">...</div>#}
                         </div>
                     {% endfor %}
@@ -43,7 +43,7 @@
                 <div class="col-md-4">
                     <div class="thumbnail">
                         {% if property.firstEnabledImage %}
-                            <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
+                            <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('300xY') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
                         {% endif %}
                         <div class="caption">
                             <h2>{{ property.name }}</h2>

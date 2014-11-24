@@ -24,15 +24,16 @@
         <div class="row">
             <div class="col-md-8">
                 {% if property.firstEnabledImage %}
-                    <img src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
+                    <img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('750xY') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
                 {% endif %}
-                <h2>{{ property.name }}</h2>
-                <div class="btn-group" role="group" data-aria-label="icons">
-                    <button type="button" class="btn btn-default btn-sm">FB</button>
-                    <button type="button" class="btn btn-default btn-sm">TW</button>
-                    <button type="button" class="btn btn-default btn-sm">EM</button>
-                    <button type="button" class="btn btn-default btn-sm">DW</button>
-                </div>
+                <h2>{{ property.name }}
+                    <div class="btn-group pull-right" role="group" data-aria-label="icons">
+                        <button type="button" class="btn btn-default btn-sm">FB</button>
+                        <button type="button" class="btn btn-default btn-sm">TW</button>
+                        <button type="button" class="btn btn-default btn-sm">EM</button>
+                        <button type="button" class="btn btn-default btn-sm">DW</button>
+                    </div>
+                </h2>
                 <hr>
                 <p>{{ property.description }}</p>
                 <hr>
