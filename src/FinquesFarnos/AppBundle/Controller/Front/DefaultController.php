@@ -4,12 +4,14 @@ namespace FinquesFarnos\AppBundle\Controller\Front;
 
 use Doctrine\ORM\EntityManager;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
+use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use Knp\Component\Pager\Paginator;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * Class DefaultController
@@ -47,6 +49,17 @@ class DefaultController extends Controller
 
         return $this->render('::Front/properties.html.twig', array(
                 'pagination' => $pagination
+            ));
+    }
+
+    /**
+     * @Route("/property/{type}/{name}/", name="front_property")
+     * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"name": "nameSlug"}})
+     */
+    public function propertyAction(Property $property)
+    {
+        return $this->render('::Front/property.html.twig', array(
+                'property' => $property,
             ));
     }
 

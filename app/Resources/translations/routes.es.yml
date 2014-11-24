@@ -1,6 +1,7 @@
 front_homepage: '/'
 front_properties: '/inmuebles/'
-front_properties_page: '/inmuebles/{page}'
+front_properties_page: '/inmuebles/{page}/'
+front_property: '/inmueble/{type}/{name}/'
 front_about: '/quien-somos/'
 front_contact: '/contacto/'
 front_contact_thankyou: '/contacto/gracias/'

@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-4">
                     <p>{{ property.description }}</p>
-                    <p><a class="btn btn-primary btn-sm" role="button">{{ 'properties.list.more.button' | trans }}</a></p>
+                    <p><a class="btn btn-primary btn-sm" role="button" href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ 'properties.list.more.button' | trans }}</a></p>
                 </div>
             </div>
         {% endfor %}

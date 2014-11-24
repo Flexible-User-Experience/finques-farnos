@@ -1,0 +1,31 @@
+{% extends '::Front/layout.html.twig' %}
+
+{% block title %}{{ 'menu.properties' | trans }} · {{ parent() }}{% endblock %}
+{% block metadescription %}{% endblock %}
+{% block metakeywords %}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <p><a class="btn btn-primary btn-sm" role="button" href="{{ path('front_properties') }}">{{ 'properties.list.button.back' | trans }}</a></p>
+            </div>
+            <div class="col-md-4">
+                <p><a class="btn btn-primary btn-sm" role="button" href="#">{{ 'properties.list.button.previous' | trans }}</a></p>
+                <p><a class="btn btn-primary btn-sm" role="button" href="#">{{ 'properties.list.button.next' | trans }}</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="lead">{{ property.name }}</p>
+            </div>
+            <div class="col-md-4">
+                <p class="lead">{{ property.id }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footlangca %}{{ path('front_properties', {'_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('front_properties', {'_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('front_properties', {'_locale': 'en'}) }}{% endblock %}
