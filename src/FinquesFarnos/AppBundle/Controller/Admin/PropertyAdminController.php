@@ -19,6 +19,28 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PropertyAdminController extends Controller
 {
     /**
+     * Show public web resource without add a visit record
+     *
+     * @param int $id property ID
+     *
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function visitAction($id)
+    {
+        /** @var Property $property */
+        $property = $this->admin->getObject($id);
+        if (!$property) {
+            throw new NotFoundHttpException(sprintf('unable to find property with ID: %s', $id));
+        }
+
+        return $this->redirect($this->generateUrl('front_property', array(
+                    'type' => $property->getType()->getNameSlug(),
+                    'name' => $property->getNameSlug(),
+                )));
+    }
+
+    /**
      * Render PDF porperty and send HTTP response with file attachment
      *
      * @param int $id property ID

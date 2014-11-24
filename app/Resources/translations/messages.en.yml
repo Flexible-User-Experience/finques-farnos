@@ -26,6 +26,15 @@ properties:
       back: back to list
       prev: previous
       next: next
+
+property:
+  localization: localization
+  form: have any questions about this property?
+  energy:
+    efficiency: energy efficiency
+    noclass: without class
+    pending: pending
+
 about:
   left:
     main: <strong>Finques Farnós</strong> began his professional career in 1984 as a family business, offering its state agent services from <strong>Amposta</strong> throughout the <strong>Delta del Ebro</strong>, with a continuity that guarantees a good knowledge of the profession.

@@ -22,3 +22,8 @@ _sonata_admin:
     type:     sonata_admin
     prefix:   /admin
     options:  { i18n: false }
+
+presta_sitemap:
+    resource: '@PrestaSitemapBundle/Resources/config/routing.yml'
+    prefix:   /
+    options:  { i18n: false }

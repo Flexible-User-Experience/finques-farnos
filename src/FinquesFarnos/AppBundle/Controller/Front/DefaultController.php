@@ -5,6 +5,7 @@ namespace FinquesFarnos\AppBundle\Controller\Front;
 use Doctrine\ORM\EntityManager;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
 use FinquesFarnos\AppBundle\Entity\Property;
+use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use Knp\Component\Pager\Paginator;
@@ -23,7 +24,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="front_homepage")
+     * @Route("/", name="front_homepage", options={"sitemap" = true})
      */
     public function homepageAction()
     {
@@ -37,7 +38,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/properties/", name="front_properties")
+     * @Route("/properties/", name="front_properties", options={"sitemap" = true})
      * @Route("/properties/{page}", name="front_properties_page", defaults={"page" = 2})
      */
     public function propertiesAction()
@@ -56,15 +57,33 @@ class DefaultController extends Controller
      * @Route("/property/{type}/{name}/", name="front_property")
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"name": "nameSlug"}})
      */
-    public function propertyAction(Property $property)
+    public function propertyAction(Request $request, Property $property)
     {
+        $adminListPropertiesRoute = $this->generateUrl('admin_finquesfarnos_app_property_list');
+        if (strpos($request->headers->get('referer'), $adminListPropertiesRoute) == 0) {
+            // Referer request is not an admin route so add a visit record
+            /** @var EntityManager $em */
+            $em = $this->getDoctrine()->getManager();
+            $visit = new PropertyVisit();
+            $visit->setProperty($property);
+            $em->persist($visit);
+            $em->flush();
+        }
+        $contact = new Contact();
+        $form = $this->createForm(new ContactType(), $contact);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+        }
+
         return $this->render('::Front/property.html.twig', array(
                 'property' => $property,
+                'form' => $form->createView(),
             ));
     }
 
     /**
-     * @Route("/about-us/", name="front_about")
+     * @Route("/about-us/", name="front_about", options={"sitemap" = true})
      */
     public function aboutAction()
     {
@@ -72,7 +91,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/contact/", name="front_contact")
+     * @Route("/contact/", name="front_contact", options={"sitemap" = true})
      */
     public function contactAction(Request $request)
     {
@@ -131,7 +150,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/contact/thank-you/", name="front_contact_thankyou")
+     * @Route("/contact/thank-you/", name="front_contact_thankyou", options={"sitemap" = true})
      */
     public function contactThankYouAction()
     {
@@ -139,7 +158,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/privacy/", name="front_privacy")
+     * @Route("/privacy/", name="front_privacy", options={"sitemap" = true})
      */
     public function privacyAction()
     {
@@ -147,7 +166,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/legal/", name="front_legal")
+     * @Route("/legal/", name="front_legal", options={"sitemap" = true})
      */
     public function legalAction()
     {
@@ -155,7 +174,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/credits/", name="front_credits")
+     * @Route("/credits/", name="front_credits", options={"sitemap" = true})
      */
     public function creditsAction()
     {

@@ -75,7 +75,7 @@ set :use_set_permissions,   true
 #    jsroutes.dump
 #end
 after "deploy", "deploy:cleanup"
-after "deploy", "symfony:assetic:dump"
+#after "deploy", "symfony:assetic:dump"
 
 ###########
 # Logging #

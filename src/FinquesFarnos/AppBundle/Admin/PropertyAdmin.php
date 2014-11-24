@@ -63,7 +63,7 @@ class PropertyAdmin extends BaseAdmin
             ->add('rooms', null, array('label' => 'Habitacions', 'required' => false))
             ->add('bathrooms', null, array('label' => 'Banys', 'required' => false))
             ->add('energyClass', 'choice', array('label' => 'Classificació energètica', 'required' => true, 'choices' => array(
-                    0 => 'sense clasificació',
+                    0 => 'sense classificació',
                     1 => 'en tràmit',
                     2 => 'A',
                     3 => 'B',
@@ -149,6 +149,7 @@ class PropertyAdmin extends BaseAdmin
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'edit' => array(),
+                        'visit' => array('template' => '::Admin/list__action_property_visit_button.html.twig'),
                         'pdf' => array('template' => '::Admin/list__action_property_pdf_button.html.twig'),
                     ),
                     'label' => 'Accions',
@@ -187,6 +188,7 @@ class PropertyAdmin extends BaseAdmin
     public function configureRoutes(RouteCollection $collection)
     {
         $collection->remove('show');
+        $collection->add('visit', $this->getRouterIdParameter().'/visit');
         $collection->add('pdf', $this->getRouterIdParameter().'/pdf');
         $collection->add('removeImage', $this->getRouterIdParameter().'/remove-image/{iid}');
     }

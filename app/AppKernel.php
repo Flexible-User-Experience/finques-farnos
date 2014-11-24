@@ -37,6 +37,7 @@ class AppKernel extends Kernel
             new Orkestra\Bundle\PdfBundle\OrkestraPdfBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
+            new Presta\SitemapBundle\PrestaSitemapBundle(),
             // App bundles
             new FinquesFarnos\UserBundle\UserBundle(),
             new FinquesFarnos\AppBundle\AppBundle(),

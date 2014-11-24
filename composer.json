@@ -37,6 +37,7 @@
         "egulias/email-validator": "1.2.*",
         "jms/i18n-routing-bundle": "1.1.*",
         "knplabs/knp-paginator-bundle": "2.*",
+        "presta/sitemap-bundle": "1.3.*",
         "twitter/bootstrap": "3.*",
         "components/jquery": "1.*",
         "incenteev/composer-parameter-handler": "~2.0"
