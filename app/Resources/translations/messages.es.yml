@@ -19,6 +19,11 @@ homepage:
       special: oferta
       discount: rebajado
 
+properties:
+  list:
+    more:
+      button: más información
+
 about:
   left:
     main: <strong>Finques Farnós</strong> inicia su trayectoria profesional en 1984, como empresa familiar, ofreciendo sus servicios immobiliarios desde <strong>Amposta</strong> a todo el <strong>Delta del Ebro</strong>, con una continuidad que garantiza el conocimiento de la profesión.

@@ -55,19 +55,19 @@
                             <p>{{ property.description }}</p>
                             <div class="btn-group" role="group" data-aria-label="icons">
                                 {% if property.offerSpecial %}
-                                    <button type="button" class="btn btn-default">{{ 'homepage.property.offer.special' | trans }}</button>
+                                    <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
                                 {% endif %}
                                 {% if property.offerDiscount and not property.offerSpecial %}
-                                    <button type="button" class="btn btn-default">{{ 'homepage.property.offer.discount' | trans }}</button>
+                                    <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
                                 {% endif %}
                                 {% if property.squareMeters %}
-                                    <button type="button" class="btn btn-default">{{ property.squareMeters }} m<sup>2</sup></button>
+                                    <button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>
                                 {% endif %}
                                 {% if property.rooms %}
-                                    <button type="button" class="btn btn-default">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
+                                    <button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
                                 {% endif %}
                                 {% if property.bathrooms %}
-                                    <button type="button" class="btn btn-default">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
+                                    <button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
                                 {% endif %}
                             </div>
                         </div>
