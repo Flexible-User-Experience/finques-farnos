@@ -3240,17 +3240,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.9",
+            "version": "v3.0.10",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "82d85b032db66163568ad988e630e5ad74138c72"
+                "reference": "ca188a500a7bef815a46f19f8616f0a775e7dbf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/82d85b032db66163568ad988e630e5ad74138c72",
-                "reference": "82d85b032db66163568ad988e630e5ad74138c72",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ca188a500a7bef815a46f19f8616f0a775e7dbf2",
+                "reference": "ca188a500a7bef815a46f19f8616f0a775e7dbf2",
                 "shasum": ""
             },
             "require": {
@@ -3289,7 +3289,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2014-11-21 15:36:24"
+            "time": "2014-11-23 18:30:35"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -4049,12 +4049,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "c230cb57dc8547bc03aa055e06df350c159a37c9"
+                "reference": "923b8199cdce1b51f7c4fb845211f16a9402fab2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/c230cb57dc8547bc03aa055e06df350c159a37c9",
-                "reference": "c230cb57dc8547bc03aa055e06df350c159a37c9",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/923b8199cdce1b51f7c4fb845211f16a9402fab2",
+                "reference": "923b8199cdce1b51f7c4fb845211f16a9402fab2",
                 "shasum": ""
             },
             "require": {
@@ -4113,7 +4113,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2014-10-20 13:03:02"
+            "time": "2014-11-23 22:39:09"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -4415,12 +4415,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "31792b01f1d3d2e66b9606476120d2cc1926fe92"
+                "reference": "4a1a0ed6868bceb60d6a67035fb8499d8aa85e10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/31792b01f1d3d2e66b9606476120d2cc1926fe92",
-                "reference": "31792b01f1d3d2e66b9606476120d2cc1926fe92",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/4a1a0ed6868bceb60d6a67035fb8499d8aa85e10",
+                "reference": "4a1a0ed6868bceb60d6a67035fb8499d8aa85e10",
                 "shasum": ""
             },
             "require": {
@@ -4523,7 +4523,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-21 16:08:03"
+            "time": "2014-11-24 07:41:00"
         },
         {
             "name": "tecnick.com/tcpdf",

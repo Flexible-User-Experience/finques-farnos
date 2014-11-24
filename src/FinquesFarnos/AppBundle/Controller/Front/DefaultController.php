@@ -81,7 +81,7 @@ class DefaultController extends Controller
             $em->persist($message);
             $em->flush();
 
-//            return $this->redirect($this->generateUrl(
+//            return $this->redirect($this->generateUrl( TODO redirect to thank you & send email
 //                    'admin_post_show',
 //                    array('id' => $post->getId())
 //                ));
