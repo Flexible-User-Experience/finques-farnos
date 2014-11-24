@@ -26,3 +26,6 @@ contact:
     email: email
     message: message
     send: send
+    thankyou:
+      title: Thank you
+      message: Your message has been sent, we will reply as soon as possible. Thank you very much for contacting Farnós Properties.

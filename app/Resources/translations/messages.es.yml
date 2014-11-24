@@ -26,3 +26,6 @@ contact:
     email: email
     message: mensaje
     send: enviar
+    thankyou:
+      title: Gracias
+      message: Tu mensaje se ha enviado correctamente, le responderemos lo antes posible. Muchas gracias por contactar con Finques Farnós.
