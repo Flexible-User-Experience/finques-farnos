@@ -6,9 +6,16 @@
 
 {% block main %}
     <div class="container">
-        <div class="well">
-            <h1>{{ 'frontend.credits' | trans }}</h1>
-            <p>{{ 'credits.text' | trans | raw }}</p>
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-responsive" src="http://lorempixel.com/c/360/300/nature/" alt="dummy"/>
+            </div>
+            <div class="col-md-8">
+                <div class="well">
+                    <h1>{{ 'frontend.credits' | trans }}</h1>
+                    <p>{{ 'credits.text' | trans | raw }}</p>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
