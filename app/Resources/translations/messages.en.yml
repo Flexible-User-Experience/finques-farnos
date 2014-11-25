@@ -97,7 +97,7 @@ privacy:
   spam: En FINQUES FARNÓS no nos gusta el spam y contribuimos a erradicarlo
 
 legal:
-  text: El presente aviso legal (en adelante "Aviso Legal") regula el uso del servicio del portal de Internet http://www.finquesfarnos.com (en adelante, Web) de FINQUES FARNÓS SL con domicilio en C. CORSINI, 63 - 43870 AMPOSTA (TARRAGONA), y con CIF B43524149 e inscrita en el Registro Mercantil tomo X, folio Y, hoja T-Z, inscripción Wª, CIF B43524149
+  text: El presente aviso legal (en adelante "Aviso Legal") regula el uso del servicio del portal de Internet http://www.finquesfarnos.com (en adelante, Web) de FINQUES FARNÓS SL con domicilio en C. CORSINI, 63 - 43870 AMPOSTA (TARRAGONA), y con CIF B43524149 e inscrita en el Registro Mercantil tomo 1.367, folio 214, hoja T-16267, inscripción 1ª, CIF B43524149
   law:
     title: Legislación
     text: |
@@ -114,6 +114,13 @@ legal:
   links:
     title: Enlaces (links)
     text: La presencia de enlaces (links) en las páginas Web de FINQUES FARNÓS SL tiene finalidad meramente informativa y en ningún caso supone sugerencia, invitación o recomendación sobre los mismos.
+
+credits:
+  text: |
+    This page has been developed by <a href="http://www.flux.cat">Flux</a> with <a href="http://www.w3.org/TR/html5">HTML5</a> using PHP <a href="http://www.symfony.com">Symfony2</a> framework and stack of web technologies.</p>
+    <p>The artwork has been done by <a href="http://www.gonellcomunicacio.com">Gonell Comunicació</a>.</p>
+    <p>All rights reserved.</p>
+    <p>&copy; Finques Farnós, SL.
 
 errors.anerroroccurred: There was an error
 errors.theserverreturneda: The server returned the message
