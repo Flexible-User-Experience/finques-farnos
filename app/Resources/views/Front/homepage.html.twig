@@ -48,7 +48,7 @@
                             <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('300xY') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
                         {% endif %}
                         <div class="caption">
-                            <h2>{{ property.name }}</h2>
+                            <h2><a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ property.name }}</a></h2>
                             {% if property.showPriceOnlyWithNumbers %}
                                 <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
                             {% else %}

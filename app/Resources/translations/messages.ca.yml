@@ -71,5 +71,29 @@ contact:
       title: Gràcies
       message: El teu missatge s'ha enviat correctament, el respondrem el més aviat possible. Moltes gràcies per contactar amb Finques Farnós.
 
+privacy:
+  confidenciality:
+    title:
+    text:
+  records:
+    title:
+    text:
+  trustness:
+    title:
+    text:
+  cookies:
+    title:
+    text:
+  targets:
+    title:
+    text:
+  children:
+    title:
+    text:
+  send:
+    title:
+    text:
+  spam:
+
 errors.anerroroccurred: S'ha produït un error
 errors.theserverreturneda: El servidor ha retornat el missatge

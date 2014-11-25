@@ -70,5 +70,29 @@ contact:
       title: Thank you
       message: Your message has been sent, we will reply as soon as possible. Thank you very much for contacting Farnós Properties.
 
+privacy:
+  confidenciality:
+    title:
+    text:
+  records:
+    title:
+    text:
+  trustness:
+    title:
+    text:
+  cookies:
+    title:
+    text:
+  targets:
+    title:
+    text:
+  children:
+    title:
+    text:
+  send:
+    title:
+    text:
+  spam:
+
 errors.anerroroccurred: There was an error
 errors.theserverreturneda: The server returned the message
