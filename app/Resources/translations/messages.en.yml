@@ -96,5 +96,24 @@ privacy:
     text: FINQUES FARNÓS SL no realizará cesión de datos de los usuarios a terceros.
   spam: En FINQUES FARNÓS no nos gusta el spam y contribuimos a erradicarlo
 
+legal:
+  text: El presente aviso legal (en adelante "Aviso Legal") regula el uso del servicio del portal de Internet http://www.finquesfarnos.com (en adelante, Web) de FINQUES FARNÓS SL con domicilio en C. CORSINI, 63 - 43870 AMPOSTA (TARRAGONA), y con CIF B43524149 e inscrita en el Registro Mercantil tomo X, folio Y, hoja T-Z, inscripción Wª, CIF B43524149
+  law:
+    title: Legislación
+    text: |
+      Con carácter general las relaciones entre FINQUES FARNÓS SL con los usuarios de sus servicios telemáticos, presentes en la Web, se encuentran sometidas a la legislación y jurisdicción españolas.</p>
+      <p>Las partes renuncian expresamente al fuero que les pudiera corresponder y se someten expresamente a los Juzgados y Tribunales de Amposta (TARRAGONA) para resolver cualquier controversia que pueda surgir en la interposición o ejecución de las presentes condiciones contractuales.
+  content:
+    title: Contenido y uso
+    text: |
+      El usuario queda informado, y acepta, que el acceso a la presente Web no supone, en modo alguno, el inicio de una relación comercial con FINQUES FARNÓS SL.</p>
+      <p>El titular del Web no se identifica con las opiniones vertidas en el mismo por sus colaboradores. La Empresa se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su Web, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en a la que éstos aparezcan presentados o localizados en sus servidores.
+  property:
+    title: Propiedad intelectual e industrial
+    text: Los derechos de propiedad intelectual del contenido de las páginas Web, su diseño gráfico y códigos son titularidad de FINQUES FARNÓS SL y, por tanto, queda prohibida su reproducción, distribución, comunicación pública, transformación o cualquier otra actividad que se pueda realizar con los contenidos de sus páginas Web ni aún citando las fuentes, salvo consentimiento por escrito de FINQUES FARNÓS SL. Todos los nombres comerciales, marcas o signos distintos de cualquier clase contenidos en las páginas Web de la empresa son propiedad de sus dueños y están protegidos por ley.
+  links:
+    title: Enlaces (links)
+    text: La presencia de enlaces (links) en las páginas Web de FINQUES FARNÓS SL tiene finalidad meramente informativa y en ningún caso supone sugerencia, invitación o recomendación sobre los mismos.
+
 errors.anerroroccurred: There was an error
 errors.theserverreturneda: The server returned the message
