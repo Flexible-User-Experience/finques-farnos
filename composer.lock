@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b546bf7d1d47520cd648854703be1418",
+    "hash": "87853877f039998f472cd3e1da3e0b33",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -67,6 +67,51 @@
                 "translation"
             ],
             "time": "2013-12-17 18:40:49"
+        },
+        {
+            "name": "claroline/kernel-bundle",
+            "version": "1.0.5",
+            "target-dir": "Claroline/KernelBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/claroline/KernelBundle.git",
+                "reference": "f059182372f01ba339bac2c78807f2cd7c5775f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/claroline/KernelBundle/zipball/f059182372f01ba339bac2c78807f2cd7c5775f8",
+                "reference": "f059182372f01ba339bac2c78807f2cd7c5775f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/filesystem": "~2.0",
+                "symfony/framework-bundle": "~2.0"
+            },
+            "type": "bundle",
+            "autoload": {
+                "psr-0": {
+                    "Claroline\\KernelBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Claroline development team",
+                    "email": "dev@claroline.net",
+                    "homepage": "http://github.com/claroline"
+                }
+            ],
+            "description": "Claroline kernel bundle",
+            "homepage": "http://www.claroline.net",
+            "keywords": [
+                "Claroline",
+                "kernel"
+            ],
+            "time": "2013-11-19 14:35:12"
         },
         {
             "name": "components/jquery",
@@ -1647,6 +1692,62 @@
                 "parameters management"
             ],
             "time": "2013-12-07 10:10:39"
+        },
+        {
+            "name": "innova/angular-js-bundle",
+            "version": "1.0.2",
+            "target-dir": "Innova/AngularJSBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InnovaLangues/AngularJSBundle.git",
+                "reference": "058d5bb509031cd8da3f2fedc9c179477449154d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InnovaLangues/AngularJSBundle/zipball/058d5bb509031cd8da3f2fedc9c179477449154d",
+                "reference": "058d5bb509031cd8da3f2fedc9c179477449154d",
+                "shasum": ""
+            },
+            "require": {
+                "claroline/kernel-bundle": "~1.0",
+                "php": ">=5.3.0",
+                "symfony/symfony": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Innova\\AngularJSBundle": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arnaud Bey",
+                    "email": "arnaud.bey@u-grenoble3.fr"
+                },
+                {
+                    "name": "Axel Penin",
+                    "email": "axel.penin@u-grenoble3.fr"
+                },
+                {
+                    "name": "Eric Vincent",
+                    "email": "eric.vincent@u-grenoble3.fr"
+                },
+                {
+                    "name": "Donovan Tengblad",
+                    "email": "donovan.tengblad@u-grenoble3.fr"
+                }
+            ],
+            "description": "Angular JS compiled files for Symfony 2 applications",
+            "homepage": "http://github.com/InnovaLangues/AngularJSBundle",
+            "keywords": [
+                "Symfony2",
+                "angular"
+            ],
+            "time": "2014-01-09 15:15:39"
         },
         {
             "name": "jdorn/sql-formatter",
