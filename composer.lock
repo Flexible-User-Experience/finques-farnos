@@ -4605,12 +4605,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "4a1a0ed6868bceb60d6a67035fb8499d8aa85e10"
+                "reference": "6a59db5a084baa159c3263a1efb1c72c21884978"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/4a1a0ed6868bceb60d6a67035fb8499d8aa85e10",
-                "reference": "4a1a0ed6868bceb60d6a67035fb8499d8aa85e10",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/6a59db5a084baa159c3263a1efb1c72c21884978",
+                "reference": "6a59db5a084baa159c3263a1efb1c72c21884978",
                 "shasum": ""
             },
             "require": {
@@ -4713,7 +4713,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-11-24 07:41:00"
+            "time": "2014-11-26 08:17:16"
         },
         {
             "name": "tecnick.com/tcpdf",
@@ -4944,12 +4944,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "d2cc9442fbbcf60b465912cbfb26e16d42ea66ac"
+                "reference": "c8614963e63fb760087776efef8f2191dcf25186"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/d2cc9442fbbcf60b465912cbfb26e16d42ea66ac",
-                "reference": "d2cc9442fbbcf60b465912cbfb26e16d42ea66ac",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/c8614963e63fb760087776efef8f2191dcf25186",
+                "reference": "c8614963e63fb760087776efef8f2191dcf25186",
                 "shasum": ""
             },
             "require": {
@@ -5007,7 +5007,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-11-14 12:30:08"
+            "time": "2014-11-26 09:40:20"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
