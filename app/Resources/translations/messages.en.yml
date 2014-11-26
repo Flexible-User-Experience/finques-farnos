@@ -26,6 +26,12 @@ properties:
       back: back to list
       prev: previous
       next: next
+  form:
+    type: type
+    area: area m<sup>2</sup>
+    rooms: rooms
+    price: price
+    search: search
 
 property:
   localization: localization

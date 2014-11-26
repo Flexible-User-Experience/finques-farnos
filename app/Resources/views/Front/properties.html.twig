@@ -4,9 +4,16 @@
 {% block metadescription %}{% endblock %}
 {% block metakeywords %}{% endblock %}
 
+{% block bodyattr %}ng-app="propertiesApp"{% endblock %}
+
 {% block javascriptshead %}
     {{ parent() }}
     <script src="{{ asset('bundles/innovaangularjs/js/angular.min.js') }}"></script>
+    <script src="{{ asset('bundles/innovaangularjs/js/angular-resource.min.js') }}"></script>
+    <script src="{{ asset('bundles/innovaangularjs/js/angular-route.min.js') }}"></script>
+    <script src="{{ asset('bundles/innovaangularjs/js/angular-touch.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/vendor/angular-slider.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/properties.angular.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -16,6 +23,31 @@
                 <h1>{{ 'menu.properties' | trans }}</h1>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <form action="" role="form">
+                    <div class="form-group">
+                        <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | raw }}</label>
+                        <select id="propertyType" class="form-control">
+                            <option value="1">t1</option>
+                            <option value="2">t2</option>
+                            <option value="3">t3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tt" class="control-label">{{ 'properties.form.area' | trans | raw }}</label>
+                        <input id="tt"  class="form-control" type="text" data-ng-model="name" placeholder="Enter a name here">
+                    </div>
+                </form>
+                <p>Hello [[name]]</p>
+            </div>
+            <div class="col-md-8">
+                <div class="well">
+                    <p class="lead">Google Maps</p>
+                </div>
+            </div>
+        </div>
+        <hr>
         {% for property in pagination %}
             <div class="row">
                 <div class="col-md-4">

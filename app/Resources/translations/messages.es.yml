@@ -26,6 +26,12 @@ properties:
       back: volver al listado
       prev: anterior
       next: siguiente
+  form:
+    type: tipo
+    area: superficie m<sup>2</sup>
+    rooms: habitaciones
+    price: precio
+    search: buscar
 
 property:
   localization: localitzación
