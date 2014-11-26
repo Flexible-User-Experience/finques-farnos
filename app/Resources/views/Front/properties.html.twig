@@ -6,6 +6,11 @@
 
 {% block bodyattr %}ng-app="propertiesApp"{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/angular-slider.css') }}">
+{% endblock %}
+
 {% block javascriptshead %}
     {{ parent() }}
     <script src="{{ asset('bundles/innovaangularjs/js/angular.min.js') }}"></script>
