@@ -5,5 +5,8 @@ angular.module('propertiesApp')
 
     $scope.name = 'hit';
     $scope.area = 5;
+    $scope.rooms = 4;
+    $scope.price = 3;
+    $scope.search = 2;
 
 }]);
