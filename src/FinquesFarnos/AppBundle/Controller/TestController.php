@@ -25,7 +25,7 @@ class TestController extends Controller
     {
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
-            'types' => array(array('name' => 'atic'), array('name' => 'pis')),
+            'types' => $this->getDoctrine()->getRepository('AppBundle:Type')->getFilters(),
             'area' => array('min' => $filters['min_area'], 'max' => $filters['max_area']),
             'rooms' => array('min' => $filters['min_rooms'], 'max' => $filters['max_rooms']),
             'price' => array('min' => $filters['min_price'], 'max' => $filters['max_price']),
