@@ -28,10 +28,12 @@ properties:
       next: siguiente
   form:
     type: tipo
-    area: superficie m<sup>2</sup>
+    area: superficie
     rooms: habitaciones
     price: precio
     search: buscar
+    select:
+      any: cualquier
 
 property:
   localization: localitzación

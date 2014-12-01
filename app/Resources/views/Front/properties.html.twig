@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | raw }}</label>
                         <select id="propertyType" class="form-control" data-ng-model="type" required="required">
-                            <option value="-1">any</option>
+                            <option value="-1" selected>{{ 'properties.form.select.any' | trans | raw }}</option>
                             <option data-ng-repeat="type in form.types" value="[[ type.id ]]">[[ type.name ]]</option>
                         </select>
                     </div>

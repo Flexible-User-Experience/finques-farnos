@@ -28,10 +28,12 @@ properties:
       next: següent
   form:
     type: tipus
-    area: superfície m<sup>2</sup>
+    area: superfície
     rooms: habitacions
     price: preu
     search: buscar
+    select:
+      any: qualsevol
 
 property:
   localization: localització

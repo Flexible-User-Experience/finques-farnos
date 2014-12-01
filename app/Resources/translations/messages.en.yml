@@ -28,10 +28,12 @@ properties:
       next: next
   form:
     type: type
-    area: area m<sup>2</sup>
+    area: area
     rooms: rooms
     price: price
     search: search
+    select:
+      any: any
 
 property:
   localization: localization

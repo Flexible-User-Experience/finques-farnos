@@ -39,8 +39,11 @@ class TestController extends Controller
      */
     public function filterAction($type, $area, $rooms, $price)
     {
-        $data = $this->getDoctrine()->getRepository('AppBundle:Property')->findBy(array('rooms' => $rooms));
+        if ($area !== 'undefined' && $rooms !== 'undefined' && $price !== 'undefined') {
+            return JsonResponse::create($this->getDoctrine()->getRepository('AppBundle:Property')->searchBy($type, $area, $rooms, $price));
+        }
 
-        return JsonResponse::create($data);
+
+        return JsonResponse::create(array());
     }
 }
