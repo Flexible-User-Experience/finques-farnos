@@ -179,6 +179,11 @@ sonata_user:
     security_acl: false
     manager_type: orm
 
+# Sensio Framework Extra
+sensio_framework_extra:
+    view:
+        annotations: false
+
 # FOS Rest
 fos_rest:
     param_fetcher_listener: true
@@ -186,10 +191,6 @@ fos_rest:
     format_listener: true
     view:
         view_response_listener: 'force'
-        formats:
-            rss: false
-            xml: false
-            json: true
     routing_loader:
         default_format: json
 

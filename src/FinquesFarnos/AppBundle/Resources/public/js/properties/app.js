@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('propertiesApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
-    'ngRoute',
-    'vr.directives.slider'
-]).config(['$interpolateProvider', function ($interpolateProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-}]);
-
-
+        'ngCookies',
+        'ngResource',
+        'ngSanitize',
+        'ngRoute',
+        'vr.directives.slider'
+    ]).config(['$interpolateProvider', function ($interpolateProvider) {
+        $interpolateProvider.startSymbol('[[');
+        $interpolateProvider.endSymbol(']]');
+    }])
+    .constant('cfg', {
+//        API_BASE_URL: 'https://host/'
+    })
+;
