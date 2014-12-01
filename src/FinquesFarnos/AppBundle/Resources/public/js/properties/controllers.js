@@ -6,5 +6,6 @@ angular.module('propertiesApp')
         API.getPropertiesFormFilters($scope);
 
         $scope.formListener = function () {
+            API.getProperties($scope);
         }
     }]);

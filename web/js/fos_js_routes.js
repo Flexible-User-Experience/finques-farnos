@@ -1,1 +1,1 @@
-fos.Router.setData({"base_url":"","routes":{"api_test":{"tokens":[["text","\/api\/test"]],"defaults":[],"requirements":[],"hosttokens":[]}},"prefix":"","host":"localhost","scheme":"http"});
+fos.Router.setData({"base_url":"","routes":{"api_test":{"tokens":[["variable","\/","[^\/]++","price"],["variable","\/","[^\/]++","rooms"],["variable","\/","[^\/]++","area"],["variable","\/","[^\/]++","type"],["text","\/api\/get\/properties"]],"defaults":[],"requirements":[],"hosttokens":[]}},"prefix":"","host":"localhost","scheme":"http"});

@@ -19,7 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class TestController extends Controller
 {
     /**
-     * @Route("/test", name="api_test", options={"sitemap"=false, "expose"=true})
+     * @Route("/get/properties/filters", name="api_get_properties_filters", options={"sitemap"=false, "expose"=true})
      */
     public function testAction()
     {
@@ -29,6 +29,16 @@ class TestController extends Controller
             'rooms' => array('min' => 1, 'max' => 5),
             'price' => array('min' => 30000, 'max' => 600000),
         );
+
+        return JsonResponse::create($data);
+    }
+
+    /**
+     * @Route("/get/properties/{type}/{area}/{rooms}/{price}", name="api_get_properties", options={"sitemap"=false, "expose"=true})
+     */
+    public function filterAction($type, $area, $rooms, $price)
+    {
+        $data = $this->getDoctrine()->getRepository('AppBundle:Property')->findBy(array('rooms' => $rooms));
 
         return JsonResponse::create($data);
     }
