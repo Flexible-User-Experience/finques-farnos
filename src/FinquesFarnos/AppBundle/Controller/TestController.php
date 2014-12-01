@@ -23,11 +23,12 @@ class TestController extends Controller
      */
     public function testAction()
     {
+        $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
             'types' => array(array('name' => 'atic'), array('name' => 'pis')),
-            'area' => array('min' => 10, 'max' => 50),
-            'rooms' => array('min' => 1, 'max' => 5),
-            'price' => array('min' => 30000, 'max' => 600000),
+            'area' => array('min' => $filters['min_area'], 'max' => $filters['max_area']),
+            'rooms' => array('min' => $filters['min_rooms'], 'max' => $filters['max_rooms']),
+            'price' => array('min' => $filters['min_price'], 'max' => $filters['max_price']),
         );
 
         return JsonResponse::create($data);
