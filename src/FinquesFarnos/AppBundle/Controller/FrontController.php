@@ -1,6 +1,6 @@
 <?php
 
-namespace FinquesFarnos\AppBundle\Controller\Front;
+namespace FinquesFarnos\AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
@@ -15,13 +15,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
- * Class DefaultController
+ * Class FrontController
  *
  * @category Controller
  * @package  FinquesFarnos\AppBundle\Controller
  * @author   David Romaní <david@flux.cat>
  */
-class DefaultController extends Controller
+class FrontController extends Controller
 {
     /**
      * @Route("/", name="front_homepage", options={"sitemap" = true})

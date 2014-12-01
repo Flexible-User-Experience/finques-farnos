@@ -179,6 +179,20 @@ sonata_user:
     security_acl: false
     manager_type: orm
 
+# FOS Rest
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+        formats:
+            rss: false
+            xml: false
+            json: true
+    routing_loader:
+        default_format: json
+
 # FOS User
 fos_user:
     db_driver:      orm
