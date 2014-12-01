@@ -87,6 +87,5 @@ class PropertyRepository extends EntityRepository
             ->orderBy('p.price', 'ASC')
             ->getQuery()
             ->getOneOrNullResult(Query::HYDRATE_ARRAY);
-//            ->getArrayResult();
     }
 }

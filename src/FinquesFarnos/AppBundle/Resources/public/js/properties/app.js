@@ -10,7 +10,7 @@ angular.module('propertiesApp', [
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
     }])
-    .constant('cfg', {
-//        API_BASE_URL: 'https://host/'
+    .constant('CFG', {
+        DELAY: 400
     })
 ;
