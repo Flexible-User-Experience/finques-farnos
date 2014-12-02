@@ -88,4 +88,34 @@ class PropertyRepository extends EntityRepository
             ->getQuery()
             ->getOneOrNullResult(Query::HYDRATE_ARRAY);
     }
+
+    /**
+     * Filter properties by
+     *
+     * @param int|string $type
+     * @param int $area
+     * @param int $rooms
+     * @param int $price
+     *
+     * @return ArrayCollection
+     */
+    public function filterBy($type, $area, $rooms, $price)
+    {
+        /** @var QueryBuilder $qb */
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->andWhere('p.squareMeters >= :area')
+            ->andWhere('p.rooms >= :rooms')
+            ->andWhere('p.price >= :price')
+            ->setParameters(array(
+                    'enabled' => true,
+                    'area' => $area,
+                    'rooms' => $rooms,
+                    'price' => $price,
+                ))
+            ->addOrderBy('p.totalVisits', 'DESC')
+            ->addOrderBy('p.name', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 }

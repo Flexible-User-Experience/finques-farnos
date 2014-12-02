@@ -5,7 +5,7 @@ angular.module('propertiesApp')
 
         this.getPropertiesFormFilters = function($scope) {
             var deferred = $q.defer();
-            $http.get(Routing.generate('api_get_api_properties_form_filter', {_format: 'json'}))
+            $http.get(Routing.generate('api_properties_api_form_filter', {_format: 'json'}))
                 .success(function(response) {
                     $log.log('api_get_properties_filters', response);
                     $scope.form = response;
@@ -23,7 +23,7 @@ angular.module('propertiesApp')
 
         this.getProperties = function($scope) {
             var deferred = $q.defer();
-            $http.get(Routing.generate('api_get_properties', {type: $scope.type, area: $scope.area, rooms: $scope.rooms, price: $scope.price}))
+            $http.get(Routing.generate('api_properties_api_filtered', {type: $scope.type, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
                     $log.log('api_get_properties', response);
                 })
