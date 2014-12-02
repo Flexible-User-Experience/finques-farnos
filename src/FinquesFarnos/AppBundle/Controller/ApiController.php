@@ -7,6 +7,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use FOS\RestBundle\View\View;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class FrontController
@@ -14,25 +15,31 @@ use FOS\RestBundle\View\View;
  * @category Controller
  * @package  FinquesFarnos\AppBundle\Controller
  * @author   David Romaní <david@flux.cat>
+ *
+ * @Rest\NamePrefix("api_")
  */
 class ApiController extends FOSRestController implements ClassResourceInterface
 {
     /**
+     * Get min max frontend properties form filters
+     *
      * @Rest\View()
-     * @Rest\Get("/get-properties-form-filter")
+     * @Rest\Get("/get-properties-form-filter", options={"sitemap"=false, "expose"=true})
+     *
+     * @var Request $request
+     *
+     * @return array
      */
-    public function getPropertiesFormFilterAction()
+    public function getPropertiesFormFilterAction(Request $request)
     {
-//        $view = View::create();
+        $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
-            'types' => array(0 => 'atic', 1 => 'pis'),
-//            'area' => array('min' => 10, 'max' => 50),
-//            'rooms' => array('min' => 1, 'max' => 5),
-//            'price' => array('min' => 30000, 'max' => 600000),
+            'types' => $this->getDoctrine()->getRepository('AppBundle:Type')->getFilters(),
+            'area' => array('min' => $filters['min_area'], 'max' => $filters['max_area']),
+            'rooms' => array('min' => $filters['min_rooms'], 'max' => $filters['max_rooms']),
+            'price' => array('min' => $filters['min_price'], 'max' => $filters['max_price']),
         );
-//        $view->setData($fakes);
 
         return $data;
-//        return $view;
     }
 }

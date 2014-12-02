@@ -5,7 +5,7 @@ angular.module('propertiesApp')
 
         this.getPropertiesFormFilters = function($scope) {
             var deferred = $q.defer();
-            $http.get(Routing.generate('api_get_properties_filters'))
+            $http.get(Routing.generate('api_get_api_properties_form_filter', {_format: 'json'}))
                 .success(function(response) {
                     $log.log('api_get_properties_filters', response);
                     $scope.form = response;
