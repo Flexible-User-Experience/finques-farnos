@@ -3,6 +3,7 @@
 angular.module('propertiesApp')
     .controller('MainCtrl', ['CFG', 'API', '$scope', '$timeout', '$routeParams', '$log', function (CFG, API, $scope, $timeout, $routeParams, $log) {
 
+        numeral.language('es');
         var timerType = false;
         var timerArea = false;
         var timerRooms = false;
@@ -53,4 +54,9 @@ angular.module('propertiesApp')
 //                if (newValue !== undefined) API.getProperties($scope);
 //            }, CFG.DELAY)
 //        });
+
+        $scope.getCurrency = function(value) {
+            return value !== undefined ? numeral(value).format('0,0') : '';
+        };
+
     }]);

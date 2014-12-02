@@ -20,6 +20,8 @@
     <script src="{{ asset('bundles/innovaangularjs/js/angular-route.min.js') }}"></script>
     <script src="{{ asset('bundles/innovaangularjs/js/angular-touch.min.js') }}"></script>
     <script src="{{ asset('bundles/app/js/vendor/angular-slider.min.js') }}"></script>
+    <script src="/vendor/numeral/min/numeral.min.js"></script>
+    <script src="/vendor/numeral/min/languages/es.min.js"></script>
     <script src="{{ asset('bundles/app/js/properties/app.js') }}"></script>
     <script src="{{ asset('bundles/app/js/properties/controllers.js') }}"></script>
     <script src="{{ asset('bundles/app/js/properties/services.js') }}"></script>
@@ -62,7 +64,7 @@
                     <div class="form-group">
                         <label for="propertyPrice" class="control-label">{{ 'properties.form.price' | trans | raw }}</label>
                         <input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" data-ng-change="formListener()" step="1000">
-                        <output name="priceAmount" for="propertyPrice">[[ price ]] &euro;</output>
+                        <output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>
                     </div>
                     {#<button type="submit" class="btn btn-primary">{{ 'properties.form.search' | trans | raw }}</button>#}
                 </form>
