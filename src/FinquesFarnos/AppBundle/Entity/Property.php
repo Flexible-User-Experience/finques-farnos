@@ -966,4 +966,15 @@ class Property extends Base
     {
         return $this->getType()->getNameSlug();
     }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\Type("string")
+     * @JMS\SerializedName("first_image_path")
+     * @JMS\Groups({"api"})
+     */
+    public function getFirstEnabledImagePath()
+    {
+        return $this->getType()->getNameSlug();
+    }
 }

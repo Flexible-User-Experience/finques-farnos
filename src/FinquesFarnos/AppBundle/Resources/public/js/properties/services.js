@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('propertiesApp')
-    .service('API', ['$http', '$q', '$log', function($http, $q, $log) {
+    .service('API', ['CFG', '$http', '$q', '$log', function(CFG, $http, $q, $log) {
 
         this.getPropertiesFormFilters = function($scope) {
             var deferred = $q.defer();
@@ -9,6 +9,12 @@ angular.module('propertiesApp')
                 .success(function(response) {
                     $log.log('api_get_properties_filters', response);
                     $scope.form = response;
+                    $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
+                    $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
+                    $scope.form.area.step = Math.round(($scope.form.area.max - $scope.form.area.min) / CFG.RANGE_STEPS);
+                    $scope.form.price.min = Math.ceil($scope.form.price.min / 1000) * 1000;
+                    $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
+                    $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
                     $scope.area = $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
                     $scope.rooms = $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
                     $scope.price = $scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);

@@ -53,17 +53,17 @@
                     </div>
                     <div class="form-group">
                         <label for="propertyArea" class="control-label">{{ 'properties.form.area' | trans | raw }}</label>
-                        <input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area">
+                        <input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" data-ng-mouseup="formListener()" step="[[ form.area.step ]]">
                         <output name="areaAmount" for="propertyArea">[[ area ]] m<sup>2</sup></output>
                     </div>
                     <div class="form-group">
                         <label for="propertyRooms" class="control-label">{{ 'properties.form.rooms' | trans | raw }}</label>
-                        <input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]" data-ng-change="formListener()">
+                        <input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]" data-ng-mouseup="formListener()">
                         <output name="roomsAmount" for="propertyRooms">[[ rooms ]]</output>
                     </div>
                     <div class="form-group">
                         <label for="propertyPrice" class="control-label">{{ 'properties.form.price' | trans | raw }}</label>
-                        <input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" data-ng-change="formListener()" step="1000">
+                        <input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" data-ng-mouseup="formListener()" step="[[ form.price.step ]]">
                         <output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>
                     </div>
                     {#<button type="submit" class="btn btn-primary">{{ 'properties.form.search' | trans | raw }}</button>#}
