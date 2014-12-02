@@ -179,6 +179,9 @@ sonata_user:
     security_acl: false
     manager_type: orm
 
+# Nelmio API Doc
+nelmio_api_doc: ~
+
 # Sensio Framework Extra
 sensio_framework_extra:
     view:
@@ -191,8 +194,6 @@ fos_rest:
     format_listener: true
     view:
         view_response_listener: 'force'
-#    routing_loader:
-#        default_format: json
 
 # FOS User
 fos_user:

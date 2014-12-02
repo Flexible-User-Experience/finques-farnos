@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Property class
@@ -50,6 +51,7 @@ class Property extends Base
     /**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
      * @Gedmo\Translatable
+     * @JMS\Groups({"api"})
      * @var string
      */
     private $name;
@@ -57,6 +59,7 @@ class Property extends Base
     /**
      * @ORM\Column(type="string", length=255, name="name_slug", nullable=false)
      * @Gedmo\Slug(fields={"name"})
+     * @JMS\Groups({"api"})
      * @var string
      */
     private $nameSlug;
@@ -64,12 +67,14 @@ class Property extends Base
     /**
      * @ORM\Column(type="text", length=4000, name="description", nullable=true)
      * @Gedmo\Translatable
+     * @JMS\Groups({"api"})
      * @var string
      */
     private $description;
 
     /**
      * @ORM\Column(name="square_meters", type="integer", nullable=true)
+     * @JMS\Groups({"api"})
      * @var integer
      */
     private $squareMeters = 0;
@@ -83,30 +88,35 @@ class Property extends Base
 
     /**
      * @ORM\Column(name="price", type="float", precision=2, nullable=true)
+     * @JMS\Groups({"api"})
      * @var float
      */
     private $price = 0.0;
 
     /**
      * @ORM\Column(name="price_old", type="float", precision=2, nullable=true)
+     * @JMS\Groups({"api"})
      * @var float
      */
     private $oldPrice = 0.0;
 
     /**
      * @ORM\Column(name="rooms", type="integer", nullable=true)
+     * @JMS\Groups({"api"})
      * @var integer
      */
     private $rooms = 0;
 
     /**
      * @ORM\Column(name="bathrooms", type="integer", nullable=true)
+     * @JMS\Groups({"api"})
      * @var integer
      */
     private $bathrooms = 0;
 
     /**
      * @ORM\Column(name="offer_discount", type="boolean", nullable=false)
+     * @JMS\Groups({"api"})
      * @var boolean
      */
     private $offerDiscount = false;
@@ -125,6 +135,7 @@ class Property extends Base
 
     /**
      * @ORM\Column(name="show_price_only_with_numbers", type="boolean", nullable=false)
+     * @JMS\Groups({"api"})
      * @var boolean
      */
     private $showPriceOnlyWithNumbers = true;

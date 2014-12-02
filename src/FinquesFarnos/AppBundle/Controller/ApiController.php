@@ -2,7 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\Controller;
 
-use Doctrine\ORM\EntityManager;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Routing\ClassResourceInterface;
@@ -42,8 +42,14 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     /**
      * Get filtered properties
      *
-     * @Rest\View()
+     * @Rest\View(serializerGroups={"api"})
      * @Rest\Get("/get-properties-filtered/{type}/{area}/{rooms}/{price}", options={"sitemap"=false, "expose"=true})
+     *
+     * @ApiDoc(
+     *  section="Properties",
+     *  resource=true,
+     *  description="Get filtered properties"
+     * )
      *
      * @param int $type
      * @param int $area
@@ -55,7 +61,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     public function propertiesFilteredAction($type, $area, $rooms, $price)
     {
         if ($area !== 'undefined' && $rooms !== 'undefined' && $price !== 'undefined') {
-            return array('properties' => $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $area, $rooms, $price));
+            return array($this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $area, $rooms, $price));
         }
 
 
