@@ -172,13 +172,13 @@ class Property extends Base
      * @ORM\OrderBy({"createdAt" = "ASC"})
      * @var ArrayCollection
      */
-    protected $visits;
+    private $visits;
 
     /**
      * @ORM\Column(name="total_visits", type="integer", nullable=true)
      * @var integer
      */
-    protected $totalVisits = 0;
+    private $totalVisits = 0;
 
     /**
      * @ORM\OneToMany(
@@ -954,5 +954,16 @@ class Property extends Base
         }
 
         return $firstImage;
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\Type("string")
+     * @JMS\SerializedName("type_name_slug")
+     * @JMS\Groups({"api"})
+     */
+    public function getTypeNameSlug()
+    {
+        return $this->getType()->getNameSlug();
     }
 }

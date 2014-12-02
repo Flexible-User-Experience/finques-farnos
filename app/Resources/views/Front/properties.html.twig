@@ -82,8 +82,8 @@
 
                 </div>
                 <div class="col-md-4">
-                    <h2>[[ property.name ]]</h2>
-                    <h3>{{ 'homepage.property.since' | trans }} [[ property.price ]] €</h3>
+                    <h2><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name ]]</a></h2>
+                    <h3>{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
                     <div class="btn-group" role="group" data-aria-label="icons">
                         <button data-ng-if="property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
                         <button data-ng-if="property.offer_discount && !property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="col-md-4">
                     <p>[[ property.description ]]</p>
-                    <p><a class="btn btn-primary btn-sm" role="button" href="#">{{ 'properties.list.button.more' | trans }}</a></p>
+                    <p><a class="btn btn-primary btn-sm" role="button" href="[[ getUrlPropertyDetail(property) ]]">{{ 'properties.list.button.more' | trans }}</a></p>
                 </div>
             </div>
             <hr>

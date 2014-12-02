@@ -43,7 +43,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/{type}/{name}/", name="front_property")
+     * @Route("/property/{type}/{name}/", name="front_property", options={"expose" = true})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"name": "nameSlug"}})
      */
     public function propertyAction(Request $request, Property $property)

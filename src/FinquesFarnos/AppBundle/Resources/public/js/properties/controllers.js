@@ -59,4 +59,8 @@ angular.module('propertiesApp')
             return value !== undefined ? numeral(value).format('0,0') : '';
         };
 
+        $scope.getUrlPropertyDetail = function(property) {
+            return Routing.generate('front_property', {type: property.type_name_slug, name: property.name_slug});
+        };
+
     }]);
