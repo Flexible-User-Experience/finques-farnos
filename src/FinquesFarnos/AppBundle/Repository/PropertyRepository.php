@@ -103,6 +103,7 @@ class PropertyRepository extends EntityRepository
     {
         /** @var QueryBuilder $qb */
         $qb = $this->createQueryBuilder('p')
+            ->select('p')
             ->where('p.enabled = :enabled')
             ->andWhere('p.squareMeters >= :area')
             ->andWhere('p.rooms >= :rooms')
@@ -115,6 +116,9 @@ class PropertyRepository extends EntityRepository
                 ))
             ->addOrderBy('p.totalVisits', 'DESC')
             ->addOrderBy('p.name', 'ASC');
+        if ($type > 0) {
+            $qb->andWhere('p.type = :type')->setParameter('type', $type);
+        }
 
         return $qb->getQuery()->getResult();
     }

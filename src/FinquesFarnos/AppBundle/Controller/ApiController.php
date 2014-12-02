@@ -31,9 +31,9 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
             'types' => $this->getDoctrine()->getRepository('AppBundle:Type')->getFilters(),
-            'area' => array('min' => $filters['min_area'], 'max' => $filters['max_area']),
-            'rooms' => array('min' => $filters['min_rooms'], 'max' => $filters['max_rooms']),
-            'price' => array('min' => $filters['min_price'], 'max' => $filters['max_price']),
+            'area' => array('min' => intval($filters['min_area']), 'max' => intval($filters['max_area'])),
+            'rooms' => array('min' => intval($filters['min_rooms']), 'max' => intval($filters['max_rooms'])),
+            'price' => array('min' => intval($filters['min_price']), 'max' => intval($filters['max_price'])),
         );
 
         return $data;
