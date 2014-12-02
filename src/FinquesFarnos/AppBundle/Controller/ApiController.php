@@ -28,9 +28,11 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      */
     public function propertiesFormFilterAction()
     {
+        $types = $this->getDoctrine()->getRepository('AppBundle:Type')->getFilters();
+        array_unshift($types, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any')));
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
-            'types' => $this->getDoctrine()->getRepository('AppBundle:Type')->getFilters(),
+            'types' => $types,
             'area' => array('min' => intval($filters['min_area']), 'max' => intval($filters['max_area'])),
             'rooms' => array('min' => intval($filters['min_rooms']), 'max' => intval($filters['max_rooms'])),
             'price' => array('min' => intval($filters['min_price']), 'max' => intval($filters['max_price'])),

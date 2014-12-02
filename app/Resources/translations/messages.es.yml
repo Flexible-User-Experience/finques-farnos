@@ -20,7 +20,9 @@ homepage:
       discount: rebajado
 
 properties:
+  searching: obteniendo resultados
   list:
+    empty: ningún resultado encontrado
     button:
       more: más información
       back: volver al listado
@@ -33,7 +35,7 @@ properties:
     price: precio
     search: buscar
     select:
-      any: cualquier
+      any: cualquier tipo
 
 property:
   localization: localitzación

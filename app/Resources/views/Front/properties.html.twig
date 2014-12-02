@@ -37,7 +37,7 @@
         <div class="row" data-ng-show="!firstCallFinished">
             <div class="col-md-4">
                 <div class="well">
-                    <p class="lead">{{ 'properties.loading' | trans }}</p>
+                    <p class="lead">{{ 'properties.searching' | trans }}</p>
                 </div>
             </div>
         </div>
@@ -46,9 +46,7 @@
                 <form name="filterForm" action="" role="form">
                     <div class="form-group">
                         <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | raw }}</label>
-                        <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-change="formListener()">
-                            <option value="-1" selected>{{ 'properties.form.select.any' | trans | raw }}</option>
-                            <option data-ng-repeat="type in form.types" value="[[ type.id ]]">[[ type.name ]]</option>
+                        <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">
                         </select>
                     </div>
                     <div class="form-group">
@@ -98,6 +96,13 @@
                 </div>
             </div>
             <hr>
+        </div>
+        <div class="row" data-ng-hide="properties.length || !firstCallFinished">
+            <div class="col-md-12">
+                <div class="well">
+                    <p class="lead">{{ 'properties.list.empty' | trans }}</p>
+                </div>
+            </div>
         </div>
 
         {#{% for property in pagination %}#}

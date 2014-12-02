@@ -20,7 +20,9 @@ homepage:
       discount: rebaixat
 
 properties:
+  searching: obtenint resultats
   list:
+    empty: no s'ha trobat cap resultat
     button:
       more: més informació
       back: tornar al llistat
@@ -33,7 +35,7 @@ properties:
     price: preu
     search: buscar
     select:
-      any: qualsevol
+      any: qualsevol tipus
 
 property:
   localization: localització

@@ -20,7 +20,9 @@ homepage:
       discount: discount
 
 properties:
+  searching: searching for results
   list:
+    empty: any result found
     button:
       more: more info
       back: back to list
@@ -33,7 +35,7 @@ properties:
     price: price
     search: search
     select:
-      any: any
+      any: any type
 
 property:
   localization: localization
