@@ -28,29 +28,18 @@ class FrontController extends Controller
      */
     public function homepageAction()
     {
-        $slides = $this->getDoctrine()->getRepository('AppBundle:ImageSlider')->getHomepageItems();
-        $properties = $this->getDoctrine()->getRepository('AppBundle:Property')->getHomepageItems();
-
         return $this->render('::Front/homepage.html.twig', array(
-                'slides' => $slides,
-                'properties' => $properties,
+                'slides' => $this->getDoctrine()->getRepository('AppBundle:ImageSlider')->getHomepageItems(),
+                'properties' => $this->getDoctrine()->getRepository('AppBundle:Property')->getHomepageItems(),
             ));
     }
 
     /**
      * @Route("/properties/", name="front_properties", options={"sitemap" = true})
-     * @Route("/properties/{page}", name="front_properties_page", defaults={"page" = 2})
      */
     public function propertiesAction()
     {
-        $query = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPropertiesSortedByPriceQuery();
-        /** @var Paginator $paginator */
-        $paginator  = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($query, $this->get('request')->query->get('page', 1));
-
-        return $this->render('::Front/properties.html.twig', array(
-                'pagination' => $pagination
-            ));
+        return $this->render('::Front/properties.html.twig');
     }
 
     /**

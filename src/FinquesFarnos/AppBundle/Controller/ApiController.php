@@ -61,7 +61,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     public function propertiesFilteredAction($type, $area, $rooms, $price)
     {
         if ($area !== 'undefined' && $rooms !== 'undefined' && $price !== 'undefined') {
-            return array($this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $area, $rooms, $price));
+            return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $area, $rooms, $price);
         }
 
 

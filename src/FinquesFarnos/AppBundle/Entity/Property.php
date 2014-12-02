@@ -123,6 +123,7 @@ class Property extends Base
 
     /**
      * @ORM\Column(name="offer_special", type="boolean", nullable=false)
+     * @JMS\Groups({"api"})
      * @var boolean
      */
     private $offerSpecial = false;

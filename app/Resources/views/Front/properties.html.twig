@@ -32,7 +32,14 @@
                 <h1>{{ 'menu.properties' | trans }}</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row" data-ng-show="!firstCallFinished">
+            <div class="col-md-4">
+                <div class="well">
+                    <p class="lead">{{ 'properties.loading' | trans }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" data-ng-show="firstCallFinished">
             <div class="col-md-4">
                 <form name="filterForm" action="" role="form">
                     <div class="form-group">
@@ -46,40 +53,16 @@
                         <label for="propertyArea" class="control-label">{{ 'properties.form.area' | trans | raw }}</label>
                         <input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area">
                         <output name="amount" for="propertyArea">[[ area ]] m<sup>2</sup></output>
-                        {#<div id="propertyArea" class="form-control" data-slider#}
-                                {#data-ng-model="area"#}
-                                {#data-floor="form.area.min"#}
-                                {#data-ceiling="form.area.max"#}
-                                {#data-step="1"#}
-                                {#data-precision="0"#}
-                                {#data-stretch="1">#}
-                        {#</div>#}
                     </div>
                     <div class="form-group">
                         <label for="propertyRooms" class="control-label">{{ 'properties.form.rooms' | trans | raw }}</label>
-                        <input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms">
+                        <input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms" data-ng-change="formListener()">
                         <output name="amount" for="propertyRooms">[[ rooms ]]</output>
-                        {#<div id="propertyRooms" class="form-control" data-slider#}
-                             {#data-ng-model="rooms"#}
-                             {#data-floor="1"#}
-                             {#data-ceiling="10"#}
-                             {#data-step="1"#}
-                             {#data-precision="0"#}
-                             {#data-stretch="1">#}
-                        {#</div>#}
                     </div>
                     <div class="form-group">
                         <label for="propertyPrice" class="control-label">{{ 'properties.form.price' | trans | raw }}</label>
                         <input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price">
                         <output name="amount" for="propertyRooms">[[ price ]] &euro;</output>
-                        {#<div id="propertyPrice" class="form-control" data-slider#}
-                             {#data-ng-model="price"#}
-                             {#data-floor="1"#}
-                             {#data-ceiling="10"#}
-                             {#data-step="1"#}
-                             {#data-precision="0"#}
-                             {#data-stretch="1">#}
-                        {#</div>#}
                     </div>
                     <button type="submit" class="btn btn-primary">{{ 'properties.form.search' | trans | raw }}</button>
                 </form>
@@ -91,51 +74,75 @@
             </div>
         </div>
         <hr>
-        {% for property in pagination %}
+        <div data-ng-show="firstCallFinished" data-ng-repeat="property in properties">
             <div class="row">
                 <div class="col-md-4">
-                    {% if property.firstEnabledImage %}
-                        <img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
-                    {% endif %}
+
                 </div>
                 <div class="col-md-4">
-                    <h2>{{ property.name }}</h2>
-                    {% if property.showPriceOnlyWithNumbers %}
-                        <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
-                    {% else %}
-                        <h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
-                    {% endif %}
+                    <h2>[[ property.name ]]</h2>
+                    <h3>{{ 'homepage.property.since' | trans }} [[ property.price ]] €</h3>
                     <div class="btn-group" role="group" data-aria-label="icons">
-                        {% if property.offerSpecial %}
-                            <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
-                        {% endif %}
-                        {% if property.offerDiscount and not property.offerSpecial %}
-                            <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
-                        {% endif %}
-                        {% if property.squareMeters %}
-                            <button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>
-                        {% endif %}
-                        {% if property.rooms %}
-                            <button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
-                        {% endif %}
-                        {% if property.bathrooms %}
-                            <button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
-                        {% endif %}
+                        <button data-ng-if="property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
+                        <button data-ng-if="property.offer_discount && !property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
+                        <button data-ng-if="property.square_meters" type="button" class="btn btn-default btn-sm">[[ property.square_meters ]] m<sup>2</sup></button>
+                        <button data-ng-if="property.rooms" type="button" class="btn btn-default btn-sm">[[ property.rooms ]] {{ 'homepage.property.rooms' | trans }}</button>
+                        <button data-ng-if="property.bathrooms" type="button" class="btn btn-default btn-sm">[[ property.bathrooms ]] {{ 'homepage.property.bathrooms' | trans }}</button>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <p>{{ property.description }}</p>
-                    <p><a class="btn btn-primary btn-sm" role="button" href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ 'properties.list.button.more' | trans }}</a></p>
+                    <p>[[ property.description ]]</p>
+                    <p><a class="btn btn-primary btn-sm" role="button" href="#">{{ 'properties.list.button.more' | trans }}</a></p>
                 </div>
             </div>
-        {% endfor %}
-        <div class="row">
-            <div class="col-md-12">
-                <div class="paginator pull-right">
-                    {{ knp_pagination_render(pagination) }}
-                </div>
-            </div>
+            <hr>
         </div>
+
+        {#{% for property in pagination %}#}
+            {#<div class="row">#}
+                {#<div class="col-md-4">#}
+                    {#{% if property.firstEnabledImage %}#}
+                        {#<img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">#}
+                    {#{% endif %}#}
+                {#</div>#}
+                {#<div class="col-md-4">#}
+                    {#<h2>{{ property.name }}</h2>#}
+                    {#{% if property.showPriceOnlyWithNumbers %}#}
+                        {#<h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>#}
+                    {#{% else %}#}
+                        {#<h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>#}
+                    {#{% endif %}#}
+                    {#<div class="btn-group" role="group" data-aria-label="icons">#}
+                        {#{% if property.offerSpecial %}#}
+                            {#<button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>#}
+                        {#{% endif %}#}
+                        {#{% if property.offerDiscount and not property.offerSpecial %}#}
+                            {#<button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>#}
+                        {#{% endif %}#}
+                        {#{% if property.squareMeters %}#}
+                            {#<button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>#}
+                        {#{% endif %}#}
+                        {#{% if property.rooms %}#}
+                            {#<button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>#}
+                        {#{% endif %}#}
+                        {#{% if property.bathrooms %}#}
+                            {#<button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>#}
+                        {#{% endif %}#}
+                    {#</div>#}
+                {#</div>#}
+                {#<div class="col-md-4">#}
+                    {#<p>{{ property.description }}</p>#}
+                    {#<p><a class="btn btn-primary btn-sm" role="button" href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ 'properties.list.button.more' | trans }}</a></p>#}
+                {#</div>#}
+            {#</div>#}
+        {#{% endfor %}#}
+        {#<div class="row">#}
+            {#<div class="col-md-12">#}
+                {#<div class="paginator pull-right">#}
+                    {#{{ knp_pagination_render(pagination) }}#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
     </div>
 {% endblock %}
 

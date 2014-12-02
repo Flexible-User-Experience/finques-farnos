@@ -12,6 +12,7 @@ angular.module('propertiesApp')
                     $scope.area = $scope.form.area.min;
                     $scope.rooms = $scope.form.rooms.min;
                     $scope.price = $scope.form.price.min;
+                    $scope.firstCallFinished = true;
                 })
                 .error(function(data) {
                     $log.error('error', data);
@@ -26,6 +27,7 @@ angular.module('propertiesApp')
             $http.get(Routing.generate('api_properties_api_filtered', {type: $scope.type, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
                     $log.log('api_get_properties', response);
+                    $scope.properties = response;
                 })
                 .error(function(data) {
                     $log.error('error', data);
