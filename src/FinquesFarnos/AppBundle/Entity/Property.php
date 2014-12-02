@@ -181,6 +181,13 @@ class Property extends Base
     private $totalVisits = 0;
 
     /**
+     * @JMS\SerializedName("first_image_path")
+     * @JMS\Groups({"api"})
+     * @var string
+     */
+    private $virtualFirstEnabledImageUrl;
+
+    /**
      * @ORM\OneToMany(
      *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation",
      *     mappedBy="object",
@@ -922,6 +929,30 @@ class Property extends Base
     }
 
     /**
+     * Set VirtualFirstEnabledImageUrl
+     *
+     * @param string $virtualFirstEnabledImageUrl
+     *
+     * @return $this
+     */
+    public function setVirtualFirstEnabledImageUrl($virtualFirstEnabledImageUrl)
+    {
+        $this->virtualFirstEnabledImageUrl = $virtualFirstEnabledImageUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get VirtualFirstEnabledImageUrl
+     *
+     * @return string
+     */
+    public function getVirtualFirstEnabledImageUrl()
+    {
+        return $this->virtualFirstEnabledImageUrl;
+    }
+
+    /**
      * Get LatLng
      *
      * @Assert\NotBlank()
@@ -963,17 +994,6 @@ class Property extends Base
      * @JMS\Groups({"api"})
      */
     public function getTypeNameSlug()
-    {
-        return $this->getType()->getNameSlug();
-    }
-
-    /**
-     * @JMS\VirtualProperty
-     * @JMS\Type("string")
-     * @JMS\SerializedName("first_image_path")
-     * @JMS\Groups({"api"})
-     */
-    public function getFirstEnabledImagePath()
     {
         return $this->getType()->getNameSlug();
     }

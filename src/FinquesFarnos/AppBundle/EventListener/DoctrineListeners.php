@@ -3,8 +3,11 @@
 namespace FinquesFarnos\AppBundle\EventListener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Entity\PropertyVisit;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
  * Class EntitiesListeners
@@ -15,6 +18,28 @@ use FinquesFarnos\AppBundle\Entity\PropertyVisit;
  */
 class DoctrineListeners
 {
+    /**
+     * @var CacheManager $cm
+     */
+    private $cm;
+
+    /**
+     * @var UploaderHelper $uh
+     */
+    private $uh;
+
+    /**
+     * Constructor
+     *
+     * @param CacheManager   $cm
+     * @param UploaderHelper $uh
+     */
+    public function __construct(CacheManager $cm, UploaderHelper $uh)
+    {
+        $this->cm = $cm;
+        $this->uh = $uh;
+    }
+
     /**
      * Pre persist event listener.
      * - set property visit counter
@@ -28,6 +53,27 @@ class DoctrineListeners
 
         if ($entity instanceof PropertyVisit) {
             $entity->getProperty()->setTotalVisits($entity->getProperty()->getTotalVisits() + 1);
+        }
+    }
+
+    /**
+     * Post load event listener.
+     * - set virtual first enabled image URL on property entity
+     *
+     * @param LifecycleEventArgs $args
+     */
+    public function postLoad(LifecycleEventArgs $args)
+    {
+        /** @var Property $entity */
+        $entity = $args->getEntity();
+
+        if ($entity instanceof Property) {
+            /** @var ImageProperty $image */
+            $image = $entity->getFirstEnabledImage();
+            if ($image) {
+                $entity->setVirtualFirstEnabledImageUrl($this->cm->generateUrl($this->uh->asset($image, 'property_image'), '100x100'));
+            }
+
         }
     }
 }
