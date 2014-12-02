@@ -30,9 +30,9 @@ properties:
       next: next
   form:
     type: type
-    area: area
-    rooms: rooms
-    price: price
+    area: area or more
+    rooms: rooms or more
+    price: or more
     search: search
     select:
       any: any type

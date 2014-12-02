@@ -30,9 +30,9 @@ properties:
       next: siguiente
   form:
     type: tipo
-    area: superficie
-    rooms: habitaciones
-    price: precio
+    area: superficie o más
+    rooms: habitaciones o más
+    price: o más
     search: buscar
     select:
       any: cualquier tipo
