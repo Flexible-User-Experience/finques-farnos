@@ -15,9 +15,9 @@ angular.module('propertiesApp')
                     $scope.form.price.min = Math.ceil($scope.form.price.min / 1000) * 1000;
                     $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
                     $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
-                    $scope.area = $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
-                    $scope.rooms = $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
-                    $scope.price = $scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
+                    $scope.area = $scope.form.area.max; // + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
+                    $scope.rooms = $scope.form.rooms.max; // + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
+                    $scope.price = $scope.form.price.max; // + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
                     $scope.type = $scope.form.types[0];
                     deferred.resolve(response);
                 })

@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('propertiesApp')
-    .controller('MainCtrl', ['CFG', 'API', '$scope', '$timeout', '$routeParams', '$log', function (CFG, API, $scope, $timeout, $routeParams, $log) {
+    .controller('MainCtrl', ['CFG', 'API', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', function (CFG, API, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log) {
 
         numeral.language('es');
+        var timerArea, timerRooms, timerPrice = false;
         $scope.firstCallFinished = false;
         $scope.type = {};
-        var timerArea = false;
-        var timerRooms = false;
-        var timerPrice = false;
+        $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
 
         var getPropertiesFormFiltersPromise = API.getPropertiesFormFilters($scope);
         getPropertiesFormFiltersPromise.then(
