@@ -77,11 +77,12 @@
         <div data-ng-show="firstCallFinished" data-ng-repeat="property in properties">
             <div class="row">
                 <div class="col-md-4">
-
+                    <a href="[[ getUrlPropertyDetail(property) ]]""><img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[]]"></a>
                 </div>
                 <div class="col-md-4">
                     <h2><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name ]]</a></h2>
-                    <h3>{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
+                    <h3 data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
+                    <h3 data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
                     <div class="btn-group" role="group" data-aria-label="icons">
                         <button data-ng-if="property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
                         <button data-ng-if="property.offer_discount && !property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
@@ -104,52 +105,6 @@
                 </div>
             </div>
         </div>
-
-        {#{% for property in pagination %}#}
-            {#<div class="row">#}
-                {#<div class="col-md-4">#}
-                    {#{% if property.firstEnabledImage %}#}
-                        {#<img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">#}
-                    {#{% endif %}#}
-                {#</div>#}
-                {#<div class="col-md-4">#}
-                    {#<h2>{{ property.name }}</h2>#}
-                    {#{% if property.showPriceOnlyWithNumbers %}#}
-                        {#<h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>#}
-                    {#{% else %}#}
-                        {#<h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>#}
-                    {#{% endif %}#}
-                    {#<div class="btn-group" role="group" data-aria-label="icons">#}
-                        {#{% if property.offerSpecial %}#}
-                            {#<button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>#}
-                        {#{% endif %}#}
-                        {#{% if property.offerDiscount and not property.offerSpecial %}#}
-                            {#<button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>#}
-                        {#{% endif %}#}
-                        {#{% if property.squareMeters %}#}
-                            {#<button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>#}
-                        {#{% endif %}#}
-                        {#{% if property.rooms %}#}
-                            {#<button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>#}
-                        {#{% endif %}#}
-                        {#{% if property.bathrooms %}#}
-                            {#<button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>#}
-                        {#{% endif %}#}
-                    {#</div>#}
-                {#</div>#}
-                {#<div class="col-md-4">#}
-                    {#<p>{{ property.description }}</p>#}
-                    {#<p><a class="btn btn-primary btn-sm" role="button" href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ 'properties.list.button.more' | trans }}</a></p>#}
-                {#</div>#}
-            {#</div>#}
-        {#{% endfor %}#}
-        {#<div class="row">#}
-            {#<div class="col-md-12">#}
-                {#<div class="paginator pull-right">#}
-                    {#{{ knp_pagination_render(pagination) }}#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
     </div>
 {% endblock %}
 
