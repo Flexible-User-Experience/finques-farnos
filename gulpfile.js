@@ -6,6 +6,7 @@ var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
 var minifycss = require('gulp-minify-css');
+var usemin = require('gulp-usemin');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
@@ -21,12 +22,13 @@ gulp.task('less', function() {
     return gulp.src(['bower_components/bootstrap/less/bootstrap.less', 'app/Resources/public/css/**/*.less'])
         .pipe(concat('main.css'))
         .pipe(less())
+        .pipe(minifycss())
         .pipe(gulp.dest('web/css'));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src(['bower_components/jquery/src/jquery.js', 'bower_components/lodash/dist/lodash.js', 'bower_components/numeral/numeral.js', 'bower_components/numeral/languages/es.js', 'bower_components/modernizr/modernizer.js', 'bower_components/bootstrap/*.js', 'bower_components/angular/angular.js', 'bower_components/angular-resource/angular-resource.js', 'bower_components/angular-cookies/angular-cookies.js', 'bower_components/angular-sanitize/angular-sanitize.js', 'bower_components/angular-route/angular-route.js', 'bower_components/angular-touch/angular-touch.js', 'bower_components/angular-google-maps/dist/angular-google-maps.js', 'app/Resources/public/js/*.js'])
+    return gulp.src(['bower_components/jquery/dist/jquery.js', 'bower_components/lodash/dist/lodash.js', 'bower_components/numeral/numeral.js', 'bower_components/numeral/languages/es.js', 'bower_components/modernizr/modernizer.js', 'bower_components/bootstrap/dist/bootstrap.js', 'bower_components/angular/angular.js', 'bower_components/angular-resource/angular-resource.js', 'bower_components/angular-cookies/angular-cookies.js', 'bower_components/angular-sanitize/angular-sanitize.js', 'bower_components/angular-route/angular-route.js', 'bower_components/angular-touch/angular-touch.js', 'bower_components/angular-google-maps/dist/angular-google-maps.js', 'app/Resources/public/js/*.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))
         .pipe(rename('main.min.js'))
