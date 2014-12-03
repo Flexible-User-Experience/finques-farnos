@@ -1,18 +1,42 @@
-var gulp      = require('gulp'),
-    less      = require('gulp-less'),
-    concat    = require('gulp-concat'),
-    minifyCSS = require('gulp-minify-css'),
-    rename    = require('gulp-rename');
+// Include gulp
+var gulp = require('gulp');
 
-gulp.task('less', function () {
-    gulp.src('less/**/*.less')
-        .pipe(less())
-        .pipe(gulp.dest('css'))
-        .pipe(concat('style.css'))
-        .pipe(gulp.dest('./'))
-        .pipe(minifyCSS())
-        .pipe(rename('style.min.css'))
-        .pipe(gulp.dest('./'));
+// Include Our Plugins
+var jshint = require('gulp-jshint');
+var less = require('gulp-less');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+
+// Lint Task
+gulp.task('lint', function() {
+    return gulp.src('app/Resources/public/js/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
-gulp.task('default', ['less']);
+// Compile Our Less
+gulp.task('less', function() {
+    return gulp.src('web/less/*.less')
+        .pipe(less())
+        .pipe(gulp.dest('css'));
+});
+
+// Concatenate & Minify JS
+gulp.task('scripts', function() {
+    return gulp.src('app/Resources/public/js/*.js')
+        .pipe(concat('all.js'))
+        .pipe(gulp.dest('web/js'))
+        .pipe(rename('all.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('web/js'));
+});
+
+// Watch Files For Changes
+gulp.task('watch', function() {
+    gulp.watch('app/Resources/public/js/*.js', ['lint', 'scripts']);
+    gulp.watch('web/less/*.less', ['less']);
+});
+
+// Default Task
+gulp.task('default', ['lint', 'less', 'scripts']);
