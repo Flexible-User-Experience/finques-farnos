@@ -13,15 +13,16 @@ angular.module('propertiesApp')
 
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
+            $log.log(maps);
         });
-  var lint = 1; // TODO remove this
+
         var getPropertiesFormFiltersPromise = API.getPropertiesFormFilters($scope);
         getPropertiesFormFiltersPromise.then(
-            function(response) {
+            function() {
                 $scope.map.control.refresh();
                 var getPropertiesPromise = API.getProperties($scope);
                 getPropertiesPromise.then(
-                    function(response) {
+                    function() {
                         $scope.firstCallFinished = true;
                     },
                     function(reason) { $log.error('get properties promise error', reason); }
@@ -36,29 +37,29 @@ angular.module('propertiesApp')
 
         $scope.$watch('area', function(newValue, oldValue) {
             if (timerArea) {
-                $timeout.cancel(timerArea)
+                $timeout.cancel(timerArea);
             }
             timerArea = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) API.getProperties($scope);
-            }, CFG.DELAY)
+                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+            }, CFG.DELAY);
         });
 
         $scope.$watch('rooms', function(newValue, oldValue) {
             if (timerRooms) {
-                $timeout.cancel(timerRooms)
+                $timeout.cancel(timerRooms);
             }
             timerRooms = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) API.getProperties($scope);
-            }, CFG.DELAY)
+                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+            }, CFG.DELAY);
         });
 
         $scope.$watch('price', function(newValue, oldValue) {
             if (timerPrice) {
-                $timeout.cancel(timerPrice)
+                $timeout.cancel(timerPrice);
             }
             timerPrice = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) API.getProperties($scope);
-            }, CFG.DELAY)
+                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+            }, CFG.DELAY);
         });
 
         $scope.getCurrency = function(value) {

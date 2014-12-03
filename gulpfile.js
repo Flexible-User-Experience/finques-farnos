@@ -17,7 +17,7 @@ gulp.task('lint', function() {
 
 // Compile Our Less
 gulp.task('less', function() {
-    return gulp.src('web/less/*.less')
+    return gulp.src('app/Resources/public/css/**/*.less')
         .pipe(less())
         .pipe(gulp.dest('css'));
 });
