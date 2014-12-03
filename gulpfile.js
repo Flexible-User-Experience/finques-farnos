@@ -19,7 +19,7 @@ gulp.task('lint', function() {
 gulp.task('less', function() {
     return gulp.src('app/Resources/public/css/**/*.less')
         .pipe(less())
-        .pipe(gulp.dest('css'));
+        .pipe(gulp.dest('web/css'));
 });
 
 // Concatenate & Minify JS
