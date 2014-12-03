@@ -20,12 +20,22 @@ homepage:
       discount: discount
 
 properties:
+  searching: searching for results
   list:
+    empty: any result found
     button:
       more: more info
       back: back to list
       prev: previous
       next: next
+  form:
+    type: type
+    area: area or more
+    rooms: rooms or more
+    price: or more
+    search: search
+    select:
+      any: any type
 
 property:
   localization: localization

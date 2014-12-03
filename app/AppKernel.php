@@ -21,6 +21,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             // Vendor bundles
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
             new FOS\UserBundle\FOSUserBundle('FOSUserBundle'),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
@@ -35,9 +38,11 @@ class AppKernel extends Kernel
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new Hautelook\AliceBundle\HautelookAliceBundle(),
             new Orkestra\Bundle\PdfBundle\OrkestraPdfBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new Presta\SitemapBundle\PrestaSitemapBundle(),
+            new Innova\AngularJSBundle\InnovaAngularJSBundle(),
             // App bundles
             new FinquesFarnos\UserBundle\UserBundle(),
             new FinquesFarnos\AppBundle\AppBundle(),

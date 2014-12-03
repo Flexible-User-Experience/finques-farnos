@@ -4,8 +4,12 @@ services:
 # Doctrine Listeners
     app.doctrine_listener:
         class: FinquesFarnos\AppBundle\EventListener\DoctrineListeners
+        arguments:
+            - @liip_imagine.cache.manager
+            - @vich_uploader.templating.helper.uploader_helper
         tags:
             - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: postLoad }
 
 # Orkestra PDF
     app.property_pdf_generator:

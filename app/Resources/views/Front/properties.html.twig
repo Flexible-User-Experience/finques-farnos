@@ -4,55 +4,111 @@
 {% block metadescription %}{% endblock %}
 {% block metakeywords %}{% endblock %}
 
+{% block bodyattr %}ng-app="propertiesApp"{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/angular-slider.css') }}">
+    <style type="text/css">
+        .angular-google-map-container {
+            height: 400px;
+        }
+    </style>
+{% endblock %}
+
+{% block javascriptshead %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/innovaangularjs/js/angular.min.js') }}"></script>
+    <script src="{{ asset('bundles/innovaangularjs/js/angular-resource.min.js') }}"></script>
+    <script src="{{ asset('bundles/innovaangularjs/js/angular-cookies.min.js') }}"></script>
+    <script src="{{ asset('bundles/innovaangularjs/js/angular-sanitize.min.js') }}"></script>
+    <script src="{{ asset('bundles/innovaangularjs/js/angular-route.min.js') }}"></script>
+    <script src="{{ asset('bundles/innovaangularjs/js/angular-touch.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/vendor/angular-slider.min.js') }}"></script>
+    <script src="/vendor/numeral/min/numeral.min.js"></script>
+    <script src="/vendor/numeral/min/languages/es.min.js"></script>
+    <script src="/vendor/lodash/dist/lodash.min.js"></script>
+    <script src="/vendor/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="{{ asset('bundles/app/js/properties/app.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/properties/controllers.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/properties/services.js') }}"></script>
+{% endblock %}
+
 {% block main %}
-    <div class="container">
+    <div class="container" data-ng-controller="MainCtrl">
         <div class="row">
             <div class="col-md-12">
                 <h1>{{ 'menu.properties' | trans }}</h1>
             </div>
         </div>
-        {% for property in pagination %}
+        <div class="row" data-ng-if="!firstCallFinished">
+            <div class="col-md-4">
+                <div class="well">
+                    <p class="lead">{{ 'properties.searching' | trans }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4" data-ng-show="firstCallFinished">
+                <form name="filterForm" action="" role="form">
+                    <div class="form-group">
+                        <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | raw }}</label>
+                        <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyArea" class="control-label">[[ area ]] m<sup>2</sup> {{ 'properties.form.area' | trans | raw }}</label>
+                        <input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="[[ form.area.step ]]">
+                        {#<output name="areaAmount" for="propertyArea">[[ area ]] m<sup>2</sup></output>#}
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyRooms" class="control-label">[[ rooms ]] {{ 'properties.form.rooms' | trans | raw }}</label>
+                        <input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]">
+                        {#<output name="roomsAmount" for="propertyRooms">[[ rooms ]]</output>#}
+                    </div>
+                    <div class="form-group">
+                        <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]]&euro; {{ 'properties.form.price' | trans | raw }}</label>
+                        <input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" step="[[ form.price.step ]]">
+                        {#<output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>#}
+                    </div>
+                    {#<button type="submit" class="btn btn-primary">{{ 'properties.form.search' | trans | raw }}</button>#}
+                </form>
+            </div>
+            <div class="col-md-8">
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
+                    <ui-gmap-markers data-ng-if="properties" models="properties" idKey="id" coords="'coords'" fit="true" doCluster="true" clusterOptions="map.clusterOptions"></ui-gmap-markers>
+                </ui-gmap-google-map>
+            </div>
+        </div>
+        <hr>
+        <div data-ng-show="firstCallFinished" data-ng-repeat="property in properties">
             <div class="row">
                 <div class="col-md-4">
-                    {% if property.firstEnabledImage %}
-                        <img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'property_image') | imagine_filter('100x100') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}">
-                    {% endif %}
+                    <a href="[[ getUrlPropertyDetail(property) ]]""><img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[]]"></a>
                 </div>
                 <div class="col-md-4">
-                    <h2>{{ property.name }}</h2>
-                    {% if property.showPriceOnlyWithNumbers %}
-                        <h3>{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
-                    {% else %}
-                        <h3>{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
-                    {% endif %}
+                    <h2><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name ]]</a></h2>
+                    <h3 data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
+                    <h3 data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
                     <div class="btn-group" role="group" data-aria-label="icons">
-                        {% if property.offerSpecial %}
-                            <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
-                        {% endif %}
-                        {% if property.offerDiscount and not property.offerSpecial %}
-                            <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
-                        {% endif %}
-                        {% if property.squareMeters %}
-                            <button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>
-                        {% endif %}
-                        {% if property.rooms %}
-                            <button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
-                        {% endif %}
-                        {% if property.bathrooms %}
-                            <button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
-                        {% endif %}
+                        <button data-ng-if="property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
+                        <button data-ng-if="property.offer_discount && !property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
+                        <button data-ng-if="property.square_meters" type="button" class="btn btn-default btn-sm">[[ property.square_meters ]] m<sup>2</sup></button>
+                        <button data-ng-if="property.rooms" type="button" class="btn btn-default btn-sm">[[ property.rooms ]] {{ 'homepage.property.rooms' | trans }}</button>
+                        <button data-ng-if="property.bathrooms" type="button" class="btn btn-default btn-sm">[[ property.bathrooms ]] {{ 'homepage.property.bathrooms' | trans }}</button>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <p>{{ property.description }}</p>
-                    <p><a class="btn btn-primary btn-sm" role="button" href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ 'properties.list.button.more' | trans }}</a></p>
+                    <p>[[ property.description ]]</p>
+                    <p><a class="btn btn-primary btn-sm" role="button" href="[[ getUrlPropertyDetail(property) ]]">{{ 'properties.list.button.more' | trans }}</a></p>
                 </div>
             </div>
-        {% endfor %}
-        <div class="row">
+            <hr>
+        </div>
+        <div class="row" data-ng-hide="properties.length || !firstCallFinished">
             <div class="col-md-12">
-                <div class="paginator pull-right">
-                    {{ knp_pagination_render(pagination) }}
+                <div class="well">
+                    <p class="lead">{{ 'properties.list.empty' | trans }}</p>
                 </div>
             </div>
         </div>

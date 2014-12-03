@@ -4,6 +4,7 @@ namespace FinquesFarnos\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * Base class
@@ -18,6 +19,7 @@ abstract class Base
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
+     * @JMS\Groups({"api"})
      * @var integer
      */
     protected $id;

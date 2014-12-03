@@ -13,4 +13,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class TypeRepository extends EntityRepository
 {
+    /**
+     * Get filters
+     *
+     * @return array
+     */
+    public function getFilters()
+    {
+        return $this->createQueryBuilder('t')
+            ->select('t.id, t.name')
+            ->where('t.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('t.name', 'ASC')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

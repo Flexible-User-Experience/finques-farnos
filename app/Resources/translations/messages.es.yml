@@ -20,12 +20,22 @@ homepage:
       discount: rebajado
 
 properties:
+  searching: obteniendo resultados
   list:
+    empty: ningún resultado encontrado
     button:
       more: más información
       back: volver al listado
       prev: anterior
       next: siguiente
+  form:
+    type: tipo
+    area: superficie o más
+    rooms: habitaciones o más
+    price: o más
+    search: buscar
+    select:
+      any: cualquier tipo
 
 property:
   localization: localitzación

@@ -14,5 +14,10 @@ _errors:
     resource: "@TwigBundle/Resources/config/routing/errors.xml"
     prefix:   /_error
 
+_nelmio_api_doc:
+    resource: '@NelmioApiDocBundle/Resources/config/routing.yml'
+    prefix:   /api/doc
+    options:  { i18n: false }
+
 _main:
     resource: routing.yml

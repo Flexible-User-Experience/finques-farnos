@@ -179,6 +179,22 @@ sonata_user:
     security_acl: false
     manager_type: orm
 
+# Nelmio API Doc
+nelmio_api_doc: ~
+
+# Sensio Framework Extra
+sensio_framework_extra:
+    view:
+        annotations: false
+
+# FOS Rest
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+
 # FOS User
 fos_user:
     db_driver:      orm

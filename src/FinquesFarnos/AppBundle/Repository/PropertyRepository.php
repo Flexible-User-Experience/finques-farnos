@@ -72,4 +72,54 @@ class PropertyRepository extends EntityRepository
 
         return $qb->getQuery();
     }
+
+    /**
+     * Get filters
+     *
+     * @return array
+     */
+    public function getFilters()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p, MIN(p.squareMeters) AS min_area, MAX(p.squareMeters) AS max_area, MIN(p.rooms) AS min_rooms, MAX(p.rooms) AS max_rooms, MIN(p.price) AS min_price, MAX(p.price) AS max_price')
+            ->where('p.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('p.price', 'ASC')
+            ->getQuery()
+            ->getOneOrNullResult(Query::HYDRATE_ARRAY);
+    }
+
+    /**
+     * Filter properties by
+     *
+     * @param int|string $type
+     * @param int $area
+     * @param int $rooms
+     * @param int $price
+     *
+     * @return ArrayCollection
+     */
+    public function filterBy($type, $area, $rooms, $price)
+    {
+        /** @var QueryBuilder $qb */
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.enabled = :enabled')
+            ->andWhere('p.squareMeters >= :area')
+            ->andWhere('p.rooms >= :rooms')
+            ->andWhere('p.price >= :price')
+            ->setParameters(array(
+                    'enabled' => true,
+                    'area' => $area,
+                    'rooms' => $rooms,
+                    'price' => $price,
+                ))
+            ->addOrderBy('p.totalVisits', 'DESC')
+            ->addOrderBy('p.name', 'ASC');
+        if ($type > 0) {
+            $qb->andWhere('p.type = :type')->setParameter('type', $type);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

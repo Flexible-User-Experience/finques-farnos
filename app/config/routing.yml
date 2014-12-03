@@ -1,7 +1,12 @@
-app:
-    resource: '@AppBundle/Controller/'
+app_front:
+    resource: '@AppBundle/Controller/FrontController.php'
     type:     annotation
     prefix:   /
+
+app_api:
+    resource: '@AppBundle/Controller/ApiController.php'
+    type:     rest
+    options:  { i18n: false }
 
 _liip_imagine:
     resource: '@LiipImagineBundle/Resources/config/routing.xml'
@@ -21,6 +26,10 @@ _sonata_admin:
     resource: .
     type:     sonata_admin
     prefix:   /admin
+    options:  { i18n: false }
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
     options:  { i18n: false }
 
 presta_sitemap:
