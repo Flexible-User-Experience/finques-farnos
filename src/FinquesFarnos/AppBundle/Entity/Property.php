@@ -969,6 +969,22 @@ class Property extends Base
     }
 
     /**
+     * Get Google Maps coords format
+     *
+     * @JMS\VirtualProperty
+     * @JMS\Type("array")
+     * @JMS\SerializedName("coords")
+     * @JMS\Groups({"api"})
+     */
+    public function getGoogleMapsCords()
+    {
+        return array(
+            'latitude' => $this->getGpsLatitude(),
+            'llogitude' => $this->getGpsLongitude(),
+        );
+    }
+
+    /**
      * Get first enabled image. The collection is sorted by position (see line #39)
      *
      * @return ImageProperty|null

@@ -7,7 +7,7 @@ angular.module('propertiesApp')
         var timerArea, timerRooms, timerPrice = false;
         $scope.firstCallFinished = false;
         $scope.type = {};
-        $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+        $scope.map = { center: { latitude: 0, longitude: -73 }, zoom: 4 };
         $scope.mapOptions = { scrollwheel: true, draggable: true };
 
         uiGmapGoogleMapApi.then(function(maps) {
