@@ -76,7 +76,6 @@
             </div>
             <div class="col-md-8">
                 <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
-                    {#<ui-gmap-marker data-ng-repeat="property in properties" idKey="property.id" coords="property.coords"></ui-gmap-marker>#}
                     <ui-gmap-markers data-ng-if="properties" models="properties" idKey="id" coords="'coords'" fit="true" doCluster="true" clusterOptions="map.clusterOptions"></ui-gmap-markers>
                 </ui-gmap-google-map>
             </div>

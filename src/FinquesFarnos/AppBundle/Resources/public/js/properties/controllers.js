@@ -7,8 +7,8 @@ angular.module('propertiesApp')
         var timerArea, timerRooms, timerPrice = false;
         $scope.firstCallFinished = false;
         $scope.type = {};
-        $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 50, maxZoom: 15 } };
-        $scope.map.options = { scrollwheel: true, draggable: true };
+        $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
+        $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
         $scope.map.control = {};
 
         uiGmapGoogleMapApi.then(function(maps) {
