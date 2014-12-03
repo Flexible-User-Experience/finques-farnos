@@ -9,6 +9,11 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/app/css/angular-slider.css') }}">
+    <style type="text/css">
+        .angular-google-map-container {
+            height: 400px;
+        }
+    </style>
 {% endblock %}
 
 {% block javascriptshead %}
@@ -43,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" data-ng-show="firstCallFinished">
+        <div class="row" data-ng-if="firstCallFinished">
             <div class="col-md-4">
                 <form name="filterForm" action="" role="form">
                     <div class="form-group">
@@ -70,9 +75,9 @@
                 </form>
             </div>
             <div class="col-md-8">
-                <div class="well">
-                    <p class="lead">Google Maps</p>
-                </div>
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" options="mapOptions">
+
+                </ui-gmap-google-map>
             </div>
         </div>
         <hr>

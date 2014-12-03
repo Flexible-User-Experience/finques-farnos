@@ -8,7 +8,11 @@ angular.module('propertiesApp')
         $scope.firstCallFinished = false;
         $scope.type = {};
         $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+        $scope.mapOptions = { scrollwheel: true, draggable: true };
 
+        uiGmapGoogleMapApi.then(function(maps) {
+            // promise done
+        });
 
         var getPropertiesFormFiltersPromise = API.getPropertiesFormFilters($scope);
         getPropertiesFormFiltersPromise.then(

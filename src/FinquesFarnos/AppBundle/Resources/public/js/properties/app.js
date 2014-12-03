@@ -12,9 +12,11 @@ angular.module('propertiesApp', [
         $interpolateProvider.endSymbol(']]');
     }]).config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
-            //    key: 'your api key',
+            key: 'AIzaSyB332MhD5g142kIo79ZagVcXUidQwHbWwk',
             v: '3.17',
-            libraries: 'geometry,visualization'
+            language: 'es',
+            sensor: false,
+            libraries: 'drawing,geometry,visualization'
         });
     })
     .constant('CFG', {
