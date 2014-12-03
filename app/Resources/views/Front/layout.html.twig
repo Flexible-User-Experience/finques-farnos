@@ -17,7 +17,7 @@
     {% block javascriptshead %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        <script src="{{ asset('bundles/app/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+        <script src="/js/main.min.js"></script>
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>
@@ -87,10 +87,6 @@
         ga('create', '{{ google_analytics_account }}', 'auto'); ga('send', 'pageview');
     </script>
 {% endif %}
-{% block javascriptsbody %}
-    {% javascripts '@front_js' %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
+{% block javascriptsbody %}{% endblock %}
 </body>
 </html>

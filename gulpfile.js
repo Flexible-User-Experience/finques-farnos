@@ -26,10 +26,10 @@ gulp.task('less', function() {
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src(['bower_components/bootstrap/*.js', 'app/Resources/public/js/*.js'])
-        .pipe(concat('all.js'))
+    return gulp.src(['bower_components/jquery/src/jquery.js', 'bower_components/lodash/dist/lodash.js', 'bower_components/numeral/numeral.js', 'bower_components/numeral/languages/es.js', 'bower_components/modernizr/modernizer.js', 'bower_components/bootstrap/*.js', 'bower_components/angular/angular.js', 'bower_components/angular-google-maps/dist/angular-google-maps.js', 'app/Resources/public/js/*.js'])
+        .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))
-        .pipe(rename('all.min.js'))
+        .pipe(rename('main.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('web/js'));
 });
