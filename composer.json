@@ -41,9 +41,6 @@
         "friendsofsymfony/rest-bundle": "1.4.*",
         "friendsofsymfony/jsrouting-bundle": "1.5.*",
         "nelmio/api-doc-bundle": "2.7.*",
-        "twitter/bootstrap": "3.*",
-        "components/jquery": "1.*",
-        "innova/angular-js-bundle": "1.*",
         "incenteev/composer-parameter-handler": "~2.0"
     },
     "require-dev": {

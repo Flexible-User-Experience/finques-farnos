@@ -17,3 +17,5 @@
 /bin/
 /composer.phar
 /components/*
+/bower_components/*
+/node_modules/*

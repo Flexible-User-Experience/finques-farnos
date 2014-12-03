@@ -46,20 +46,6 @@ twig:
     globals:
         google_analytics_enabled: false
 
-# Assetic Configuration
-assetic:
-    use_controller: true
-    assets:
-        front_css:
-            filters:
-                - less
-                - cssrewrite
-            output: css/dev/front.css
-        front_js:
-            filters:
-                - uglifyjs2
-            output: js/dev/front.js
-
 swiftmailer:
     delivery_address: david@flux.cat
 
