@@ -7,8 +7,9 @@ angular.module('propertiesApp')
         var timerArea, timerRooms, timerPrice = false;
         $scope.firstCallFinished = false;
         $scope.type = {};
-        $scope.map = { center: { latitude: 0, longitude: -73 }, zoom: 4 };
-        $scope.mapOptions = { scrollwheel: true, draggable: true };
+        $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 50, maxZoom: 15 } };
+        $scope.map.options = { scrollwheel: true, draggable: true };
+        $scope.map.control = {};
 
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
@@ -17,6 +18,7 @@ angular.module('propertiesApp')
         var getPropertiesFormFiltersPromise = API.getPropertiesFormFilters($scope);
         getPropertiesFormFiltersPromise.then(
             function(response) {
+                $scope.map.control.refresh();
                 var getPropertiesPromise = API.getProperties($scope);
                 getPropertiesPromise.then(
                     function(response) {

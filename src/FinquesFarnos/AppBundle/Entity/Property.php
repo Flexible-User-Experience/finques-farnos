@@ -980,7 +980,7 @@ class Property extends Base
     {
         return array(
             'latitude' => $this->getGpsLatitude(),
-            'llogitude' => $this->getGpsLongitude(),
+            'longitude' => $this->getGpsLongitude(),
         );
     }
 
