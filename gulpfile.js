@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
+var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
@@ -17,14 +18,15 @@ gulp.task('lint', function() {
 
 // Compile Our Less
 gulp.task('less', function() {
-    return gulp.src('app/Resources/public/css/**/*.less')
+    return gulp.src(['bower_components/bootstrap/less/bootstrap.less', 'app/Resources/public/css/**/*.less'])
+        .pipe(concat('main.css'))
         .pipe(less())
         .pipe(gulp.dest('web/css'));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src('app/Resources/public/js/*.js')
+    return gulp.src(['bower_components/bootstrap/*.js', 'app/Resources/public/js/*.js'])
         .pipe(concat('all.js'))
         .pipe(gulp.dest('web/js'))
         .pipe(rename('all.min.js'))
@@ -35,7 +37,7 @@ gulp.task('scripts', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('app/Resources/public/js/*.js', ['lint', 'scripts']);
-    gulp.watch('web/less/*.less', ['less']);
+    gulp.watch(['bower_components/bootstrap/less/bootstrap.less', 'app/Resources/public/css/**/*.less'], ['less']);
 });
 
 // Default Task

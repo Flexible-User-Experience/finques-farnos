@@ -12,12 +12,7 @@
     <meta name="author" content="www.flux.cat">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block stylesheets %}
-        {#{% stylesheets '@front_css' %}#}
-            {#<link rel="stylesheet" href="{{ asset_url }}">#}
-        {#{% endstylesheets %}#}
-        <!-- build:css({.tmp,app}) styles/main.css -->
-        <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
-        <!-- endbuild -->
+        <link rel="stylesheet" href="/css/main.css">
     {% endblock %}
     {% block javascriptshead %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>

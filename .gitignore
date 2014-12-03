@@ -17,4 +17,5 @@
 /bin/
 /composer.phar
 /components/*
-/frontools/*
+/bower_components/*
+/node_modules/*
