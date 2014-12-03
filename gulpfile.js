@@ -26,7 +26,7 @@ gulp.task('less', function() {
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src(['bower_components/jquery/src/jquery.js', 'bower_components/lodash/dist/lodash.js', 'bower_components/numeral/numeral.js', 'bower_components/numeral/languages/es.js', 'bower_components/modernizr/modernizer.js', 'bower_components/bootstrap/*.js', 'bower_components/angular/angular.js', 'bower_components/angular-google-maps/dist/angular-google-maps.js', 'app/Resources/public/js/*.js'])
+    return gulp.src(['bower_components/jquery/src/jquery.js', 'bower_components/lodash/dist/lodash.js', 'bower_components/numeral/numeral.js', 'bower_components/numeral/languages/es.js', 'bower_components/modernizr/modernizer.js', 'bower_components/bootstrap/*.js', 'bower_components/angular/angular.js', 'bower_components/angular-resource/angular-resource.js', 'bower_components/angular-cookies/angular-cookies.js', 'bower_components/angular-sanitize/angular-sanitize.js', 'bower_components/angular-route/angular-route.js', 'bower_components/angular-touch/angular-touch.js', 'bower_components/angular-google-maps/dist/angular-google-maps.js', 'app/Resources/public/js/*.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))
         .pipe(rename('main.min.js'))
