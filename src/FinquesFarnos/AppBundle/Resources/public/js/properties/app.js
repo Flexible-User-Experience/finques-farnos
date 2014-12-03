@@ -11,7 +11,7 @@ angular.module('propertiesApp', [
         $interpolateProvider.endSymbol(']]');
     }])
     .constant('CFG', {
-        DELAY: 400,
+        DELAY: 600,
         RANGE_STEPS: 20
     })
 ;
