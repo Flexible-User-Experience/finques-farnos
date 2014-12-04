@@ -1,24 +1,45 @@
 // Variables
-// Brand colors
+//   brand colors
 //   #D86F24 brand orange
 //   #655B45 brand grey
-@brand-primary: #D86F24;
-@link-color: @brand-primary;
-@link-hover-color: darken(@link-color, 15%);
+//@brand-primary: #D86F24;
+@fforangedark: #DDBC9D;
+@fforange: #D86F24;
+@fforangelight: #F6EEE5;
+@ffgrey: #655B45;
+@fffootgrey: #888;
 
+// Link
+//@link-color: @brand-primary;
+//@link-hover-color: darken(@link-color, 15%);
+
+// Grid
+@grid-gutter-width: 10px;
+
+// Navbar
+@navbar-height: 70px;
+@navbar-margin-bottom: 20px;
+@navbar-default-color: transparent;
+@navbar-default-bg: transparent;
+@navbar-default-link-color: @ffgrey;
+@navbar-default-link-hover-color: @fforange;
+@navbar-default-link-active-bg: transparent;
+div#navbar {
+  border-bottom: solid 4px @fforange;
+  ul {
+    li {
+      &.active {
+        border-bottom: solid 44px @ffgrey;
+      }
+    }
+  }
+}
+
+// Customs
 body {
     padding-top: 70px;
     padding-bottom: 20px;
 }
-
-//a {
-//  color: @link-color;
-//  text-decoration: none;
-//  &:hover {
-//    color: @link-hover-color;
-//    text-decoration: underline;
-//  }
-//}
 
 .angular-google-map-container {
   height: 400px;

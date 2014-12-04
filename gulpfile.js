@@ -6,9 +6,21 @@ var jshint = require('gulp-jshint');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
 var minifycss = require('gulp-minify-css');
-var usemin = require('gulp-usemin');
+var browserSync = require('browser-sync');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+
+// Proxy Browser Sync
+gulp.task('browser-sync', function() {
+    browserSync({
+        proxy: "finquesfarnos.dev/app_dev.php"
+    });
+});
+
+// Reload all Browsers
+gulp.task('bs-reload', function() {
+    browserSync.reload();
+});
 
 // Lint Task
 gulp.task('lint', function() {
@@ -61,9 +73,9 @@ gulp.task('myjs', function() {
 });
 
 // Watch Files For Changes
-gulp.task('watch', function() {
-    gulp.watch('app/Resources/public/js/**/*.js', ['lint', 'myjs']);
-    gulp.watch('app/Resources/public/css/**/*.less', ['less']);
+gulp.task('watch', ['browser-sync'], function() {
+    gulp.watch('app/Resources/public/js/**/*.js', ['lint', 'myjs', 'bs-reload']);
+    gulp.watch('app/Resources/public/css/**/*.less', ['less', 'bs-reload']);
 });
 
 // Default Task
