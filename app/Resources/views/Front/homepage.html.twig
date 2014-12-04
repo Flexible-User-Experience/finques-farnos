@@ -6,34 +6,32 @@
 
 {% block main %}
     {% if slides | length > 0 %}
-        <div class="jumbotron">
-            <div class="container">
-                <div id="carousel-hompage" class="carousel slide" data-ride="carousel">
-                    {#<!-- Indicators -->#}
-                    <ol class="carousel-indicators">
-                        {% for slide in slides %}
-                            <li data-target="#carousel-hompage" data-slide-to="0"{% if loop.first %} class="active"{% endif %}></li>
-                        {% endfor %}
-                    </ol>
-                    {#<!-- Wrapper for slides -->#}
-                    <div class="carousel-inner" role="listbox">
-                        {% for slide in slides %}
-                            <div class="item{% if loop.first %} active{% endif %}">
-                                <a href="{{ path('front_properties') }}"><img class="img-responsive" src="{{ vich_uploader_asset(slide, 'slider_image') | imagine_filter('750xY') }}" alt="{{ slide.metaAlt }}" title="{{ slide.metaTitle }}"></a>
-                                {#<div class="carousel-caption">...</div>#}
-                            </div>
-                        {% endfor %}
-                    </div>
-                    {#<!-- Controls -->#}
-                    <a class="left carousel-control" href="#carousel-hompage" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-hompage" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" data-aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+        <div class="container">
+            <div id="carousel-hompage" class="carousel slide" data-ride="carousel">
+                {#<!-- Indicators -->#}
+                <ol class="carousel-indicators">
+                    {% for slide in slides %}
+                        <li data-target="#carousel-hompage" data-slide-to="0"{% if loop.first %} class="active"{% endif %}></li>
+                    {% endfor %}
+                </ol>
+                {#<!-- Wrapper for slides -->#}
+                <div class="carousel-inner" role="listbox">
+                    {% for slide in slides %}
+                        <div class="item{% if loop.first %} active{% endif %}">
+                            <a href="{{ path('front_properties') }}"><img class="img-responsive" src="{{ vich_uploader_asset(slide, 'slider_image') | imagine_filter('750xY') }}" alt="{{ slide.metaAlt }}" title="{{ slide.metaTitle }}"></a>
+                            {#<div class="carousel-caption">...</div>#}
+                        </div>
+                    {% endfor %}
                 </div>
+                {#<!-- Controls -->#}
+                <a class="left carousel-control" href="#carousel-hompage" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-hompage" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" data-aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
         </div>
     {% endif %}
