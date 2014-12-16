@@ -60,18 +60,23 @@
                 API logos
             </div>
             <div class="col-md-4">
-                <div class="btn-group pull-right" role="group" data-aria-label="languageSelector">
-                    {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
-                    {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
-                    {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group pull-right" role="group" data-aria-label="languageSelector">
+                            {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
+                            {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
+                            {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
+                        </div>
+                    </div>
                 </div>
-                <br>
-                <div style="display:block;width:100%;text-align:right;margin-top:50px;">{# TODO find a better BS approach #}
-                    <ul class="list-inline">
-                        <li><small><a href="{{ path('front_privacy', {'_locale': app.request.locale}) }}">{{ 'frontend.privacy' | trans }}</a></small></li>
-                        <li><small><a href="{{ path('front_legal', {'_locale': app.request.locale}) }}">{{ 'frontend.legal' | trans }}</a></small></li>
-                        <li><small><a href="{{ path('front_credits', {'_locale': app.request.locale}) }}">{{ 'frontend.credits' | trans }}</a></small></li>
-                    </ul>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-inline pull-right">
+                            <li><small><a href="{{ path('front_privacy', {'_locale': app.request.locale}) }}">{{ 'frontend.privacy' | trans }}</a></small></li>
+                            <li><small><a href="{{ path('front_legal', {'_locale': app.request.locale}) }}">{{ 'frontend.legal' | trans }}</a></small></li>
+                            <li><small><a href="{{ path('front_credits', {'_locale': app.request.locale}) }}">{{ 'frontend.credits' | trans }}</a></small></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

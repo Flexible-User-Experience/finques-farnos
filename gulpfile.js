@@ -32,7 +32,7 @@ gulp.task('fonts', function() {
 
 // CSS: Compile & minify Less
 gulp.task('less', function() {
-    return gulp.src(['app/Resources/public/frontend/css/**/*.less'])
+    return gulp.src(['app/Resources/public/css/**/*.less'])
         .pipe(concat('main.css'))
         .pipe(less({ sourceMap: true,  paths: ['./bower_components']})).on('error', gutil.log)
         .pipe(minifycss())
