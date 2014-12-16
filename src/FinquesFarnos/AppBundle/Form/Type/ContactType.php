@@ -27,7 +27,11 @@ class ContactType extends AbstractType
             ->add('name', null, array('label' => 'contact.form.name'))
             ->add('phone', null, array('label' => 'contact.form.phone'))
             ->add('email', 'email', array('label' => 'contact.form.email'))
-            ->add('message', 'textarea', array('label' => 'contact.form.message', 'mapped' => false))
+            ->add('message', 'textarea', array(
+                    'label' => 'contact.form.message',
+                    'mapped' => false,
+                    'attr' => array('rows' => '5'),
+                ))
 //            ->add('message', new ContactMessageType())
         ;
     }

@@ -24,7 +24,9 @@ class ContactMessageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text')
+            ->add('text', 'textarea', array(
+                    'attr' => array('rows' => '5'),
+                ))
         ;
     }
 
