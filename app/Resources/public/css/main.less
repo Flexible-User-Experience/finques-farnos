@@ -106,13 +106,20 @@ footer {
 }
 
 // Homepage
+hr.hr-thumbnail-homepage {
+  border: none;
+  border-top: solid @extraborder @fforange;
+  margin: 0 0 @extramargin 0;
+}
+
 .thumbnail.homepage {
   border: none;
   border-radius: 0;
-  border-top: solid @extraborder @fforange;
-  padding: @extramargin 0 0 0;
+  padding: 0;
   background-color: @fforangelight;
   &.bg-dark-orange {
     background-color: @fforangedark;
   }
+  a { color: black; }
+  h3 { color: @fforange; }
 }
