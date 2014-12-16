@@ -78,7 +78,19 @@ body {
   border-radius: 0;
 }
 
+.extra-m { margin: @extramargin }
 .extra-m-top { margin-top: @extramargin }
+.extra-m-bottom { margin-bottom: @extramargin }
+.no-m { margin: 0 }
+.no-m-top { margin-top: 0 }
+.no-m-bottom { margin-bottom: 0 }
+
+.extra-p { padding: @extramargin }
+.extra-p-top { padding-top: @extramargin }
+.extra-p-bottom { padding-bottom: @extramargin }
+.no-p { padding: 0 }
+.no-p-top { padding-top: 0 }
+.no-p-bottom { padding-bottom: 0 }
 
 .carousel {
   margin-bottom: @extramargin;
@@ -120,6 +132,6 @@ hr.hr-thumbnail-homepage {
   &.bg-dark-orange {
     background-color: @fforangedark;
   }
-  a { color: black; }
+  a { color: @ffgrey; }
   h3 { color: @fforange; }
 }
