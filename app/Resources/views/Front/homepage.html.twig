@@ -41,9 +41,9 @@
         <div class="row">
             {% for property in properties %}
                 <div class="col-md-4">
-                    <div class="thumbnail">
+                    <div class="thumbnail homepage">
                         {% if property.firstEnabledImage %}
-                            <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('300xY') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
+                            <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('400xY') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
                         {% endif %}
                         <div class="caption">
                             <h2><a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ property.name }}</a></h2>

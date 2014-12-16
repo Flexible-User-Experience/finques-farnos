@@ -13,6 +13,7 @@
 @ffgrey: #655B45;
 @fffootgrey: #888;
 @extramargin: 20px;
+@extraborder: 8px;
 
 // Link
 @link-color: @fforange;
@@ -102,4 +103,12 @@ footer {
   a.btn {
     text-decoration: none;
   }
+}
+
+// Homepage
+.thumbnail.homepage {
+  border: none;
+  border-radius: 0;
+  border-top: solid @extraborder @fforange;
+  padding-top: @extramargin;
 }
