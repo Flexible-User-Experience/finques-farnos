@@ -80,7 +80,7 @@ gulp.task('myjs', function() {
 
 // Watch
 gulp.task('watch', ['browser-sync'], function() {
-    gulp.watch('app/Resources/views/Front/**/*.twig', ['bs-reload']);
+    gulp.watch('app/Resources/views/Front/**/*.twig', ['less', 'bs-reload']);
     gulp.watch('app/Resources/public/js/**/*.js', ['lint', 'myjs', 'bs-reload']);
     gulp.watch('app/Resources/public/css/**/*.less', ['less', 'bs-reload']);
 });
