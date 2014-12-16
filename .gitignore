@@ -19,3 +19,4 @@
 /components/*
 /bower_components/*
 /node_modules/*
+gulp-config.json
