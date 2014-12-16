@@ -59,3 +59,14 @@ cypress_git_elephant:
     profiler_repository_path: "%kernel.root_dir%/../"
     repositories:
         "FinquesFarnos": "%cypress_git_repository%"
+
+# Vich Uploader
+vich_uploader:
+    db_driver: orm
+    mappings:
+        property_image:
+            delete_on_remove: false
+            delete_on_update: false
+        slider_image:
+            delete_on_remove: false
+            delete_on_update: false
