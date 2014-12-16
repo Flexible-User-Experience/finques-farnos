@@ -1,22 +1,125 @@
+// Imports
+@import "../../../../bower_components/bootstrap/less/bootstrap.less";
+@import "../../../../bower_components/font-awesome/less/font-awesome.less";
+
 // Variables
-@brand-primary: #F00;
-@link-color: @brand-primary;
+//   brand colors
+//   #D86F24 brand orange
+//   #655B45 brand grey
+//@brand-primary: #D86F24;
+@fforangedark: #DDBC9D;
+@fforange: #D86F24;
+@fforangelight: #F6EEE5;
+@ffgrey: #655B45;
+@fffootgrey: #888;
+@extramargin: 20px;
+@extraborder: 8px;
+
+// Link
+@link-color: @fforange;
 @link-hover-color: darken(@link-color, 15%);
 
-body {
-    padding-top: 70px;
-    padding-bottom: 20px;
+// Borders
+//@border-radius-base: 0;
+//@border-radius-small: @border-radius-base;
+//@border-radius-large: @border-radius-base;
+
+// Grid
+@grid-gutter-width: 10px;
+
+// Navbar
+@navbar-height: 70px;
+@navbar-default-border: transparent;
+@navbar-default-color: transparent;
+@navbar-default-bg: white;
+@navbar-default-brand-color: @ffgrey;
+@navbar-default-link-color: @ffgrey;
+@navbar-default-link-hover-color: @fforange;
+@navbar-default-link-active-bg: transparent;
+.navbar { border: none }
+div#navbar {
+  border: transparent;
+  border-bottom: solid 4px @fforange;
+  ul {
+    li {
+      &.active {
+        border-bottom: solid 4px @ffgrey;
+      }
+    }
+  }
 }
 
-//a {
-//  color: @link-color;
-//  text-decoration: none;
-//  &:hover {
-//    color: @link-hover-color;
-//    text-decoration: underline;
-//  }
-//}
+////// Customs
+
+// Header
+
+// Body
+body {
+  padding-top: 100px;
+}
+
+.row {
+  margin-bottom: @extramargin;
+}
+
+.well {
+  color: @fforange;
+  background-color: @fforangelight;
+  border-color: @fforangelight;
+  p, ul {
+    color: black;
+  }
+  p.lead.orange {
+    color: @fforange;
+  }
+}
+
+.well-lg {
+  border-radius: 0;
+}
+
+.extra-m-top { margin-top: @extramargin }
+
+.carousel {
+  margin-bottom: @extramargin;
+}
 
 .angular-google-map-container {
   height: 400px;
+}
+
+// Footer
+footer {
+  color: white;
+  background-color: @fffootgrey;
+  padding: 20px 10px 40px 10px;
+  a {
+    color: white;
+    text-decoration: underline;
+    &:hover {
+      color: white;
+    }
+  }
+  a.btn {
+    text-decoration: none;
+  }
+}
+
+// Homepage
+hr.hr-thumbnail-homepage {
+  border: none;
+  border-top: solid @extraborder @fforange;
+  margin: 0 0 @extramargin 0;
+}
+
+.thumbnail.homepage {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background-color: @fforangelight;
+  &.bg-dark-orange {
+    background-color: @fforangedark;
+  }
+  a { color: black; }
+  h3 { color: @fforange; }
 }
