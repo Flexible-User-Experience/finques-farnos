@@ -28,7 +28,7 @@
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "sonata-project/user-bundle": "2.3.*@dev",
         "sonata-project/datagrid-bundle": "2.2.*@dev",
-        "vich/uploader-bundle": "1.0.*@dev",
+        "vich/uploader-bundle": "0.*",
         "liip/imagine-bundle": "1.*",
         "oh/google-map-form-type-bundle": "dev-master",
         "a2lix/translation-form-bundle": "1.*",

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f7ad0bba69e6d86ea3d4d83fd06657a8",
+    "hash": "6ba6ed299c7c915e053b0993da73bd57",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -4956,16 +4956,16 @@
         },
         {
             "name": "vich/uploader-bundle",
-            "version": "dev-master",
+            "version": "v0.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dustin10/VichUploaderBundle.git",
-                "reference": "ec154d0908002f0bd4c75ced55303046916bd7d0"
+                "reference": "65d244d5e6ef62b4978585cdeb283b6cdab05f6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/ec154d0908002f0bd4c75ced55303046916bd7d0",
-                "reference": "ec154d0908002f0bd4c75ced55303046916bd7d0",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/65d244d5e6ef62b4978585cdeb283b6cdab05f6b",
+                "reference": "65d244d5e6ef62b4978585cdeb283b6cdab05f6b",
                 "shasum": ""
             },
             "require": {
@@ -5023,7 +5023,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2014-12-15 14:17:45"
+            "time": "2014-12-12 10:26:46"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -5123,7 +5123,6 @@
         "cypresslab/gitelephant-bundle": 20,
         "sonata-project/user-bundle": 20,
         "sonata-project/datagrid-bundle": 20,
-        "vich/uploader-bundle": 20,
         "oh/google-map-form-type-bundle": 20,
         "orkestra/pdf-bundle": 20
     },
