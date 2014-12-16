@@ -71,7 +71,7 @@ class DoctrineListeners
             /** @var ImageProperty $image */
             $image = $entity->getFirstEnabledImage();
             if ($image) {
-                $entity->setVirtualFirstEnabledImageUrl($this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '300xY'));
+                $entity->setVirtualFirstEnabledImageUrl($this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '400xY'));
             }
 
         }

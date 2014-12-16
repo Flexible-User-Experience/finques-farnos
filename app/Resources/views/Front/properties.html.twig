@@ -9,12 +9,6 @@
 {% block javascriptshead %}
     {{ parent() }}
     <script src="/js/my.js"></script>
-    {#<script src="/js/my.min.js"></script>#}
-    {#<script src="{{ asset('bundles/innovaangularjs/js/angular-resource.min.js') }}"></script>#}
-    {#<script src="{{ asset('bundles/innovaangularjs/js/angular-cookies.min.js') }}"></script>#}
-    {#<script src="{{ asset('bundles/innovaangularjs/js/angular-sanitize.min.js') }}"></script>#}
-    {#<script src="{{ asset('bundles/innovaangularjs/js/angular-route.min.js') }}"></script>#}
-    {#<script src="{{ asset('bundles/innovaangularjs/js/angular-touch.min.js') }}"></script>#}
 {% endblock %}
 
 {% block main %}
@@ -31,8 +25,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4" data-ng-show="firstCallFinished">
+        <div class="row double-extra-m-bottom">
+            <div class="col-md-4 left-search-panel" data-ng-show="firstCallFinished">
                 <form name="filterForm" action="" role="form">
                     <div class="form-group">
                         <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | raw }}</label>
@@ -63,7 +57,7 @@
                 </ui-gmap-google-map>
             </div>
         </div>
-        <hr>
+        <hr class="hr-homepage">
         <div data-ng-show="firstCallFinished" data-ng-repeat="property in properties">
             <div class="row">
                 <div class="col-md-4">
@@ -86,7 +80,7 @@
                     <p><a class="btn btn-primary btn-sm" role="button" href="[[ getUrlPropertyDetail(property) ]]">{{ 'properties.list.button.more' | trans }}</a></p>
                 </div>
             </div>
-            <hr>
+            <hr class="hr-properties">
         </div>
         <div class="row" data-ng-hide="properties.length || !firstCallFinished">
             <div class="col-md-12">
