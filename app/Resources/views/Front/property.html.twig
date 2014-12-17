@@ -29,19 +29,15 @@
                         <div class="carousel-inner">
                             {% for image in property.images %}
                                 <div class="item{% if loop.first %} active{% endif %}">
-                                    {#<div class="container-fluid">#}
-                                        {#<div class="row">#}
-                                            {#<div class="col-md-12">#}
-                                                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('800xY') }}" class="img-responsive" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
-                                            {#</div>#}
-                                        {#</div>#}
-                                    {#</div>#}
+                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('800xY') }}" class="img-responsive" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
                                 </div>
                             {% endfor %}
                             <div class="controls">
                                 <ul class="nav">
                                     {% for image in property.images %}
-                                        <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}><a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('100x100') }}">{#<small>{ image.id }}</small>#}</a></li>
+                                        <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
+                                            <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('100x100') }}"></a>
+                                        </li>
                                     {% endfor %}
                                 </ul>
                             </div>

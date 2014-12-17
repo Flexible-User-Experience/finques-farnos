@@ -211,13 +211,15 @@ footer {
 
 #custom_carousel .controls li {
   display: table-cell;
-  width: 1%;
-  max-width: 90px
-}
-
-#custom_carousel .controls li.active {
-  background-color: white;
-  border-top: 3px solid @fforange;
+  &.active {
+    a {
+      border-top: 4px solid @fforange;
+    }
+  }
+  a {
+    padding: 0;
+    margin-right: @extramargin;
+  }
 }
 
 #custom_carousel .controls a small {
