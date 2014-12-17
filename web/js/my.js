@@ -27,6 +27,53 @@ angular.module('propertiesApp', [
 'use strict';
 
 angular.module('propertiesApp')
+    .service('API', ['CFG', '$http', '$q', '$log', function(CFG, $http, $q, $log) {
+
+        this.getProperties = function($scope) {
+            var deferred = $q.defer();
+            $http.get(Routing.generate('api_properties_api_filtered', {type: $scope.type.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
+                .success(function(response) {
+                    $log.log('getProperties', response.length, 'fetched');
+                    $scope.properties = response;
+                    deferred.resolve(response);
+                })
+                .error(function(data) {
+                    $log.error('getProperties', data);
+                    deferred.reject(data);
+                });
+
+            return deferred.promise;
+        };
+
+    }]);
+
+'use strict';
+
+angular.module('propertiesApp')
+    .controller('PropertyDetailCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$log', function (CFG, uiGmapGoogleMapApi, $scope, $log) {
+
+        $scope.init = function(propertiesFormFilter, filteredProperties) {
+            $scope.firstCallFinished = true;
+            $scope.type = {};
+            $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
+            $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
+            $scope.map.control = {};
+
+            $scope.form = angular.fromJson(propertiesFormFilter);
+            $scope.properties = angular.fromJson(filteredProperties);
+
+        };
+
+        uiGmapGoogleMapApi.then(function(maps) {
+            // promise done
+            $log.log(maps);
+        });
+
+    }]);
+
+'use strict';
+
+angular.module('propertiesApp')
     .controller('MainCtrl', ['CFG', 'API', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', function (CFG, API, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log) {
 
         var timerArea, timerRooms, timerPrice = false;
@@ -61,9 +108,9 @@ angular.module('propertiesApp')
 //            $log.log('init price', $scope.price);
         };
 
-        uiGmapGoogleMapApi.then(function(/*maps*/) {
+        uiGmapGoogleMapApi.then(function(maps) {
             // promise done
-            //$log.log(maps);
+            $log.log(maps);
         });
 
         $scope.formListener = function() {
@@ -103,29 +150,6 @@ angular.module('propertiesApp')
 
         $scope.getUrlPropertyDetail = function(property) {
             return Routing.generate('front_property', {type: property.type_name_slug, name: property.name_slug});
-        };
-
-    }]);
-
-'use strict';
-
-angular.module('propertiesApp')
-    .service('API', ['CFG', '$http', '$q', '$log', function(CFG, $http, $q, $log) {
-
-        this.getProperties = function($scope) {
-            var deferred = $q.defer();
-            $http.get(Routing.generate('api_properties_api_filtered', {type: $scope.type.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
-                .success(function(response) {
-                    $log.log('getProperties', response.length, 'fetched');
-                    $scope.properties = response;
-                    deferred.resolve(response);
-                })
-                .error(function(data) {
-                    $log.error('getProperties', data);
-                    deferred.reject(data);
-                });
-
-            return deferred.promise;
         };
 
     }]);

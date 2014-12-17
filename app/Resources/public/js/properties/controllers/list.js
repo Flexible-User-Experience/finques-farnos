@@ -35,9 +35,9 @@ angular.module('propertiesApp')
 //            $log.log('init price', $scope.price);
         };
 
-        uiGmapGoogleMapApi.then(function(/*maps*/) {
+        uiGmapGoogleMapApi.then(function(maps) {
             // promise done
-            //$log.log(maps);
+            $log.log(maps);
         });
 
         $scope.formListener = function() {

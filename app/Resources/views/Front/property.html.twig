@@ -4,8 +4,15 @@
 {% block metadescription %}{% endblock %}
 {% block metakeywords %}{% endblock %}
 
+{% block bodyattr %}ng-app="propertiesApp"{% endblock %}
+
+{% block javascriptshead %}
+    {{ parent() }}
+    <script src="/js/my.js"></script>
+{% endblock %}
+
 {% block main %}
-    <div class="container">
+    <div class="container" data-ng-controller="PropertyDetailCtrl" data-ng-init="init('{{ localization }}')">
         <div class="row">
             <div class="col-md-8">
                 <p><a class="btn btn-default" role="button" href="{{ path('front_properties') }}"><span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span> {{ 'properties.list.button.back' | trans }}</a></p>

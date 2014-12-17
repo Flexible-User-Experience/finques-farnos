@@ -74,11 +74,17 @@ class FrontController extends Controller
         $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
+            // TODO: send email notification form
         }
+
+        $localization = array(
+            'coords' => $property->getGoogleMapsCords(),
+            'control' => $property->getShowMapType(),
+        );
 
         return $this->render('Front/property.html.twig', array(
                 'property' => $property,
+                'localization' => json_encode($localization),
                 'form' => $form->createView(),
             ));
     }
