@@ -85,9 +85,9 @@
                 <hr>
                 <h4>{{ 'property.energy.efficiency' | trans }}</h4>
                 {% if property.energyClass == 0 %}
-                    <div class="well">{{ 'property.energy.noclass' | trans }}</div>
+                    <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.noclass' | trans }}</p>
                 {% elseif property.energyClass == 1 %}
-                    <div class="well">{{ 'property.energy.pending' | trans }}</div>
+                    <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.pending' | trans }}</p>
                 {% else %}
                     {% for i in 2..8 %}
                         <div class="progress">
