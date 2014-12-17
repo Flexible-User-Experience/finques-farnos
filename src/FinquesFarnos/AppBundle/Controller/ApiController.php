@@ -66,7 +66,6 @@ class ApiController extends FOSRestController implements ClassResourceInterface
             return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $area, $rooms, $price);
         }
 
-
         return array();
     }
 }
