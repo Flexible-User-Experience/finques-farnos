@@ -42,9 +42,9 @@ class FrontController extends Controller
         $filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
         $filteredProperties   = $this->forward('AppBundle:Api:propertiesFiltered', array(
                 'type' => $filters['types'][0]['id'],
-                'area' => $filters['area']['max'],
-                'rooms' => $filters['rooms']['max'],
-                'price' => $filters['price']['max'],
+                'area' => intval(ceil(($filters['area']['max'] - $filters['area']['min']) / 2) + $filters['area']['min']),
+                'rooms' => intval(ceil(($filters['rooms']['max'] - $filters['rooms']['min']) / 2) + $filters['rooms']['min']),
+                'price' => intval(ceil(($filters['price']['max'] -$filters['price']['min']) / 2) + $filters['price']['min']),
             ), array('_format' => 'json'));
 
         return $this->render('Front/properties.html.twig', array(
