@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('propertiesApp')
-    .controller('MainCtrl', ['CFG', 'API', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', function (CFG, API, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log) {
+    .controller('MainCtrl', ['CFG', 'API', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$log', function (CFG, API, uiGmapGoogleMapApi, $scope, $timeout, $log) {
 
         var timerArea, timerRooms, timerPrice = false;
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, filteredProperties) {
-            $scope.firstCallFinished = true;
             $scope.type = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
             $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
@@ -35,9 +34,9 @@ angular.module('propertiesApp')
 //            $log.log('init price', $scope.price);
         };
 
-        uiGmapGoogleMapApi.then(function(/*maps*/) {
+        uiGmapGoogleMapApi.then(function(maps) {
             // promise done
-            //$log.log(maps);
+            $log.log(maps);
         });
 
         $scope.formListener = function() {

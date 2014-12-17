@@ -11,6 +11,7 @@
 @fforange: #D86F24;
 @fforangelight: #F6EEE5;
 @ffgrey: #655B45;
+@ffgreylight: lighten(@ffgrey, 25%);
 @fffootgrey: #888;
 @extramargin: 20px;
 @doubleextramargin: 40px;
@@ -99,6 +100,8 @@ body {
 // Colors
 .c-orange { color: @fforange }
 .bc-orange { background-color: @fforange }
+.c-orange-light { color: @fforangelight }
+.bc-orange-light { background-color: @fforangelight }
 .c-grey { color: @ffgrey }
 .bc-grey { background-color: @ffgrey }
 
@@ -170,4 +173,72 @@ footer {
     &.c-orange { color: @fforange }
   }
   h3 { color: @fforange; }
+}
+
+// Property detail
+.property-right-side-box {
+  padding: @extramargin;
+  background-color: @fforangelight;
+  a {
+    color: @ffgrey;
+    &.c-orange { color: @fforange }
+  }
+  h3 { color: @fforange; }
+  hr {
+    border: none;
+    border-top: solid 2px @ffgreylight;
+    margin: @doubleextramargin 0;
+    padding: 0;
+  }
+}
+
+#custom_carousel .item {
+  color: black;
+  background-color: white;
+  padding: 0 0 20px 0;
+}
+
+#custom_carousel .controls{
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  background-color: white;
+}
+
+#custom_carousel .controls li {
+  display: table-cell;
+  &.active {
+    a {
+      border-top: 4px solid @fforange;
+    }
+  }
+  a {
+    padding: 0;
+    margin-right: @extramargin;
+  }
+}
+
+#custom_carousel .controls a small {
+  overflow: hidden;
+  display: block;
+  font-size: 10px;
+  margin-top: 5px;
+  font-weight: bold
+}
+
+.property-detail-left-box {
+  h2.h2-localization {
+    border: none;
+    border-bottom: solid 2px @fforange;
+    margin-top: @doubleextramargin;
+  }
+  hr.thick {
+    border: none;
+    border-top: solid @extraborder @fforange;
+    margin: 0 0 @extramargin 0;
+  }
 }
