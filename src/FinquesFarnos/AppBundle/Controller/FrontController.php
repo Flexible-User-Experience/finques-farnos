@@ -41,10 +41,11 @@ class FrontController extends Controller
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
         $filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
         $filteredProperties   = $this->forward('AppBundle:Api:propertiesFiltered', array(
+                // TODO: make dynamic & adaptative
                 'type' => $filters['types'][0]['id'],
-                'area' => intval(ceil(($filters['area']['max'] - $filters['area']['min']) / 2) + $filters['area']['min']),
-                'rooms' => intval(ceil(($filters['rooms']['max'] - $filters['rooms']['min']) / 2) + $filters['rooms']['min']),
-                'price' => intval(ceil(($filters['price']['max'] -$filters['price']['min']) / 2) + $filters['price']['min']),
+                'area' => 80, //intval(ceil(($filters['area']['max'] - $filters['area']['min']) / 2) + $filters['area']['min']),
+                'rooms' => 3, //intval(ceil(($filters['rooms']['max'] - $filters['rooms']['min']) / 2) + $filters['rooms']['min']),
+                'price' => 60000, //intval(ceil(($filters['price']['max'] -$filters['price']['min']) / 2) + $filters['price']['min']),
             ), array('_format' => 'json'));
 
         return $this->render('Front/properties.html.twig', array(

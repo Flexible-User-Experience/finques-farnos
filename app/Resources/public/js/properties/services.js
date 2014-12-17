@@ -7,7 +7,7 @@ angular.module('propertiesApp')
             var deferred = $q.defer();
             $http.get(Routing.generate('api_properties_api_filtered', {type: $scope.type.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
-                    $log.log('getProperties', response.length, response);
+                    $log.log('getProperties', response.length, 'fetched');
                     $scope.properties = response;
                     deferred.resolve(response);
                 })

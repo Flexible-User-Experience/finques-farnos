@@ -3,30 +3,37 @@
 angular.module('propertiesApp')
     .controller('MainCtrl', ['CFG', 'API', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', function (CFG, API, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log) {
 
+        var timerArea, timerRooms, timerPrice = false;
+        numeral.language('es');
+
         $scope.init = function(propertiesFormFilter, filteredProperties) {
             $scope.firstCallFinished = true;
             $scope.type = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
             $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
+
             $scope.form = angular.fromJson(propertiesFormFilter);
+            $scope.properties = angular.fromJson(filteredProperties);
+
             $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
             $scope.form.area.step = Math.round(($scope.form.area.max - $scope.form.area.min) / CFG.RANGE_STEPS);
             $scope.form.price.min = Math.ceil($scope.form.price.min / 1000) * 1000;
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
             $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
-            $scope.area = $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
-            $scope.rooms = $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
-            $scope.price = $scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
             $scope.type = $scope.form.types[0];
-            $scope.properties = angular.fromJson(filteredProperties);
-            $log.log('init propertiesFormFilter', $scope.form);
-            $log.log('init filteredProperties', $scope.properties);
-        };
+            $scope.area = 80; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
+            $scope.rooms = 3; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
+            $scope.price = 60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
 
-        numeral.language('es');
-        var timerArea, timerRooms, timerPrice = false;
+//            $log.log('init propertiesFormFilter', $scope.form);
+//            $log.log('init filteredProperties', $scope.properties);
+//            $log.log('init type', $scope.type);
+//            $log.log('init area', $scope.area);
+//            $log.log('init rooms', $scope.rooms);
+//            $log.log('init price', $scope.price);
+        };
 
         uiGmapGoogleMapApi.then(function(/*maps*/) {
             // promise done
@@ -42,7 +49,6 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerArea);
             }
             timerArea = $timeout(function() {
-                $log.log('area', oldValue, newValue);
                 if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
