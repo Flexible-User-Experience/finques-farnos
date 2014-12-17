@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container" data-ng-controller="MainCtrl">
+    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ propertiesFormFilter }}', '{{ filteredProperties }}')">
         <div class="row">
             <div class="col-md-12">
                 <h1>{{ 'menu.properties' | trans }}</h1>

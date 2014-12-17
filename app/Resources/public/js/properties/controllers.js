@@ -3,33 +3,50 @@
 angular.module('propertiesApp')
     .controller('MainCtrl', ['CFG', 'API', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$routeParams', '$log', function (CFG, API, uiGmapGoogleMapApi, $scope, $timeout, $routeParams, $log) {
 
+        $scope.init = function(propertiesFormFilter, filteredProperties) {
+            $scope.firstCallFinished = true;
+            $scope.type = {};
+            $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
+            $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
+            $scope.map.control = {};
+            $scope.form = angular.fromJson(propertiesFormFilter);
+            $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
+            $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
+            $scope.form.area.step = Math.round(($scope.form.area.max - $scope.form.area.min) / CFG.RANGE_STEPS);
+            $scope.form.price.min = Math.ceil($scope.form.price.min / 1000) * 1000;
+            $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
+            $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
+            $scope.area = $scope.form.area.max; // + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
+            $scope.rooms = $scope.form.rooms.min; // + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
+            $scope.price = $scope.form.price.min; // + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
+            $scope.type = $scope.form.types[0];
+            $scope.properties = angular.fromJson(filteredProperties);
+            $log.log('init propertiesFormFilter', $scope.form);
+            $log.log('init filteredProperties', $scope.properties);
+        };
+
         numeral.language('es');
         var timerArea, timerRooms, timerPrice = false;
-        $scope.firstCallFinished = false;
-        $scope.type = {};
-        $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
-        $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
-        $scope.map.control = {};
 
-        uiGmapGoogleMapApi.then(function(maps) {
+        uiGmapGoogleMapApi.then(function(/*maps*/) {
             // promise done
-            $log.log(maps);
+            //$log.log(maps);
         });
 
-        var getPropertiesFormFiltersPromise = API.getPropertiesFormFilters($scope);
-        getPropertiesFormFiltersPromise.then(
-            function() {
-                $scope.map.control.refresh();
-                var getPropertiesPromise = API.getProperties($scope);
-                getPropertiesPromise.then(
-                    function() {
-                        $scope.firstCallFinished = true;
-                    },
-                    function(reason) { $log.error('get properties promise error', reason); }
-                );
-            },
-            function(reason) { $log.error('get properties form filters promise error', reason); }
-        );
+//        var getPropertiesFormFiltersPromise = API.getPropertiesFormFilters($scope);
+//        getPropertiesFormFiltersPromise.then(
+//            function() {
+//                $scope.map.control.refresh();
+////                var getPropertiesPromise = API.getProperties($scope);
+////                getPropertiesPromise.then(
+////                    function() {
+////                        $scope.firstCallFinished = true;
+////                    },
+////                    function(reason) { $log.error('get properties promise error', reason); }
+////                );
+//            },
+//            function(reason) { $log.error('get properties form filters promise error', reason); }
+//        );
 
         $scope.formListener = function() {
             API.getProperties($scope);

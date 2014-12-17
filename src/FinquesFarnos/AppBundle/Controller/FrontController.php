@@ -8,7 +8,6 @@ use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
-use Knp\Component\Pager\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -28,7 +27,7 @@ class FrontController extends Controller
      */
     public function homepageAction()
     {
-        return $this->render('::Front/homepage.html.twig', array(
+        return $this->render('Front/homepage.html.twig', array(
                 'slides' => $this->getDoctrine()->getRepository('AppBundle:ImageSlider')->getHomepageItems(),
                 'properties' => $this->getDoctrine()->getRepository('AppBundle:Property')->getHomepageItems(),
             ));
@@ -39,7 +38,19 @@ class FrontController extends Controller
      */
     public function propertiesAction()
     {
-        return $this->render('::Front/properties.html.twig');
+        $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
+        $filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
+        $filteredProperties   = $this->forward('AppBundle:Api:propertiesFiltered', array(
+                'type' => $filters['types'][0]['id'],
+                'area' => $filters['area']['max'],
+                'rooms' => $filters['rooms']['max'],
+                'price' => $filters['price']['max'],
+            ), array('_format' => 'json'));
+
+        return $this->render('Front/properties.html.twig', array(
+                'propertiesFormFilter' => $propertiesFormFilter->getContent(),
+                'filteredProperties'   => $filteredProperties->getContent(),
+            ));
     }
 
     /**
@@ -65,7 +76,7 @@ class FrontController extends Controller
 
         }
 
-        return $this->render('::Front/property.html.twig', array(
+        return $this->render('Front/property.html.twig', array(
                 'property' => $property,
                 'form' => $form->createView(),
             ));
@@ -76,7 +87,7 @@ class FrontController extends Controller
      */
     public function aboutAction()
     {
-        return $this->render('::Front/about.html.twig');
+        return $this->render('Front/about.html.twig');
     }
 
     /**
@@ -118,7 +129,7 @@ class FrontController extends Controller
                 ->setTo('info@fiquesfarnos.com')
                 ->setBody(
                     $this->renderView(
-                        '::Front/contact.email.html.twig',
+                        'Front/contact.email.html.twig',
                         array(
                             'form' => $contactForm,
                             'message' => $fc['message']
@@ -133,7 +144,7 @@ class FrontController extends Controller
             return $this->redirect($this->generateUrl('front_contact_thankyou'));
         }
 
-        return $this->render('::Front/contact.html.twig', array(
+        return $this->render('Front/contact.html.twig', array(
                 'form' => $form->createView(),
             ));
     }
@@ -143,7 +154,7 @@ class FrontController extends Controller
      */
     public function contactThankYouAction()
     {
-        return $this->render('::Front/contact_thank_you.html.twig');
+        return $this->render('Front/contact_thank_you.html.twig');
     }
 
     /**
@@ -151,7 +162,7 @@ class FrontController extends Controller
      */
     public function privacyAction()
     {
-        return $this->render('::Front/privacy.html.twig');
+        return $this->render('Front/privacy.html.twig');
     }
 
     /**
@@ -159,7 +170,7 @@ class FrontController extends Controller
      */
     public function legalAction()
     {
-        return $this->render('::Front/legal.html.twig');
+        return $this->render('Front/legal.html.twig');
     }
 
     /**
@@ -167,6 +178,6 @@ class FrontController extends Controller
      */
     public function creditsAction()
     {
-        return $this->render('::Front/credits.html.twig');
+        return $this->render('Front/credits.html.twig');
     }
 }
