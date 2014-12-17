@@ -79,17 +79,16 @@ body {
   border-radius: 0;
 }
 
+// Gaps
 .extra-m { margin: @extramargin }
 .extra-m-top { margin-top: @extramargin }
 .extra-m-bottom { margin-bottom: @extramargin }
 .no-m { margin: 0 }
 .no-m-top { margin-top: 0 }
 .no-m-bottom { margin-bottom: 0 }
-
 .double-extra-m { margin: @doubleextramargin }
 .double-extra-m-top { margin-top: @doubleextramargin }
 .double-extra-m-bottom { margin-bottom: @doubleextramargin }
-
 .extra-p { padding: @extramargin }
 .extra-p-top { padding-top: @extramargin }
 .extra-p-bottom { padding-bottom: @extramargin }
@@ -97,6 +96,13 @@ body {
 .no-p-top { padding-top: 0 }
 .no-p-bottom { padding-bottom: 0 }
 
+// Colors
+.c-orange { color: @fforange }
+.bc-orange { background-color: @fforange }
+.c-grey { color: @ffgrey }
+.bc-grey { background-color: @ffgrey }
+
+// Complex elements
 .carousel {
   margin-bottom: @extramargin;
 }
@@ -159,6 +165,9 @@ footer {
   &.bg-dark-orange {
     background-color: @fforangedark;
   }
-  a { color: @ffgrey; }
+  a {
+    color: @ffgrey;
+    &.c-orange { color: @fforange }
+  }
   h3 { color: @fforange; }
 }
