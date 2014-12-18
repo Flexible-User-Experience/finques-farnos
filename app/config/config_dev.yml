@@ -55,7 +55,7 @@ hautelook_alice:
     seed: 4
 
 cypress_git_elephant:
-    enable_profiler: true
+    enable_profiler: false
     profiler_repository_path: "%kernel.root_dir%/../"
     repositories:
         "FinquesFarnos": "%kernel.root_dir%/../"
