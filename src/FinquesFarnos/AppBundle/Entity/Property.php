@@ -22,6 +22,10 @@ use JMS\Serializer\Annotation as JMS;
  */
 class Property extends Base
 {
+    const SHOW_MAP_ALL = 0;
+    const SHOW_MAP_STREET = 1;
+    const SHOW_MAP_AREA = 2;
+
     /**
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"})
      * @var ArrayCollection
