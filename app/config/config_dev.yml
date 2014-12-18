@@ -55,10 +55,10 @@ hautelook_alice:
     seed: 4
 
 cypress_git_elephant:
-    enable_profiler: true
+    enable_profiler: false
     profiler_repository_path: "%kernel.root_dir%/../"
     repositories:
-        "FinquesFarnos": "%cypress_git_repository%"
+        "FinquesFarnos": "%kernel.root_dir%/../"
 
 # Vich Uploader
 vich_uploader:

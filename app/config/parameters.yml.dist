@@ -14,12 +14,10 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
-    locale:            en
+    locale:            ca
 
     google_analytics_enabled:   false
     google_analytics_account:   "UA-xxxxxxxx-x"
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
-
-    cypress_git_repository: "/path/to/project/root"

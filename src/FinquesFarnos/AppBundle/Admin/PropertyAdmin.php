@@ -4,6 +4,7 @@ namespace FinquesFarnos\AppBundle\Admin;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
+use FinquesFarnos\AppBundle\Entity\Property;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -90,9 +91,9 @@ class PropertyAdmin extends BaseAdmin
             ->add('latLng', 'oh_google_maps', array('label' => 'Mapa', 'required' => false))
             ->add('city', null, array('label' => 'Població'))
             ->add('showMapType', 'choice', array('label' => 'Al mostrar els mapa de l\'immoble', 'required' => true, 'choices' => array(
-                    0 => 'mostrar-ho tot',
-                    1 => 'mostrar només el carrer',
-                    2 => 'mostrar només l\'àrea',
+                    Property::SHOW_MAP_ALL => 'mostrar-ho tot',
+                    Property::SHOW_MAP_STREET => 'mostrar només el carrer',
+                    Property::SHOW_MAP_AREA => 'mostrar només l\'àrea',
                 )))
             ->end()
             ->with('Traduccions', array('class' => 'col-md-6'))

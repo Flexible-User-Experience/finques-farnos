@@ -3,21 +3,38 @@
 angular.module('propertiesApp')
     .controller('PropertyDetailCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$log', function (CFG, uiGmapGoogleMapApi, $scope, $log) {
 
-        $scope.init = function(propertiesFormFilter, filteredProperties) {
-            $scope.firstCallFinished = true;
-            $scope.type = {};
-            $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
+        $scope.init = function(localization) {
+            $scope.map = {
+                zoom: 14,
+                radius: 500,
+                stroke: {
+                    color: '#D86F24',
+                    weight: 1,
+                    opacity: 0.25
+                },
+                fill: {
+                    color: '#D86F24',
+                    opacity: 0.25
+                },
+                geodesic: true,
+                draggable: false,
+                clickable: false,
+                editable: false,
+                visible: true
+            };
             $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
 
-            $scope.form = angular.fromJson(propertiesFormFilter);
-            $scope.properties = angular.fromJson(filteredProperties);
-
+            $scope.localization = angular.fromJson(localization);
         };
 
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
             $log.log(maps);
         });
+
+        $scope.isShowMapArea = function(value) {
+            return value === CFG.SHOW_MAP_AREA;
+        };
 
     }]);

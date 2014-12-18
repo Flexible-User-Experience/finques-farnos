@@ -1,12 +1,14 @@
 {% extends 'Front/layout.html.twig' %}
 
-{% block title %}{{ 'menu.properties' | trans }} · {{ parent() }}{% endblock %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block title %}{{ property.name }} · {{ property.type.name }} · {{ parent() }}{% endblock %}
 {% block metadescription %}{% endblock %}
 {% block metakeywords %}{% endblock %}
 
 {% block bodyattr %}ng-app="propertiesApp"{% endblock %}
 
-{% block javascriptshead %}
+{% block javascriptshead %}O
     {{ parent() }}
     <script src="/js/my.js"></script>
 {% endblock %}
@@ -64,6 +66,10 @@
                 <hr class="thick">
                 <p>{{ property.description }}</p>
                 <h2 class="c-orange h2-localization">{{ 'property.localization' | trans }}</h2>
+                <ui-gmap-google-map center="localization.coords" zoom="map.zoom" options="map.options" control="map.control">
+                    <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="map.visible" geodesic="map.geodesic" editable="map.editable" draggable="map.draggable" clickable="map.clickable"></ui-gmap-circle>
+                </ui-gmap-google-map>
+                <p data-ng-if="!isShowMapArea(localization.control)">[[ localization.address ]]</p>
             </div>
             <div class="col-md-4 property-right-side-box">
                 <h2 class="no-m">{{ property.name }}</h2>
