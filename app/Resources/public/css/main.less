@@ -8,14 +8,15 @@
 //   #655B45 brand grey
 //@brand-primary: #D86F24;
 @fforangedark: #DDBC9D;
-@fforange: #D86F24;
+//@fforange: #D86F24;
+@fforange: #B46F2E;
 @fforangelight: #F6EEE5;
 @ffgrey: #655B45;
 @ffgreylight: lighten(@ffgrey, 25%);
 @fffootgrey: #888;
 @extramargin: 20px;
 @doubleextramargin: 40px;
-@extraborder: 8px;
+@extraborder: 9px;
 
 // Link
 @link-color: @fforange;
@@ -38,15 +39,22 @@
 @navbar-default-link-color: @ffgrey;
 @navbar-default-link-hover-color: @fforange;
 @navbar-default-link-active-bg: transparent;
-.navbar { border: none }
+nav.ff {
+  border-bottom: solid @extraborder @fforange;
+  a.navbar-brand { margin-top: -16px; }
+}
+//.navbar { border: none }
 div#navbar {
-  border: transparent;
-  border-bottom: solid 4px @fforange;
+//  border: transparent;
+//  border-bottom: solid 4px @fforange;
   ul {
+    margin-bottom: -9px;
     li {
+      height: 83px;
       &.active {
-        border-bottom: solid 4px @ffgrey;
+        border-bottom: solid @extraborder @ffgrey;
       }
+      a { padding-top: 53px; }
     }
   }
 }
