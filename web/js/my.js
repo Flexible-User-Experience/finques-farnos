@@ -89,7 +89,7 @@ angular.module('propertiesApp')
 
         $scope.isShowMapArea = function(value) {
             return value === CFG.SHOW_MAP_AREA;
-        }
+        };
 
     }]);
 
