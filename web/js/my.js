@@ -61,7 +61,7 @@ angular.module('propertiesApp')
                 radius: 500,
                 stroke: {
                     color: '#D86F24',
-                    weight: 2,
+                    weight: 1,
                     opacity: 0.25
                 },
                 fill: {
@@ -70,7 +70,7 @@ angular.module('propertiesApp')
                 },
                 geodesic: true,
                 draggable: false,
-                clickable: true,
+                clickable: false,
                 editable: false,
                 visible: true,
                 clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false }
@@ -86,6 +86,10 @@ angular.module('propertiesApp')
             // promise done
             $log.log(maps);
         });
+
+        $scope.isShowMapArea = function(value) {
+            return value === CFG.SHOW_MAP_AREA;
+        }
 
     }]);
 

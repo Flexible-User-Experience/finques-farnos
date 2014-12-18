@@ -65,9 +65,9 @@
                 <p>{{ property.description }}</p>
                 <h2 class="c-orange h2-localization">{{ 'property.localization' | trans }}</h2>
                 <ui-gmap-google-map center="localization.coords" zoom="map.zoom" options="map.options" control="map.control">
-                    {#<ui-gmap-markers data-ng-if="properties" models="properties" idKey="id" coords="'coords'" fit="true" doCluster="true" clusterOptions="map.clusterOptions"></ui-gmap-markers>#}
                     <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="map.visible" geodesic="map.geodesic" editable="map.editable" draggable="map.draggable" clickable="map.clickable"></ui-gmap-circle>
                 </ui-gmap-google-map>
+                <p data-ng-if="!isShowMapArea(localization.control)">[[ localization.address ]]</p>
             </div>
             <div class="col-md-4 property-right-side-box">
                 <h2 class="no-m">{{ property.name }}</h2>
