@@ -51,10 +51,12 @@ div#navbar {
     margin-bottom: -9px;
     li {
       height: 83px;
-      &.active {
-        border-bottom: solid @extraborder @ffgrey;
+      &.active, &:hover { border-bottom: solid @extraborder @ffgrey; }
+      a {
+        padding-top: 53px;
+        font-size: 17px;
+        &:hover { color: @ffgrey; }
       }
-      a { padding-top: 53px; }
     }
   }
 }

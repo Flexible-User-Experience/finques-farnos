@@ -72,14 +72,12 @@ angular.module('propertiesApp')
                 draggable: false,
                 clickable: false,
                 editable: false,
-                visible: true,
-                clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false }
+                visible: true
             };
             $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
 
             $scope.localization = angular.fromJson(localization);
-            $log.log($scope.localization);
         };
 
         uiGmapGoogleMapApi.then(function(maps) {
