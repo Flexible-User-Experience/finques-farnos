@@ -274,12 +274,25 @@ footer {
   background-color: @fforangelight;
   &.bg-dark-orange {
     background-color: @fforangedark;
+    ul.ribbons {
+      li {
+        &.special-offer { background: url('../bundles/app/images/icones/immobiliaria/bw/oferta.png') no-repeat 50% 0 }
+        &.discount-offer { background: url('../bundles/app/images/icones/immobiliaria/bw/rebaixa.png') no-repeat 50% 0 }
+        &.square-meters { background: url('../bundles/app/images/icones/immobiliaria/bw/casa.png') no-repeat 50% 0 }
+        &.square-rooms { background: url('../bundles/app/images/icones/immobiliaria/bw/dormitoris.png') no-repeat 50% 0 }
+        &.square-bathrooms { background: url('../bundles/app/images/icones/immobiliaria/bw/banys.png') no-repeat 50% 0 }
+      }
+    }
   }
   a {
     color: @ffgrey;
     &.c-orange { color: @fforange }
   }
-  h3 { color: @fforange; }
+  h2 { font-size: 1.5em; }
+  h3 {
+    color: @fforange;
+    font-size: 1.25em;
+  }
 }
 
 // Property detail

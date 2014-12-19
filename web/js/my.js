@@ -115,8 +115,8 @@ angular.module('propertiesApp')
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
             $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
             $scope.type = $scope.form.types[0];
-            $scope.area = 80; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
-            $scope.rooms = 3; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
+            $scope.area = 180; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
+            $scope.rooms = 5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
             $scope.price = 60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
 
 //            $log.log('init propertiesFormFilter', $scope.form);
