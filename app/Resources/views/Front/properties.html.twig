@@ -13,9 +13,9 @@
 
 {% block main %}
     <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ propertiesFormFilter }}', '{{ filteredProperties }}')">
-        <div class="row">
+        <div class="row no-m-bottom">
             <div class="col-md-12">
-                <h1>{{ 'properties.heading.title' | trans | upper }}</h1>
+                <h1 class="c-orange no-m-botton properties-list-h1"><span class="search-icon"></span>{{ 'properties.heading.title' | trans | upper }}</h1>
             </div>
         </div>
         <div class="row double-extra-m-bottom">
