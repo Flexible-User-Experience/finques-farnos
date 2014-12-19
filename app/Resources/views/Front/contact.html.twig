@@ -1,7 +1,5 @@
 {% extends 'Front/layout.html.twig' %}
 
-{% form_theme form 'bootstrap_3_layout.html.twig' %}
-
 {% block title %}{{ 'menu.contact' | trans }} · {{ parent() }}{% endblock %}
 {% block metadescription %}{% endblock %}
 {% block metakeywords %}{% endblock %}
@@ -15,11 +13,14 @@
             <div class="col-md-4">
                 <div class="well well-lg">
                     {% block contactform %}
-                        <h2 class="no-m-top extra-m-bottom">{{ 'contact.form.title' | trans }}</h2>
-                        <form method="POST" {{ form_enctype(form) }}>
-                            {{ form_widget(form) }}
-                            <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-default">
-                        </form>
+                        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                        <div class="ribbon-wrapper">
+                            <h2 class="no-m-top extra-m-bottom">{{ 'contact.form.title' | trans }}</h2>
+                            <form method="POST" {{ form_enctype(form) }}>
+                                {{ form_widget(form) }}
+                                <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-default">
+                            </form>
+                        </div>
                     {% endblock %}
                 </div>
             </div>
