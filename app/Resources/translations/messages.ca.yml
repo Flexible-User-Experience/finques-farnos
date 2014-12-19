@@ -1,8 +1,8 @@
 menu:
-  home: inici
-  properties: immobles
-  about: qui som
-  contact: contacte
+  home: Inici
+  properties: Immobles
+  about: Qui som
+  contact: Contacte
 
 frontend:
   privacy: privacitat
