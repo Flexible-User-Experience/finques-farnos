@@ -7,12 +7,17 @@
 //   #D86F24 brand orange
 //   #655B45 brand grey
 //@brand-primary: #D86F24;
-@fforangedark: #DDBC9D;
+//@fforangedark: #DDBC9D;
 //@fforange: #D86F24;
-@fforange: #B46F2E;
-@fforangelight: #F6EEE5;
-@ffgrey: #655B45;
-@ffgreylight: lighten(@ffgrey, 25%);
+@fforange: #B46E2F;
+@fforangelight: #F9F0E8;
+@fforangedark: #E6C3A6;
+//@fforangelight: #F6EEE5;
+//@ffgrey: #655B45;
+@ffgreylogo: #95958E;
+@ffgrey: #424242; // Pantone
+//@ffgreylight: lighten(@ffgrey, 25%);
+@ffgreylight: #424242;
 @fffootgrey: #888;
 @extramargin: 20px;
 @doubleextramargin: 40px;
@@ -40,18 +45,19 @@
 @navbar-default-link-hover-color: @fforange;
 @navbar-default-link-active-bg: transparent;
 nav.ff {
-  border-bottom: solid @extraborder @fforange;
+//  border-bottom: solid @extraborder @fforange;
   a.navbar-brand { margin-top: -16px; }
 }
-//.navbar { border: none }
+.navbar { border: none }
 div#navbar {
 //  border: transparent;
-//  border-bottom: solid 4px @fforange;
+  border-bottom: solid @extraborder @fforange;
   ul {
     margin-bottom: -9px;
     li {
       height: 83px;
       &.active, &:hover { border-bottom: solid @extraborder @ffgrey; }
+      &.last { margin-right: 5px; }
       a {
         padding-top: 53px;
         font-size: 17px;
