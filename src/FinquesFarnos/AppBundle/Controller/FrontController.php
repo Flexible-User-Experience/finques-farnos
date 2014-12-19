@@ -44,7 +44,7 @@ class FrontController extends Controller
                 // TODO: make dynamic & adaptative
                 'type' => $filters['types'][0]['id'],
                 'area' => 80, //intval(ceil(($filters['area']['max'] - $filters['area']['min']) / 2) + $filters['area']['min']),
-                'rooms' => 3, //intval(ceil(($filters['rooms']['max'] - $filters['rooms']['min']) / 2) + $filters['rooms']['min']),
+                'rooms' => 5, //intval(ceil(($filters['rooms']['max'] - $filters['rooms']['min']) / 2) + $filters['rooms']['min']),
                 'price' => 60000, //intval(ceil(($filters['price']['max'] -$filters['price']['min']) / 2) + $filters['price']['min']),
             ), array('_format' => 'json'));
 

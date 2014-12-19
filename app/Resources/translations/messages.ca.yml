@@ -1,8 +1,8 @@
 menu:
-  home: inici
-  properties: immobles
-  about: qui som
-  contact: contacte
+  home: Inici
+  properties: Immobles
+  about: Qui som
+  contact: Contacte
 
 frontend:
   privacy: privacitat
@@ -20,6 +20,8 @@ homepage:
       discount: rebaixat
 
 properties:
+  heading:
+    title: aquí trobaràs el teu immoble
   searching: obtenint resultats
   list:
     empty: no s'ha trobat cap resultat
@@ -30,8 +32,8 @@ properties:
       next: següent
   form:
     type: tipus
-    area: superfície o més
-    rooms: habitacions o més
+    area: superfície
+    rooms: habitacions
     price: o més
     search: buscar
     select:

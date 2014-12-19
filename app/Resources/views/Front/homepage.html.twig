@@ -35,48 +35,32 @@
             </div>
         </div>
     {% endif %}
-    <div class="container">
+    <div class="container container-xs-height">
         {#<!-- Example row of columns -->#}
         {% if properties | length > 0 %}
-        <div class="row">
+        <div class="row row-xs-height">
             {% for property in properties %}
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-height col-top">
                     <hr class="hr-homepage">
                     <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
                         {% if property.firstEnabledImage %}
                             <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('400xY') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
                         {% endif %}
                         <div class="caption">
-                            <h2 class="no-m"><a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ property.name }}</a></h2>
+                            <h2 class="no-m"><a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ property.name | upper }}</a></h2>
                             {% if property.showPriceOnlyWithNumbers %}
                                 <h3 class="no-m-top extra-m-bottom">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
                             {% else %}
                                 <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
                             {% endif %}
-                            <p>{{ property.description }}</p>
-                            <div class="btn-group" role="group" data-aria-label="icons">
-                                {% if property.offerSpecial %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
-                                {% endif %}
-                                {% if property.offerDiscount and not property.offerSpecial %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
-                                {% endif %}
-                                {% if property.squareMeters %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>
-                                {% endif %}
-                                {% if property.rooms %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
-                                {% endif %}
-                                {% if property.bathrooms %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
-                                {% endif %}
-                            </div>
+                            {#<p>{{ property.description }}</p>#}
+                            {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
                         </div>
                     </div>
                 </div>
                 {% if loop.index % 3 == 0 %}
                         </div>
-                    <div class="row">
+                    <div class="row row-xs-height">
                 {% endif %}
             {% endfor %}
         </div>

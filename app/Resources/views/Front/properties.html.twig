@@ -13,33 +13,33 @@
 
 {% block main %}
     <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ propertiesFormFilter }}', '{{ filteredProperties }}')">
-        <div class="row">
+        <div class="row no-m-bottom">
             <div class="col-md-12">
-                <h1>{{ 'menu.properties' | trans }}</h1>
+                <h1 class="c-orange no-m-botton properties-list-h1"><span class="search-icon"></span>{{ 'properties.heading.title' | trans | upper }}</h1>
             </div>
         </div>
         <div class="row double-extra-m-bottom">
             <div class="col-md-4 left-search-panel">
                 <form name="filterForm" action="" role="form">
                     <div class="form-group">
-                        <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | raw }}</label>
+                        <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
                         <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="propertyArea" class="control-label">[[ area ]] m<sup>2</sup> {{ 'properties.form.area' | trans | raw }}</label>
+                        <label for="propertyArea" class="control-label">[[ area ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
                         <input id="propertyArea" type="range" name="propertyArea" min="40" max="300" data-ng-model="area" value="[[ area ]]" step="10">
                         {#<input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="[[ form.area.step ]]">#}
                         {#<output name="areaAmount" for="propertyArea">[[ area ]] m<sup>2</sup></output>#}
                     </div>
                     <div class="form-group">
-                        <label for="propertyRooms" class="control-label">[[ rooms ]] {{ 'properties.form.rooms' | trans | raw }}</label>
+                        <label for="propertyRooms" class="control-label">[[ rooms ]] {{ 'properties.form.rooms' | trans | upper }}</label>
                         <input id="propertyRooms" type="range" name="propertyRooms" min="2" max="6" data-ng-model="rooms" value="[[ rooms ]]">
                         {#<input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]">#}
                         {#<output name="roomsAmount" for="propertyRooms">[[ rooms ]]</output>#}
                     </div>
                     <div class="form-group">
-                        <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]]&euro; {{ 'properties.form.price' | trans | raw }}</label>
+                        <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]] &euro; {# 'properties.form.price' | trans | raw #}</label>
                         <input id="propertyPrice" type="range" name="propertyPrice" min="10000" max="300000" data-ng-model="price" value="[[ price ]]" step="10000">
                         {#<input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" step="[[ form.price.step ]]">#}
                         {#<output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>#}
@@ -62,16 +62,16 @@
                 <div class="col-md-8">
                     <div class="row properties-list-box" data-ng-class="{ 'bg-dark-orange': property.offer_special || property.offer_discount }">
                         <div class="col-md-6">
-                            <h2 class="no-m"><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name ]]</a></h2>
+                            <h2 class="no-m"><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name | uppercase ]]</a></h2>
                             <h3 class="no-m-top extra-m-bottom" data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
                             <h3 data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
-                            <div class="btn-group" role="group" data-aria-label="icons">
-                                <button data-ng-if="property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
-                                <button data-ng-if="property.offer_discount && !property.offer_special" type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
-                                <button data-ng-if="property.square_meters" type="button" class="btn btn-default btn-sm">[[ property.square_meters ]] m<sup>2</sup></button>
-                                <button data-ng-if="property.rooms" type="button" class="btn btn-default btn-sm">[[ property.rooms ]] {{ 'homepage.property.rooms' | trans }}</button>
-                                <button data-ng-if="property.bathrooms" type="button" class="btn btn-default btn-sm">[[ property.bathrooms ]] {{ 'homepage.property.bathrooms' | trans }}</button>
-                            </div>
+                            <ul class="no-m-bottom ribbons list-unstyled list-inline">
+                                <li data-ng-if="property.offer_special" class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
+                                <li data-ng-if="property.offer_discount && !property.offer_special" class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
+                                <li data-ng-if="property.square_meters" class="square-meters">[[ property.square_meters ]] m<sup>2</sup></li>
+                                <li data-ng-if="property.rooms" class="square-rooms">[[ property.rooms ]] {{ 'homepage.property.rooms' | trans }}</li>
+                                <li data-ng-if="property.bathrooms" class="square-bathrooms">[[ property.bathrooms ]] {{ 'homepage.property.bathrooms' | trans }}</li>
+                            </ul>
                         </div>
                         <div class="col-md-6">
                             <p>[[ property.description ]]</p>

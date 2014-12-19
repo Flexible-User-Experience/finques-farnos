@@ -7,12 +7,17 @@
 //   #D86F24 brand orange
 //   #655B45 brand grey
 //@brand-primary: #D86F24;
-@fforangedark: #DDBC9D;
+//@fforangedark: #DDBC9D;
 //@fforange: #D86F24;
-@fforange: #B46F2E;
-@fforangelight: #F6EEE5;
-@ffgrey: #655B45;
+@fforange: #B46E2F;
+@fforangelight: #F9F0E8;
+@fforangedark: #E6C3A6;
+//@fforangelight: #F6EEE5;
+//@ffgrey: #655B45;
+@ffgreylogo: #95958E;
+@ffgrey: #424242; // Pantone
 @ffgreylight: lighten(@ffgrey, 25%);
+//@ffgreylight: #424242;
 @fffootgrey: #888;
 @extramargin: 20px;
 @doubleextramargin: 40px;
@@ -40,21 +45,24 @@
 @navbar-default-link-hover-color: @fforange;
 @navbar-default-link-active-bg: transparent;
 nav.ff {
-  border-bottom: solid @extraborder @fforange;
+//  border-bottom: solid @extraborder @fforange;
   a.navbar-brand { margin-top: -16px; }
 }
-//.navbar { border: none }
+.navbar { border: none }
 div#navbar {
 //  border: transparent;
-//  border-bottom: solid 4px @fforange;
+  border-bottom: solid @extraborder @fforange;
   ul {
     margin-bottom: -9px;
     li {
       height: 83px;
-      &.active {
-        border-bottom: solid @extraborder @ffgrey;
+      &.active, &:hover { border-bottom: solid @extraborder @ffgrey; }
+      &.last { margin-right: 5px; }
+      a {
+        padding-top: 53px;
+        font-size: 17px;
+        &:hover { color: @ffgrey; }
       }
-      a { padding-top: 53px; }
     }
   }
 }
@@ -105,6 +113,62 @@ body {
 .no-p-top { padding-top: 0 }
 .no-p-bottom { padding-bottom: 0 }
 
+// Columns
+.col-top    { vertical-align: top; }
+.col-middle { vertical-align: middle; }
+.col-bottom { vertical-align: bottom; }
+
+.container-xs-height {
+  display: table;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.row-xs-height { display: table-row; }
+.col-xs-height {
+  display: table-cell;
+  float: none;
+}
+
+@media(min-width: 768px) {
+  .container-sm-height {
+    display: table;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .row-sm-height { display: table-row; }
+  .col-sm-height {
+    display: table-cell;
+    float: none;
+  }
+}
+
+@media(min-width: 992px) {
+  .container-md-height {
+    display: table;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .row-md-height { display: table-row; }
+  .col-md-height {
+    display: table-cell;
+    float: none;
+  }
+}
+
+@media(min-width: 1200px) {
+  .container-lg-height {
+    display: table;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .row-lg-height { display: table-row; }
+  .col-lg-height {
+    display: table-cell;
+    float: none;
+  }
+}
+
 // Colors
 .c-orange { color: @fforange }
 .bc-orange { background-color: @fforange }
@@ -153,9 +217,44 @@ footer {
   background-color: @fforangelight;
   &.bg-dark-orange {
     background-color: @fforangedark;
+    ul.ribbons {
+      li {
+        &.special-offer { background: url('../bundles/app/images/icones/immobiliaria/bw/oferta.png') no-repeat 50% 0 }
+        &.discount-offer { background: url('../bundles/app/images/icones/immobiliaria/bw/rebaixa.png') no-repeat 50% 0 }
+        &.square-meters { background: url('../bundles/app/images/icones/immobiliaria/bw/casa.png') no-repeat 50% 0 }
+        &.square-rooms { background: url('../bundles/app/images/icones/immobiliaria/bw/dormitoris.png') no-repeat 50% 0 }
+        &.square-bathrooms { background: url('../bundles/app/images/icones/immobiliaria/bw/banys.png') no-repeat 50% 0 }
+      }
+    }
   }
+  div.caption { padding: 20px; }
   a { color: @ffgrey; }
-  h3 { color: @fforange; }
+  h2 {
+    a {
+      font-size: 0.8em;
+    }
+  }
+  h3 {
+    color: @fforange;
+    font-size: 1.5em;
+    small { color: @ffgrey; }
+  }
+}
+
+.ribbons {
+  li {
+    height: 60px;
+    text-align: center;
+    padding: 46px 10px 0 10px;
+    border-right: solid 1px @ffgreylight;
+    font-size: 0.85em;
+    &:last-child { border-right: none; }
+    &.special-offer { background: url('../bundles/app/images/icones/immobiliaria/color/oferta_color.png') no-repeat 50% 0 }
+    &.discount-offer { background: url('../bundles/app/images/icones/immobiliaria/color/rebaixa_color.png') no-repeat 50% 0 }
+    &.square-meters { background: url('../bundles/app/images/icones/immobiliaria/color/casa_color.png') no-repeat 50% 0 }
+    &.square-rooms { background: url('../bundles/app/images/icones/immobiliaria/color/dormitoris_color.png') no-repeat 50% 0 }
+    &.square-bathrooms { background: url('../bundles/app/images/icones/immobiliaria/color/banys_color.png') no-repeat 50% 0 }
+  }
 }
 
 // Properties list
@@ -170,17 +269,41 @@ footer {
   padding: 30px;
 }
 
+.properties-list-h1 {
+  font-size: 1.25em;
+  span.search-icon {
+    background: url('../bundles/app/images/icones/immobiliaria/color/buscar.png') no-repeat 50% 0;
+    width: 43px;
+    height: 43px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
 .properties-list-box {
   padding: @extramargin;
   background-color: @fforangelight;
   &.bg-dark-orange {
     background-color: @fforangedark;
+    ul.ribbons {
+      li {
+        &.special-offer { background: url('../bundles/app/images/icones/immobiliaria/bw/oferta.png') no-repeat 50% 0 }
+        &.discount-offer { background: url('../bundles/app/images/icones/immobiliaria/bw/rebaixa.png') no-repeat 50% 0 }
+        &.square-meters { background: url('../bundles/app/images/icones/immobiliaria/bw/casa.png') no-repeat 50% 0 }
+        &.square-rooms { background: url('../bundles/app/images/icones/immobiliaria/bw/dormitoris.png') no-repeat 50% 0 }
+        &.square-bathrooms { background: url('../bundles/app/images/icones/immobiliaria/bw/banys.png') no-repeat 50% 0 }
+      }
+    }
   }
   a {
     color: @ffgrey;
     &.c-orange { color: @fforange }
   }
-  h3 { color: @fforange; }
+  h2 { font-size: 1.5em; }
+  h3 {
+    color: @fforange;
+    font-size: 1.25em;
+  }
 }
 
 // Property detail
@@ -249,4 +372,26 @@ footer {
     border-top: solid @extraborder @fforange;
     margin: 0 0 @extramargin 0;
   }
+}
+
+// About Us
+.about-us-panels {
+  h2 {
+    border-bottom: solid 2px @fforange;
+    font-size: 1.5em;
+  }
+  ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+  }
+  p.lead { font-size: 2em; }
+}
+
+// Contact
+.ribbon-wrapper {
+  padding: 24px;
+  border: solid 2px @fforange;
+  border-radius: 15px;
+  h2 { font-size: 1.25em; }
+  input.btn-grey { color: white; }
 }

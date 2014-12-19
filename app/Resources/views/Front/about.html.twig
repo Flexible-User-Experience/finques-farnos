@@ -5,7 +5,7 @@
 {% block metakeywords %}{% endblock %}
 
 {% block main %}
-    <div class="container">
+    <div class="container about-us-panels">
         <div class="row">
             <div class="col-md-12">
                 <img class="img-responsive" src="http://lorempixel.com/c/1140/300/nature/" alt="dummy"/>
@@ -14,15 +14,15 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="well well-lg">
-                    <p class="lead orange">{{ 'about.left.main' | trans | raw }}</p>
+                    <p class="lead orange no-m-bottom">{{ 'about.left.main' | trans | upper | raw }}</p>
                 </div>
             </div>
             <div class="col-md-7">
                 <div class="well well-lg">
-                    <h2 class="no-m-top">{{ 'about.right.company.title' | trans | capitalize }}</h2>
+                    <h2 class="no-m-top">{{ 'about.right.company.title' | trans | upper }}</h2>
                     <p>{{ 'about.right.company.text' | trans | raw }}</p>
-                    <h2>{{ 'about.right.services.title' | trans | capitalize }}</h2>
-                    <p>{{ 'about.right.services.text' | trans | raw }}</p>
+                    <h2 class="double-extra-m-top">{{ 'about.right.services.title' | trans | upper }}</h2>
+                    <p class="no-m-bottom">{{ 'about.right.services.text' | trans | raw }}</p>
                 </div>
             </div>
         </div>
