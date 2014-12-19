@@ -16,8 +16,8 @@
 //@ffgrey: #655B45;
 @ffgreylogo: #95958E;
 @ffgrey: #424242; // Pantone
-//@ffgreylight: lighten(@ffgrey, 25%);
-@ffgreylight: #424242;
+@ffgreylight: lighten(@ffgrey, 25%);
+//@ffgreylight: #424242;
 @fffootgrey: #888;
 @extramargin: 20px;
 @doubleextramargin: 40px;
@@ -217,6 +217,15 @@ footer {
   background-color: @fforangelight;
   &.bg-dark-orange {
     background-color: @fforangedark;
+    ul.ribbons {
+      li {
+        &.special-offer { background: url('../bundles/app/images/icones/immobiliaria/bw/oferta.png') no-repeat 50% 0 }
+        &.discount-offer { background: url('../bundles/app/images/icones/immobiliaria/bw/rebaixa.png') no-repeat 50% 0 }
+        &.square-meters { background: url('../bundles/app/images/icones/immobiliaria/bw/casa.png') no-repeat 50% 0 }
+        &.square-rooms { background: url('../bundles/app/images/icones/immobiliaria/bw/dormitoris.png') no-repeat 50% 0 }
+        &.square-bathrooms { background: url('../bundles/app/images/icones/immobiliaria/bw/banys.png') no-repeat 50% 0 }
+      }
+    }
   }
   div.caption { padding: 20px; }
   a { color: @ffgrey; }
@@ -229,6 +238,22 @@ footer {
     color: @fforange;
     font-size: 1.5em;
     small { color: @ffgrey; }
+  }
+}
+
+.ribbons {
+  li {
+    height: 60px;
+    text-align: center;
+    padding: 46px 10px 0 10px;
+    border-right: solid 1px @ffgreylight;
+    font-size: 0.85em;
+    &:last-child { border-right: none; }
+    &.special-offer { background: url('../bundles/app/images/icones/immobiliaria/color/oferta_color.png') no-repeat 50% 0 }
+    &.discount-offer { background: url('../bundles/app/images/icones/immobiliaria/color/rebaixa_color.png') no-repeat 50% 0 }
+    &.square-meters { background: url('../bundles/app/images/icones/immobiliaria/color/casa_color.png') no-repeat 50% 0 }
+    &.square-rooms { background: url('../bundles/app/images/icones/immobiliaria/color/dormitoris_color.png') no-repeat 50% 0 }
+    &.square-bathrooms { background: url('../bundles/app/images/icones/immobiliaria/color/banys_color.png') no-repeat 50% 0 }
   }
 }
 

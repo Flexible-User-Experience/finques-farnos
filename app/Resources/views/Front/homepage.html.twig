@@ -54,23 +54,23 @@
                                 <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
                             {% endif %}
                             {#<p>{{ property.description }}</p>#}
-                            <div class="btn-group" role="group" data-aria-label="icons">
+                            <ul class="ribbons list-unstyled list-inline">
                                 {% if property.offerSpecial %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
+                                    <li class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
                                 {% endif %}
                                 {% if property.offerDiscount and not property.offerSpecial %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
+                                    <li class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
                                 {% endif %}
                                 {% if property.squareMeters %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>
+                                    <li class="square-meters">{{ property.squareMeters }} m<sup>2</sup></li>
                                 {% endif %}
                                 {% if property.rooms %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
+                                    <li class="square-rooms">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</li>
                                 {% endif %}
                                 {% if property.bathrooms %}
-                                    <button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
+                                    <li class="square-bathrooms">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</li>
                                 {% endif %}
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
