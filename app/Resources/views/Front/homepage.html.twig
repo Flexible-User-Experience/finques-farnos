@@ -53,7 +53,7 @@
                             {% else %}
                                 <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
                             {% endif %}
-                            <p>{{ property.description }}</p>
+                            {#<p>{{ property.description }}</p>#}
                             <div class="btn-group" role="group" data-aria-label="icons">
                                 {% if property.offerSpecial %}
                                     <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
