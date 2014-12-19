@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6ba6ed299c7c915e053b0993da73bd57",
+    "hash": "56180f577bb3187405efee17f11f4546",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -123,8 +123,14 @@
             "target-dir": "Cypress/GitElephantBundle",
             "source": {
                 "type": "git",
-                "url": "git@github.com:davidromani/GitElephantBundle.git",
-                "reference": "283241428de75b065ba0fb20ae7e645f88d8b79d"
+                "url": "https://github.com/matteosister/GitElephantBundle.git",
+                "reference": "f849e11550980da89ddbdead943d1f0f6c05852c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matteosister/GitElephantBundle/zipball/f849e11550980da89ddbdead943d1f0f6c05852c",
+                "reference": "f849e11550980da89ddbdead943d1f0f6c05852c",
+                "shasum": ""
             },
             "require": {
                 "cypresslab/gitelephant": "*",
@@ -142,6 +148,7 @@
                     "Cypress\\GitElephantBundle": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-3.0+"
             ],
@@ -156,20 +163,20 @@
             "keywords": [
                 "git"
             ],
-            "time": "2014-12-09 15:32:18"
+            "time": "2014-12-16 16:41:12"
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633"
+                "reference": "d63108433190110c0ceb8be6460dda6f78348950"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/6a6bec0670bb6e71a263b08bc1b98ea242928633",
-                "reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/d63108433190110c0ceb8be6460dda6f78348950",
+                "reference": "d63108433190110c0ceb8be6460dda6f78348950",
                 "shasum": ""
             },
             "require": {
@@ -224,7 +231,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2014-09-25 16:45:30"
+            "time": "2014-12-18 18:30:08"
         },
         {
             "name": "doctrine/cache",
