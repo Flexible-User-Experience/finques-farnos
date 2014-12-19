@@ -15,31 +15,31 @@
     <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ propertiesFormFilter }}', '{{ filteredProperties }}')">
         <div class="row">
             <div class="col-md-12">
-                <h1>{{ 'menu.properties' | trans }}</h1>
+                <h1>{{ 'properties.heading.title' | trans | upper }}</h1>
             </div>
         </div>
         <div class="row double-extra-m-bottom">
             <div class="col-md-4 left-search-panel">
                 <form name="filterForm" action="" role="form">
                     <div class="form-group">
-                        <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | raw }}</label>
+                        <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
                         <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="propertyArea" class="control-label">[[ area ]] m<sup>2</sup> {{ 'properties.form.area' | trans | raw }}</label>
+                        <label for="propertyArea" class="control-label">[[ area ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
                         <input id="propertyArea" type="range" name="propertyArea" min="40" max="300" data-ng-model="area" value="[[ area ]]" step="10">
                         {#<input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="[[ form.area.step ]]">#}
                         {#<output name="areaAmount" for="propertyArea">[[ area ]] m<sup>2</sup></output>#}
                     </div>
                     <div class="form-group">
-                        <label for="propertyRooms" class="control-label">[[ rooms ]] {{ 'properties.form.rooms' | trans | raw }}</label>
+                        <label for="propertyRooms" class="control-label">[[ rooms ]] {{ 'properties.form.rooms' | trans | upper }}</label>
                         <input id="propertyRooms" type="range" name="propertyRooms" min="2" max="6" data-ng-model="rooms" value="[[ rooms ]]">
                         {#<input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]">#}
                         {#<output name="roomsAmount" for="propertyRooms">[[ rooms ]]</output>#}
                     </div>
                     <div class="form-group">
-                        <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]]&euro; {{ 'properties.form.price' | trans | raw }}</label>
+                        <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]] &euro; {# 'properties.form.price' | trans | raw #}</label>
                         <input id="propertyPrice" type="range" name="propertyPrice" min="10000" max="300000" data-ng-model="price" value="[[ price ]]" step="10000">
                         {#<input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" step="[[ form.price.step ]]">#}
                         {#<output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>#}

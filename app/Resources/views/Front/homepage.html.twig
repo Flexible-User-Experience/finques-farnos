@@ -54,23 +54,7 @@
                                 <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
                             {% endif %}
                             {#<p>{{ property.description }}</p>#}
-                            <ul class="no-m-bottom ribbons list-unstyled list-inline">
-                                {% if property.offerSpecial %}
-                                    <li class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
-                                {% endif %}
-                                {% if property.offerDiscount and not property.offerSpecial %}
-                                    <li class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
-                                {% endif %}
-                                {% if property.squareMeters %}
-                                    <li class="square-meters">{{ property.squareMeters }} m<sup>2</sup></li>
-                                {% endif %}
-                                {% if property.rooms %}
-                                    <li class="square-rooms">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</li>
-                                {% endif %}
-                                {% if property.bathrooms %}
-                                    <li class="square-bathrooms">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</li>
-                                {% endif %}
-                            </ul>
+                            {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
                         </div>
                     </div>
                 </div>
