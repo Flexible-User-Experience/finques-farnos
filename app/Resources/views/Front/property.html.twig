@@ -95,11 +95,13 @@
                     {% endfor %}
                 {% endif %}
                 <hr>
-                <h4>{{ 'property.form' | trans | upper }}</h4>
-                <form method="POST" {{ form_enctype(form) }}>
-                    {{ form_widget(form) }}
-                    <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-default">
-                </form>
+                <div class="ribbon-wrapper">
+                    <h4 class="c-orange">{{ 'property.form' | trans | upper }}</h4>
+                    <form method="POST" {{ form_enctype(form) }}>
+                        {{ form_widget(form) }}
+                        <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-grey">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
