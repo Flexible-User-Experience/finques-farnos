@@ -62,14 +62,14 @@ angular.module('propertiesApp')
                 stroke: {
                     color: '#D86F24',
                     weight: 1,
-                    opacity: 0.25
+                    opacity: 1
                 },
                 fill: {
                     color: '#D86F24',
                     opacity: 0.25
                 },
                 geodesic: true,
-                draggable: false,
+                draggable: true,
                 clickable: false,
                 editable: false,
                 visible: true

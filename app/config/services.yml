@@ -101,3 +101,10 @@ services:
         scope: request
         tags:
             - { name: knp_menu.menu, alias: frontend }
+
+# Mailer
+    app.mailer.service:
+        class: FinquesFarnos\AppBundle\Service\MailerService
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @mailer

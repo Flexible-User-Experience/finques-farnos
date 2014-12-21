@@ -230,13 +230,11 @@ footer {
   div.caption { padding: 20px; }
   a { color: @ffgrey; }
   h2 {
-    a {
-      font-size: 0.8em;
-    }
+    a { font-size: 0.6em; }
   }
   h3 {
     color: @fforange;
-    font-size: 1.5em;
+    font-size: 1.2em;
     small { color: @ffgrey; }
   }
 }
@@ -314,7 +312,15 @@ footer {
     color: @ffgrey;
     &.c-orange { color: @fforange }
   }
-  h3 { color: @fforange; }
+  h2 {
+    font-size: 1.5em;
+    color: @ffgrey;
+  }
+  h3 {
+    color: @fforange;
+    font-size: 1.5em;
+    small { color: @ffgrey; }
+  }
   hr {
     border: none;
     border-top: solid 2px @ffgreylight;
@@ -329,7 +335,7 @@ footer {
   padding: 0 0 20px 0;
 }
 
-#custom_carousel .controls{
+#custom_carousel .controls {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0;
@@ -344,7 +350,7 @@ footer {
   display: table-cell;
   &.active {
     a {
-      border-top: 4px solid @fforange;
+      img { opacity: 0.3; }
     }
   }
   a {
@@ -362,10 +368,27 @@ footer {
 }
 
 .property-detail-left-box {
-  h2.h2-localization {
-    border: none;
-    border-bottom: solid 2px @fforange;
-    margin-top: @doubleextramargin;
+  h2 {
+    font-size: 1.5em;
+    &.h2-localization {
+      border: none;
+      border-bottom: solid 2px @fforange;
+      margin-top: @doubleextramargin;
+      margin-bottom: @extramargin;
+      padding-bottom: 8px;
+      span.poi-icon {
+        background: url('../bundles/app/images/icones/immobiliaria/color/localitzacio.png') no-repeat 0 0;
+        width: 39px;
+        height: 49px;
+        display: inline-block;
+      }
+    }
+    span.house-icon {
+      background: url('../bundles/app/images/icones/immobiliaria/color/casa_color.png') no-repeat 0 0;
+      width: 39px;
+      height: 41px;
+      display: inline-block;
+    }
   }
   hr.thick {
     border: none;
@@ -377,6 +400,7 @@ footer {
 // About Us
 .about-us-panels {
   h2 {
+    padding-bottom: 8px;
     border-bottom: solid 2px @fforange;
     font-size: 1.5em;
   }
@@ -385,6 +409,12 @@ footer {
     margin-bottom: 0;
   }
   p.lead { font-size: 2em; }
+  span.keyring {
+    background: url('../bundles/app/images/icones/immobiliaria/color/serveis.png') no-repeat 0 0;
+    width: 46px;
+    height: 46px;
+    display: inline-block;
+  }
 }
 
 // Contact

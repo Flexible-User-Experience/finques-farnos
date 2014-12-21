@@ -130,7 +130,7 @@ legal:
 
 credits:
   text: |
-    Aquesta pàgina web ha estat desenvolupada per <a href="http://www.flux.cat">Flux</a> amb <a href="http://www.w3.org/TR/html5">HTML5</a> utilitzant el framework PHP <a href="http://www.symfony.com">Symfony2</a> i una pila de tecnologies web.</p>
+    Aquesta pàgina web ha estat desenvolupada per <a href="http://www.flux.cat">Flux</a> amb <a href="http://www.w3.org/TR/html5">HTML5</a> utilitzant el framework PHP <a href="http://www.symfony.com">Symfony2</a> i una pila moderna de tecnologies web.</p>
     <p>El disseny gràfic ha estat realitzat per <a href="http://www.gonellcomunicacio.com">Gonell Comunicació</a>.</p>
     <p>Tots els drets reservats.</p>
     <p>&copy; Finques Farnós, SL.
