@@ -342,7 +342,6 @@ footer {
   display: table-cell;
   &.active {
     a {
-//      border-top: 4px solid @fforange;
       img { opacity: 0.5; }
     }
   }
@@ -361,10 +360,27 @@ footer {
 }
 
 .property-detail-left-box {
-  h2.h2-localization {
-    border: none;
-    border-bottom: solid 2px @fforange;
-    margin-top: @doubleextramargin;
+  h2 {
+    font-size: 1.5em;
+    &.h2-localization {
+      border: none;
+      border-bottom: solid 2px @fforange;
+      margin-top: @doubleextramargin;
+      margin-bottom: @extramargin;
+      padding-bottom: 8px;
+      span.poi-icon {
+        background: url('../bundles/app/images/icones/immobiliaria/color/localitzacio.png') no-repeat 0 0;
+        width: 39px;
+        height: 49px;
+        display: inline-block;
+      }
+    }
+    span.house-icon {
+      background: url('../bundles/app/images/icones/immobiliaria/color/casa_color.png') no-repeat 0 0;
+      width: 39px;
+      height: 41px;
+      display: inline-block;
+    }
   }
   hr.thick {
     border: none;

@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 {% endif %}
-                <h2 class="c-orange">{{ property.name }}
+                <h2 class="c-orange"><span class="house-icon"></span> {{ property.name | upper }}
                     <div class="btn-group pull-right" role="group" data-aria-label="icons">
                         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-facebook fa-lg"></i></button>
                         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-twitter fa-lg"></i></button>
@@ -65,14 +65,14 @@
                 </h2>
                 <hr class="thick">
                 <p>{{ property.description }}</p>
-                <h2 class="c-orange h2-localization">{{ 'property.localization' | trans }}</h2>
+                <h2 class="c-orange h2-localization"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
                 <ui-gmap-google-map center="localization.coords" zoom="map.zoom" options="map.options" control="map.control">
                     <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="map.visible" geodesic="map.geodesic" editable="map.editable" draggable="map.draggable" clickable="map.clickable"></ui-gmap-circle>
                 </ui-gmap-google-map>
                 <p data-ng-if="!isShowMapArea(localization.control)">[[ localization.address ]]</p>
             </div>
             <div class="col-md-4 property-right-side-box">
-                <h2 class="no-m">{{ property.name }}</h2>
+                <h2 class="no-m">{{ property.name | upper }}</h2>
                 {% if property.showPriceOnlyWithNumbers %}
                     <h3 class="no-m-top extra-m-bottom">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
                 {% else %}
@@ -80,7 +80,7 @@
                 {% endif %}
                 {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
                 <hr>
-                <h4>{{ 'property.energy.efficiency' | trans }}</h4>
+                <h4>{{ 'property.energy.efficiency' | trans | upper }}</h4>
                 {% if property.energyClass == 0 %}
                     <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.noclass' | trans }}</p>
                 {% elseif property.energyClass == 1 %}
@@ -95,7 +95,7 @@
                     {% endfor %}
                 {% endif %}
                 <hr>
-                <h4>{{ 'property.form' | trans }}</h4>
+                <h4>{{ 'property.form' | trans | upper }}</h4>
                 <form method="POST" {{ form_enctype(form) }}>
                     {{ form_widget(form) }}
                     <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-default">

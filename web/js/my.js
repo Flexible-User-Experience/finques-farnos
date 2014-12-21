@@ -69,7 +69,7 @@ angular.module('propertiesApp')
                     opacity: 0.25
                 },
                 geodesic: true,
-                draggable: false,
+                draggable: true,
                 clickable: false,
                 editable: false,
                 visible: true
