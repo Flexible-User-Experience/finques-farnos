@@ -8,6 +8,7 @@ use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
+use FinquesFarnos\AppBundle\Service\MailerService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -107,47 +108,10 @@ class FrontController extends Controller
         $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var Contact $contactForm */
-            $contactForm = $form->getData();
-            /** @var EntityManager $em */
-            $em = $this->getDoctrine()->getManager();
-            /** @var Contact $contactToBePersisted */
-            $contactToBePersisted = $em->getRepository('AppBundle:Contact')->findOneBy(array('email' => $contactForm->getEmail()));
-            if ($contactToBePersisted) {
-                $contactToBePersisted
-                    ->setName($contactForm->getName())
-                    ->setPhone($contactForm->getPhone())
-                    ->setEnabled(true);
-            } else {
-                $contactToBePersisted = $contactForm;
-            }
+            /** @var MailerService $ms */
+            $ms = $this->get('app.mailer.service');
             $fc = $request->get('contact');
-            /** @var ContactMessage $message */
-            $message = new ContactMessage();
-            $message->setContact($contactToBePersisted)->setText($fc['message']);
-            $contactToBePersisted->addMessage($message);
-            $em->persist($contactToBePersisted);
-            $em->persist($message);
-            $em->flush();
-            // Send email
-            /** @var \Swift_Message $emailMessage */
-            $emailMessage = \Swift_Message::newInstance()
-                ->setSubject('Formulari de contacte pàgina web www.finquesfarnos.com')
-                ->setFrom('webapp@finquesfarnos.com')
-                ->setTo('info@fiquesfarnos.com')
-                ->setBody(
-                    $this->renderView(
-                        'Front/contact.email.html.twig',
-                        array(
-                            'form' => $contactForm,
-                            'message' => $fc['message']
-                        )
-                    )
-                )
-                ->setCharset('UTF-8')
-                ->setContentType('text/html')
-            ;
-            $this->get('mailer')->send($emailMessage);
+            $ms->performContactActions($form->getData(), $fc['message']);
 
             return $this->redirect($this->generateUrl('front_contact_thankyou'));
         }
