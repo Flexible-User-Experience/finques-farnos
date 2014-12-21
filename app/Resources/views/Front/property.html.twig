@@ -46,7 +46,7 @@
                                     <ul class="nav">
                                         {% for image in property.images %}
                                             <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
-                                                <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('100x100') }}"></a>
+                                                <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('100x60') }}"></a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -78,23 +78,7 @@
                 {% else %}
                     <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
                 {% endif %}
-                <div class="btn-group" role="group" data-aria-label="icons">
-                    {% if property.offerSpecial %}
-                        <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.special' | trans }}</button>
-                    {% endif %}
-                    {% if property.offerDiscount and not property.offerSpecial %}
-                        <button type="button" class="btn btn-default btn-sm">{{ 'homepage.property.offer.discount' | trans }}</button>
-                    {% endif %}
-                    {% if property.squareMeters %}
-                        <button type="button" class="btn btn-default btn-sm">{{ property.squareMeters }} m<sup>2</sup></button>
-                    {% endif %}
-                    {% if property.rooms %}
-                        <button type="button" class="btn btn-default btn-sm">{{ property.rooms }} {{ 'homepage.property.rooms' | trans }}</button>
-                    {% endif %}
-                    {% if property.bathrooms %}
-                        <button type="button" class="btn btn-default btn-sm">{{ property.bathrooms }} {{ 'homepage.property.bathrooms' | trans }}</button>
-                    {% endif %}
-                </div>
+                {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
                 <hr>
                 <h4>{{ 'property.energy.efficiency' | trans }}</h4>
                 {% if property.energyClass == 0 %}
