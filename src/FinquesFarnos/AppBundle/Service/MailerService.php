@@ -84,7 +84,7 @@ class MailerService
             ->setFrom('webapp@finquesfarnos.com')
             ->setTo('info@fiquesfarnos.com')
             ->setBody(
-                $this->renderView(
+                $this->renderView( // TODO fix this!
                     'Front/contact.email.html.twig',
                     array(
                         'form' => $contactForm,
