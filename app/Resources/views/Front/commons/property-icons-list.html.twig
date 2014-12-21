@@ -1,9 +1,9 @@
 <ul class="no-m-bottom ribbons list-unstyled list-inline">
     {% if property.offerSpecial %}
-        <li class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
+        <li class="special-offer">{{ 'homepage.property.offer.special' | trans | upper }}</li>
     {% endif %}
     {% if property.offerDiscount and not property.offerSpecial %}
-        <li class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
+        <li class="discount-offer">{{ 'homepage.property.offer.discount' | trans | upper }}</li>
     {% endif %}
     {% if property.squareMeters %}
         <li class="square-meters">{{ property.squareMeters }} m<sup>2</sup></li>
