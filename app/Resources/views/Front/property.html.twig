@@ -52,12 +52,10 @@
                     </div>
                 {% endif %}
                 <h2 class="c-orange"><span class="house-icon"></span> {{ property.name | upper }}
-                    <div class="btn-group pull-right" role="group" data-aria-label="icons">
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-facebook fa-lg"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-twitter fa-lg"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-envelope fa-lg"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-cloud-download fa-lg"></i></button>
-                    </div>
+                    <a class="pull-right" href="#"><span class="download-icon"></span></a>
+                    <a class="pull-right" href="#"><span class="envelope-icon"></span></a>
+                    <a class="pull-right" href="#"><span class="twitter-icon"></span></a>
+                    <a class="pull-right" href="#"><span class="facebook-icon"></span></a>
                 </h2>
                 <hr class="thick">
                 <p>{{ property.description }}</p>
