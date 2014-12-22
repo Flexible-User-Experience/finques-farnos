@@ -9,11 +9,13 @@
         <div class="container">
             <div id="carousel-homepage" class="carousel slide" data-ride="carousel">
                 {#<!-- Indicators -->#}
-                <ol class="carousel-indicators">
-                    {% for slide in slides %}
-                        <li data-target="#carousel-homepage" data-slide-to="0"{% if loop.first %} class="active"{% endif %}></li>
-                    {% endfor %}
-                </ol>
+                {% if slides | length > 1 %}
+                    <ol class="carousel-indicators">
+                        {% for slide in slides %}
+                            <li data-target="#carousel-homepage" data-slide-to="0"{% if loop.first %} class="active"{% endif %}></li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
                 {#<!-- Wrapper for slides -->#}
                 <div class="carousel-inner" role="listbox">
                     {% for slide in slides %}
@@ -24,46 +26,55 @@
                     {% endfor %}
                 </div>
                 {#<!-- Controls -->#}
-                <a class="left carousel-control" href="#carousel-homepage" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-homepage" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" data-aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                {% if slides | length > 1 %}
+                    <a class="left carousel-control" href="#carousel-homepage" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-homepage" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" data-aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                {% endif %}
             </div>
         </div>
     {% endif %}
     <div class="container container-xs-height">
-        {#<!-- Example row of columns -->#}
+        {#<!-- Property rows -->#}
         {% if properties | length > 0 %}
-        <div class="row row-xs-height">
-            {% for property in properties %}
-                <div class="col-md-4 col-xs-height col-top">
-                    <hr class="hr-homepage">
-                    <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
-                        {% if property.firstEnabledImage %}
-                            <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('400xY') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
-                        {% endif %}
-                        <div class="caption">
-                            <h2 class="no-m-top"><a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ property.name | upper }}</a></h2>
-                            {% if property.showPriceOnlyWithNumbers %}
-                                <h3 class="no-m-top extra-m-bottom">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
-                            {% else %}
-                                <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
+            <div class="row row-xs-height">
+                {% for property in properties %}
+                    <div class="col-md-4 col-xs-height col-top">
+                        <hr class="hr-homepage">
+                        <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
+                            {% if property.firstEnabledImage %}
+                                <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('400xY') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
                             {% endif %}
-                            {#<p>{{ property.description }}</p>#}
-                            {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
+                            <div class="caption">
+                                <h2 class="no-m-top"><a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">{{ property.name | upper }}</a></h2>
+                                {% if property.showPriceOnlyWithNumbers %}
+                                    <h3 class="no-m-top extra-m-bottom">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
+                                {% else %}
+                                    <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
+                                {% endif %}
+                                {#<p>{{ property.description }}</p>#}
+                                {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
+                            </div>
                         </div>
                     </div>
+                    {% if loop.index % 3 == 0 %}
+                            </div>
+                        <div class="row row-xs-height">
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="row">
+                <div class="col-md-12">
+                    <hr class="hr-homepage">
+                    <p class="lead">{{ 'homepage.property.noitems' | trans }}</p>
                 </div>
-                {% if loop.index % 3 == 0 %}
-                        </div>
-                    <div class="row row-xs-height">
-                {% endif %}
-            {% endfor %}
-        </div>
+            </div>
         {% endif %}
     </div>
 {% endblock %}
