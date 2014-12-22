@@ -3,6 +3,7 @@
 namespace FinquesFarnos\AppBundle\Service;
 
 use Doctrine\ORM\EntityManager;
+use FinquesFarnos\AppBundle\Entity\Property;
 use Swift_Mailer;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
@@ -47,12 +48,25 @@ class MailerService
     }
 
     /**
-     * Perform contact delivery email notification action
+     * Perform frontend property detail page delivery email notification action
+     *
+     * @param Contact  $contactForm
+     * @param          $textMessage
+     * @param Property $property
+     */
+    public function performPropertyDeliveryAction(Contact $contactForm, $textMessage, Property $property)
+    {
+        $this->manageModel($contactForm, $textMessage);
+        $this->delivery($contactForm, $textMessage);
+    }
+
+    /**
+     * Perform frontend contact page delivery email notification action
      *
      * @param Contact $contactForm
      * @param         $textMessage
      */
-    public function performContactActions(Contact $contactForm, $textMessage)
+    public function performContactDeliveryAction(Contact $contactForm, $textMessage)
     {
         $this->manageModel($contactForm, $textMessage);
         $this->delivery($contactForm, $textMessage);

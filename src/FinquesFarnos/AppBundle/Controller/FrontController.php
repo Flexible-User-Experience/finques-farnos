@@ -75,11 +75,10 @@ class FrontController extends Controller
         $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // TODO: send email notification form
             /** @var MailerService $ms */
             $ms = $this->get('app.mailer.service');
             $fc = $request->get('contact');
-            $ms->performContactActions($form->getData(), $fc['message']);
+            $ms->performPropertyDeliveryAction($form->getData(), $fc['message'], $property);
 
             $this->addFlash('success', 'mail sended');
         }
@@ -117,7 +116,7 @@ class FrontController extends Controller
             /** @var MailerService $ms */
             $ms = $this->get('app.mailer.service');
             $fc = $request->get('contact');
-            $ms->performContactActions($form->getData(), $fc['message']);
+            $ms->performContactDeliveryAction($form->getData(), $fc['message']);
 
             return $this->redirect($this->generateUrl('front_contact_thankyou'));
         }
