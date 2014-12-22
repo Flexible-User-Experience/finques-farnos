@@ -60,8 +60,8 @@
                 <hr class="thick">
                 <p>{{ property.description }}</p>
                 <h2 class="c-orange h2-localization"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
-                <ui-gmap-google-map center="localization.coords" zoom="map.zoom" options="map.options" control="map.control">
-                    <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="map.visible" geodesic="map.geodesic" editable="map.editable" draggable="map.draggable" clickable="map.clickable"></ui-gmap-circle>
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
+                    <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="true" draggable="true" clickable="true"></ui-gmap-circle>
                 </ui-gmap-google-map>
                 <p data-ng-if="!isShowMapArea(localization.control)">[[ localization.address ]]</p>
             </div>

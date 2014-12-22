@@ -56,6 +56,7 @@ angular.module('propertiesApp')
     .controller('PropertyDetailCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$log', function (CFG, uiGmapGoogleMapApi, $scope, $log) {
 
         $scope.init = function(localization) {
+            $scope.localization = angular.fromJson(localization);
             $scope.map = {
                 zoom: 14,
                 radius: 500,
@@ -68,16 +69,12 @@ angular.module('propertiesApp')
                     color: '#D86F24',
                     opacity: 0.25
                 },
-                geodesic: true,
-                draggable: true,
-                clickable: false,
-                editable: false,
-                visible: true
+                center: { latitude: $scope.localization.coords.latitude, longitude: $scope.localization.coords.longitude }
             };
-            $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
+            $scope.map.options = { scrollwheel: false, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
 
-            $scope.localization = angular.fromJson(localization);
+
         };
 
         uiGmapGoogleMapApi.then(function(maps) {
