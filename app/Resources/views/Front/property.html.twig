@@ -21,17 +21,9 @@
             </div>
             <div class="col-md-4">
                 <p>
-                    <a href="{{ path('front_properties') }}"><span class="prev-icon"></span> {{ 'properties.list.button.prev' | trans | upper }}</a>
-                    <a class="pull-right" href="{{ path('front_properties') }}">{{ 'properties.list.button.next' | trans | upper }} <span class="next-icon"></span></a>
+                    <a href="{{ path('front_property_prev', {id: property.id}) }}"><span class="prev-icon"></span> {{ 'properties.list.button.prev' | trans | upper }}</a>
+                    <a class="pull-right" href="{{ path('front_property_next', {id: property.id}) }}">{{ 'properties.list.button.next' | trans | upper }} <span class="next-icon"></span></a>
                 </p>
-                {#<div class="btn-group pull-right" role="group" data-aria-label="propertiesPager">#}
-                    {#<button type="button" class="btn btn-default" data-aria-label="{{ 'properties.list.button.prev' | trans }}">#}
-                        {#<span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>#}
-                    {#</button>#}
-                    {#<button type="button" class="btn btn-default" data-aria-label="{{ 'properties.list.button.next' | trans }}">#}
-                        {#<span class="glyphicon glyphicon-chevron-right" data-aria-hidden="true"></span>#}
-                    {#</button>#}
-                {#</div>#}
             </div>
         </div>
         <div class="row">

@@ -97,6 +97,22 @@ class FrontController extends Controller
     }
 
     /**
+     * @Route("/property/{id}/previous/", name="front_property_prev", options={"expose" = false, "sitemap" = false})
+     */
+    public function prevPropertyForwardAction(Request $request, $id)
+    {
+
+    }
+
+    /**
+     * @Route("/property/{id}/next/", name="front_property_next", options={"expose" = false, "sitemap" = false})
+     */
+    public function nextPropertyForwardAction(Request $request, $id)
+    {
+
+    }
+
+    /**
      * @Route("/about-us/", name="front_about", options={"sitemap" = true})
      */
     public function aboutAction()
