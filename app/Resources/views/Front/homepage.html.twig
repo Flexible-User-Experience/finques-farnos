@@ -9,11 +9,13 @@
         <div class="container">
             <div id="carousel-homepage" class="carousel slide" data-ride="carousel">
                 {#<!-- Indicators -->#}
-                <ol class="carousel-indicators">
-                    {% for slide in slides %}
-                        <li data-target="#carousel-homepage" data-slide-to="0"{% if loop.first %} class="active"{% endif %}></li>
-                    {% endfor %}
-                </ol>
+                {% if slides | length > 1 %}
+                    <ol class="carousel-indicators">
+                        {% for slide in slides %}
+                            <li data-target="#carousel-homepage" data-slide-to="0"{% if loop.first %} class="active"{% endif %}></li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
                 {#<!-- Wrapper for slides -->#}
                 <div class="carousel-inner" role="listbox">
                     {% for slide in slides %}
@@ -24,14 +26,16 @@
                     {% endfor %}
                 </div>
                 {#<!-- Controls -->#}
-                <a class="left carousel-control" href="#carousel-homepage" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-homepage" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" data-aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                {% if slides | length > 1 %}
+                    <a class="left carousel-control" href="#carousel-homepage" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-homepage" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" data-aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                {% endif %}
             </div>
         </div>
     {% endif %}
