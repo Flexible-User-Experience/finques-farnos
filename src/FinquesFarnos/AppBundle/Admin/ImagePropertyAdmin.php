@@ -34,13 +34,13 @@ class ImagePropertyAdmin extends BaseAdmin
     {
         $formMapper
             ->with('Imatge', array('class' => 'col-md-6'))
-            ->add('property', 'sonata_type_model', array(
-                    'required' => true,
-                    'expanded' => false,
-                    'multiple' => false,
-                    'label' => 'Immoble',
-                    'btn_add' => false,
-                ))
+//            ->add('property', 'sonata_type_model', array(
+//                    'required' => true,
+//                    'expanded' => false,
+//                    'multiple' => false,
+//                    'label' => 'Immoble',
+//                    'btn_add' => false,
+//                ))
             ->add('imageFile', 'file', array(
                     'label' => 'Imatge',
                     'required' => false,
