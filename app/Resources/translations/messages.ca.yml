@@ -11,6 +11,7 @@ frontend:
 
 homepage:
   property:
+    noitems: ho sentim, encara no tenim cap immoble destacat disponible en aquesta pàgina
     before: abans
     since: des de
     rooms: habitacions
