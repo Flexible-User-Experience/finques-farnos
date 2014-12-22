@@ -83,16 +83,22 @@
                 <h4>{{ 'property.energy.efficiency' | trans | upper }}</h4>
                 {% if property.energyClass == 0 %}
                     <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.noclass' | trans }}</p>
-                {% elseif property.energyClass == 1 %}
-                    <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.pending' | trans }}</p>
+                {% elseif property.energyClass == 2 %}
+                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_A.png') }}" alt="{{ 'property.energy.efficiency' | trans }} A"/>
+                {% elseif property.energyClass == 3 %}
+                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_B.png') }}" alt="{{ 'property.energy.efficiency' | trans }} B"/>
+                {% elseif property.energyClass == 4 %}
+                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_C.png') }}" alt="{{ 'property.energy.efficiency' | trans }} C"/>
+                {% elseif property.energyClass == 5 %}
+                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_D.png') }}" alt="{{ 'property.energy.efficiency' | trans }} D"/>
+                {% elseif property.energyClass == 6 %}
+                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_E.png') }}" alt="{{ 'property.energy.efficiency' | trans }} E"/>
+                {% elseif property.energyClass == 7 %}
+                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_F.png') }}" alt="{{ 'property.energy.efficiency' | trans }} F"/>
+                {% elseif property.energyClass == 8 %}
+                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_G.png') }}" alt="{{ 'property.energy.efficiency' | trans }} G"/>
                 {% else %}
-                    {% for i in 2..8 %}
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning{% if property.energyClass == i %} progress-bar-striped{% endif %}" role="progressbar" data-aria-valuenow="{{ (i - 1) * 14 }}" data-aria-valuemin="0" data-aria-valuemax="100" style="width: {{ (i - 1) * 14 }}%">
-                                <span class="sr-only">{{ (i - 1) * 14 }}% Complete</span>
-                            </div>
-                        </div>
-                    {% endfor %}
+                    <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.pending' | trans }}</p>
                 {% endif %}
                 <hr>
                 <div class="ribbon-wrapper">
