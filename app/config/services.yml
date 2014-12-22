@@ -107,4 +107,5 @@ services:
         class: FinquesFarnos\AppBundle\Service\MailerService
         arguments:
             - @doctrine.orm.entity_manager
+            - @templating
             - @mailer

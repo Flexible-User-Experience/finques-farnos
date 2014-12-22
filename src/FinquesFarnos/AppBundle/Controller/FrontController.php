@@ -75,19 +75,62 @@ class FrontController extends Controller
         $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // TODO: send email notification form
+            /** @var MailerService $ms */
+            $ms = $this->get('app.mailer.service');
+            $fc = $request->get('contact');
+            $ms->performPropertyDeliveryAction($form->getData(), $fc['message'], $property);
+
+            $this->addFlash('success', 'mail sended');
         }
 
         $localization = array(
             'coords' => $property->getGoogleMapsCords(),
-            'control' => $property->getShowMapType(),
-            'address' => $property->getCity(),
         );
 
         return $this->render('Front/property.html.twig', array(
                 'property' => $property,
                 'localization' => json_encode($localization),
                 'form' => $form->createView(),
+            ));
+    }
+
+    /**
+     * @Route("/property/jump/previous/{id}/", name="front_property_prev", options={"expose" = false, "sitemap" = false})
+     */
+    public function prevPropertyForwardAction($id)
+    {
+        /** @var Property $previousProperty */
+        $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPrevProperty($id);
+        if (is_null($previousProperty)) {
+            $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getLastEnabledProperty();
+            if (is_null($previousProperty)) {
+                $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->find($id);
+            }
+        }
+
+        return $this->redirectToRoute('front_property', array(
+               'type' => $previousProperty->getType()->getNameSlug(),
+               'name' => $previousProperty->getNameSlug(),
+            ));
+    }
+
+    /**
+     * @Route("/property/jump/next/{id}/", name="front_property_next", options={"expose" = false, "sitemap" = false})
+     */
+    public function nextPropertyForwardAction($id)
+    {
+        /** @var Property $nextProperty */
+        $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledNextProperty($id);
+        if (is_null($nextProperty)) {
+            $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getFirstEnabledProperty();
+            if (is_null($nextProperty)) {
+                $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->find($id);
+            }
+        }
+
+        return $this->redirectToRoute('front_property', array(
+                'type' => $nextProperty->getType()->getNameSlug(),
+                'name' => $nextProperty->getNameSlug(),
             ));
     }
 
@@ -111,7 +154,7 @@ class FrontController extends Controller
             /** @var MailerService $ms */
             $ms = $this->get('app.mailer.service');
             $fc = $request->get('contact');
-            $ms->performContactActions($form->getData(), $fc['message']);
+            $ms->performContactDeliveryAction($form->getData(), $fc['message']);
 
             return $this->redirect($this->generateUrl('front_contact_thankyou'));
         }

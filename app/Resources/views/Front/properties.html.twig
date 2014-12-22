@@ -57,7 +57,7 @@
         <div data-ng-repeat="property in properties">
             <div class="row">
                 <div class="col-md-4">
-                    <a data-ng-if="property.name_slug" href="[[ getUrlPropertyDetail(property) ]]""><img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[]]"></a>
+                    <a data-ng-if="property.name_slug" href="[[ getUrlPropertyDetail(property) ]]"><img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[]]"></a>
                 </div>
                 <div class="col-md-8">
                     <div class="row properties-list-box" data-ng-class="{ 'bg-dark-orange': property.offer_special || property.offer_discount }">

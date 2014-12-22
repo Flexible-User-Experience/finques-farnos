@@ -39,12 +39,12 @@
             </div>
         </div>
     {% endif %}
-    <div class="container container-xs-height">
+    <div class="container">
         {#<!-- Property rows -->#}
         {% if properties | length > 0 %}
-            <div class="row row-xs-height">
+            <div class="row">
                 {% for property in properties %}
-                    <div class="col-md-4 col-xs-height col-top">
+                    <div class="col-md-4">
                         <hr class="hr-homepage">
                         <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
                             {% if property.firstEnabledImage %}
@@ -64,7 +64,7 @@
                     </div>
                     {% if loop.index % 3 == 0 %}
                             </div>
-                        <div class="row row-xs-height">
+                        <div class="row">
                     {% endif %}
                 {% endfor %}
             </div>

@@ -18,6 +18,16 @@
         <td style="padding:8px;background:#FFF;color:#000;margin:10px;">{{ form.phone }}</td>
         <td style="padding:8px;margin:10px;"></td>
     </tr>
+    {% if property is not null %}
+        <tr>
+            <td style="padding:8px;margin:10px;"></td>
+            <td style="padding:8px;margin:10px;">Referència:</td>
+            <td style="padding:8px;background:#FFF;color:#000;margin:10px;">{{ property.reference }}</td>
+            <td style="padding:8px;margin:10px;">Immoble:</td>
+            <td colspan="3" style="padding:8px;background:#FFF;color:#000;margin:10px;"><a href="{{ path('admin_finquesfarnos_app_property_edit', {id: property.id}) }}">{{ property.name }}</a></td>
+            <td style="padding:8px;margin:10px;"></td>
+        </tr>
+    {% endif %}
     <tr>
         <td style="padding:8px;margin:10px;"></td>
         <td style="padding:8px;margin:10px;">Missatge:</td>
