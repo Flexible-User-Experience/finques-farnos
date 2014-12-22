@@ -2,6 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\Admin;
 
+use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -132,5 +133,22 @@ class ImagePropertyAdmin extends BaseAdmin
         $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
 
         return ($this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '300xY').'" class="admin-preview" alt=""/>' : '').'<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+    }
+
+    /** @var ImageProperty $object */
+    public function prePersist($object)
+    {
+        $referer = $this->request->headers->get('referer'); // .../{id}/edit from property
+        $l = strpos($referer, 'property/');
+        if ($l) {
+            $r = strpos($referer, '/edit', $l);
+            if ($r) {
+                $id = substr($referer, $l + 9, $r - ($l + 9));
+                $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+                $property = $em->getRepository('AppBundle:Property')->find($id);
+                $object->setProperty($property);
+                // TODO redirect to edit property view
+            }
+        }
     }
 }
