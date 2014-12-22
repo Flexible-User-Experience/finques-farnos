@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Swift_Mailer;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
+use Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine;
 
 /**
  * Class MailerService
@@ -17,9 +18,14 @@ use FinquesFarnos\AppBundle\Entity\ContactMessage;
 class MailerService
 {
     /**
-     * @var \Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
     private $em;
+
+    /**
+     * @var TimedTwigEngine
+     */
+    private $templating;
 
     /**
      * @var Swift_Mailer
@@ -29,15 +35,23 @@ class MailerService
     /**
      * Constructor
      *
-     * @param EntityManager $em
-     * @param Swift_Mailer  $mailer
+     * @param EntityManager   $em
+     * @param TimedTwigEngine $templating
+     * @param Swift_Mailer    $mailer
      */
-    public function __construct(EntityManager $em, Swift_Mailer $mailer)
+    public function __construct(EntityManager $em, TimedTwigEngine $templating, Swift_Mailer $mailer)
     {
         $this->em = $em;
+        $this->templating = $templating;
         $this->mailer = $mailer;
     }
 
+    /**
+     * Perform contact delivery email notification action
+     *
+     * @param Contact $contactForm
+     * @param         $textMessage
+     */
     public function performContactActions(Contact $contactForm, $textMessage)
     {
         $this->manageModel($contactForm, $textMessage);
@@ -52,10 +66,6 @@ class MailerService
      */
     private function manageModel(Contact $contactForm, $textMessage)
     {
-        /** @var Contact $contactForm */
-//////        $contactForm = $form->getData();
-        /** @var EntityManager $em */
-//        $em = $this->getDoctrine()->getManager();
         /** @var Contact $contactToBePersisted */
         $contactToBePersisted = $this->em->getRepository('AppBundle:Contact')->findOneBy(array('email' => $contactForm->getEmail()));
         if ($contactToBePersisted) {
@@ -66,7 +76,6 @@ class MailerService
         } else {
             $contactToBePersisted = $contactForm;
         }
-//////        $fc = $request->get('contact'); ----> $textMessage = $fc['message']
         /** @var ContactMessage $message */
         $message = new ContactMessage();
         $message->setContact($contactToBePersisted)->setText($textMessage);
@@ -76,6 +85,12 @@ class MailerService
         $this->em->flush();
     }
 
+    /**
+     * Deliver email notifitacion task
+     *
+     * @param Contact $contactForm
+     * @param         $textMessage
+     */
     private function delivery(Contact $contactForm, $textMessage)
     {
         /** @var \Swift_Message $emailMessage */
@@ -84,7 +99,7 @@ class MailerService
             ->setFrom('webapp@finquesfarnos.com')
             ->setTo('info@fiquesfarnos.com')
             ->setBody(
-                $this->renderView( // TODO fix this!
+                $this->templating->render(
                     'Front/contact.email.html.twig',
                     array(
                         'form' => $contactForm,

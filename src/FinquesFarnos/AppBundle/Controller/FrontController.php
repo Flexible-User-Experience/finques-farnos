@@ -76,6 +76,12 @@ class FrontController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // TODO: send email notification form
+            /** @var MailerService $ms */
+            $ms = $this->get('app.mailer.service');
+            $fc = $request->get('contact');
+            $ms->performContactActions($form->getData(), $fc['message']);
+
+            $this->addFlash('success', 'mail sended');
         }
 
         $localization = array(
