@@ -125,6 +125,22 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
+     * Get first enabled property
+     *
+     * @return Property|null
+     */
+    public function getFirstEnabledProperty()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    /**
      * Get enabled previous property
      *
      * @param $id
@@ -159,6 +175,22 @@ class PropertyRepository extends EntityRepository
             ->setParameter('enabled', true)
             ->setParameter('id', $id)
             ->orderBy('p.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    /**
+     * Get last enabled property
+     *
+     * @return Property|null
+     */
+    public function getLastEnabledProperty()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('p.id', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();

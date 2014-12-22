@@ -103,6 +103,12 @@ class FrontController extends Controller
     {
         /** @var Property $previousProperty */
         $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPrevProperty($id);
+        if (is_null($previousProperty)) {
+            $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getLastEnabledProperty();
+            if (is_null($previousProperty)) {
+                $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->find($id);
+            }
+        }
 
         return $this->redirectToRoute('front_property', array(
                'type' => $previousProperty->getType()->getNameSlug(),
@@ -117,6 +123,12 @@ class FrontController extends Controller
     {
         /** @var Property $nextProperty */
         $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledNextProperty($id);
+        if (is_null($nextProperty)) {
+            $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getFirstEnabledProperty();
+            if (is_null($nextProperty)) {
+                $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->find($id);
+            }
+        }
 
         return $this->redirectToRoute('front_property', array(
                 'type' => $nextProperty->getType()->getNameSlug(),
