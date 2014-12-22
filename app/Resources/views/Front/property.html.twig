@@ -17,9 +17,13 @@
     <div class="container" data-ng-controller="PropertyDetailCtrl" data-ng-init="init('{{ localization }}')">
         <div class="row">
             <div class="col-md-8">
-                <p><a class="btn btn-default" role="button" href="{{ path('front_properties') }}"><span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span> {{ 'properties.list.button.back' | trans }}</a></p>
+                <p><a href="{{ path('front_properties') }}"><span class="list-page"></span> {{ 'properties.list.button.back' | trans | upper }}</a></p>
             </div>
             <div class="col-md-4">
+                <p>
+                    <a href="{{ path('front_properties') }}"><span class="prev-icon"></span> {{ 'properties.list.button.prev' | trans | upper }}</a>
+                    <a class="pull-right" href="{{ path('front_properties') }}">{{ 'properties.list.button.next' | trans | upper }} <span class="next-icon"></span></a>
+                </p>
                 {#<div class="btn-group pull-right" role="group" data-aria-label="propertiesPager">#}
                     {#<button type="button" class="btn btn-default" data-aria-label="{{ 'properties.list.button.prev' | trans }}">#}
                         {#<span class="glyphicon glyphicon-chevron-left" data-aria-hidden="true"></span>#}
@@ -34,7 +38,7 @@
             <div class="col-md-8 property-detail-left-box">
                 {% if property.firstEnabledImage %}
                     <div id="custom_carousel" class="carousel slide" data-ride="carousel">
-                        <!-- Wrapper for slides -->
+                        {#<!-- Wrapper for slides -->#}
                         <div class="carousel-inner">
                             {% for image in property.images %}
                                 <div class="item{% if loop.first %} active{% endif %}">
