@@ -20,9 +20,6 @@ angular.module('propertiesApp', [
     })
     .constant('CFG', {
         DELAY: 600,
-        RANGE_STEPS: 20,
-        SHOW_MAP_ALL: 0,
-        SHOW_MAP_STREET: 1,
-        SHOW_MAP_AREA: 2
+        RANGE_STEPS: 20
     })
 ;

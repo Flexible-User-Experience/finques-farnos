@@ -20,10 +20,7 @@ angular.module('propertiesApp', [
     })
     .constant('CFG', {
         DELAY: 600,
-        RANGE_STEPS: 20,
-        SHOW_MAP_ALL: 0,
-        SHOW_MAP_STREET: 1,
-        SHOW_MAP_AREA: 2
+        RANGE_STEPS: 20
     })
 ;
 
@@ -73,18 +70,12 @@ angular.module('propertiesApp')
             };
             $scope.map.options = { scrollwheel: false, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
-
-
         };
 
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
             $log.log(maps);
         });
-
-        $scope.isShowMapArea = function(value) {
-            return value === CFG.SHOW_MAP_AREA;
-        };
 
     }]);
 

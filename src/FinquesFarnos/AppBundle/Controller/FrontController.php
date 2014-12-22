@@ -85,8 +85,6 @@ class FrontController extends Controller
 
         $localization = array(
             'coords' => $property->getGoogleMapsCords(),
-            'control' => $property->getShowMapType(),
-            'address' => $property->getCity(),
         );
 
         return $this->render('Front/property.html.twig', array(

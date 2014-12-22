@@ -21,17 +21,11 @@ angular.module('propertiesApp')
             };
             $scope.map.options = { scrollwheel: false, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
-
-
         };
 
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
             $log.log(maps);
         });
-
-        $scope.isShowMapArea = function(value) {
-            return value === CFG.SHOW_MAP_AREA;
-        };
 
     }]);
