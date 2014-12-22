@@ -84,6 +84,12 @@ class Property extends Base
     private $squareMeters = 0;
 
     /**
+     * @ORM\Column(type="string", length=255, name="address", nullable=true)
+     * @var string
+     */
+    private $address;
+
+    /**
      * @ORM\Column(type="string", length=255, name="city", nullable=true)
      * @Gedmo\Translatable
      * @var string
@@ -557,6 +563,30 @@ class Property extends Base
     public function getRooms()
     {
         return $this->rooms;
+    }
+
+    /**
+     * Set Address
+     *
+     * @param string $address address
+     *
+     * @return $this
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get Address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 
     /**
