@@ -56,8 +56,8 @@ class MailerService
      */
     public function performPropertyDeliveryAction(Contact $contactForm, $textMessage, Property $property)
     {
-        $this->manageModel($contactForm, $textMessage);
-        $this->delivery($contactForm, $textMessage);
+        $this->manageModel($contactForm, $textMessage, $property);
+        $this->delivery($contactForm, $textMessage, $property);
     }
 
     /**
@@ -73,12 +73,14 @@ class MailerService
     }
 
     /**
-     * Manage model relations. Determine if there is user reference or not & persist new question with asker
+     * Manage model relations. Determine if there is user reference or not & persist new question with asker.
+     * Apply property reference if it is necessary.
      *
-     * @param Contact $contactForm
-     * @param string  $textMessage
+     * @param Contact       $contactForm
+     * @param string        $textMessage
+     * @param Property|null $property
      */
-    private function manageModel(Contact $contactForm, $textMessage)
+    private function manageModel(Contact $contactForm, $textMessage, Property $property = null)
     {
         /** @var Contact $contactToBePersisted */
         $contactToBePersisted = $this->em->getRepository('AppBundle:Contact')->findOneBy(array('email' => $contactForm->getEmail()));
@@ -93,6 +95,9 @@ class MailerService
         /** @var ContactMessage $message */
         $message = new ContactMessage();
         $message->setContact($contactToBePersisted)->setText($textMessage);
+        if ($property) {
+            $message->setProperty($property);
+        }
         $contactToBePersisted->addMessage($message);
         $this->em->persist($contactToBePersisted);
         $this->em->persist($message);
@@ -102,10 +107,11 @@ class MailerService
     /**
      * Deliver email notifitacion task
      *
-     * @param Contact $contactForm
-     * @param         $textMessage
+     * @param Contact       $contactForm
+     * @param string        $textMessage
+     * @param Property|null $property
      */
-    private function delivery(Contact $contactForm, $textMessage)
+    private function delivery(Contact $contactForm, $textMessage, Property $property = null)
     {
         /** @var \Swift_Message $emailMessage */
         $emailMessage = \Swift_Message::newInstance()
@@ -116,8 +122,9 @@ class MailerService
                 $this->templating->render(
                     'Front/contact.email.html.twig',
                     array(
-                        'form' => $contactForm,
-                        'message' => $textMessage,
+                        'form'     => $contactForm,
+                        'message'  => $textMessage,
+                        'property' => $property,
                     )
                 )
             )
