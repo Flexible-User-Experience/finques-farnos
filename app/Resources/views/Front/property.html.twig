@@ -96,11 +96,16 @@
                 {% endif %}
                 <hr>
                 <div class="ribbon-wrapper">
-                    <h4 class="c-orange">{{ 'property.form' | trans | upper }}</h4>
-                    <form method="POST" action="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}" {{ form_enctype(form) }}>
-                        {{ form_widget(form) }}
-                        <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-grey">
-                    </form>
+                    {% if app.session.flashbag.get('success') | length == 1 %}
+                        <h4>{{ 'contact.form.thankyou.title' | trans | upper }}</h4>
+                        <p>{{ 'contact.form.thankyou.message' | trans }}</p>
+                    {% else %}
+                        <h4 class="c-orange">{{ 'property.form' | trans | upper }}</h4>
+                        <form method="POST" action="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}" {{ form_enctype(form) }}>
+                            {{ form_widget(form) }}
+                            <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-grey">
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </div>
