@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
+use FinquesFarnos\AppBundle\Entity\Property;
 
 /**
  * PropertyRepository class
@@ -121,5 +122,45 @@ class PropertyRepository extends EntityRepository
         }
 
         return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * Get enabled previous property
+     *
+     * @param $id
+     *
+     * @return Property|null
+     */
+    public function getEnabledPrevProperty($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->andWhere('p.id < :id')
+            ->setParameter('enabled', true)
+            ->setParameter('id', $id)
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    /**
+     * Get enabled next property
+     *
+     * @param $id
+     *
+     * @return Property|null
+     */
+    public function getEnabledNextProperty($id)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.enabled = :enabled')
+            ->andWhere('p.id > :id')
+            ->setParameter('enabled', true)
+            ->setParameter('id', $id)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 }

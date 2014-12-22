@@ -97,19 +97,31 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/{id}/previous/", name="front_property_prev", options={"expose" = false, "sitemap" = false})
+     * @Route("/property/jump/previous/{id}/", name="front_property_prev", options={"expose" = false, "sitemap" = false})
      */
-    public function prevPropertyForwardAction(Request $request, $id)
+    public function prevPropertyForwardAction($id)
     {
+        /** @var Property $previousProperty */
+        $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPrevProperty($id);
 
+        return $this->redirectToRoute('front_property', array(
+               'type' => $previousProperty->getType()->getNameSlug(),
+               'name' => $previousProperty->getNameSlug(),
+            ));
     }
 
     /**
-     * @Route("/property/{id}/next/", name="front_property_next", options={"expose" = false, "sitemap" = false})
+     * @Route("/property/jump/next/{id}/", name="front_property_next", options={"expose" = false, "sitemap" = false})
      */
-    public function nextPropertyForwardAction(Request $request, $id)
+    public function nextPropertyForwardAction($id)
     {
+        /** @var Property $nextProperty */
+        $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledNextProperty($id);
 
+        return $this->redirectToRoute('front_property', array(
+                'type' => $nextProperty->getType()->getNameSlug(),
+                'name' => $nextProperty->getNameSlug(),
+            ));
     }
 
     /**
