@@ -33,22 +33,37 @@ class ImagePropertyAdmin extends BaseAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+//        /** @var CacheManager $lis */
+//        $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
+//        /** @var UploaderHelper $vus */
+//        $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
+//
+//        if($this->hasParentFieldDescription()) { // this Admin is embedded
+//            $getter = 'get' . $this->getParentFieldDescription()->getFieldName();
+//            $parent = $this->getParentFieldDescription()->getAdmin()->getSubject();
+//            if ($parent) {
+//                $image = $parent->$getter();
+//            } else {
+//                $image = null;
+//            }
+//        } else { // this Admin is not embedded
+//            $image = $this->getSubject();
+//        }
+//        $imageFileFieldOptions = array('label' => 'Imatge', 'required' => false);
+//        if ($this->getSubject()) {
+//            $imageFileFieldOptions['help'] = '<img src="' . $lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '300xY') . '" class="admin-preview" alt=""/><span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+//        }
+
         $formMapper
             ->with('Imatge', array('class' => 'col-md-6'))
-//            ->add('property', 'sonata_type_model', array(
-//                    'required' => true,
-//                    'expanded' => false,
-//                    'multiple' => false,
-//                    'label' => 'Immoble',
-//                    'btn_add' => false,
-//                ))
             ->add('property', null, array(
                     'attr' => array('hidden' => true)
                 ))
             ->add('imageFile', 'file', array(
                     'label' => 'Imatge',
                     'required' => false,
-                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
+                    'help' => 'help!?',
+//                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
                 ))
             ->add('metaTitle', null, array('label' => 'Títol (SEO)'))
             ->add('metaAlt', null, array('label' => 'Alt (SEO)'))
@@ -137,23 +152,4 @@ class ImagePropertyAdmin extends BaseAdmin
 
         return ($this->getSubject() ? $this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '300xY').'" class="admin-preview" alt=""/>' : '' : '').'<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
     }
-
-//    /** @var ImageProperty $object */
-//    public function prePersist($object)
-//    {
-//        $referer = $this->request->headers->get('referer'); // ...property/{id}/edit from property referal
-//        $l = strpos($referer, 'property/');
-//        if ($l) {
-//            $r = strpos($referer, '/edit', $l);
-//            if ($r) {
-//                $id = intval(substr($referer, $l + 9, $r - ($l + 9)));
-//                $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-//                $property = $em->getRepository('AppBundle:Property')->find($id);
-//                if ($property) {
-//                    $object->setProperty($property);
-//                    // TODO redirect to edit property view
-//                }
-//            }
-//        }
-//    }
 }
