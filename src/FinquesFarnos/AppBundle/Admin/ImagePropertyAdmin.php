@@ -42,6 +42,9 @@ class ImagePropertyAdmin extends BaseAdmin
 //                    'label' => 'Immoble',
 //                    'btn_add' => false,
 //                ))
+            ->add('property', null, array(
+                    'attr' => array('hidden' => true)
+                ))
             ->add('imageFile', 'file', array(
                     'label' => 'Imatge',
                     'required' => false,
@@ -132,23 +135,25 @@ class ImagePropertyAdmin extends BaseAdmin
         /** @var UploaderHelper $vus */
         $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
 
-        return ($this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '300xY').'" class="admin-preview" alt=""/>' : '').'<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+        return ($this->getSubject() ? $this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '300xY').'" class="admin-preview" alt=""/>' : '' : '').'<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
     }
 
-    /** @var ImageProperty $object */
-    public function prePersist($object)
-    {
-        $referer = $this->request->headers->get('referer'); // .../{id}/edit from property
-        $l = strpos($referer, 'property/');
-        if ($l) {
-            $r = strpos($referer, '/edit', $l);
-            if ($r) {
-                $id = substr($referer, $l + 9, $r - ($l + 9));
-                $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
-                $property = $em->getRepository('AppBundle:Property')->find($id);
-                $object->setProperty($property);
-                // TODO redirect to edit property view
-            }
-        }
-    }
+//    /** @var ImageProperty $object */
+//    public function prePersist($object)
+//    {
+//        $referer = $this->request->headers->get('referer'); // ...property/{id}/edit from property referal
+//        $l = strpos($referer, 'property/');
+//        if ($l) {
+//            $r = strpos($referer, '/edit', $l);
+//            if ($r) {
+//                $id = intval(substr($referer, $l + 9, $r - ($l + 9)));
+//                $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+//                $property = $em->getRepository('AppBundle:Property')->find($id);
+//                if ($property) {
+//                    $object->setProperty($property);
+//                    // TODO redirect to edit property view
+//                }
+//            }
+//        }
+//    }
 }
