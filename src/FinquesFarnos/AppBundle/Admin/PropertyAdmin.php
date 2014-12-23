@@ -78,7 +78,9 @@ class PropertyAdmin extends BaseAdmin
         if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
             $formMapper
                 ->with('Imatges', array('class' => 'col-md-12'))
-                ->add('images', 'sonata_type_collection', array(), array(
+                ->add('images', 'sonata_type_collection', array(
+                        'cascade_validation' => true,
+                    ), array(
                         'edit' => 'inline',
                         'inline' => 'table',
                         'sortable'  => 'position',
