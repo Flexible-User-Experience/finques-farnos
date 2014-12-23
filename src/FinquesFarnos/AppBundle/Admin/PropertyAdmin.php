@@ -74,19 +74,18 @@ class PropertyAdmin extends BaseAdmin
                     7 => 'F',
                     8 => 'G',
                 )))
-            ->end()
-            ->with('Imatges', array('class' => 'col-md-6'))
-            ->add('images', 'sonata_type_model', array(
-                    'required' => false,
-                    'expanded' => false,
-                    'multiple' => true,
-                    'label' => 'Imatges',
-                    'btn_add' => 'afegir',
-                    'btn_list' => true,
-                    'disabled' => true,
-                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
-                ))
-            ->end()
+            ->end();
+        if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
+            $formMapper
+                ->with('Imatges', array('class' => 'col-md-12'))
+                ->add('images', 'sonata_type_collection', array(), array(
+                        'edit' => 'inline',
+                        'inline' => 'table',
+                        'sortable'  => 'position',
+                    ))
+                ->end();
+        }
+        $formMapper
             ->with('Geolocalització', array('class' => 'col-md-6'))
             ->add('latLng', 'oh_google_maps', array('label' => 'Mapa', 'required' => false))
             ->add('address', null, array('label' => 'Adreça'))

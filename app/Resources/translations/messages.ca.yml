@@ -11,6 +11,9 @@ frontend:
 
 homepage:
   property:
+    banner:
+      main: l'immoble que busques a finques farnós
+      years: 30 anys · 1984-2014
     noitems: ho sentim, encara no tenim cap immoble destacat disponible en aquesta pàgina
     before: abans
     since: des de
