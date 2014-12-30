@@ -24,7 +24,9 @@
 @ff-space-25: 25px;
 @ff-space-50: 50px;
 @extraborder: 9px;
+@ff-font-size-12: 12px;
 @ff-font-size-16: 16px;
+@ff-font-size-20: 20px;
 
 // Link
 @link-color: @fforange;
@@ -241,15 +243,25 @@ footer {
       }
     }
   }
-  div.caption { padding: 20px; }
-  a { color: @ffgrey; }
-  h2 {
-    a { font-size: 0.6em; }
-  }
-  h3 {
-    color: @fforange;
-    font-size: 1.2em;
-    small { color: @ffgrey; }
+  div.caption { padding: 15px 20px 20px 20px; }
+  a {
+    &:hover { text-decoration: none; }
+    color: @ffgrey;
+    h2 {
+      line-height: 1.3;
+      font-size: @ff-font-size-20;
+      color: @ffgrey;
+      margin-bottom: 5px;
+    }
+    h3 {
+      color: @fforange;
+      font-size: @ff-font-size-20;
+      margin-bottom: 25px;
+      small {
+        font-size: @ff-font-size-12;
+        color: @ffgrey;
+      }
+    }
   }
 }
 
@@ -259,7 +271,7 @@ footer {
     text-align: center;
     padding: 52px 10px 0 10px;
     border-right: solid 1px @ffgreylight;
-    font-size: 0.85em;
+    font-size: @ff-font-size-12;
     &:last-child { border-right: none; }
     &.special-offer { background: url('../bundles/app/images/icones/immobiliaria/color/oferta_color.png') no-repeat 50% 0 }
     &.discount-offer { background: url('../bundles/app/images/icones/immobiliaria/color/rebaixa_color.png') no-repeat 50% 0 }
