@@ -19,33 +19,35 @@
             </div>
         </div>
         <div class="row double-extra-m-bottom">
-            <div class="col-md-4 left-search-panel">
-                <form name="filterForm" action="" role="form">
-                    <div class="form-group">
-                        <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
-                        <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="propertyArea" class="control-label">[[ area ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
-                        <input id="propertyArea" type="range" name="propertyArea" min="40" max="300" data-ng-model="area" value="[[ area ]]" step="10">
-                        {#<input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="[[ form.area.step ]]">#}
-                        {#<output name="areaAmount" for="propertyArea">[[ area ]] m<sup>2</sup></output>#}
-                    </div>
-                    <div class="form-group">
-                        <label for="propertyRooms" class="control-label">[[ rooms ]] {{ 'properties.form.rooms' | trans | upper }}</label>
-                        <input id="propertyRooms" type="range" name="propertyRooms" min="2" max="6" data-ng-model="rooms" value="[[ rooms ]]">
-                        {#<input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]">#}
-                        {#<output name="roomsAmount" for="propertyRooms">[[ rooms ]]</output>#}
-                    </div>
-                    <div class="form-group">
-                        <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]] &euro; {# 'properties.form.price' | trans | raw #}</label>
-                        <input id="propertyPrice" type="range" name="propertyPrice" min="10000" max="300000" data-ng-model="price" value="[[ price ]]" step="10000">
-                        {#<input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" step="[[ form.price.step ]]">#}
-                        {#<output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>#}
-                    </div>
-                    {#<button type="submit" class="btn btn-primary">{{ 'properties.form.search' | trans | raw }}</button>#}
-                </form>
+            <div class="col-md-4">
+                <div class="left-search-panel">
+                    <form name="filterForm" action="" role="form">
+                        <div class="form-group">
+                            <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
+                            <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyArea" class="control-label">[[ area ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
+                            <input id="propertyArea" type="range" name="propertyArea" min="40" max="300" data-ng-model="area" value="[[ area ]]" step="10">
+                            {#<input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="[[ form.area.step ]]">#}
+                            {#<output name="areaAmount" for="propertyArea">[[ area ]] m<sup>2</sup></output>#}
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyRooms" class="control-label">[[ rooms ]] {{ 'properties.form.rooms' | trans | upper }}</label>
+                            <input id="propertyRooms" type="range" name="propertyRooms" min="2" max="6" data-ng-model="rooms" value="[[ rooms ]]">
+                            {#<input id="propertyRooms" type="range" name="propertyRooms" min="[[ form.rooms.min ]]" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]">#}
+                            {#<output name="roomsAmount" for="propertyRooms">[[ rooms ]]</output>#}
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]] &euro; {# 'properties.form.price' | trans | raw #}</label>
+                            <input id="propertyPrice" type="range" name="propertyPrice" min="10000" max="300000" data-ng-model="price" value="[[ price ]]" step="10000">
+                            {#<input id="propertyPrice" type="range" name="propertyPrice" min="[[ form.price.min ]]" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" step="[[ form.price.step ]]">#}
+                            {#<output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>#}
+                        </div>
+                        {#<button type="submit" class="btn btn-primary">{{ 'properties.form.search' | trans | raw }}</button>#}
+                    </form>
+                </div>
             </div>
             <div class="col-md-8">
                 <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
@@ -57,7 +59,9 @@
         <div data-ng-repeat="property in properties">
             <div class="row">
                 <div class="col-md-4">
-                    <a data-ng-if="property.name_slug" href="[[ getUrlPropertyDetail(property) ]]"><img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[ property.name ]]"></a>
+                    <a data-ng-if="property.first_image_path" href="[[ getUrlPropertyDetail(property) ]]">
+                        <img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[ property.name ]]">
+                    </a>
                 </div>
                 <div class="col-md-8">
                     <div class="wrapper" data-ng-class="{ 'bg-dark-orange': property.offer_special || property.offer_discount }">
