@@ -26,7 +26,9 @@
 @extraborder: 9px;
 @ff-font-size-12: 12px;
 @ff-font-size-16: 16px;
+@ff-font-size-18: 18px;
 @ff-font-size-20: 20px;
+@ff-font-size-32: 32px;
 
 // Link
 @link-color: @fforange;
@@ -104,6 +106,8 @@ body {
 // Gaps
 .extra-m { margin: @extramargin }
 .extra-m-top { margin-top: @extramargin }
+.extra-m-top-5 { margin-top: 5px }
+.extra-m-top-27 { margin-top: 27px }
 .extra-m-bottom { margin-bottom: @extramargin }
 .no-m { margin: 0 }
 .no-m-top { margin-top: 0 }
@@ -478,26 +482,29 @@ span.download-icon {
 
 // About Us
 .about-us-panels {
+  font-size: @ff-font-size-18;
   h2 {
     padding-bottom: 8px;
     border-bottom: solid 2px @fforange;
-    font-size: 1.5em;
+    font-size: @ff-font-size-18;
+    font-weight: bold;
   }
   ul {
     padding-left: 20px;
     margin-bottom: 0;
+    text-decoration: underline;
   }
-  p.lead { font-size: 2em; }
+  p.lead { font-size: @ff-font-size-32; }
   span.house {
     background: url('../bundles/app/images/icones/immobiliaria/color/casa_color.png') no-repeat 0 0;
-    width: 39px;
-    height: 41px;
+    width: 45px;
+    height: 45px;
     display: inline-block;
   }
   span.keyring {
     background: url('../bundles/app/images/icones/immobiliaria/color/serveis.png') no-repeat 0 0;
-    width: 46px;
-    height: 46px;
+    width: 45px;
+    height: 45px;
     display: inline-block;
   }
 }
