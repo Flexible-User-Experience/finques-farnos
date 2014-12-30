@@ -20,11 +20,12 @@
 //@ffgreylight: #424242;
 @fffootgrey: #888;
 @extramargin: 20px;
-@doubleextramargin: 40px;
+@doubleextramargin: 50px;
 @ff-space-25: 25px;
 @ff-space-50: 50px;
 @extraborder: 9px;
 @ff-font-size-12: 12px;
+@ff-font-size-15: 15px;
 @ff-font-size-16: 16px;
 @ff-font-size-18: 18px;
 @ff-font-size-20: 20px;
@@ -108,6 +109,7 @@ body {
 .extra-m-top { margin-top: @extramargin }
 .extra-m-top-5 { margin-top: 5px }
 .extra-m-top-27 { margin-top: 27px }
+.extra-m-top-35 { margin-top: 35px }
 .extra-m-bottom { margin-bottom: @extramargin }
 .no-m { margin: 0 }
 .no-m-top { margin-top: 0 }
@@ -254,12 +256,14 @@ footer {
     h2 {
       line-height: 1.3;
       font-size: @ff-font-size-20;
+      font-weight: bold;
       color: @ffgrey;
       margin-bottom: 5px;
     }
     h3 {
       color: @fforange;
       font-size: @ff-font-size-20;
+      font-weight: bold;
       margin-bottom: 25px;
       small {
         font-size: @ff-font-size-12;
@@ -298,19 +302,20 @@ footer {
 }
 
 .properties-list-h1 {
-  font-size: 1.25em;
+  font-size: @ff-font-size-18;
+  font-weight: bold;
+  margin-bottom: 15px;
   span.search-icon {
     background: url('../bundles/app/images/icones/immobiliaria/color/buscar.png') no-repeat 50% 0;
-    width: 43px;
-    height: 43px;
+    width: 45px;
+    height: 45px;
     display: inline-block;
     margin-right: 10px;
   }
 }
 
-.properties-list-box {
-  padding: @extramargin;
-  margin-right: 0;
+.wrapper {
+  padding: 25px;
   background-color: @fforangelight;
   &.bg-dark-orange {
     background-color: @fforangedark;
@@ -323,16 +328,30 @@ footer {
         &.square-bathrooms { background: url('../bundles/app/images/icones/immobiliaria/bw/banys.png') no-repeat 50% 0 }
       }
     }
+    h3 {
+      color: black;
+    }
   }
   a {
     color: @ffgrey;
     &.c-orange { color: @fforange }
   }
-  h2 { font-size: 1.5em; }
+  h2 {
+    font-size: @ff-font-size-18;
+    line-height: 1.3;
+  }
   h3 {
     color: @fforange;
-    font-size: 1.25em;
+    font-size: @ff-font-size-18;
+    small {
+      font-size: @ff-font-size-12;
+      color: @ffgrey;
+    }
   }
+  p {
+    font-size: @ff-font-size-15;
+  }
+  div.row { margin-bottom: 0; }
 }
 
 // Property detail

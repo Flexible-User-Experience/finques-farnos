@@ -57,25 +57,27 @@
         <div data-ng-repeat="property in properties">
             <div class="row">
                 <div class="col-md-4">
-                    <a data-ng-if="property.name_slug" href="[[ getUrlPropertyDetail(property) ]]"><img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[]]"></a>
+                    <a data-ng-if="property.name_slug" href="[[ getUrlPropertyDetail(property) ]]"><img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[ property.name ]]"></a>
                 </div>
                 <div class="col-md-8">
-                    <div class="row properties-list-box" data-ng-class="{ 'bg-dark-orange': property.offer_special || property.offer_discount }">
-                        <div class="col-md-6">
-                            <h2 class="no-m"><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name | uppercase ]]</a></h2>
-                            <h3 class="no-m-top extra-m-bottom" data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
-                            <h3 data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
-                            <ul class="no-m-bottom ribbons list-unstyled list-inline">
-                                <li data-ng-if="property.offer_special" class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
-                                <li data-ng-if="property.offer_discount && !property.offer_special" class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
-                                <li data-ng-if="property.square_meters" class="square-meters">[[ property.square_meters ]] m<sup>2</sup></li>
-                                <li data-ng-if="property.rooms" class="square-rooms">[[ property.rooms ]] {{ 'homepage.property.rooms' | trans }}</li>
-                                <li data-ng-if="property.bathrooms" class="square-bathrooms">[[ property.bathrooms ]] {{ 'homepage.property.bathrooms' | trans }}</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <p>[[ property.description ]]</p>
-                            <p><a class="c-orange" href="[[ getUrlPropertyDetail(property) ]]">{{ 'properties.list.button.more' | trans }}</a></p>
+                    <div class="wrapper" data-ng-class="{ 'bg-dark-orange': property.offer_special || property.offer_discount }">
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <h2 class="no-m"><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name | uppercase ]]</a></h2>
+                                <h3 class="no-m-top extra-m-bottom" data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
+                                <h3 class="no-m-top extra-m-bottom" data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
+                                <ul class="extra-m-top-35 no-m-bottom ribbons list-unstyled list-inline">
+                                    <li data-ng-if="property.offer_special" class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
+                                    <li data-ng-if="property.offer_discount && !property.offer_special" class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
+                                    <li data-ng-if="property.square_meters" class="square-meters">[[ property.square_meters ]] m<sup>2</sup></li>
+                                    <li data-ng-if="property.rooms" class="square-rooms">[[ property.rooms ]] {{ 'homepage.property.rooms' | trans }}</li>
+                                    <li data-ng-if="property.bathrooms" class="square-bathrooms">[[ property.bathrooms ]] {{ 'homepage.property.bathrooms' | trans }}</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <p>[[ property.description ]]</p>
+                                <p class="extra-m-top-27 no-m-bottom"><a class="c-orange" href="[[ getUrlPropertyDetail(property) ]]">{{ 'properties.list.button.more' | trans }}</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>
