@@ -21,7 +21,10 @@
 @fffootgrey: #888;
 @extramargin: 20px;
 @doubleextramargin: 40px;
+@ff-space-25: 25px;
+@ff-space-50: 50px;
 @extraborder: 9px;
+@ff-font-size-16: 16px;
 
 // Link
 @link-color: @fforange;
@@ -60,7 +63,7 @@ div#navbar {
       &.last { margin-right: 5px; }
       a {
         padding-top: 53px;
-        font-size: 17px;
+        font-size: @ff-font-size-16;
         &:hover { color: @ffgrey; }
       }
     }
@@ -73,7 +76,7 @@ div#navbar {
 
 // Body
 body {
-  padding-top: 100px;
+  padding-top: 107px;
 }
 
 .row {
@@ -179,7 +182,7 @@ body {
 
 // Complex elements
 .carousel {
-  margin-bottom: @extramargin;
+  margin-bottom: @ff-space-50;
 }
 
 .angular-google-map-container {
@@ -207,16 +210,16 @@ footer {
 .hr-homepage {
   border: none;
   border-top: solid @extraborder @fforange;
-  margin: 0 0 @extramargin 0;
+  margin: 0 0 @ff-space-25 0;
 }
 
 .carousel-homepage-banners-wrapper {
   img {
     position: absolute;
-    top: 30px;
+    top: 35px;
     z-index: 1000;
-    &.banner-main { left: 30px; }
-    &.banner-years { right: 30px; }
+    &.banner-main { left: 35px; }
+    &.banner-years { right: 35px; }
   }
 }
 
@@ -224,6 +227,7 @@ footer {
   border: none;
   border-radius: 0;
   padding: 0;
+  margin-bottom: 5px;
   background-color: @fforangelight;
   &.bg-dark-orange {
     background-color: @fforangedark;
