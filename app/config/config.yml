@@ -28,7 +28,7 @@ twig:
     strict_variables: "%kernel.debug%"
     form:
         resources:
-#            - "bootstrap_3_layout.html.twig"
+            - "bootstrap_3_layout.html.twig"
             - "::OhGoogleMaps/google_maps_form_widget.html.twig"
     globals:
         google_analytics_enabled: %google_analytics_enabled%
@@ -138,6 +138,11 @@ sonata_user:
     security_acl: false
     manager_type: orm
 
+sonata_doctrine_orm_admin:
+    templates:
+        form:
+            - "::Admin/custom_form_admin_fields_checkbox_hack.html.twig"
+
 # Nelmio API Doc
 nelmio_api_doc: ~
 
@@ -197,6 +202,10 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [100, 100], mode: outbound }
+        140x95:
+            quality: 90
+            filters:
+                thumbnail: { size: [140, 95], mode: outbound }
         300xY:
             quality: 85
             filters:
@@ -213,6 +222,10 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [750, null], mode: outbound }
+        757x450:
+            quality: 75
+            filters:
+                thumbnail: { size: [757, 450], mode: outbound }
         800xY:
             quality: 75
             filters:
