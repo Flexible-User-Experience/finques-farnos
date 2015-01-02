@@ -15,13 +15,13 @@
     <div class="container" data-ng-controller="PropertyDetailCtrl" data-ng-init="init('{{ localization }}')">
         <div class="row">
             <div class="col-md-8">
-                <p><a href="{{ path('front_properties') }}"><span class="list-page"></span> {{ 'properties.list.button.back' | trans | upper }}</a></p>
+                <div class="nav-control"><a href="{{ path('front_properties') }}"><span class="list-page"></span> {{ 'properties.list.button.back' | trans | upper }}</a></div>
             </div>
             <div class="col-md-4">
-                <p>
+                <div class="nav-control">
                     <a href="{{ path('front_property_prev', {id: property.id}) }}"><span class="prev-icon"></span> {{ 'properties.list.button.prev' | trans | upper }}</a>
                     <a class="pull-right" href="{{ path('front_property_next', {id: property.id}) }}">{{ 'properties.list.button.next' | trans | upper }} <span class="next-icon"></span></a>
-                </p>
+                </div>
             </div>
         </div>
         <div class="row">
