@@ -370,6 +370,9 @@ footer {
     font-size: @ff-font-size-28;
     small { color: @ffgrey; }
   }
+  h4.font-size-16 {
+    font-size: @ff-font-size-16;
+  }
   hr {
     border: none;
     border-top: solid 2px @ffgreylight;
@@ -378,10 +381,14 @@ footer {
   }
 }
 
+#custom_carousel .carousel {
+  margin-bottom: 35px;
+}
+
 #custom_carousel .item {
   color: black;
   background-color: white;
-  padding: 0 0 20px 0;
+  padding: 0 0 10px 0;
 }
 
 #custom_carousel .controls {
@@ -404,7 +411,7 @@ footer {
   }
   a {
     padding: 0;
-    margin-right: @extramargin;
+    margin-right: 10px;
   }
 }
 
@@ -419,6 +426,7 @@ footer {
 .property-detail-left-box {
   h2 {
     font-size: @ff-font-size-16;
+    font-weight: bold;
     &.h2-localization {
       border: none;
       border-bottom: solid 2px @fforange;

@@ -32,7 +32,7 @@
                         <div class="carousel-inner">
                             {% for image in property.images %}
                                 <div class="item{% if loop.first %} active{% endif %}">
-                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('800xY') }}" class="img-responsive" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
+                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('757x450') }}" class="img-responsive" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
                                 </div>
                             {% endfor %}
                             {% if property.images | length > 1 %}
@@ -40,7 +40,7 @@
                                     <ul class="nav">
                                         {% for image in property.images %}
                                             <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
-                                                <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('100x60') }}"></a>
+                                                <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x95') }}"></a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -65,47 +65,49 @@
                     <p class="extra-m-top">{{ property.address }}</p>
                 {% endif %}
             </div>
-            <div class="col-md-4 property-right-side-box">
-                <h2 class="no-m">{{ property.name | upper }}</h2>
-                {% if property.showPriceOnlyWithNumbers %}
-                    <h3 class="no-m-top extra-m-bottom">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
-                {% else %}
-                    <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
-                {% endif %}
-                {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
-                <hr>
-                <h4>{{ 'property.energy.efficiency' | trans | upper }}</h4>
-                {% if property.energyClass == 0 %}
-                    <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.noclass' | trans }}</p>
-                {% elseif property.energyClass == 2 %}
-                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_A.png') }}" alt="{{ 'property.energy.efficiency' | trans }} A"/>
-                {% elseif property.energyClass == 3 %}
-                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_B.png') }}" alt="{{ 'property.energy.efficiency' | trans }} B"/>
-                {% elseif property.energyClass == 4 %}
-                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_C.png') }}" alt="{{ 'property.energy.efficiency' | trans }} C"/>
-                {% elseif property.energyClass == 5 %}
-                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_D.png') }}" alt="{{ 'property.energy.efficiency' | trans }} D"/>
-                {% elseif property.energyClass == 6 %}
-                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_E.png') }}" alt="{{ 'property.energy.efficiency' | trans }} E"/>
-                {% elseif property.energyClass == 7 %}
-                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_F.png') }}" alt="{{ 'property.energy.efficiency' | trans }} F"/>
-                {% elseif property.energyClass == 8 %}
-                    <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_G.png') }}" alt="{{ 'property.energy.efficiency' | trans }} G"/>
-                {% else %}
-                    <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.pending' | trans }}</p>
-                {% endif %}
-                <hr>
-                <div class="ribbon-wrapper">
-                    {% if app.session.flashbag.get('success') | length == 1 %}
-                        <h4>{{ 'contact.form.thankyou.title' | trans | upper }}</h4>
-                        <p>{{ 'contact.form.thankyou.message' | trans }}</p>
+            <div class="col-md-4">
+                <div class="property-right-side-box">
+                    <h2 class="no-m">{{ property.name | upper }}</h2>
+                    {% if property.showPriceOnlyWithNumbers %}
+                        <h3 class="no-m-top extra-m-bottom">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
                     {% else %}
-                        <h4 class="c-orange">{{ 'property.form' | trans | upper }}</h4>
-                        <form method="POST" action="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}" {{ form_enctype(form) }}>
-                            {{ form_widget(form) }}
-                            <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-grey">
-                        </form>
+                        <h3 class="no-m-top extra-m-bottom">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
                     {% endif %}
+                    {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
+                    <hr>
+                    <h4 class="font-size-16">{{ 'property.energy.efficiency' | trans | upper }}</h4>
+                    {% if property.energyClass == 0 %}
+                        <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.noclass' | trans }}</p>
+                    {% elseif property.energyClass == 2 %}
+                        <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_A.png') }}" alt="{{ 'property.energy.efficiency' | trans }} A"/>
+                    {% elseif property.energyClass == 3 %}
+                        <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_B.png') }}" alt="{{ 'property.energy.efficiency' | trans }} B"/>
+                    {% elseif property.energyClass == 4 %}
+                        <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_C.png') }}" alt="{{ 'property.energy.efficiency' | trans }} C"/>
+                    {% elseif property.energyClass == 5 %}
+                        <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_D.png') }}" alt="{{ 'property.energy.efficiency' | trans }} D"/>
+                    {% elseif property.energyClass == 6 %}
+                        <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_E.png') }}" alt="{{ 'property.energy.efficiency' | trans }} E"/>
+                    {% elseif property.energyClass == 7 %}
+                        <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_F.png') }}" alt="{{ 'property.energy.efficiency' | trans }} F"/>
+                    {% elseif property.energyClass == 8 %}
+                        <img src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_G.png') }}" alt="{{ 'property.energy.efficiency' | trans }} G"/>
+                    {% else %}
+                        <p class="c-orange"><i class="fa fa-exclamation-triangle fa-lg"></i> {{ 'property.energy.pending' | trans }}</p>
+                    {% endif %}
+                    <hr>
+                    <div class="ribbon-wrapper">
+                        {% if app.session.flashbag.get('success') | length == 1 %}
+                            <h4>{{ 'contact.form.thankyou.title' | trans | upper }}</h4>
+                            <p>{{ 'contact.form.thankyou.message' | trans }}</p>
+                        {% else %}
+                            <h4 class="font-size-16 c-orange">{{ 'property.form' | trans | upper }}</h4>
+                            <form method="POST" action="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}" {{ form_enctype(form) }}>
+                                {{ form_widget(form) }}
+                                <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-grey">
+                            </form>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
