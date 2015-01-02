@@ -50,10 +50,10 @@
                     </div>
                 {% endif %}
                 <h2 class="c-orange"><span class="house-icon"></span> {{ property.name | upper }}
-                    <a class="pull-right" href="#"><span class="download-icon"></span></a>
-                    <a class="pull-right" href="#"><span class="envelope-icon"></span></a>
-                    <a class="pull-right" href="#"><span class="twitter-icon"></span></a>
-                    <a class="pull-right" href="#"><span class="facebook-icon"></span></a>
+                    {#<a class="pull-right" href="#"><span class="download-icon"></span></a>#}
+                    <a class="pull-right" href="mailto:?subject={{ property.name }}%20·%20Finques%20Farnós&body=Ref.{{ property.reference }}%20{{ url('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><span class="envelope-icon"></span></a>
+                    <a class="pull-right" href="https://twitter.com/share?url={{ url('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}" target="_blank"><span class="twitter-icon"></span></a>
+                    <a class="pull-right" href="https://www.facebook.com/dialog/feed?api_id=126488364189589&&display=popup&caption={{ property.name }}&link={{ url('front_property', {type: property.type.nameSlug, name: property.nameSlug}) | url_encode }}&redirect_uri=https://developers.facebook.com/tools/explorer" target="_blank"><span class="facebook-icon"></span></a>
                 </h2>
                 <hr class="thick">
                 <p>{{ property.description }}</p>
