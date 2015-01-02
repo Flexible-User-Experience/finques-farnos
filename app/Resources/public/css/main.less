@@ -3,21 +3,12 @@
 @import "../../../../bower_components/font-awesome/less/font-awesome.less";
 
 // Variables
-//   brand colors
-//   #D86F24 brand orange
-//   #655B45 brand grey
-//@brand-primary: #D86F24;
-//@fforangedark: #DDBC9D;
-//@fforange: #D86F24;
 @fforange: #B46E2F;
 @fforangelight: #F9F0E8;
 @fforangedark: #E6C3A6;
-//@fforangelight: #F6EEE5;
-//@ffgrey: #655B45;
 @ffgreylogo: #95958E;
-@ffgrey: #424242; // Pantone
+@ffgrey: #424242;
 @ffgreylight: lighten(@ffgrey, 25%);
-//@ffgreylight: #424242;
 @fffootgrey: #888;
 @extramargin: 20px;
 @doubleextramargin: 50px;
@@ -25,10 +16,12 @@
 @ff-space-50: 50px;
 @extraborder: 9px;
 @ff-font-size-12: 12px;
+@ff-font-size-14: 14px;
 @ff-font-size-15: 15px;
 @ff-font-size-16: 16px;
 @ff-font-size-18: 18px;
 @ff-font-size-20: 20px;
+@ff-font-size-28: 28px;
 @ff-font-size-32: 32px;
 
 // Link
@@ -53,12 +46,10 @@
 @navbar-default-link-hover-color: @fforange;
 @navbar-default-link-active-bg: transparent;
 nav.ff {
-//  border-bottom: solid @extraborder @fforange;
   a.navbar-brand { margin-top: -16px; }
 }
 .navbar { border: none }
 div#navbar {
-//  border: transparent;
   border-bottom: solid @extraborder @fforange;
   ul {
     margin-bottom: -9px;
@@ -83,6 +74,8 @@ div#navbar {
 body {
   padding-top: 107px;
 }
+
+textarea { resize: vertical; }
 
 .row {
   margin-bottom: @extramargin;
@@ -369,18 +362,18 @@ footer {
     &.c-orange { color: @fforange }
   }
   h2 {
-    font-size: 1.5em;
+    font-size: @ff-font-size-28;
     color: @ffgrey;
   }
   h3 {
     color: @fforange;
-    font-size: 1.5em;
+    font-size: @ff-font-size-28;
     small { color: @ffgrey; }
   }
   hr {
     border: none;
     border-top: solid 2px @ffgreylight;
-    margin: @doubleextramargin 0;
+    margin: 30px 0;
     padding: 0;
   }
 }
@@ -425,7 +418,7 @@ footer {
 
 .property-detail-left-box {
   h2 {
-    font-size: 1.5em;
+    font-size: @ff-font-size-16;
     &.h2-localization {
       border: none;
       border-bottom: solid 2px @fforange;
@@ -461,16 +454,16 @@ span.list-page {
 }
 
 span.prev-icon {
-  background: url('../bundles/app/images/icones/immobiliaria/color/fletxa_esquerra.png') no-repeat 0 0;
+  background: url('../bundles/app/images/icones/immobiliaria/color/fletxa_esquerra.png') no-repeat 0 bottom;
   width: 26px;
-  height: 16px;
+  height: 45px;
   display: inline-block;
 }
 
 span.next-icon {
-  background: url('../bundles/app/images/icones/immobiliaria/color/fletxa_dreta.png') no-repeat 0 0;
+  background: url('../bundles/app/images/icones/immobiliaria/color/fletxa_dreta.png') no-repeat 0 bottom;
   width: 26px;
-  height: 16px;
+  height: 45px;
   display: inline-block;
 }
 
