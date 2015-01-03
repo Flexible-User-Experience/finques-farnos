@@ -30,8 +30,8 @@ properties:
       next: next
   form:
     type: type
-    area: area or more
-    rooms: rooms or more
+    area: area
+    rooms: rooms
     price: or more
     search: search
     select:
