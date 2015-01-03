@@ -234,6 +234,10 @@ liip_imagine:
             quality: 70
             filters:
                 thumbnail: { size: [1200, null], mode: outbound }
+        1140x450:
+            quality: 70
+            filters:
+                thumbnail: { size: [1140, 450], mode: outbound }
 
 # A2lix Translations
 a2lix_translation_form:
