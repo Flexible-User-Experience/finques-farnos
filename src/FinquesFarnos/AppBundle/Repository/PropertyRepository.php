@@ -115,8 +115,9 @@ class PropertyRepository extends EntityRepository
                     'rooms' => $rooms,
                     'price' => $price,
                 ))
-            ->addOrderBy('p.totalVisits', 'DESC')
-            ->addOrderBy('p.name', 'ASC');
+            ->addOrderBy('p.price', 'ASC')
+            ->addOrderBy('p.name', 'ASC')
+            ->addOrderBy('p.totalVisits', 'DESC');
         if ($type > 0) {
             $qb->andWhere('p.type = :type')->setParameter('type', $type);
         }

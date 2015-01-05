@@ -70,7 +70,14 @@
                                 <h2 class="no-m"><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name | uppercase ]]</a></h2>
                                 <h3 class="no-m-top extra-m-bottom" data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
                                 <h3 class="no-m-top extra-m-bottom" data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
-                                <ul class="extra-m-top-35 no-m-bottom ribbons list-unstyled list-inline">
+                            </div>
+                            <div class="col-md-6">
+                                <p>[[ property.description ]]</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="no-m-bottom ribbons list-unstyled list-inline">
                                     <li data-ng-if="property.offer_special" class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
                                     <li data-ng-if="property.offer_discount && !property.offer_special" class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
                                     <li data-ng-if="property.square_meters" class="square-meters">[[ property.square_meters ]] m<sup>2</sup></li>
@@ -79,7 +86,6 @@
                                 </ul>
                             </div>
                             <div class="col-md-6">
-                                <p>[[ property.description ]]</p>
                                 <p class="extra-m-top-27 no-m-bottom"><a class="c-orange" href="[[ getUrlPropertyDetail(property) ]]">{{ 'properties.list.button.more' | trans }}</a></p>
                             </div>
                         </div>

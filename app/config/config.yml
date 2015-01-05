@@ -138,6 +138,7 @@ sonata_user:
     security_acl: false
     manager_type: orm
 
+# Sonata Doctrine ORM Admin
 sonata_doctrine_orm_admin:
     templates:
         form:
@@ -206,7 +207,7 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [140, 95], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
+                watermark: { image: Resources/imagine/watermark.png, size: 0.33, position: center }
         300xY:
             quality: 85
             filters:
@@ -215,11 +216,12 @@ liip_imagine:
             quality: 85
             filters:
                 thumbnail: { size: [373, 270], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
+                watermark: { image: Resources/imagine/watermark.png, size: 0.33, position: center }
         373x185:
             quality: 85
             filters:
                 thumbnail: { size: [373, 185], mode: outbound }
+                watermark: { image: Resources/imagine/watermark.png, size: 0.33, position: center }
         400xY:
             quality: 80
             filters:
