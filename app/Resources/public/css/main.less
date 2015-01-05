@@ -97,6 +97,14 @@ textarea { resize: vertical; }
   border-radius: 0;
 }
 
+.form-group {
+  .form-control { border: none; }
+  label {
+    font-weight: normal;
+    color: @ffgrey;
+  }
+}
+
 // Gaps
 .extra-m { margin: @extramargin }
 .extra-m-top { margin-top: @extramargin }
@@ -371,7 +379,9 @@ footer {
     small { color: @ffgrey; }
   }
   h4.font-size-16 {
+    margin-top: 0;
     font-size: @ff-font-size-16;
+    font-weight: bold;
   }
   hr {
     border: none;

@@ -45,7 +45,7 @@ properties:
 
 property:
   localization: localització
-  form: tens algun dubte sobre aquest immoble?
+  form: sol·licitud de contacte
   energy:
     efficiency: eficiència energètica
     noclass: sense classificació

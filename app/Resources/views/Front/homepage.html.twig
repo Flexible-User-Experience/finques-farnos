@@ -52,7 +52,7 @@
                         <hr class="hr-homepage">
                         <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
                             {% if property.firstEnabledImage %}
-                                <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('373x270') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
+                                <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('373x270wm') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
                             {% endif %}
                             <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">
                                 <div class="caption">
