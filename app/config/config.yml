@@ -206,6 +206,7 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [140, 95], mode: outbound }
+                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
         300xY:
             quality: 85
             filters:
@@ -214,10 +215,7 @@ liip_imagine:
             quality: 85
             filters:
                 thumbnail: { size: [373, 270], mode: outbound }
-        373x270wm:
-            filters:
-                thumbnail: { size: [373, 270], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.25, position: center }
+                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
         373x185:
             quality: 85
             filters:
@@ -234,6 +232,7 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [757, 450], mode: outbound }
+                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
         800xY:
             quality: 75
             filters:
