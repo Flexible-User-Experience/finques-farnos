@@ -72,7 +72,7 @@
                                 <h3 class="no-m-top extra-m-bottom" data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
                             </div>
                             <div class="col-md-6">
-                                <p>[[ property.description ]]</p>
+                                <p>[[ property.description | words:20:ignoreSpaces ]]</p>
                             </div>
                         </div>
                         <div class="row">

@@ -5,6 +5,7 @@ angular.module('propertiesApp', [
         'ngResource',
         'ngSanitize',
         'ngRoute',
+        'truncate',
         'uiGmapgoogle-maps'
     ]).config(['$interpolateProvider', function ($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
