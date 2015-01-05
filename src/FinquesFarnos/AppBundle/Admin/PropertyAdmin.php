@@ -50,7 +50,7 @@ class PropertyAdmin extends BaseAdmin
             ->with('Immoble', array('class' => 'col-md-6'))
             ->add('reference', 'text', array('label' => 'Referència'))
             ->add('name', 'text', array('label' => 'Nom'))
-            ->add('description', 'textarea', array('label' => 'Descripció', 'attr' => array('style' => 'height:150px')))
+            ->add('description', 'textarea', array('label' => 'Descripció', 'attr' => array('rows' => 8)))
             ->add('categories', 'sonata_type_model', array(
                     'required' => true,
                     'expanded' => false,
@@ -66,7 +66,18 @@ class PropertyAdmin extends BaseAdmin
                     'btn_add' => false,
                 ))
             ->end()
-            ->with('Propietats', array('class' => 'col-md-6'))
+            ->with('Traduccions', array('class' => 'col-md-6'))
+            ->add('translations', 'a2lix_translations_gedmo', array(
+                    'required' => false,
+                    'label' => ' ',
+                    'translatable_class' => 'FinquesFarnos\AppBundle\Entity\Translation\PropertyTranslation',
+                    'fields' => array(
+                        'name' => array('label' => 'Nom', 'required' => false),
+                        'description' => array('label' => 'Descripció', 'attr' => array('rows' => 8), 'required' => false),
+                    ),
+                ))
+            ->end()
+            ->with('Propietats', array('class' => 'col-md-3'))
             ->add('squareMeters', null, array('label' => 'Metres cuadrats'))
             ->add('price', null, array('label' => 'Preu'))
             ->add('oldPrice', null, array('label' => 'Preu anterior'))
@@ -83,6 +94,13 @@ class PropertyAdmin extends BaseAdmin
                     7 => 'F',
                     8 => 'G',
                 )))
+            ->end()
+            ->with('Controls', array('class' => 'col-md-3'))
+            ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar l\'immoble a la homepage', 'required' => false))
+            ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
+            ->add('offerDiscount', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb descompte', 'required' => false))
+            ->add('offerSpecial', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb preu rebaixat', 'required' => false))
+            ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
             ->end();
         if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
             $formMapper
@@ -107,26 +125,8 @@ class PropertyAdmin extends BaseAdmin
                     Property::SHOW_MAP_AREA => 'mostrar només l\'àrea',
                 )))
             ->end()
-            ->with('Traduccions', array('class' => 'col-md-6'))
-            ->add('translations', 'a2lix_translations_gedmo', array(
-                    'required' => false,
-                    'label' => ' ',
-                    'translatable_class' => 'FinquesFarnos\AppBundle\Entity\Translation\PropertyTranslation',
-                    'fields' => array(
-                        'name' => array('label' => 'Nom', 'required' => false),
-                        'description' => array('label' => 'Descripció', 'required' => false),
-                        'city' => array('label' => 'Població', 'required' => false),
-                    ),
-                ))
-            ->end()
-            ->with('Controls', array('class' => 'col-md-6'))
-            ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar l\'immoble a la homepage', 'required' => false))
-            ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
-            ->add('offerDiscount', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb descompte', 'required' => false))
-            ->add('offerSpecial', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb preu rebaixat', 'required' => false))
-            ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
-            ->end()
-            ->with('Visites', array('class' => 'col-md-6', 'collapsed' => true))
+
+            ->with('Visites', array('class' => 'col-md-6'))
             ->add('totalVisits', null, array(
                     'label' => 'Visites totals',
                     'required' => false,
