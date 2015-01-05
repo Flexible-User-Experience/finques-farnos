@@ -90,9 +90,9 @@ class Property extends Base
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255, name="city", nullable=true)
-     * @Gedmo\Translatable
-     * @var string
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="properties")
+     * @ORM\JoinColumns({@ORM\JoinColumn(name="city_id", referencedColumnName="id")})
+     * @var City
      */
     private $city;
 
@@ -592,11 +592,11 @@ class Property extends Base
     /**
      * Set city
      *
-     * @param string $city
+     * @param City $city
      *
      * @return $this
      */
-    public function setCity($city)
+    public function setCity(City $city)
     {
         $this->city = $city;
 
@@ -606,7 +606,7 @@ class Property extends Base
     /**
      * Get city
      *
-     * @return string
+     * @return City
      */
     public function getCity()
     {
