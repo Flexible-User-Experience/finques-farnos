@@ -31,6 +31,15 @@ class PropertyAdmin extends BaseAdmin
     protected $baseRoutePattern = 'property';
 
     /**
+     * Datagrid list view
+     *
+     * @var array
+     */
+    public $datagridValues = array(
+        '_sort_by' => 'reference',
+    );
+
+    /**
      * Form view
      *
      * @param FormMapper $formMapper
