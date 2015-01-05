@@ -119,20 +119,20 @@ class PropertyAdmin extends BaseAdmin
                     ),
                 ))
             ->end()
-            ->with('Visites', array('class' => 'col-md-6'))
-            ->add('totalVisits', null, array(
-                    'label' => 'Visites totals',
-                    'required' => false,
-                    'disabled' => true,
-                    'help' => $this->getVisitsHelperFormMapper(),
-                ))
-            ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar l\'immoble a la homepage', 'required' => false))
             ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
             ->add('offerDiscount', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb descompte', 'required' => false))
             ->add('offerSpecial', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb preu rebaixat', 'required' => false))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
+            ->end()
+            ->with('Visites', array('class' => 'col-md-6', 'collapsed' => true))
+            ->add('totalVisits', null, array(
+                    'label' => 'Visites totals',
+                    'required' => false,
+                    'disabled' => true,
+                    'help' => $this->getVisitsHelperFormMapper(),
+                ))
             ->end();
     }
 
@@ -243,7 +243,7 @@ class PropertyAdmin extends BaseAdmin
         /** @var ArrayCollection $visits */
         $visits = $this->getSubject()->getVisits();
         if ($visits->count() > 0) {
-            return implode(' ||| ', $visits->toArray());
+            return '<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapsedVisitsList" data-aria-expanded="false" data-aria-controls="collapseExample">Mostrar llistat de visites</button><div class="collapse" id="collapsedVisitsList"><div class="well">' . implode(' ||| ', $visits->toArray()) . '</div></div>';
         }
 
         return '';
