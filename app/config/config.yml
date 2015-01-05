@@ -214,6 +214,10 @@ liip_imagine:
             quality: 85
             filters:
                 thumbnail: { size: [373, 270], mode: outbound }
+        373x270wm:
+            filters:
+                thumbnail: { size: [373, 270], mode: outbound }
+                watermark: { image: Resources/imagine/watermark.png, size: 0.25, position: center }
         373x185:
             quality: 85
             filters:

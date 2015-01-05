@@ -3,13 +3,13 @@
 @import "../../../../bower_components/font-awesome/less/font-awesome.less";
 
 // Variables
-@fforange: #B46E2F;
+@fforange: #D86F24;
 @fforangelight: #F9F0E8;
 @fforangedark: #E6C3A6;
-@ffgreylogo: #95958E;
+@ffgreylogo: #655B45;
 @ffgrey: #424242;
 @ffgreylight: lighten(@ffgrey, 25%);
-@fffootgrey: #888;
+@fffootgrey: #666;
 @extramargin: 20px;
 @doubleextramargin: 50px;
 @ff-space-25: 25px;
@@ -72,7 +72,7 @@ div#navbar {
 
 // Body
 body {
-  padding-top: 107px;
+//  padding-top: 107px;
 }
 
 textarea { resize: vertical; }
@@ -95,6 +95,14 @@ textarea { resize: vertical; }
 
 .well-lg {
   border-radius: 0;
+}
+
+.form-group {
+  .form-control { border: none; }
+  label {
+    font-weight: normal;
+    color: @ffgrey;
+  }
 }
 
 // Gaps
@@ -183,7 +191,7 @@ textarea { resize: vertical; }
 
 // Complex elements
 .carousel {
-  margin-bottom: @ff-space-50;
+  margin-bottom: 30px;
 }
 
 .angular-google-map-container {
@@ -211,7 +219,7 @@ footer {
 .hr-homepage {
   border: none;
   border-top: solid @extraborder @fforange;
-  margin: 0 0 @ff-space-25 0;
+  margin: 0 0 15px 0;
 }
 
 .carousel-homepage-banners-wrapper {
@@ -371,7 +379,9 @@ footer {
     small { color: @ffgrey; }
   }
   h4.font-size-16 {
+    margin-top: 0;
     font-size: @ff-font-size-16;
+    font-weight: bold;
   }
   hr {
     border: none;

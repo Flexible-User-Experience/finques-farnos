@@ -7,7 +7,7 @@ use FinquesFarnos\AppBundle\Entity\Property;
 use Swift_Mailer;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
-use Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine;
+use Symfony\Bundle\TwigBundle\TwigEngine;
 
 /**
  * Class MailerService
@@ -24,7 +24,7 @@ class MailerService
     private $em;
 
     /**
-     * @var TimedTwigEngine
+     * @var TwigEngine
      */
     private $templating;
 
@@ -36,11 +36,11 @@ class MailerService
     /**
      * Constructor
      *
-     * @param EntityManager   $em
-     * @param TimedTwigEngine $templating
-     * @param Swift_Mailer    $mailer
+     * @param EntityManager $em
+     * @param TwigEngine    $templating
+     * @param Swift_Mailer  $mailer
      */
-    public function __construct(EntityManager $em, TimedTwigEngine $templating, Swift_Mailer $mailer)
+    public function __construct(EntityManager $em, TwigEngine $templating, Swift_Mailer $mailer)
     {
         $this->em = $em;
         $this->templating = $templating;
