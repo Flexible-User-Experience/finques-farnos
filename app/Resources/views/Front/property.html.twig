@@ -59,7 +59,7 @@
                 <p>{{ property.description }}</p>
                 <h2 class="c-orange h2-localization"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
                 <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
-                    <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="true" draggable="true" clickable="true"></ui-gmap-circle>
+                    <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="false" draggable="false" clickable="false"></ui-gmap-circle>
                 </ui-gmap-google-map>
                 {% if not property is constant('SHOW_MAP_AREA', property) %}
                     <p class="extra-m-top">{{ property.address }}</p>

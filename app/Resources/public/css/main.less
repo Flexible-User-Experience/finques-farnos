@@ -300,13 +300,17 @@ footer {
 .left-search-panel {
   background-color: @fforangelight;
   padding: 30px;
-  div.form-group { margin-bottom: 40px; }
+  div.form-group {
+    margin-bottom: 40px;
+    &:last-child { margin-bottom: 0; }
+  }
 }
 
 .properties-list-h1 {
   font-size: @ff-font-size-18;
   font-weight: bold;
   margin-bottom: 15px;
+  margin-top: 0;
   span.search-icon {
     background: url('../bundles/app/images/icones/immobiliaria/color/buscar.png') no-repeat 50% 0;
     width: 45px;
@@ -372,10 +376,12 @@ footer {
   h2 {
     font-size: @ff-font-size-28;
     color: @ffgrey;
+    font-weight: bold;
   }
   h3 {
     color: @fforange;
     font-size: @ff-font-size-28;
+    font-weight: bold;
     small { color: @ffgrey; }
   }
   h4.font-size-16 {
