@@ -47,7 +47,7 @@ class CityAdmin extends BaseAdmin
     {
         $listMapper
             ->add('name', null, array('label' => 'Població', 'editable' => true))
-            //->add('propertiesCount', 'integer', array('label' => 'Immobles', 'template' => '::Admin/category_list_field.html.twig'))
+            ->add('propertiesCount', 'integer', array('label' => 'Immobles', 'template' => '::Admin/city_list_field.html.twig'))
             ->add('enabled', null, array('label' => 'Activa', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(
