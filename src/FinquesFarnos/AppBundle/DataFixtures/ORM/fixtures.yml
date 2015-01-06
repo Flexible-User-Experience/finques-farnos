@@ -1,3 +1,7 @@
+FinquesFarnos\AppBundle\Entity\City:
+    city{1..5}:
+        name: <city()>
+
 FinquesFarnos\AppBundle\Entity\Category:
     category0:
         name: "obra nova"
@@ -98,7 +102,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         showInHomepage: <boolean(3)>
         showPriceOnlyWithNumbers: <boolean(85)>
         address: <streetAddress()>
-        city: <city()>
+        city: @city<numberBetween(1,5)>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
@@ -121,7 +125,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         showInHomepage: <boolean(3)>
         showPriceOnlyWithNumbers: <boolean(85)>
         address: <streetAddress()>
-        city: <city()>
+        city: @city<numberBetween(1,5)>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
@@ -144,7 +148,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         reference: <bothify('####??')>
         showInHomepage: <boolean(3)>
         showPriceOnlyWithNumbers: <boolean(85)>
-        city: <city()>
+        city: @city<numberBetween(1,5)>
         type: @type<numberBetween(0, 4)>
         name: <sentence(4)>
         description: <sentence(40)>
