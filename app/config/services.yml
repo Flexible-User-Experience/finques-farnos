@@ -58,6 +58,16 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle] ]
+    sonata.admin.city:
+        class: FinquesFarnos\AppBundle\Admin\CityAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Immoble", label: "Poblacions" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\City
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]
     sonata.admin.image:
         class: FinquesFarnos\AppBundle\Admin\ImagePropertyAdmin
         tags:

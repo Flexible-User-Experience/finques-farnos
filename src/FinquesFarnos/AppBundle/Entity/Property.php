@@ -592,11 +592,11 @@ class Property extends Base
     /**
      * Set city
      *
-     * @param City $city
+     * @param City|null $city
      *
      * @return $this
      */
-    public function setCity(City $city)
+    public function setCity($city)
     {
         $this->city = $city;
 
