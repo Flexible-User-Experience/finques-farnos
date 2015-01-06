@@ -117,6 +117,7 @@ class PropertyAdmin extends BaseAdmin
         $formMapper
             ->with('Geolocalització', array('class' => 'col-md-6'))
             ->add('latLng', 'oh_google_maps', array('label' => 'Mapa', 'required' => false))
+            ->add('radius', null, array('label' => 'Radi àrea (m)'))
             ->add('address', null, array('label' => 'Adreça'))
             ->add('city', null, array('label' => 'Població'))
             ->add('showMapType', 'choice', array('label' => 'Al mostrar els mapa de l\'immoble', 'required' => true, 'choices' => array(
