@@ -126,7 +126,7 @@ class City extends Base
      *
      * @return $this
      */
-    public function removeExtension(Property $property)
+    public function removeProperty(Property $property)
     {
         $this->properties->removeElement($property);
 
