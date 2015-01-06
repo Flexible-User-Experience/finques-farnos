@@ -178,6 +178,13 @@ class Property extends Base
     private $gpsLatitude;
 
     /**
+     * @ORM\Column(name="radius", type="integer", nullable=true)
+     * @JMS\Groups({"api"})
+     * @var integer
+     */
+    private $radius = 0;
+
+    /**
      * @ORM\OneToMany(targetEntity="FinquesFarnos\AppBundle\Entity\PropertyVisit", mappedBy="property", cascade={"persist"})
      * @ORM\OrderBy({"createdAt" = "ASC"})
      * @var ArrayCollection
@@ -419,6 +426,30 @@ class Property extends Base
     public function getGpsLatitude()
     {
         return $this->gpsLatitude;
+    }
+
+    /**
+     * Set Radius
+     *
+     * @param int $radius
+     *
+     * @return $this
+     */
+    public function setRadius($radius)
+    {
+        $this->radius = $radius;
+
+        return $this;
+    }
+
+    /**
+     * Get Radius
+     *
+     * @return int
+     */
+    public function getRadius()
+    {
+        return $this->radius;
     }
 
     /**
