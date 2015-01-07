@@ -31,17 +31,21 @@
                         {#<!-- Wrapper for slides -->#}
                         <div class="carousel-inner">
                             {% for image in property.images %}
-                                <div class="item{% if loop.first %} active{% endif %}">
-                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('757x450') }}" class="img-responsive" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
-                                </div>
+                                {% if image.enabled %}
+                                    <div class="item{% if loop.first %} active{% endif %}">
+                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('757x450') }}" class="img-responsive" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
+                                    </div>
+                                {% endif %}
                             {% endfor %}
                             {% if property.images | length > 1 %}
                                 <div class="controls">
                                     <ul class="nav">
                                         {% for image in property.images %}
-                                            <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
-                                                <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x95') }}"></a>
-                                            </li>
+                                            {% if image.enabled %}
+                                                <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
+                                                    <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x95') }}"></a>
+                                                </li>
+                                            {% endif %}
                                         {% endfor %}
                                     </ul>
                                 </div>
