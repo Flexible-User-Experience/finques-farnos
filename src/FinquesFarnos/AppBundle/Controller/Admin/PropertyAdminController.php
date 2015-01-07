@@ -36,7 +36,9 @@ class PropertyAdminController extends Controller
 
         return $this->redirect($this->generateUrl('front_property', array(
                     'type' => $property->getType()->getNameSlug(),
+                    'city' => $property->getCity()->getNameSlug(),
                     'name' => $property->getNameSlug(),
+                    'reference' => $property->getReference(),
                 )));
     }
 

@@ -55,9 +55,9 @@
                 {% endif %}
                 <h2 class="c-orange"><span class="house-icon"></span> {{ property.name | upper }}
                     {#<a class="pull-right" href="#"><span class="download-icon"></span></a>#}
-                    <a class="pull-right" href="mailto:?subject={{ property.name }}%20·%20Finques%20Farnós&body=Ref.{{ property.reference }}%20{{ url('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><span class="envelope-icon"></span></a>
-                    <a class="pull-right" href="https://twitter.com/share?url={{ url('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}" target="_blank"><span class="twitter-icon"></span></a>
-                    <a class="pull-right" href="https://www.facebook.com/dialog/feed?api_id=126488364189589&&display=popup&caption={{ property.name }}&link={{ url('front_property', {type: property.type.nameSlug, name: property.nameSlug}) | url_encode }}&redirect_uri=https://developers.facebook.com/tools/explorer" target="_blank"><span class="facebook-icon"></span></a>
+                    <a class="pull-right" href="mailto:?subject={{ property.name }}%20·%20Finques%20Farnós&body=Ref.{{ property.reference }}%20{{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><span class="envelope-icon"></span></a>
+                    <a class="pull-right" href="https://twitter.com/share?url={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}" target="_blank"><span class="twitter-icon"></span></a>
+                    <a class="pull-right" href="https://www.facebook.com/dialog/feed?api_id=126488364189589&&display=popup&caption={{ property.name }}&link={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) | url_encode }}&redirect_uri=https://developers.facebook.com/tools/explorer" target="_blank"><span class="facebook-icon"></span></a>
                 </h2>
                 <hr class="thick">
                 <p>{{ property.description }}</p>
@@ -70,6 +70,7 @@
             </div>
             <div class="col-md-4">
                 <div class="property-right-side-box">
+                    <h2 class="no-m no-bold-font">Ref. {{ property.reference }}</h2>
                     <h2 class="no-m">{{ property.name | upper }}</h2>
                     {% if property.showPriceOnlyWithNumbers %}
                         <h3 class="no-m-top extra-m-bottom">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
@@ -99,7 +100,7 @@
                             <p>{{ 'contact.form.thankyou.message' | trans }}</p>
                         {% else %}
                             <h4 class="font-size-16 c-orange">{{ 'property.form' | trans | upper }}</h4>
-                            <form method="POST" action="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}" {{ form_enctype(form) }}>
+                            <form method="POST" action="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}" {{ form_enctype(form) }}>
                                 {{ form_widget(form) }}
                                 <input type="submit" value="{{ 'contact.form.send' | trans }}" class="btn btn-grey">
                             </form>
@@ -125,6 +126,6 @@
     </script>
 {% endblock %}
 
-{% block footlangca %}{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug, '_locale': 'ca'}) }}{% endblock %}
-{% block footlanges %}{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug, '_locale': 'es'}) }}{% endblock %}
-{% block footlangen %}{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug, '_locale': 'en'}) }}{% endblock %}
+{% block footlangca %}{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference, '_locale': 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference, '_locale': 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference, '_locale': 'en'}) }}{% endblock %}

@@ -50,17 +50,20 @@ nav.ff {
 }
 .navbar { border: none }
 div#navbar {
-//  border-bottom: solid @extraborder @fforange;
   ul {
-//    margin-bottom: -9px;
     li {
       height: 83px;
-      &.active, &:hover { border-bottom: solid @extraborder @fforange; }
-      &.last { margin-right: 5px; }
+      margin-bottom: 10px;
+      padding: 0 15px;
+      &:last-child { padding-right: 0; }
+      &.active, &:hover {
+        a { border-bottom: solid @extraborder @fforange; }
+      }
       a {
-        padding-top: 53px;
-        font-size: @ff-font-size-16;
-        &:hover { color: @ffgrey; }
+        padding: 53px 0 1px 0;
+        font-size: 15px;
+        font-weight: bold;
+        &, &:hover { color: @ffgreylogo; }
       }
     }
   }
@@ -104,6 +107,8 @@ textarea { resize: vertical; }
     color: @ffgrey;
   }
 }
+
+.no-bold-font { font-weight: normal; }
 
 // Gaps
 .extra-m { margin: @extramargin }
@@ -260,7 +265,8 @@ footer {
       font-size: @ff-font-size-20;
       font-weight: bold;
       color: @ffgrey;
-      margin-bottom: 5px;
+      margin-bottom: 0;
+      &.no-bold-font { font-weight: normal; }
     }
     h3 {
       color: @fforange;
@@ -379,6 +385,7 @@ footer {
     font-size: @ff-font-size-28;
     color: @ffgrey;
     font-weight: bold;
+    &.no-bold-font { font-weight: normal; }
   }
   h3 {
     color: @fforange;
@@ -542,7 +549,7 @@ span.download-icon {
   ul {
     padding-left: 20px;
     margin-bottom: 0;
-    text-decoration: underline;
+    text-decoration: none;
   }
   p.lead { font-size: @ff-font-size-32; }
   span.house {

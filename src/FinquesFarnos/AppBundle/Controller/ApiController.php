@@ -25,13 +25,13 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * Get min max frontend properties form filters
      *
      * @Rest\View()
-     * @Rest\Get("/get-properties-form-filter", options={"sitemap"=false, "expose"=true})
+     * @Rest\Get("/get-properties-form-filter", options={"expose"=true})
      */
     public function propertiesFormFilterAction()
     {
         $types = array(array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any')));
         $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledFilters();
-        // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't work
+        // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
         /** @var Type $type */
         foreach ($typesCollection as $type) {
             $types[] = array('id' => $type->getId(), 'name' => $type->getName());
@@ -52,7 +52,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * Get filtered properties
      *
      * @Rest\View(serializerGroups={"api"})
-     * @Rest\Get("/get-properties-filtered/{type}/{area}/{rooms}/{price}", options={"sitemap"=false, "expose"=true})
+     * @Rest\Get("/get-properties-filtered/{type}/{area}/{rooms}/{price}", options={"expose"=true})
      *
      * @ApiDoc(
      *  section="Properties",

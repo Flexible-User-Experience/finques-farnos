@@ -14,8 +14,8 @@ angular.module('propertiesApp')
 
             $scope.form = angular.fromJson(propertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
-            $log.log(filteredProperties);
-            $log.log($scope.properties);
+//            $log.log(filteredProperties);
+//            $log.log($scope.properties);
 
             $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
@@ -77,7 +77,7 @@ angular.module('propertiesApp')
         };
 
         $scope.getUrlPropertyDetail = function(property) {
-            return Routing.generate('front_property', {type: property.type_name_slug, name: property.name_slug});
+            return Routing.generate('front_property', {type: property.type_name_slug, city: property.city_name_slug, name: property.name_slug, reference: property.reference});
         };
 
     }]);

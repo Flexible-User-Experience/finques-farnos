@@ -120,7 +120,7 @@ class PropertyAdmin extends BaseAdmin
             ->add('radius', null, array('label' => 'Radi àrea (m)'))
             ->add('address', null, array('label' => 'Adreça'))
             ->add('city', 'sonata_type_model', array(
-                    'required' => false,
+                    'required' => true,
                     'expanded' => false,
                     'multiple' => false,
                     'label' => 'Població',

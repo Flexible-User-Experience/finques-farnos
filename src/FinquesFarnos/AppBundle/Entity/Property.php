@@ -27,33 +27,35 @@ class Property extends Base
     const SHOW_MAP_AREA = 2;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"}, fetch="EAGER")
      * @var ArrayCollection
      */
     private $categories;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties", fetch="EAGER")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="type_id", referencedColumnName="id")})
      * @var Type
      */
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist", "remove"}, orphanRemoval=true, fetch="EAGER")
      * @ORM\OrderBy({"position" = "ASC"})
      * @var ArrayCollection
      */
     private $images;
 
     /**
-     * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=false)
+     * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=true)
+     * @JMS\Groups({"api"})
+     * @Assert\Regex("/\s/", match=false, message="Espai en blanc invàlid")
      * @var string
      */
     private $reference;
 
     /**
-     * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
+     * @ORM\Column(type="string", length=255, name="name", nullable=false)
      * @Gedmo\Translatable
      * @JMS\Groups({"api"})
      * @var string
@@ -90,7 +92,7 @@ class Property extends Base
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="properties", fetch="EAGER")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="city_id", referencedColumnName="id")})
      * @var City
      */
@@ -237,20 +239,6 @@ class Property extends Base
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
      * Set reference
      *
      * @param string $reference
@@ -272,6 +260,20 @@ class Property extends Base
     public function getReference()
     {
         return $this->reference;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -1077,5 +1079,16 @@ class Property extends Base
     public function getTypeNameSlug()
     {
         return $this->getType()->getNameSlug();
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\Type("string")
+     * @JMS\SerializedName("city_name_slug")
+     * @JMS\Groups({"api"})
+     */
+    public function getCityNameSlug()
+    {
+        return $this->getCity()->getNameSlug();
     }
 }

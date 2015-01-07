@@ -52,10 +52,11 @@
                         <hr class="hr-homepage">
                         <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
                             {% if property.firstEnabledImage %}
-                                <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('373x270') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
+                                <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('373x270') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
                             {% endif %}
-                            <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">
+                            <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
                                 <div class="caption">
+                                    <h2 class="no-m-top no-bold-font">Ref. {{ property.reference }}</h2>
                                     <h2 class="no-m-top">{{ property.name | upper }}</h2>
                                     {% if property.showPriceOnlyWithNumbers %}
                                         <h3 class="no-m-top">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>

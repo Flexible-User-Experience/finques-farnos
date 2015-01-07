@@ -104,11 +104,14 @@ class PropertyRepository extends EntityRepository
     {
         /** @var QueryBuilder $qb */
         $qb = $this->createQueryBuilder('p')
+//            ->select('p, i')
             ->select('p')
             ->where('p.enabled = :enabled')
+//            ->leftJoin('p.images', 'i')
             ->andWhere('p.squareMeters >= :area')
             ->andWhere('p.rooms >= :rooms')
             ->andWhere('p.price >= :price')
+//            ->andWhere('i.enabled = :enabled')
             ->setParameters(array(
                     'enabled' => true,
                     'area' => $area,
