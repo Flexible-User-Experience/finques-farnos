@@ -59,7 +59,7 @@ class FrontendMenu
         $menu->addChild('properties', array(
                 'label' => $this->translator->trans('menu.properties'),
                 'route' => 'front_properties',
-                'current' => $request->get('_route') == 'front_properties' || $request->get('_route') == 'front_property' ? true : false,
+                'current' => $request->get('_route') == 'front_properties' || $request->get('_route') == 'front_property',
             ));
         $menu->addChild('about', array(
                 'label' => $this->translator->trans('menu.about'),

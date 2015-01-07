@@ -56,7 +56,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/{type}/{name}/", name="front_property", options={"expose" = true})
+     * @Route("/{type}/{city}/{name}/{reference}/", name="front_property", options={"expose" = true})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"name": "nameSlug"}})
      */
     public function propertyAction(Request $request, Property $property)
@@ -98,7 +98,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/jump/previous/{id}/", name="front_property_prev", options={"expose" = false, "sitemap" = false})
+     * @Route("/property/previous/{id}/", name="front_property_prev", options={"expose" = false, "sitemap" = false})
      */
     public function prevPropertyForwardAction($id)
     {
@@ -118,7 +118,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/jump/next/{id}/", name="front_property_next", options={"expose" = false, "sitemap" = false})
+     * @Route("/property/next/{id}/", name="front_property_next", options={"expose" = false, "sitemap" = false})
      */
     public function nextPropertyForwardAction($id)
     {
