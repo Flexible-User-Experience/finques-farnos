@@ -48,6 +48,7 @@ class Property extends Base
 
     /**
      * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=false)
+     * @JMS\Groups({"api"})
      * @var string
      */
     private $reference;
