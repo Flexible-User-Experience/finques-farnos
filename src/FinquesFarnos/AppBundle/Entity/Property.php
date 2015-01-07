@@ -47,7 +47,7 @@ class Property extends Base
     private $images;
 
     /**
-     * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=false)
+     * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=true)
      * @JMS\Groups({"api"})
      * @Assert\Regex("/\s/", match=false, message="Espai en blanc invàlid")
      * @var string
@@ -55,7 +55,7 @@ class Property extends Base
     private $reference;
 
     /**
-     * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
+     * @ORM\Column(type="string", length=255, name="name", nullable=false)
      * @Gedmo\Translatable
      * @JMS\Groups({"api"})
      * @var string
