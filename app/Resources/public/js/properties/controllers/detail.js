@@ -3,7 +3,7 @@
 angular.module('propertiesApp')
     .controller('PropertyDetailCtrl', ['CFG', 'uiGmapGoogleMapApi', '$scope', '$log', function (CFG, uiGmapGoogleMapApi, $scope, $log) {
 
-        $scope.init = function(localization, property) {
+        $scope.init = function(localization) {
             $scope.localization = angular.fromJson(localization);
             $scope.map = {
                 zoom: 14,

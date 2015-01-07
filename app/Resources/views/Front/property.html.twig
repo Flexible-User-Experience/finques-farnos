@@ -59,11 +59,10 @@
                 <p>{{ property.description }}</p>
                 <h2 class="c-orange h2-localization"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
                 <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
-                    <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="false" draggable="false" clickable="false"></ui-gmap-circle>
+                    <ui-gmap-marker data-ng-if="localization.smt == 0" idKey="localization.id" coords="localization.coords"></ui-gmap-marker>
+                    <ui-gmap-circle data-ng-if="localization.smt == 2" center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="false" draggable="false" clickable="false"></ui-gmap-circle>
                 </ui-gmap-google-map>
-                {% if not property is constant('SHOW_MAP_AREA', property) %}
-                    <p class="extra-m-top">{{ property.address }}</p>
-                {% endif %}
+                <p data-ng-if="localization.smt == 0 || localization.smt == 1" class="extra-m-top">{{ property.address }}</p>
             </div>
             <div class="col-md-4">
                 <div class="property-right-side-box">
