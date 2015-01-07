@@ -36,6 +36,7 @@ properties:
       next: següent
   form:
     type: tipus
+    city: població
     area: superfície
     rooms: habitacions
     price: o més

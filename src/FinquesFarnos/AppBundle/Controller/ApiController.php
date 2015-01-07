@@ -30,7 +30,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     public function propertiesFormFilterAction()
     {
         $types = array(array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any')));
-        $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledFilters();
+        $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledItemsSortedByName();
         // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
         /** @var Type $type */
         foreach ($typesCollection as $type) {
@@ -39,6 +39,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
             'types' => $types,
+            'cities' => $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsSortedByName(),
 //            'area' => array('min' => intval($filters['min_area']), 'max' => intval($filters['max_area'])),
             'area' => array('min' => 0, 'max' => intval($filters['max_area'])),
             'rooms' => array('min' => 0, 'max' => intval($filters['max_rooms'])),
