@@ -56,7 +56,7 @@ angular.module('propertiesApp')
         $scope.init = function(localization) {
             $scope.localization = angular.fromJson(localization);
             $scope.map = {
-                zoom: 14,
+                zoom: 16,
                 radius: $scope.localization.radius,
                 stroke: {
                     color: '#D86F24',
@@ -69,7 +69,7 @@ angular.module('propertiesApp')
                 },
                 center: { latitude: $scope.localization.coords.latitude, longitude: $scope.localization.coords.longitude }
             };
-            $scope.map.options = { scrollwheel: false, draggable: true, maxZoom: 15 };
+            $scope.map.options = { scrollwheel: false, draggable: true, maxZoom: 20 };
             $scope.map.control = {};
         };
 
@@ -96,6 +96,8 @@ angular.module('propertiesApp')
 
             $scope.form = angular.fromJson(propertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
+            $log.log(filteredProperties);
+            $log.log($scope.properties);
 
             $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
