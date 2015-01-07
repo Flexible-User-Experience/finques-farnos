@@ -62,6 +62,7 @@ gulp.task('scripts', function() {
             'bower_components/angular-sanitize/angular-sanitize.js',
             'bower_components/angular-route/angular-route.js',
             'bower_components/angular-touch/angular-touch.js',
+            'bower_components/angular-truncate/src/truncate.js',
             'bower_components/angular-google-maps/dist/angular-google-maps.js'])
         .pipe(concat('main.js'))
         .pipe(gulp.dest('web/js'))

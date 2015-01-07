@@ -7,7 +7,7 @@ angular.module('propertiesApp')
             $scope.localization = angular.fromJson(localization);
             $scope.map = {
                 zoom: 14,
-                radius: 500,
+                radius: $scope.localization.radius,
                 stroke: {
                     color: '#D86F24',
                     weight: 1,

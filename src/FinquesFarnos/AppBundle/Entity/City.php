@@ -8,27 +8,25 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Type class
+ * City class
  *
  * @category Entity
  * @package  FinquesFarnos\AppBundle\Entity
  * @author   David Romaní <david@flux.cat>
  *
- * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\TypeRepository")
- * @ORM\Table(name="type")
- * @Gedmo\TranslationEntity(class="FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation")
+ * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\CityRepository")
+ * @ORM\Table(name="city")
  */
-class Type extends Base
+class City extends Base
 {
     /**
-     * @ORM\OneToMany(targetEntity="Property", mappedBy="type", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Property", mappedBy="city", cascade={"persist"})
      * @var ArrayCollection
      */
     private $properties;
 
     /**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
-     * @Gedmo\Translatable
      * @var string
      */
     private $name;
@@ -41,23 +39,11 @@ class Type extends Base
     private $nameSlug;
 
     /**
-     * @ORM\OneToMany(
-     *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation",
-     *     mappedBy="object",
-     *     cascade={"persist", "remove"}
-     * )
-     * @Assert\Valid(deep = true)
-     * @var ArrayCollection
-     */
-    private $translations;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->properties = new ArrayCollection();
-        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -127,7 +113,7 @@ class Type extends Base
      */
     public function addProperty(Property $property)
     {
-        $property->setType($this);
+        $property->setCity($this);
         $this->properties[] = $property;
 
         return $this;
@@ -169,60 +155,5 @@ class Type extends Base
     public function getProperties()
     {
         return $this->properties;
-    }
-
-    /**
-     * Add translation
-     *
-     * @param Translations\TypeTranslation $translation
-     *
-     * @return $this
-     */
-    public function addTranslation(Translations\TypeTranslation $translation)
-    {
-        if ($translation->getContent()) {
-            $translation->setObject($this);
-            $this->translations[] = $translation;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Remove translation
-     *
-     * @param Translations\TypeTranslation $translation
-     *
-     * @return $this
-     */
-    public function removeTranslation(Translations\TypeTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    /**
-     * Set translations
-     *
-     * @param ArrayCollection $translations
-     *
-     * @return $this
-     */
-    public function setTranslations($translations)
-    {
-        $this->translations = $translations;
-
-        return $this;
-    }
-
-    /**
-     * Get translations
-     *
-     * @return ArrayCollection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 }

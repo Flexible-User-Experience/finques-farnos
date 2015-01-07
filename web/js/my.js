@@ -5,6 +5,7 @@ angular.module('propertiesApp', [
         'ngResource',
         'ngSanitize',
         'ngRoute',
+        'truncate',
         'uiGmapgoogle-maps'
     ]).config(['$interpolateProvider', function ($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
@@ -56,7 +57,7 @@ angular.module('propertiesApp')
             $scope.localization = angular.fromJson(localization);
             $scope.map = {
                 zoom: 14,
-                radius: 500,
+                radius: $scope.localization.radius,
                 stroke: {
                     color: '#D86F24',
                     weight: 1,
@@ -103,9 +104,9 @@ angular.module('propertiesApp')
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
             $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
             $scope.type = $scope.form.types[0];
-            $scope.area = $scope.form.area.min; //180; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
-            $scope.rooms = $scope.form.rooms.min; //5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
-            $scope.price = $scope.form.price.min; //60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
+            $scope.area = 0; //180; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
+            $scope.rooms = 0; //5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
+            $scope.price = 0; //60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
 
 //            $log.log('init propertiesFormFilter', $scope.form);
 //            $log.log('init filteredProperties', $scope.properties);

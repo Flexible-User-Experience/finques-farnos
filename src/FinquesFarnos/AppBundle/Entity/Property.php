@@ -90,9 +90,9 @@ class Property extends Base
     private $address;
 
     /**
-     * @ORM\Column(type="string", length=255, name="city", nullable=true)
-     * @Gedmo\Translatable
-     * @var string
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="properties")
+     * @ORM\JoinColumns({@ORM\JoinColumn(name="city_id", referencedColumnName="id")})
+     * @var City
      */
     private $city;
 
@@ -176,6 +176,13 @@ class Property extends Base
      * @var float
      */
     private $gpsLatitude;
+
+    /**
+     * @ORM\Column(name="radius", type="integer", nullable=true)
+     * @JMS\Groups({"api"})
+     * @var integer
+     */
+    private $radius = 0;
 
     /**
      * @ORM\OneToMany(targetEntity="FinquesFarnos\AppBundle\Entity\PropertyVisit", mappedBy="property", cascade={"persist"})
@@ -422,6 +429,30 @@ class Property extends Base
     }
 
     /**
+     * Set Radius
+     *
+     * @param int $radius
+     *
+     * @return $this
+     */
+    public function setRadius($radius)
+    {
+        $this->radius = $radius;
+
+        return $this;
+    }
+
+    /**
+     * Get Radius
+     *
+     * @return int
+     */
+    public function getRadius()
+    {
+        return $this->radius;
+    }
+
+    /**
      * Set GpsLongitude
      *
      * @param float $gpsLongitude gpsLongitude
@@ -592,7 +623,7 @@ class Property extends Base
     /**
      * Set city
      *
-     * @param string $city
+     * @param City|null $city
      *
      * @return $this
      */
@@ -606,7 +637,7 @@ class Property extends Base
     /**
      * Get city
      *
-     * @return string
+     * @return City
      */
     public function getCity()
     {

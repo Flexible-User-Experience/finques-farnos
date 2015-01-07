@@ -117,12 +117,13 @@ class PropertyAdmin extends BaseAdmin
         $formMapper
             ->with('Geolocalització', array('class' => 'col-md-6'))
             ->add('latLng', 'oh_google_maps', array('label' => 'Mapa', 'required' => false))
+            ->add('radius', null, array('label' => 'Radi àrea (m)'))
             ->add('address', null, array('label' => 'Adreça'))
             ->add('city', null, array('label' => 'Població'))
-            ->add('showMapType', 'choice', array('label' => 'Al mostrar els mapa de l\'immoble', 'required' => true, 'choices' => array(
-                    Property::SHOW_MAP_ALL => 'mostrar-ho tot',
-                    Property::SHOW_MAP_STREET => 'mostrar només el carrer',
-                    Property::SHOW_MAP_AREA => 'mostrar només l\'àrea',
+            ->add('showMapType', 'choice', array('label' => 'Al mostrar el mapa de l\'immoble', 'required' => true, 'choices' => array(
+                    Property::SHOW_MAP_ALL => 'marcar el punt exacte i mostrar l\'adreça',
+                    Property::SHOW_MAP_STREET => 'mostrar l\'adreça sense marcar cap punt',
+                    Property::SHOW_MAP_AREA => 'dibuixar una àrea segons el radi sense mostrar l\'adreça',
                 )))
             ->end()
 

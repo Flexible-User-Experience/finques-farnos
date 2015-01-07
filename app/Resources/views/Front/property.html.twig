@@ -31,17 +31,21 @@
                         {#<!-- Wrapper for slides -->#}
                         <div class="carousel-inner">
                             {% for image in property.images %}
-                                <div class="item{% if loop.first %} active{% endif %}">
-                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('757x450') }}" class="img-responsive" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
-                                </div>
+                                {% if image.enabled %}
+                                    <div class="item{% if loop.first %} active{% endif %}">
+                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('757x450') }}" class="img-responsive" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
+                                    </div>
+                                {% endif %}
                             {% endfor %}
                             {% if property.images | length > 1 %}
                                 <div class="controls">
                                     <ul class="nav">
                                         {% for image in property.images %}
-                                            <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
-                                                <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x95') }}"></a>
-                                            </li>
+                                            {% if image.enabled %}
+                                                <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
+                                                    <a href="#"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x95') }}"></a>
+                                                </li>
+                                            {% endif %}
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -59,11 +63,10 @@
                 <p>{{ property.description }}</p>
                 <h2 class="c-orange h2-localization"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
                 <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
-                    <ui-gmap-circle center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="true" draggable="true" clickable="true"></ui-gmap-circle>
+                    <ui-gmap-marker data-ng-if="localization.smt == 0" idKey="localization.id" coords="localization.coords"></ui-gmap-marker>
+                    <ui-gmap-circle data-ng-if="localization.smt == 2" center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="false" draggable="false" clickable="false"></ui-gmap-circle>
                 </ui-gmap-google-map>
-                {% if not property is constant('SHOW_MAP_AREA', property) %}
-                    <p class="extra-m-top">{{ property.address }}</p>
-                {% endif %}
+                <p data-ng-if="localization.smt == 0 || localization.smt == 1" class="extra-m-top">{{ property.address }}</p>
             </div>
             <div class="col-md-4">
                 <div class="property-right-side-box">

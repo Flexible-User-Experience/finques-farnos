@@ -111,6 +111,7 @@ textarea { resize: vertical; }
 .extra-m-top-5 { margin-top: 5px }
 .extra-m-top-27 { margin-top: 27px }
 .extra-m-top-35 { margin-top: 35px }
+.extra-m-top-49 { margin-top: 49px }
 .extra-m-bottom { margin-bottom: @extramargin }
 .no-m { margin: 0 }
 .no-m-top { margin-top: 0 }
@@ -300,13 +301,17 @@ footer {
 .left-search-panel {
   background-color: @fforangelight;
   padding: 30px;
-  div.form-group { margin-bottom: 40px; }
+  div.form-group {
+    margin-bottom: 40px;
+    &:last-child { margin-bottom: 0; }
+  }
 }
 
 .properties-list-h1 {
   font-size: @ff-font-size-18;
   font-weight: bold;
   margin-bottom: 15px;
+  margin-top: 0;
   span.search-icon {
     background: url('../bundles/app/images/icones/immobiliaria/color/buscar.png') no-repeat 50% 0;
     width: 45px;
@@ -319,6 +324,7 @@ footer {
 .wrapper {
   padding: 25px;
   background-color: @fforangelight;
+  min-height: 185px;
   &.bg-dark-orange {
     background-color: @fforangedark;
     ul.ribbons {
@@ -372,10 +378,12 @@ footer {
   h2 {
     font-size: @ff-font-size-28;
     color: @ffgrey;
+    font-weight: bold;
   }
   h3 {
     color: @fforange;
     font-size: @ff-font-size-28;
+    font-weight: bold;
     small { color: @ffgrey; }
   }
   h4.font-size-16 {
@@ -550,6 +558,9 @@ span.download-icon {
   padding: 24px;
   border: solid 2px @fforange;
   border-radius: 15px;
-  h2 { font-size: 1.25em; }
+  h2 {
+    font-size: 1.25em;
+    font-weight: bold;
+  }
   input.btn-grey { color: white; }
 }
