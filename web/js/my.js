@@ -96,8 +96,8 @@ angular.module('propertiesApp')
 
             $scope.form = angular.fromJson(propertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
-            $log.log(filteredProperties);
-            $log.log($scope.properties);
+//            $log.log(filteredProperties);
+//            $log.log($scope.properties);
 
             $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;

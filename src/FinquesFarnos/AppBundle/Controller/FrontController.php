@@ -101,7 +101,7 @@ class FrontController extends Controller
 
     /**
      * @Route("/{type}/{city}/{name}/{reference}/", name="front_property", options={"expose" = true})
-     * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"name": "nameSlug"}})
+     * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"reference": "reference"}})
      */
     public function propertyAction(Request $request, Property $property)
     {
