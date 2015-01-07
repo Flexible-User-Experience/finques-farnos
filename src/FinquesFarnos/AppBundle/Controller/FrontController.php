@@ -41,7 +41,7 @@ class FrontController extends Controller
     {
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
         $filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
-        $filteredProperties   = $this->forward('AppBundle:Api:propertiesFiltered', array(
+        $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
                 // TODO: make dynamic & adaptative
                 'type' => $filters['types'][0]['id'],
                 'area' => 0, //intval(ceil(($filters['area']['max'] - $filters['area']['min']) / 2) + $filters['area']['min']),

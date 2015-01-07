@@ -6,7 +6,7 @@ angular.module('propertiesApp')
         $scope.init = function(localization) {
             $scope.localization = angular.fromJson(localization);
             $scope.map = {
-                zoom: 14,
+                zoom: 16,
                 radius: $scope.localization.radius,
                 stroke: {
                     color: '#D86F24',
@@ -19,7 +19,7 @@ angular.module('propertiesApp')
                 },
                 center: { latitude: $scope.localization.coords.latitude, longitude: $scope.localization.coords.longitude }
             };
-            $scope.map.options = { scrollwheel: false, draggable: true, maxZoom: 15 };
+            $scope.map.options = { scrollwheel: false, draggable: true, maxZoom: 20 };
             $scope.map.control = {};
         };
 
