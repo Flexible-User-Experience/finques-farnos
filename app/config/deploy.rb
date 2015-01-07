@@ -31,6 +31,7 @@ set :model_manager,     "doctrine"              # Or "propel"
 #######
 role :web,  domain                              # Your HTTP server, Apache/etc
 role :app,  domain, :primary => true            # This may be the same as your `Web` server
+role :db,   domain, :primary => true            # This may be the same as your `Web` server
 
 ##########
 # Server #
