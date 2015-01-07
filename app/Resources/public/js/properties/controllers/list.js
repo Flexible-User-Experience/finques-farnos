@@ -77,7 +77,7 @@ angular.module('propertiesApp')
         };
 
         $scope.getUrlPropertyDetail = function(property) {
-            return Routing.generate('front_property', {type: property.type_name_slug, city: 'city', name: property.name_slug, reference: property.reference});
+            return Routing.generate('front_property', {type: property.type_name_slug, city: property.city_name_slug, name: property.name_slug, reference: property.reference});
         };
 
     }]);

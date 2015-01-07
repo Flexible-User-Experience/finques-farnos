@@ -239,20 +239,6 @@ class Property extends Base
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
      * Set reference
      *
      * @param string $reference
@@ -274,6 +260,20 @@ class Property extends Base
     public function getReference()
     {
         return $this->reference;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
@@ -1079,5 +1079,16 @@ class Property extends Base
     public function getTypeNameSlug()
     {
         return $this->getType()->getNameSlug();
+    }
+
+    /**
+     * @JMS\VirtualProperty
+     * @JMS\Type("string")
+     * @JMS\SerializedName("city_name_slug")
+     * @JMS\Groups({"api"})
+     */
+    public function getCityNameSlug()
+    {
+        return $this->getCity()->getNameSlug();
     }
 }
