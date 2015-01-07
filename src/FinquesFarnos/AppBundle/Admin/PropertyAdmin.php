@@ -119,7 +119,13 @@ class PropertyAdmin extends BaseAdmin
             ->add('latLng', 'oh_google_maps', array('label' => 'Mapa', 'required' => false))
             ->add('radius', null, array('label' => 'Radi àrea (m)'))
             ->add('address', null, array('label' => 'Adreça'))
-            ->add('city', null, array('label' => 'Població'))
+            ->add('city', 'sonata_type_model', array(
+                    'required' => false,
+                    'expanded' => false,
+                    'multiple' => false,
+                    'label' => 'Població',
+                    'btn_add' => 'Crear nova població',
+                ))
             ->add('showMapType', 'choice', array('label' => 'Al mostrar el mapa de l\'immoble', 'required' => true, 'choices' => array(
                     Property::SHOW_MAP_ALL => 'marcar el punt exacte i mostrar l\'adreça',
                     Property::SHOW_MAP_STREET => 'mostrar l\'adreça sense marcar cap punt',
