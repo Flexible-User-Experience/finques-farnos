@@ -79,11 +79,17 @@ gulp.task('myjs', function() {
         .pipe(rename('my.min.js'));
 });
 
-// Watch
-gulp.task('watch', ['browser-sync'], function() {
+// Watch with Browser Sync
+gulp.task('bswatch', ['browser-sync'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig', ['bs-reload']);
     gulp.watch('app/Resources/public/js/**/*.js', ['lint', 'myjs', 'bs-reload']);
     gulp.watch('app/Resources/public/css/**/*.less', ['less', 'bs-reload']);
+});
+
+// Watch
+gulp.task('watch', function() {
+    gulp.watch('app/Resources/public/js/**/*.js', ['lint', 'myjs']);
+    gulp.watch('app/Resources/public/css/**/*.less', ['less']);
 });
 
 // Default Task

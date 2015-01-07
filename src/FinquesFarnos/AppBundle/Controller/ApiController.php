@@ -31,7 +31,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     {
         $types = array(array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any')));
         $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledFilters();
-        // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't work
+        // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
         /** @var Type $type */
         foreach ($typesCollection as $type) {
             $types[] = array('id' => $type->getId(), 'name' => $type->getName());
