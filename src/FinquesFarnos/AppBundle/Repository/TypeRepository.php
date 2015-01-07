@@ -14,11 +14,11 @@ use Doctrine\ORM\EntityRepository;
 class TypeRepository extends EntityRepository
 {
     /**
-     * Get filters
+     * Get enabled array result filters
      *
      * @return array
      */
-    public function getFilters()
+    public function getEnabledArrayResultFilters()
     {
         return $this->createQueryBuilder('t')
             ->select('t.id, t.name')
@@ -27,5 +27,20 @@ class TypeRepository extends EntityRepository
             ->orderBy('t.name', 'ASC')
             ->getQuery()
             ->getArrayResult();
+    }
+
+    /**
+     * Get enabled filters
+     *
+     * @return array
+     */
+    public function getEnabledFilters()
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('t.name', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
 }

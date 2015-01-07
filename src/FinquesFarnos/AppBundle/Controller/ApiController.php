@@ -2,6 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\Controller;
 
+use FinquesFarnos\AppBundle\Entity\Type;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
@@ -28,8 +29,13 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      */
     public function propertiesFormFilterAction()
     {
-        $types = $this->getDoctrine()->getRepository('AppBundle:Type')->getFilters();
-        array_unshift($types, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any')));
+        $types = array(array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any')));
+        $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledFilters();
+        // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't work
+        /** @var Type $type */
+        foreach ($typesCollection as $type) {
+            $types[] = array('id' => $type->getId(), 'name' => $type->getName());
+        }
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
             'types' => $types,
