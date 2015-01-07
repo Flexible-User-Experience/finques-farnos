@@ -56,6 +56,7 @@
                             {% endif %}
                             <a href="{{ path('front_property', {type: property.type.nameSlug, name: property.nameSlug}) }}">
                                 <div class="caption">
+                                    <h2 class="no-m-top no-bold-font">Ref. {{ property.reference }}</h2>
                                     <h2 class="no-m-top">{{ property.name | upper }}</h2>
                                     {% if property.showPriceOnlyWithNumbers %}
                                         <h3 class="no-m-top">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
