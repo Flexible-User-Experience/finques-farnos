@@ -124,7 +124,7 @@ class PropertyAdmin extends BaseAdmin
                     'expanded' => false,
                     'multiple' => false,
                     'label' => 'Població',
-                    'btn_add' => true,
+                    'btn_add' => 'Crear nova població',
                 ))
             ->add('showMapType', 'choice', array('label' => 'Al mostrar el mapa de l\'immoble', 'required' => true, 'choices' => array(
                     Property::SHOW_MAP_ALL => 'marcar el punt exacte i mostrar l\'adreça',
