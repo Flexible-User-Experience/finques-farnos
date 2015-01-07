@@ -25,7 +25,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * Get min max frontend properties form filters
      *
      * @Rest\View()
-     * @Rest\Get("/get-properties-form-filter", options={"sitemap"=false, "expose"=true})
+     * @Rest\Get("/get-properties-form-filter", options={"expose"=true})
      */
     public function propertiesFormFilterAction()
     {
@@ -52,7 +52,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * Get filtered properties
      *
      * @Rest\View(serializerGroups={"api"})
-     * @Rest\Get("/get-properties-filtered/{type}/{area}/{rooms}/{price}", options={"sitemap"=false, "expose"=true})
+     * @Rest\Get("/get-properties-filtered/{type}/{area}/{rooms}/{price}", options={"expose"=true})
      *
      * @ApiDoc(
      *  section="Properties",

@@ -56,7 +56,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/previous/{id}/", name="front_property_prev", options={"expose" = false, "sitemap" = false})
+     * @Route("/property/previous/{id}/", name="front_property_prev", options={"expose" = false})
      */
     public function prevPropertyForwardAction($id)
     {
@@ -78,7 +78,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/next/{id}/", name="front_property_next", options={"expose" = false, "sitemap" = false})
+     * @Route("/property/next/{id}/", name="front_property_next", options={"expose" = false})
      */
     public function nextPropertyForwardAction($id)
     {
