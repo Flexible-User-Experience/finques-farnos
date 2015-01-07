@@ -1,6 +1,5 @@
 front_homepage: '/'
 front_properties: '/properties/'
-front_properties_page: '/properties/{page}/'
 front_property: '/property/{type}/{name}/'
 front_property_prev: '/property/jump/previous/{id}/'
 front_property_next: '/property/junp/next/{id}/'

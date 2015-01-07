@@ -1,6 +1,5 @@
 front_homepage: '/'
 front_properties: '/inmuebles/'
-front_properties_page: '/inmuebles/{page}/'
 front_property: '/inmueble/{type}/{name}/'
 front_property_prev: '/inmueble/salta/anterior/{id}/'
 front_property_next: '/inmueble/salta/siguiente/{id}/'
