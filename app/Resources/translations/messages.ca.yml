@@ -12,7 +12,7 @@ frontend:
 homepage:
   property:
     banner:
-      main: l'immoble que busques a finques farnós
+      main: l'immoble que busques a Finques Farnós
       years: 30 anys · 1984-2014
     noitems: ho sentim, encara no tenim cap immoble destacat disponible en aquesta pàgina
     before: abans
@@ -86,55 +86,54 @@ contact:
     email: email
     message: missatge
     send: enviar
-    send: enviar
     thankyou:
       title: Gràcies
       message: El teu missatge s'ha enviat correctament, el respondrem el més aviat possible. Moltes gràcies per contactar amb Finques Farnós.
 
 privacy:
   confidenciality:
-    title: Confidencialidad y protección de datos
-    text: A efectos de lo previsto en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, FINQUES FARNOS SL informa al usuario de la existencia de un fichero automatizado de datos de carácter personal creado por y para FINQUES FARNÓS SL y bajo su responsabilidad, con la finalidad de realizar el mantenimiento y gestión de la relación con el Usuario, así como las labores de información. En el momento de la aceptación de las presentes condiciones generales, FINQUES FARNÓS SL precisará del usuario la recogida de unos datos imprescindibles para la prestación de sus servicios.
+    title: Confidencialitat i protecció de dades
+    text: Als efectes del que preveu la Llei Orgànica 15/1999, de 13 de desembre, de Protecció de Dades de Caràcter Personal, Finques Farnós SL informa a l'usuari de l'existència d'un fitxer automatitzat de dades de caràcter personal creat per i per FINQUES FARNÓS SL i sota la seva responsabilitat, amb la finalitat de realitzar el manteniment i gestió de la relació amb l'Usuari, així com les tasques d'informació. En el moment de l'acceptació de les presents condicions generals, FINQUES FARNÓS SL precisarà de l'usuari la recollida d'unes dades imprescindibles per a la prestació dels seus serveis.
   records:
-    title: Registro de ficheros y formularios
+    title: Registre de fitxers i formularis
     text: |
-      La cumplimentación del formulario de registro es obligatoria para acceder y disfrutar de determinados servicios ofrecidos en la Web. El no facilitar los datos personales solicitados o el no aceptar la presente política de protección de datos supone la imposibilidad de suscribirse, registrarse o participar en cualquiera de las promociones en las que se soliciten datos de carácter personal.</p>
-      <p>De acuerdo a lo establecido en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, le informamos que los datos personales que se obtengan como consecuencia de su registro como Usuario, serán incorporados a un fichero titularidad de FINQUES FARNÓS SL con CIF B43524149 y con domicilio en C. CORSINI, 63 - 43870 AMPOSTA (TARRAGONA), teniendo implementadas las medidas de seguridad establecidas en el Real Decreto 1720/2007, de 21 de Diciembre.
+      L'emplenament del formulari de registre és obligatòria per accedir i gaudir de determinats serveis oferts a la web. El no facilitar les dades personals sol·licitades o el no acceptar la present política de protecció de dades suposa la impossibilitat de subscriure, registra't o participar en qualsevol de les promocions en què se sol·licitin dades de caràcter personal.</p>
+      <p>D'acord amb el que estableix la Llei Orgànica 15/1999, de 13 de desembre, de Protecció de Dades de Caràcter Personal, l'informem que les dades personals que s'obtinguin com a conseqüència del seu registre com a Usuari, seran incorporades a un fitxer titularitat de FINQUES FARNÓS SL amb CIF B43524149 i amb domicili a C. CORSINI, 63-43.870 AMPOSTA (TARRAGONA), tenint implementades les mesures de seguretat establertes en el Reial Decret 1720/2007, de 21 de desembre.
   trustness:
-    title: Exactitud y veracidad de los datos
-    text: El usuario es el único responsable de la veracidad y corrección de los datos incluidos, exonerándose FINQUES FARNÓS SL de cualquier responsabilidad al respecto. Los usuarios garantizan y responden, en cualquier caso, de la exactitud, vigencia y autenticidad de los datos personales facilitados, y se comprometen a mantenerlos debidamente actualizados. El usuario acepta proporcionar información completa y correcta en el formulario de registro o suscripción. FINQUES FARNÓS SL no responde de la veracidad de las informaciones que nos sean de elaboración propia y de las que indique otra fuente, por lo que tampoco asume responsabilidad alguna en cuanto a hipotéticos perjuicios que pudieran  originarse por el uso de dicha información. FINQUES FARNÓS SL se reserva el derecho a actualizar, modificar o eliminar la información contenida en sus páginas Web pudiendo incluso limitar o no permitir el acceso a dicha información. Se exonera a  FINQUES FARNÓS SL de responsabilidad ante cualquier daño o perjuicio que pudiera sufrir el Usuario como consecuencia de errores, defectos u omisiones, en la información facilitada por FINQUES FARNÓS SL siempre que proceda de fuentes ajenas a FINQUES FARNÓS SL.
+    title: Exactitud i veracitat de les dades
+    text: L'usuari és l'únic responsable de la veracitat i correcció de les dades incloses, exonerant FINQUES FARNÓS SL de qualsevol responsabilitat al respecte. Els usuaris garanteixen i responen, en qualsevol cas, de l'exactitud, vigència i autenticitat de les dades personals facilitades, i es comprometen a mantenir-les degudament actualitzades. L'usuari accepta proporcionar informació completa i correcta en el formulari de registre o subscripció. FINQUES FARNÓS SL no respon de la veracitat de les informacions que ens siguin d'elaboració pròpia i de les que s'indiqui una altra font, de manera que tampoc assumeix cap responsabilitat pel que fa a hipotètics perjudicis que poguessin originar-se per l'ús d'aquesta informació. FINQUES FARNÓS SL es reserva el dret a actualitzar, modificar o eliminar la informació continguda en les seves pàgines web podent inclús limitar o no permetre l'accés a aquesta informació. S'exonera a FINQUES FARNÓS SL de responsabilitat davant qualsevol dany o perjudici que pogués sofrir l'Usuari com a conseqüència d'errors, defectes o omissions, en la informació facilitada per FINQUES FARNÓS SL sempre que procedeixi de fonts alienes a FINQUES FARNÓS SL.
   cookies:
     title: Cookies
-    text: Este sitio web no utiliza cookies, considerando tales ficheros físicos como información alojados en el propio Terminal del usuario y sirven para facilitar la navegación del usuario por el portal. De todas formas, el usuario tiene posibilidad de configurar el navegador de tal modo que impida la instalación de estos archivos.
+    text: Aquest lloc web no utilitza cookies, considerant com fitxers físics com informació allotjats en el propi terminal de l'usuari i serveixen per facilitar la navegació de l'usuari pel portal. De tota manera, l'usuari té possibilitat de configurar el navegador de manera que impedeixi la instal·lació d'aquests arxius.
   targets:
-    title: Finalidades
-    text: Las finalidades de FINQUES FARNÓS SL son el mantenimiento y gestión de la relación con el usuario, así como las laborad de información.
+    title: Finalitats
+    text: Les finalitats de FINQUES FARNÓS SL són el manteniment i gestió de la relació amb l'usuari, així com les laborad d'informació.
   children:
-    title: Menores de edad
-    text: En el supuesto que algunos de nuestros servicios vayan dirigidos específicamente a menores de edad, FINQUES FARNÓS SL solicitará la conformidad de los padres o tutores para la recogida de los datos personales o, en su caso, para el tratamiento automatizado de los datos.
+    title: Menors d'edad
+    text: En el supòsit que alguns dels nostres serveis vagin dirigits específicament a menors d'edat, FINQUES FARNÓS SL sol·licitarà la conformitat dels pares o tutors per a la recollida de les dades personals o, si s'escau, per al tractament automatitzat de les dades.
   send:
-    title: Cesión de datos a terceros
-    text: FINQUES FARNÓS SL no realizará cesión de datos de los usuarios a terceros.
-  spam: En FINQUES FARNÓS no nos gusta el spam y contribuimos a erradicarlo
+    title: Cessió de dades a tercers
+    text: FINQUES FARNÓS SL no realitzarà cessió de dades dels usuaris a tercers.
+  spam: A FINQUES FARNÓS no ens agrada el correu brossa i contribuïm a eradicar
 
 legal:
-  text: El presente aviso legal (en adelante "Aviso Legal") regula el uso del servicio del portal de Internet http://www.finquesfarnos.com (en adelante, Web) de FINQUES FARNÓS SL con domicilio en C. CORSINI, 63 - 43870 AMPOSTA (TARRAGONA), y con CIF B43524149 e inscrita en el Registro Mercantil tomo 1.367, folio 214, hoja T-16267, inscripción 1ª, CIF B43524149
+  text: El present avís legal (d'ara endavant "Avís Legal") regula l'ús del servei del portal d'Internet http://www.finquesfarnos.com (d'ara endavant, Web) de FINQUES FARNÓS SL amb domicili a C. CORSINI, 63-43.870 AMPOSTA (TARRAGONA), i amb CIF B43524149 i inscrita en el Registre Mercantil tom 1.367, foli 214, full T-16267, inscripció 1a, CIF B43524149
   law:
-    title: Legislación
+    title: Legislació
     text: |
-      Con carácter general las relaciones entre FINQUES FARNÓS SL con los usuarios de sus servicios telemáticos, presentes en la Web, se encuentran sometidas a la legislación y jurisdicción españolas.</p>
-      <p>Las partes renuncian expresamente al fuero que les pudiera corresponder y se someten expresamente a los Juzgados y Tribunales de Amposta (TARRAGONA) para resolver cualquier controversia que pueda surgir en la interposición o ejecución de las presentes condiciones contractuales.
+      Amb caràcter general les relacions entre FINQUES FARNÓS SL amb els usuaris dels seus serveis telemàtics, presents a la web, es troben sotmeses a la legislació i jurisdicció espanyoles.</p>
+      <p>Les parts renuncien expressament al fur que els pogués correspondre i se sotmeten expressament als Jutjats i Tribunals d'Amposta (TARRAGONA) per resoldre qualsevol controvèrsia que pugui sorgir en la interposició o execució de les presents condicions contractuals.
   content:
-    title: Contenido y uso
+    title: Contingut i ús
     text: |
-      El usuario queda informado, y acepta, que el acceso a la presente Web no supone, en modo alguno, el inicio de una relación comercial con FINQUES FARNÓS SL.</p>
-      <p>El titular del Web no se identifica con las opiniones vertidas en el mismo por sus colaboradores. La Empresa se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su Web, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma como la forma en a la que éstos aparezcan presentados o localizados en sus servidores.
+      L'usuari queda informat, i accepta, que l'accés a la present web no suposa, de cap manera, l'inici d'una relació comercial amb FINQUES FARNÓS SL.</p>
+      <p>El titular de la web no s'identifica amb les opinions abocades en el mateix pels seus col·laboradors. L'Empresa es reserva el dret d'efectuar sense previ avís les modificacions que consideri oportunes en la seva web, podent canviar, suprimir o afegir tant els continguts i serveis que es prestin a través de la mateixa com la forma en la qual aquests apareguin presentats o localitzats en els seus servidors.
   property:
-    title: Propiedad intelectual e industrial
-    text: Los derechos de propiedad intelectual del contenido de las páginas Web, su diseño gráfico y códigos son titularidad de FINQUES FARNÓS SL y, por tanto, queda prohibida su reproducción, distribución, comunicación pública, transformación o cualquier otra actividad que se pueda realizar con los contenidos de sus páginas Web ni aún citando las fuentes, salvo consentimiento por escrito de FINQUES FARNÓS SL. Todos los nombres comerciales, marcas o signos distintos de cualquier clase contenidos en las páginas Web de la empresa son propiedad de sus dueños y están protegidos por ley.
+    title: Propietat intel·lectual i industrial
+    text: Els drets de propietat intel·lectual del contingut de les pàgines web, el seu disseny gràfic i codis són titularitat de FINQUES FARNÓS SL i, per tant, queda prohibida la seva reproducció, distribució, comunicació pública, transformació o qualsevol altra activitat que es pugui realitzar amb els continguts de les seves pàgines web ni encara citant les fonts, excepte consentiment per escrit de FINQUES FARNÓS SL. Tots els noms comercials, marques o signes diferents de qualsevol classe continguts en les pàgines web de l'empresa són propietat dels seus amos i estan protegits per llei.
   links:
-    title: Enlaces (links)
-    text: La presencia de enlaces (links) en las páginas Web de FINQUES FARNÓS SL tiene finalidad meramente informativa y en ningún caso supone sugerencia, invitación o recomendación sobre los mismos.
+    title: Enllaços (links)
+    text: La presència d'enllaços (links) a les pàgines web de FINQUES FARNÓS SL té finalitat merament informativa i en cap cas suposa suggeriment, invitació o recomanació sobre els mateixos.
 
 credits:
   text: |

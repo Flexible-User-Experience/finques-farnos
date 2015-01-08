@@ -1,8 +1,8 @@
 menu:
-  home: inicio
-  properties: inmuebles
-  about: quien somos
-  contact: contacto
+  home: Inicio
+  properties: Inmuebles
+  about: Quien somos
+  contact: Contacto
 
 frontend:
   privacy: privacidad
@@ -11,6 +11,10 @@ frontend:
 
 homepage:
   property:
+    banner:
+      main: el inmueble que buscas a finques farnós
+      years: 30 años · 1984-2014
+    noitems: lo sentimos, todavía no tenemos ningún inmueble destacado disponible en esta página
     before: antes
     since: desde
     rooms: habitaciones
@@ -20,9 +24,11 @@ homepage:
       discount: rebajado
 
 properties:
+  heading:
+    title: aquí encontrarás tu inmueble
   searching: obteniendo resultados
   list:
-    empty: ningún resultado encontrado
+    empty: no se ha encontrado ningún resultado
     button:
       more: más información
       back: volver al listado
@@ -30,16 +36,20 @@ properties:
       next: siguiente
   form:
     type: tipo
+    city: población
     area: superficie
     rooms: habitaciones
     price: o más
     search: buscar
+    results: resultados obtenidos
     select:
-      any: cualquier tipo
+      any:
+        type: cualquier tipo
+        city: cualquier población
 
 property:
   localization: localitzación
-  form: ¿tienes alguna duda sobre este inmueble?
+  form: solicitud de contacto
   energy:
     efficiency: eficiencia energética
     noclass: sin clasificación
@@ -91,7 +101,7 @@ privacy:
       <p>De acuerdo a lo establecido en la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal, le informamos que los datos personales que se obtengan como consecuencia de su registro como Usuario, serán incorporados a un fichero titularidad de FINQUES FARNÓS SL con CIF B43524149 y con domicilio en C. CORSINI, 63 - 43870 AMPOSTA (TARRAGONA), teniendo implementadas las medidas de seguridad establecidas en el Real Decreto 1720/2007, de 21 de Diciembre.
   trustness:
     title: Exactitud y veracidad de los datos
-    text: El usuario es el único responsable de la veracidad y corrección de los datos incluidos, exonerándose FINQUES FARNÓS SL de cualquier responsabilidad al respecto. Los usuarios garantizan y responden, en cualquier caso, de la exactitud, vigencia y autenticidad de los datos personales facilitados, y se comprometen a mantenerlos debidamente actualizados. El usuario acepta proporcionar información completa y correcta en el formulario de registro o suscripción. FINQUES FARNÓS SL no responde de la veracidad de las informaciones que nos sean de elaboración propia y de las que indique otra fuente, por lo que tampoco asume responsabilidad alguna en cuanto a hipotéticos perjuicios que pudieran  originarse por el uso de dicha información. FINQUES FARNÓS SL se reserva el derecho a actualizar, modificar o eliminar la información contenida en sus páginas Web pudiendo incluso limitar o no permitir el acceso a dicha información. Se exonera a  FINQUES FARNÓS SL de responsabilidad ante cualquier daño o perjuicio que pudiera sufrir el Usuario como consecuencia de errores, defectos u omisiones, en la información facilitada por FINQUES FARNÓS SL siempre que proceda de fuentes ajenas a FINQUES FARNÓS SL.
+    text: El usuario es el único responsable de la veracidad y corrección de los datos incluidos, exonerándose FINQUES FARNÓS SL de cualquier responsabilidad al respecto. Los usuarios garantizan y responden, en cualquier caso, de la exactitud, vigencia y autenticidad de los datos personales facilitados, y se comprometen a mantenerlos debidamente actualizados. El usuario acepta proporcionar información completa y correcta en el formulario de registro o suscripción. FINQUES FARNÓS SL no responde de la veracidad de las informaciones que nos sean de elaboración propia y de las que indique otra fuente, por lo que tampoco asume responsabilidad alguna en cuanto a hipotéticos perjuicios que pudieran  originarse por el uso de dicha información. FINQUES FARNÓS SL se reserva el derecho a actualizar, modificar o eliminar la información contenida en sus páginas Web pudiendo incluso limitar o no permitir el acceso a dicha información. Se exonera a FINQUES FARNÓS SL de responsabilidad ante cualquier daño o perjuicio que pudiera sufrir el Usuario como consecuencia de errores, defectos u omisiones, en la información facilitada por FINQUES FARNÓS SL siempre que proceda de fuentes ajenas a FINQUES FARNÓS SL.
   cookies:
     title: Cookies
     text: Este sitio web no utiliza cookies, considerando tales ficheros físicos como información alojados en el propio Terminal del usuario y sirven para facilitar la navegación del usuario por el portal. De todas formas, el usuario tiene posibilidad de configurar el navegador de tal modo que impida la instalación de estos archivos.
@@ -127,7 +137,7 @@ legal:
 
 credits:
   text: |
-    Esta página ha sido desarrollada por <a href="http://www.flux.cat">Flux</a> con <a href="http://www.w3.org/TR/html5">HTML5</a> utilizando el framework PHP <a href="http://www.symfony.com">Symfony2</a> y una pila de tecnologías web.</p>
+    Esta página ha sido desarrollada por <a href="http://www.flux.cat">Flux</a> con <a href="http://www.w3.org/TR/html5">HTML5</a> utilizando el framework PHP <a href="http://www.symfony.com">Symfony2</a> y una pila moderna de tecnologías web.</p>
     <p>El diseño gráfico ha sido realizado por <a href="http://www.gonellcomunicacio.com">Gonell Comunicació</a>.</p>
     <p>Todos los derechos reservados.</p>
     <p>&copy; Finques Farnós, SL.
