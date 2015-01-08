@@ -1,8 +1,8 @@
 menu:
-  home: inicio
-  properties: inmuebles
-  about: quien somos
-  contact: contacto
+  home: Inicio
+  properties: Inmuebles
+  about: Quien somos
+  contact: Contacto
 
 frontend:
   privacy: privacidad
@@ -11,6 +11,10 @@ frontend:
 
 homepage:
   property:
+    banner:
+      main: el inmueble que buscas a finques farnós
+      years: 30 años · 1984-2014
+    noitems: lo sentimos, todavía no tenemos ningún inmueble destacado disponible en esta página
     before: antes
     since: desde
     rooms: habitaciones
@@ -20,9 +24,11 @@ homepage:
       discount: rebajado
 
 properties:
+  heading:
+    title: aquí encontrarás tu inmueble
   searching: obteniendo resultados
   list:
-    empty: ningún resultado encontrado
+    empty: no se ha encontrado ningún resultado
     button:
       more: más información
       back: volver al listado
@@ -30,16 +36,20 @@ properties:
       next: siguiente
   form:
     type: tipo
+    city: población
     area: superficie
     rooms: habitaciones
     price: o más
     search: buscar
+    results: resultados obtenidos
     select:
-      any: cualquier tipo
+      any:
+        type: cualquier tipo
+        city: cualquier población
 
 property:
   localization: localitzación
-  form: ¿tienes alguna duda sobre este inmueble?
+  form: solicitud de contacto
   energy:
     efficiency: eficiencia energética
     noclass: sin clasificación
