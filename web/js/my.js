@@ -112,10 +112,10 @@ angular.module('propertiesApp')
             $scope.rooms = 0; //5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
             $scope.price = 0; //60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
 
-            $log.log('init propertiesFormFilter', $scope.form);
+//            $log.log('init propertiesFormFilter', $scope.form);
 //            $log.log('init filteredProperties', $scope.properties);
-            $log.log('init type', $scope.type);
-            $log.log('init city', $scope.city);
+//            $log.log('init type', $scope.type);
+//            $log.log('init city', $scope.city);
 //            $log.log('init area', $scope.area);
 //            $log.log('init rooms', $scope.rooms);
 //            $log.log('init price', $scope.price);
