@@ -33,7 +33,7 @@ class Property extends Base
     private $categories;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties", fetch="EAGER")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="type_id", referencedColumnName="id")})
      * @var Type
      */
@@ -92,7 +92,7 @@ class Property extends Base
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="properties", fetch="EAGER")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="city_id", referencedColumnName="id")})
      * @var City
      */
