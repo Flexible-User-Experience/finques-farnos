@@ -44,7 +44,7 @@ class ImagePropertyAdmin extends BaseAdmin
                     'sonata_help' => $imageHelp, // use 'sonata_help' when it is included by a parent relationship
                     'help' => $imageHelp,
                 ))
-            ->add('metaTitle', null, array('label' => 'Títol (SEO)'))
+//            ->add('metaTitle', null, array('label' => 'Títol (SEO)'))
             ->add('metaAlt', null, array('label' => 'Alt (SEO)'))
             ->end()
 //            ->with('Traduccions', array('class' => 'col-md-6'))
@@ -129,6 +129,6 @@ class ImagePropertyAdmin extends BaseAdmin
         /** @var UploaderHelper $vus */
         $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
 
-        return ($this->getSubject() ? $this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '100x60').'" class="admin-preview" alt=""/>' : '' : '').'<span style="width:100%;display:block;">Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px.</span>';
+        return ($this->getSubject() ? $this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '100x60').'" class="admin-preview" alt=""/>' : '' : '');
     }
 }
