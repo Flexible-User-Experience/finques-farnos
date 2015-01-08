@@ -2,6 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\EventListener;
 
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use FinquesFarnos\AppBundle\Entity\Property;
@@ -68,14 +69,16 @@ class DoctrineListeners
         $entity = $args->getEntity();
 
         if ($entity instanceof Property) {
-            /** @var ImageProperty $image */
-            $image = $entity->getFirstEnabledImage();
-            if ($image) {
-                $entity->setVirtualFirstEnabledImageUrl($this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '373x192'));
+            /** @var EntityManager $em */
+            $em = $args->getEntityManager();
+            /** @var ImageProperty $enabledImagesSortedByPosition */
+            $enabledImagesSortedByPosition = $em->getRepository('AppBundle:ImageProperty')->getFirstEnabledImageOfPropertyId($entity->getId());
+            if ($enabledImagesSortedByPosition) {
+                $entity->setVirtualFirstEnabledImageUrl($this->cm->generateUrl($this->uh->asset($enabledImagesSortedByPosition, 'imageFile'), '373x192'));
             }
-        } else if ($entity instanceof ImageProperty) {
-            /** @var ImageProperty $entity */
-            $entity->setMetaAlt($entity->getMetaAlt() ? $entity->getMetaAlt() : $entity->getProperty()->getName());
+//        } else if ($entity instanceof ImageProperty) {
+//            /** @var ImageProperty $entity */
+//            $entity->setMetaAlt($entity->getMetaAlt() ? $entity->getMetaAlt() : $entity->getProperty()->getName());
         }
     }
 }

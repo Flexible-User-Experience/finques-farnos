@@ -27,7 +27,7 @@ class Property extends Base
     const SHOW_MAP_AREA = 2;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"})
      * @var ArrayCollection
      */
     private $categories;
@@ -40,7 +40,7 @@ class Property extends Base
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist", "remove"}, orphanRemoval=true, fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      * @var ArrayCollection
      */
@@ -49,7 +49,7 @@ class Property extends Base
     /**
      * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=true)
      * @JMS\Groups({"api"})
-     * @Assert\Regex("/\s/", match=false, message="Espai en blanc invàlid")
+     * @Assert\Regex("/^[0-9a-zA-Z]+$/", match=true, message="Només lletres i números, sense caràcters especials")
      * @var string
      */
     private $reference;

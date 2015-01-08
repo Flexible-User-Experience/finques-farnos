@@ -34,7 +34,7 @@ angular.module('propertiesApp')
             var deferred = $q.defer();
             $http.get(Routing.generate('api_properties_api_filtered', {type: $scope.type.id, city: $scope.city.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
-                    $log.log('getProperties', response.length, 'fetched');
+                    $log.log('[getProperties]', response.length, 'properties fetched');
                     $scope.properties = response;
                     deferred.resolve(response);
                 })
@@ -112,10 +112,10 @@ angular.module('propertiesApp')
             $scope.rooms = 0; //5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
             $scope.price = 0; //60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
 
-            $log.log('init propertiesFormFilter', $scope.form);
+//            $log.log('init propertiesFormFilter', $scope.form);
 //            $log.log('init filteredProperties', $scope.properties);
-            $log.log('init type', $scope.type);
-            $log.log('init city', $scope.city);
+//            $log.log('init type', $scope.type);
+//            $log.log('init city', $scope.city);
 //            $log.log('init area', $scope.area);
 //            $log.log('init rooms', $scope.rooms);
 //            $log.log('init price', $scope.price);

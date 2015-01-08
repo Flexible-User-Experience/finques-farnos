@@ -51,8 +51,9 @@
                     <div class="col-md-4">
                         <hr class="hr-homepage">
                         <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
-                            {% if property.firstEnabledImage %}
-                                <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(property.firstEnabledImage, 'imageFile') | imagine_filter('373x270') }}" alt="{{ property.firstEnabledImage.metaAlt }}" title="{{ property.firstEnabledImage.metaTitle }}"></a>
+                            {% if property.images | length > 0 %}
+                                {% set image = property.images[0] %}
+                                <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('373x270') }}" alt="{{ image.metaAlt }}" title="{{ image.metaTitle }}"></a>
                             {% endif %}
                             <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
                                 <div class="caption">

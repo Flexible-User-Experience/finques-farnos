@@ -13,4 +13,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class ImagePropertyRepository extends EntityRepository
 {
+    /**
+     * Get enabled items sorted by position array result
+     *
+     * @param int $id propertyId
+     *
+     * @return array
+     */
+    public function getFirstEnabledImageOfPropertyId($id)
+    {
+        return $this->createQueryBuilder('i')
+            ->where('i.enabled = :enabled')
+            ->andWhere('i.property = :id')
+            ->setParameter('enabled', true)
+            ->setParameter('id', $id)
+            ->orderBy('i.position', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }
