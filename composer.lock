@@ -2511,17 +2511,17 @@
         },
         {
             "name": "liip/imagine-bundle",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "target-dir": "Liip/ImagineBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipImagineBundle.git",
-                "reference": "5838f67a4fd31a459bb23066f3b6264f78dd083a"
+                "reference": "7e71457fc3d48b0f54daf69afea92d07b9a3bac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/5838f67a4fd31a459bb23066f3b6264f78dd083a",
-                "reference": "5838f67a4fd31a459bb23066f3b6264f78dd083a",
+                "url": "https://api.github.com/repos/liip/LiipImagineBundle/zipball/7e71457fc3d48b0f54daf69afea92d07b9a3bac0",
+                "reference": "7e71457fc3d48b0f54daf69afea92d07b9a3bac0",
                 "shasum": ""
             },
             "require": {
@@ -2581,7 +2581,7 @@
                 "image",
                 "imagine"
             ],
-            "time": "2014-12-10 13:01:07"
+            "time": "2015-01-08 16:27:08"
         },
         {
             "name": "michelf/php-markdown",
