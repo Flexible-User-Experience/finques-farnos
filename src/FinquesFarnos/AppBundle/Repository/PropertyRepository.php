@@ -93,25 +93,26 @@ class PropertyRepository extends EntityRepository
     /**
      * Filter properties by
      *
-     * @param int|string $type
+     * @param int $type
+     * @param int $city
      * @param int $area
      * @param int $rooms
      * @param int $price
      *
      * @return ArrayCollection
      */
-    public function filterBy($type, $area, $rooms, $price)
+    public function filterBy($type, $city, $area, $rooms, $price)
     {
         /** @var QueryBuilder $qb */
         $qb = $this->createQueryBuilder('p')
 //            ->select('p, i')
+//            ->leftJoin('p.images', 'i')
+//            ->andWhere('i.enabled = :enabled')
             ->select('p')
             ->where('p.enabled = :enabled')
-//            ->leftJoin('p.images', 'i')
             ->andWhere('p.squareMeters >= :area')
             ->andWhere('p.rooms >= :rooms')
             ->andWhere('p.price >= :price')
-//            ->andWhere('i.enabled = :enabled')
             ->setParameters(array(
                     'enabled' => true,
                     'area' => $area,
@@ -123,6 +124,9 @@ class PropertyRepository extends EntityRepository
             ->addOrderBy('p.totalVisits', 'DESC');
         if ($type > 0) {
             $qb->andWhere('p.type = :type')->setParameter('type', $type);
+        }
+        if ($city > 0) {
+            $qb->andWhere('p.city = :city')->setParameter('city', $city);
         }
 
         return $qb->getQuery()->getResult();

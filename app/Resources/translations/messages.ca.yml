@@ -36,12 +36,16 @@ properties:
       next: següent
   form:
     type: tipus
+    city: població
     area: superfície
     rooms: habitacions
     price: o més
     search: buscar
+    results: resultats obtinguts
     select:
-      any: qualsevol tipus
+      any:
+        type: qualsevol tipus
+        city: qualsevol població
 
 property:
   localization: localització
@@ -53,14 +57,14 @@ property:
 
 about:
   left:
-    main: <strong>Finques Farnós</strong> inicia la seva trajectòria professional el 1984 com empresa familiar, oferint els seus serveis immobiliaris des d'<strong>Amposta</strong> al <strong>Delta</strong> i <strong>Terres de l'Ebre</strong>, amb una continuitat des d'aleshores, que garantitza el coneixement de la professió.
+    main: Finques Farnós inicia la seva trajectòria professional el 1984 com empresa familiar, oferint els seus serveis immobiliaris des d'Amposta al Delta i Terres de l'Ebre, amb una continuitat des d'aleshores, que garantitza el coneixement de la professió.
   right:
     company:
       title: empresa
       text: |
         La nostra filosofia es basa en actuar amb total transparència, treballant amb professionalitat i honradesa, d'aquesta manera aconseguim que la nostra gestió deixi satisfets a compradors i venedors.<br><br>
         L'experiència, capacitació tècnica i professional, ens permet oferir un servei de qualitat avalat per la confiança que els nostres clients han dipositat en la nostra gestió durant tots aquests anys.<br><br>
-        A <strong>Finques Farnós</strong> som <a target="_blank" href="http://www.apitarragona.com">Agents de la Propietat Immobiliària (API)</a> una garantia més que avala la nostra professionalitat i formació acadèmica.
+        A Finques Farnós som <a target="_blank" href="http://www.apitarragona.com">Agents de la Propietat Immobiliària (API)</a> una garantia més que avala la nostra professionalitat i formació acadèmica.
     services:
       title: els nostres serveis
       text: |

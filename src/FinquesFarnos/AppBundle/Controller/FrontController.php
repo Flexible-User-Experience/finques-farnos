@@ -44,6 +44,7 @@ class FrontController extends Controller
         $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
                 // TODO: make dynamic & adaptative
                 'type' => $filters['types'][0]['id'],
+                'city' => $filters['cities'][0]['id'],
                 'area' => 0, //intval(ceil(($filters['area']['max'] - $filters['area']['min']) / 2) + $filters['area']['min']),
                 'rooms' => 0, //intval(ceil(($filters['rooms']['max'] - $filters['rooms']['min']) / 2) + $filters['rooms']['min']),
                 'price' => 0, //intval(ceil(($filters['price']['max'] -$filters['price']['min']) / 2) + $filters['price']['min']),

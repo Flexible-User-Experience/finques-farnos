@@ -113,6 +113,7 @@ class PropertyAdmin extends BaseAdmin
                         'sortable'  => 'position',
                     ))
                 ->end();
+            $formMapper->setHelps(array('images' => 'Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px'));
         }
         $formMapper
             ->with('Geolocalització', array('class' => 'col-md-6'))

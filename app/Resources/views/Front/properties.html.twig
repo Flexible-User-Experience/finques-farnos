@@ -28,6 +28,11 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="propertyCity" class="control-label">{{ 'properties.form.city' | trans | upper }}</label>
+                            <select id="propertyCity" class="form-control" data-ng-model="city" required="required" data-ng-options="c.name for c in form.cities" data-ng-change="formListener()">
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="propertyArea" class="control-label">[[ area ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
                             <input id="propertyArea" type="range" name="propertyArea" min="40" max="300" data-ng-model="area" value="[[ area ]]" step="10">
                             {#<input id="propertyArea" type="range" name="propertyArea" min="[[ form.area.min ]]" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="[[ form.area.step ]]">#}
@@ -46,6 +51,9 @@
                             {#<output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>#}
                         </div>
                         {#<button type="submit" class="btn btn-primary">{{ 'properties.form.search' | trans | raw }}</button>#}
+                        <div class="form-group">
+                            <p data-ng-show="properties.length > 1" class="form-control-static c-orange">[[ properties.length ]] {{ 'properties.form.results' | trans | lower }}</p>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -14,11 +14,11 @@ use Doctrine\ORM\EntityRepository;
 class TypeRepository extends EntityRepository
 {
     /**
-     * Get enabled array result filters
+     * Get enabled items array result
      *
      * @return array
      */
-    public function getEnabledArrayResultFilters()
+    public function getEnabledArrayResultItems()
     {
         return $this->createQueryBuilder('t')
             ->select('t.id, t.name')
@@ -30,11 +30,25 @@ class TypeRepository extends EntityRepository
     }
 
     /**
-     * Get enabled filters
+     * Get enabled items
      *
      * @return array
      */
-    public function getEnabledFilters()
+    public function getEnabledItems()
+    {
+        return $this->createQueryBuilder('t')
+            ->where('t.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Get enabled items sorted by name
+     *
+     * @return array
+     */
+    public function getEnabledItemsSortedByName()
     {
         return $this->createQueryBuilder('t')
             ->where('t.enabled = :enabled')

@@ -29,8 +29,10 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      */
     public function propertiesFormFilterAction()
     {
-        $types = array(array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any')));
-        $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledFilters();
+        $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsSortedByNameArrayResult();
+        array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
+        $types = array(array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.type')));
+        $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledItemsSortedByName();
         // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
         /** @var Type $type */
         foreach ($typesCollection as $type) {
@@ -39,7 +41,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
             'types' => $types,
-//            'area' => array('min' => intval($filters['min_area']), 'max' => intval($filters['max_area'])),
+            'cities' => $cities,
             'area' => array('min' => 0, 'max' => intval($filters['max_area'])),
             'rooms' => array('min' => 0, 'max' => intval($filters['max_rooms'])),
             'price' => array('min' => 0, 'max' => intval($filters['max_price'])),
@@ -52,7 +54,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * Get filtered properties
      *
      * @Rest\View(serializerGroups={"api"})
-     * @Rest\Get("/get-properties-filtered/{type}/{area}/{rooms}/{price}", options={"expose"=true})
+     * @Rest\Get("/get-properties-filtered/{type}/{city}/{area}/{rooms}/{price}", options={"expose"=true})
      *
      * @ApiDoc(
      *  section="Properties",
@@ -61,16 +63,17 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * )
      *
      * @param int $type
+     * @param int $city
      * @param int $area
      * @param int $rooms
      * @param int $price
      *
      * @return mixed
      */
-    public function propertiesFilteredAction($type, $area, $rooms, $price)
+    public function propertiesFilteredAction($type, $city, $area, $rooms, $price)
     {
         if ($area !== 'undefined' && $rooms !== 'undefined' && $price !== 'undefined') {
-            return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $area, $rooms, $price);
+            return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $city, $area, $rooms, $price);
         }
 
         return array();
