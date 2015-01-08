@@ -51,6 +51,9 @@
                             {#<output name="priceAmount" for="propertyPrice">[[ getCurrency(price) ]] &euro;</output>#}
                         </div>
                         {#<button type="submit" class="btn btn-primary">{{ 'properties.form.search' | trans | raw }}</button>#}
+                        <div class="form-group">
+                            <p data-ng-show="properties.length > 1" class="form-control-static c-orange">[[ properties.length ]] {{ 'properties.form.results' | trans | lower }}</p>
+                        </div>
                     </form>
                 </div>
             </div>

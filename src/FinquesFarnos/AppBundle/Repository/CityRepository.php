@@ -14,17 +14,18 @@ use Doctrine\ORM\EntityRepository;
 class CityRepository extends EntityRepository
 {
     /**
-     * Get enabled items sorted by name
+     * Get enabled items sorted by name array result
      *
      * @return array
      */
-    public function getEnabledItemsSortedByName()
+    public function getEnabledItemsSortedByNameArrayResult()
     {
         return $this->createQueryBuilder('c')
+            ->select('c.id, c.name')
             ->where('c.enabled = :enabled')
             ->setParameter('enabled', true)
             ->orderBy('c.name', 'ASC')
             ->getQuery()
-            ->getResult();
+            ->getArrayResult();
     }
 }

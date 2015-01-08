@@ -41,8 +41,11 @@ properties:
     rooms: habitacions
     price: o més
     search: buscar
+    results: resultats obtinguts
     select:
-      any: qualsevol tipus
+      any:
+        type: qualsevol tipus
+        city: qualsevol població
 
 property:
   localization: localització
