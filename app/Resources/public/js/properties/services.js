@@ -9,7 +9,6 @@ angular.module('propertiesApp')
                 .success(function(response) {
                     $log.log('[getProperties]', response.length, 'properties fetched');
                     $scope.properties = response;
-                    $log.log('[getProperties]', $scope.properties);
                     deferred.resolve(response);
                 })
                 .error(function(data) {
