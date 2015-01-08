@@ -49,7 +49,7 @@ class Property extends Base
     /**
      * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=true)
      * @JMS\Groups({"api"})
-     * @Assert\Regex("/\s/", match=false, message="Espai en blanc invàlid")
+     * @Assert\Regex("/^[0-9a-zA-Z]+$/", match=true, message="Només lletres i números, sense caràcters especials")
      * @var string
      */
     private $reference;
