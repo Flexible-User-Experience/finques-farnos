@@ -27,20 +27,20 @@ class Property extends Base
     const SHOW_MAP_AREA = 2;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"}, fetch="EAGER")
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"})
      * @var ArrayCollection
      */
     private $categories;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="type_id", referencedColumnName="id")})
      * @var Type
      */
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist", "remove"}, orphanRemoval=true, fetch="EAGER")
+     * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      * @var ArrayCollection
      */
@@ -92,7 +92,7 @@ class Property extends Base
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity="City", inversedBy="properties", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="properties")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="city_id", referencedColumnName="id")})
      * @var City
      */

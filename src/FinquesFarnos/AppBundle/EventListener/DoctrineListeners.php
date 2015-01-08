@@ -69,13 +69,13 @@ class DoctrineListeners
 
         if ($entity instanceof Property) {
             /** @var ImageProperty $image */
-            $image = $entity->getFirstEnabledImage();
-            if ($image) {
-                $entity->setVirtualFirstEnabledImageUrl($this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '373x192'));
-            }
+//            $image = $entity->getFirstEnabledImage();
+//            if ($image) {
+//                $entity->setVirtualFirstEnabledImageUrl($this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '373x192'));
+//            }
         } else if ($entity instanceof ImageProperty) {
             /** @var ImageProperty $entity */
-            $entity->setMetaAlt($entity->getMetaAlt() ? $entity->getMetaAlt() : $entity->getProperty()->getName());
+//            $entity->setMetaAlt($entity->getMetaAlt() ? $entity->getMetaAlt() : $entity->getProperty()->getName());
         }
     }
 }

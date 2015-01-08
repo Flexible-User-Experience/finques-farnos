@@ -25,8 +25,13 @@ class PropertyRepository extends EntityRepository
     public function getHomepageItems()
     {
         return $this->createQueryBuilder('p')
+            ->select('p, i, t, c')
             ->where('p.enabled = :enabled')
             ->andWhere('p.showInHomepage = :enabled')
+            ->andWhere('i.enabled = :enabled')
+            ->leftJoin('p.images', 'i')
+            ->leftJoin('p.type', 't')
+            ->leftJoin('p.categories', 'c')
             ->setParameter('enabled', true)
             ->orderBy('p.price', 'ASC')
             ->getQuery()
