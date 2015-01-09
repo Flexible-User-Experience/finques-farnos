@@ -144,20 +144,22 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         } else {
             $builder->MultiCell(115, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
         }
+
         $this->setBodyTextAndColor($builder);
         $builder->setLineStyle(array('width' => 0.25, 'cap' => 'square', 'join' => 'miter', 'color' => array(100, 100, 100)));
         $builder->setCellPaddings(0, 0, 0, 0);
+        $builder->MultiCell(115, 1, '', 0, 'L', false, 1);
         if ($property->getSquareMeters()) {
             $builder->MultiCell(33, 15, $property->getSquareMeters() . ' m²', 'L', 'C', 0, 0, '', '', true, 0, false, true, 17, 'B');
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'casa_color.png', 26, $y + 32);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'casa_color.png', 26, $y + 37);
         }
         if ($property->getRooms()) {
             $builder->MultiCell(33, 15, $property->getRooms() . ' ' . $this->getTrans('homepage.property.rooms'), 'L', 'C', 0, 0, '', '', true, 0, false, true, 17, 'B');
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'dormitoris_color.png', 60, $y + 32);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'dormitoris_color.png', 60, $y + 37);
         }
         if ($property->getBathrooms()) {
             $builder->MultiCell(33, 15, $property->getBathrooms() . ' ' . $this->getTrans('homepage.property.bathrooms'), 'L', 'C', 0, 0, '', '', true, 0, false, true, 17, 'B');
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'banys_color.png', 93, $y + 32);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'banys_color.png', 93, $y + 37);
 
         }
         $builder->MultiCell(33, 15, '', 0, 'C', 0, 1, '', '', true, 0, false, true, 17, 'B');
@@ -169,7 +171,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $builder->SetY($y + 5);
         $builder->SetFont('helvetica', 'B', 18, '', true);
         $this->setGreyColor($builder);
-        $builder->MultiCell(55, 0, strtoupper($this->getTrans('property.energy.efficiency')), 0, 'L', false, 2, 140, $y + 5);
+        $builder->MultiCell(55, 0, $this->getTrans('property.energy.efficiency'), 0, 'L', false, 2, 140, $y + 5);
         $builder->SetFont('helvetica', '', 12, '', true);
         if ($property->getEnergyClass() == 0) {
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 140, $y + 23);
