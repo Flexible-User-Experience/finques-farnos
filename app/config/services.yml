@@ -17,7 +17,12 @@ services:
         arguments: [ @orkestra.pdf.factory_registry, @templating ]
     app.property_web_pdf_generator:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyWebPdfGenerator
-        arguments: [ @orkestra.pdf.factory_registry, @templating ]
+        arguments:
+            - @orkestra.pdf.factory_registry
+            - @templating
+            - @liip_imagine.cache.manager
+            - @vich_uploader.templating.helper.uploader_helper
+            - "%kernel.root_dir%"
 
 # Sonata Admin
     sonata.admin.slide:

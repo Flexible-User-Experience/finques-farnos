@@ -2,9 +2,14 @@
 
 namespace FinquesFarnos\AppBundle\PdfGenerator;
 
+use FinquesFarnos\AppBundle\Entity\ImageProperty;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Orkestra\Bundle\PdfBundle\Factory\FactoryRegistryInterface;
 use Orkestra\Bundle\PdfBundle\Generator\AbstractPdfGenerator;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use FinquesFarnos\AppBundle\Entity\Property;
+use Symfony\Component\Templating\EngineInterface;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
  * PropertyWebPdfGenerator class
@@ -15,6 +20,29 @@ use FinquesFarnos\AppBundle\Entity\Property;
  */
 class PropertyWebPdfGenerator extends AbstractPdfGenerator
 {
+    /**
+     * @var CacheManager $cm
+     */
+    private $cm;
+
+    /**
+     * @var UploaderHelper $uh
+     */
+    private $uh;
+
+    /**
+     * @var string $krd kernel root dir
+     */
+    private $krd;
+
+    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, CacheManager $cm, UploaderHelper $uh, $krd)
+    {
+        parent::__construct($factoryRegistry, $templatingEngine);
+        $this->cm = $cm;
+        $this->uh = $uh;
+        $this->krd = $krd;
+    }
+
     /**
      * Performs the PDF generation
      *
@@ -34,7 +62,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         /** @var \TCPDF $builder */
         $builder = $pdf->getNativeObject();
         $builder->SetAuthor('Finques Farnós, S.L.');
-        $builder->SetTitle('Immoble '.$property->getReference());
+        $builder->SetTitle('Ref_' . $property->getReference() . '_' . $property->getName());
         $builder->SetSubject('Immoble en PDF');
         $builder->SetKeywords('PDF, immoble');
         $builder->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH);
@@ -54,6 +82,24 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $builder->Header();
 
         // BODY
+        // --> images
+        $row = 0;
+        $col = 0;
+        /** @var ImageProperty $image */
+        foreach ($property->getImages() as $image) {
+            if ($image->getEnabled()) {
+                $builder->Image($this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), $builder->getMargins()['left'] + $col * 50, 35 + $row * 43, 50, 43);
+
+//                $builder->MultiCell(115, 0, $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), 0, 'L', false, 1);
+//                $builder->MultiCell(115, 0, $this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '757x450'), 0, 'L', false, 1);
+                $col++;
+                if ($col > 2) {
+                    $col = 0;
+                    $row++;
+                }
+            }
+        }
+        // --> text
         $builder->setCellPaddings(0, 0, 0, 1);
         $this->drawBrandLine($builder, 130);
         $builder->SetX($builder->getMargins()['left'] - 2);
