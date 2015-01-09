@@ -16,11 +16,9 @@ class CustomTcpdf extends \TCPDF
      */
     public function Header()
     {
-        $this->setGreyColor();
-        $this->SetFont('helvetica', 'B', 30, '', true);
-        $this->Text(35, 15, 'Finques Farnós');
         $this->SetY(30);
         $this->drawBrandLine($this->GetY());
+        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-ff.png', $this->getMargins()['left'], 5, 0, 0, 'PNG', 'http://www.finquesfarnos.com', '', false, 150);
     }
 
     /**
