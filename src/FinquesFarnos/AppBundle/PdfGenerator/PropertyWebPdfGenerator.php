@@ -7,13 +7,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use FinquesFarnos\AppBundle\Entity\Property;
 
 /**
- * PropertyGenerator class
+ * PropertyWebPdfGenerator class
  *
  * @category PdfGenerator
  * @package  FinquesFarnos\AppBundle\PdfGenerator
  * @author   David Romaní <david@flux.cat>
  */
-class PropertyGenerator extends AbstractPdfGenerator
+class PropertyWebPdfGenerator extends AbstractPdfGenerator
 {
     /**
      * Performs the PDF generation
