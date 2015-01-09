@@ -88,10 +88,15 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         /** @var ImageProperty $image */
         foreach ($property->getImages() as $image) {
             if ($image->getEnabled() && $row < 2) {
-                $builder->Image($this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), $builder->getMargins()['left'] + $col * 62, 35 + $row * 47, 57, 43);
-
-//                $builder->MultiCell(115, 0, $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), 0, 'L', false, 1);
-//                $builder->MultiCell(115, 0, $this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '757x450'), 0, 'L', false, 1);
+                $builder->Image(
+                    $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'),
+                    $builder->getMargins()['left'] + $col * 62, // abscissa of the upper-left corner
+                    37 + $row * 48,                             // ordinate of the upper-left corner
+                    57,                                         // width
+                    43,                                         // height
+                    '',                                         // image file extension
+                    $this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '757x450') // link
+                   );
                 $col++;
                 if ($col > 2) {
                     $col = 0;
@@ -99,11 +104,15 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
                 }
             }
         }
+        if ($row > 1) {
+            $row = 1;
+        }
         // --> text
+        $y = 39 + ($row + 1) * 48; //135;
         $builder->setCellPaddings(0, 0, 0, 1);
-        $this->drawBrandLine($builder, 130);
+        $this->drawBrandLine($builder, $y);
         $builder->SetX($builder->getMargins()['left'] - 2);
-        $builder->SetY(135);
+        $builder->SetY($y + 5);
         $builder->SetFont('helvetica', '', 18, '', true);
         $this->setGreyColor($builder);
         $builder->MultiCell(115, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
