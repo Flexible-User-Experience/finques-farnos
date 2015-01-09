@@ -171,6 +171,7 @@ class PropertyAdmin extends BaseAdmin
                         'edit' => array(),
                         'visit' => array('template' => '::Admin/list__action_property_visit_button.html.twig'),
                         'pdf' => array('template' => '::Admin/list__action_property_pdf_button.html.twig'),
+                        'delete' => array(),
                     ),
                     'label' => 'Accions',
                 ));

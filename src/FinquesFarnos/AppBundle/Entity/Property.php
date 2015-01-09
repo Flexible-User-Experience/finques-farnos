@@ -585,6 +585,16 @@ class Property extends Base
     }
 
     /**
+     * Get decoreted Price
+     *
+     * @return float
+     */
+    public function getDecoratedOldPrice()
+    {
+        return number_format($this->getOldPrice(), 0, '\'', '.') . ' €';
+    }
+
+    /**
      * Set Rooms
      *
      * @param int $rooms rooms

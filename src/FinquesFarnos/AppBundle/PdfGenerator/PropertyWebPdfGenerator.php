@@ -129,7 +129,12 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $builder->MultiCell(115, 0, $property->getName(), 0, 'L', false, 1);
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
-            $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
+            if ($property->getOldPrice()) {
+                $builder->MultiCell(115, 0, $property->getDecoratedPrice() . ' ' . $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), 0, 'L', false, 1);
+//                $builder->MultiCell(155, 0, $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 0);
+            } else {
+                $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
+            }
         } else {
             $builder->MultiCell(115, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
         }
@@ -195,7 +200,6 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
      * Get translation helper
      *
      * @param $msg
-     * @param $lang
      *
      * @return string
      */
