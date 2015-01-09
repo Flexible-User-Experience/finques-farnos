@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use FinquesFarnos\AppBundle\Entity\Property;
 use Symfony\Component\Templating\EngineInterface;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 
 /**
  * PropertyWebPdfGenerator class
@@ -20,6 +21,11 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
  */
 class PropertyWebPdfGenerator extends AbstractPdfGenerator
 {
+    /**
+     * @var Translator
+     */
+    private $translator;
+
     /**
      * @var CacheManager $cm
      */
@@ -35,9 +41,10 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
      */
     private $krd;
 
-    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, CacheManager $cm, UploaderHelper $uh, $krd)
+    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, Translator $translator, CacheManager $cm, UploaderHelper $uh, $krd)
     {
         parent::__construct($factoryRegistry, $templatingEngine);
+        $this->translator = $translator;
         $this->cm = $cm;
         $this->uh = $uh;
         $this->krd = $krd;
@@ -85,32 +92,52 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         // --> images
         $row = 0;
         $col = 0;
+        $items = 0;
         /** @var ImageProperty $image */
         foreach ($property->getImages() as $image) {
-            if ($image->getEnabled() && $row < 2) {
-                $builder->Image($this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), $builder->getMargins()['left'] + $col * 62, 35 + $row * 47, 57, 43);
-
-//                $builder->MultiCell(115, 0, $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), 0, 'L', false, 1);
-//                $builder->MultiCell(115, 0, $this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '757x450'), 0, 'L', false, 1);
-                $col++;
+            if ($image->getEnabled() && $items < 6) {
                 if ($col > 2) {
                     $col = 0;
                     $row++;
                 }
+                $builder->Image(
+                    $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'),
+                    $builder->getMargins()['left'] + $col * 62, // abscissa of the upper-left corner
+                    37 + $row * 48,                             // ordinate of the upper-left corner
+                    57,                                         // width
+                    43,                                         // height
+                    '',                                         // image file extension
+                    $this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '757x450') // link
+                   );
+                $col++;
             }
+            $items++;
+        }
+        if ($row > 1) {
+            $row = 1;
         }
         // --> text
+        $y = 39 + ($row + 1) * 48; //135;
         $builder->setCellPaddings(0, 0, 0, 1);
-        $this->drawBrandLine($builder, 130);
+        $this->drawBrandLine($builder, $y);
         $builder->SetX($builder->getMargins()['left'] - 2);
-        $builder->SetY(135);
+        $builder->SetY($y + 5);
         $builder->SetFont('helvetica', '', 18, '', true);
         $this->setGreyColor($builder);
         $builder->MultiCell(115, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 18, '', true);
         $builder->MultiCell(115, 0, $property->getName(), 0, 'L', false, 1);
         $this->setOrangeColor($builder);
-        $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
+        if ($property->getShowPriceOnlyWithNumbers()) {
+            if ($property->getOldPrice()) {
+                $builder->MultiCell(115, 0, $property->getDecoratedPrice() . ' ' . $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), 0, 'L', false, 1);
+//                $builder->MultiCell(155, 0, $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 0);
+            } else {
+                $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
+            }
+        } else {
+            $builder->MultiCell(115, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
+        }
         $this->setBodyTextAndColor($builder);
         $builder->MultiCell(115, 5, '', 0, 'L', false, 1);
         $builder->MultiCell(115, 0, $property->getDescription(), 0, 'L', false, 1);
@@ -167,5 +194,21 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
     {
         /** @var \TCPDF $builder */
         $builder->SetTextColor(100, 100, 100);
+    }
+
+    /**
+     * Get translation helper
+     *
+     * @param $msg
+     *
+     * @return string
+     */
+    private function getTrans($msg)
+    {
+        return $this->translator->trans(
+            $msg,
+            array(),
+            'messages'
+        );
     }
 }

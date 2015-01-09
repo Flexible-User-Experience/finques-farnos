@@ -20,6 +20,7 @@ services:
         arguments:
             - @orkestra.pdf.factory_registry
             - @templating
+            - @translator.default
             - @liip_imagine.cache.manager
             - @vich_uploader.templating.helper.uploader_helper
             - "%kernel.root_dir%"
