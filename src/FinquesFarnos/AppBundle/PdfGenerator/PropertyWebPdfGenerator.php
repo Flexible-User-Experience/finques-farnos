@@ -51,9 +51,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $builder->addPage();
 
         // HEADER
-        $builder->SetTextColor(164, 81, 0);
-        $builder->SetFont('dejavusans', 'B', 30, '', true);
-        $builder->Text(35, 15, 'Finques Farnós');
+        $builder->Header();
 
         // BODY
         $builder->SetTextColor(107, 107, 107);

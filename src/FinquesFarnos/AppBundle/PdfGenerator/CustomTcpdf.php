@@ -16,11 +16,11 @@ class CustomTcpdf extends \TCPDF
      */
     public function Header()
     {
-        // Set font
-        $this->SetFont('dejavusans', 'B', 20);
-        $this->SetTextColor(0, 137, 0);
-        // Title
-        //$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->setGreyColor();
+        $this->SetFont('helvetica', 'B', 30, '', true);
+        $this->Text(35, 15, 'Finques Farnós');
+        $this->SetY(30);
+        $this->drawBrandLine($this->GetY());
     }
 
     /**
