@@ -51,7 +51,7 @@ property:
   localization: localización
   form: solicitud de contacto
   energy:
-    efficiency: eficiencia energética
+    efficiency: EFICIENCIA ENERGÉTICA
     noclass: sin clasificación
     pending: en trámite
 
