@@ -85,9 +85,14 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         // --> images
         $row = 0;
         $col = 0;
+        $items = 0;
         /** @var ImageProperty $image */
         foreach ($property->getImages() as $image) {
-            if ($image->getEnabled() && $row < 2) {
+            if ($image->getEnabled() && $items < 6) {
+                if ($col > 2) {
+                    $col = 0;
+                    $row++;
+                }
                 $builder->Image(
                     $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'),
                     $builder->getMargins()['left'] + $col * 62, // abscissa of the upper-left corner
@@ -98,11 +103,8 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
                     $this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '757x450') // link
                    );
                 $col++;
-                if ($col > 2) {
-                    $col = 0;
-                    $row++;
-                }
             }
+            $items++;
         }
         if ($row > 1) {
             $row = 1;
