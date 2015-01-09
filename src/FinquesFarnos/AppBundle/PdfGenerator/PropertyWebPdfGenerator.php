@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use FinquesFarnos\AppBundle\Entity\Property;
 use Symfony\Component\Templating\EngineInterface;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 
 /**
  * PropertyWebPdfGenerator class
@@ -20,6 +21,11 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
  */
 class PropertyWebPdfGenerator extends AbstractPdfGenerator
 {
+    /**
+     * @var Translator
+     */
+    private $translator;
+
     /**
      * @var CacheManager $cm
      */
@@ -35,9 +41,10 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
      */
     private $krd;
 
-    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, CacheManager $cm, UploaderHelper $uh, $krd)
+    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, Translator $translator, CacheManager $cm, UploaderHelper $uh, $krd)
     {
         parent::__construct($factoryRegistry, $templatingEngine);
+        $this->translator = $translator;
         $this->cm = $cm;
         $this->uh = $uh;
         $this->krd = $krd;
@@ -121,7 +128,11 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $builder->SetFont('helvetica', 'B', 18, '', true);
         $builder->MultiCell(115, 0, $property->getName(), 0, 'L', false, 1);
         $this->setOrangeColor($builder);
-        $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
+        if ($property->getShowPriceOnlyWithNumbers()) {
+            $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
+        } else {
+            $builder->MultiCell(115, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
+        }
         $this->setBodyTextAndColor($builder);
         $builder->MultiCell(115, 5, '', 0, 'L', false, 1);
         $builder->MultiCell(115, 0, $property->getDescription(), 0, 'L', false, 1);
@@ -178,5 +189,22 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
     {
         /** @var \TCPDF $builder */
         $builder->SetTextColor(100, 100, 100);
+    }
+
+    /**
+     * Get translation helper
+     *
+     * @param $msg
+     * @param $lang
+     *
+     * @return string
+     */
+    private function getTrans($msg)
+    {
+        return $this->translator->trans(
+            $msg,
+            array(),
+            'messages'
+        );
     }
 }
