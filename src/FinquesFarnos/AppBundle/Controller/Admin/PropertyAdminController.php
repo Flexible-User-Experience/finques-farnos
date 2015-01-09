@@ -4,7 +4,7 @@ namespace FinquesFarnos\AppBundle\Controller\Admin;
 
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use FinquesFarnos\AppBundle\Entity\Property;
-use FinquesFarnos\AppBundle\PdfGenerator\PropertyGenerator;
+use FinquesFarnos\AppBundle\PdfGenerator\PropertyShowcasePdfGenerator;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -56,8 +56,8 @@ class PropertyAdminController extends Controller
         if (!$object) {
             throw new NotFoundHttpException(sprintf('unable to find the object with ID: %s', $id));
         }
-        /** @var PropertyGenerator $generator */
-        $generator = $this->get('app.property_pdf_generator');
+        /** @var PropertyShowcasePdfGenerator $generator */
+        $generator = $this->get('app.property_showcase_pdf_generator');
         $pdf = $generator->generate(array('property' => $object));
 
         return new Response($pdf->getContents(), 200, array('Content-type' => 'application/pdf'));

@@ -48,7 +48,7 @@ properties:
         city: cualquier población
 
 property:
-  localization: localitzación
+  localization: localización
   form: solicitud de contacto
   energy:
     efficiency: eficiencia energética

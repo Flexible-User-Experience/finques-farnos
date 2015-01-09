@@ -8,11 +8,13 @@ use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
+use FinquesFarnos\AppBundle\PdfGenerator\PropertyWebPdfGenerator;
 use FinquesFarnos\AppBundle\Service\MailerService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class FrontController
@@ -140,6 +142,19 @@ class FrontController extends Controller
                 'localization' => json_encode($localization),
                 'form' => $form->createView(),
             ));
+    }
+
+    /**
+     * @Route("/property/pdf/{id}/", name="front_property_pdf", options={"expose" = false})
+     * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"id": "id"}})
+     */
+    public function propertyPdfAction(Request $request, $property)
+    {
+        /** @var PropertyWebPdfGenerator $generator */
+        $generator = $this->get('app.property_web_pdf_generator');
+        $pdf = $generator->generate(array('property' => $property));
+
+        return new Response($pdf->getContents(), 200, array('Content-type' => 'application/pdf'));
     }
 
     /**

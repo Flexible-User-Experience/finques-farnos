@@ -40,6 +40,9 @@ class DefaultControllerTest extends WebTestCase
             array('/ca/immobles/'),
             array('/es/inmuebles/'),
             array('/en/properties/'),
+            array('/ca/immoble/pdf/1/'),
+            array('/es/inmueble/pdf/1/'),
+            array('/en/property/pdf/1/'),
             array('/ca/qui-som/'),
             array('/es/quien-somos/'),
             array('/en/about-us/'),
@@ -58,6 +61,35 @@ class DefaultControllerTest extends WebTestCase
             array('/ca/credits/'),
             array('/es/creditos/'),
             array('/en/credits/'),
+        );
+    }
+
+    /**
+     * Test page is redirect
+     *
+     * @dataProvider provideRedirectUrls
+     */
+    public function testAdminPagesAreRedirects($url)
+    {
+        $client = static::createClient();
+        $client->request('GET', $url);
+        $this->assertTrue($client->getResponse()->isRedirection());
+    }
+
+    /**
+     * Redirect Urls provider
+     *
+     * @return array
+     */
+    public function provideRedirectUrls()
+    {
+        return array(
+            array('/ca/immoble/anterior/1/'),
+            array('/es/inmueble/anterior/1/'),
+            array('/en/property/previous/1/'),
+            array('/ca/immoble/seguent/1/'),
+            array('/es/inmueble/siguiente/1/'),
+            array('/en/property/next/1/'),
         );
     }
 }

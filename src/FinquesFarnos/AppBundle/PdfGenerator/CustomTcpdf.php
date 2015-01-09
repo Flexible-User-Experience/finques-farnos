@@ -16,11 +16,9 @@ class CustomTcpdf extends \TCPDF
      */
     public function Header()
     {
-        // Set font
-        $this->SetFont('dejavusans', 'B', 20);
-        $this->SetTextColor(0, 137, 0);
-        // Title
-        //$this->Cell(0, 15, '<< TCPDF Example 003 >>', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->SetY(30);
+        $this->drawBrandLine($this->GetY());
+        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-ff.png', $this->getMargins()['left'], 5, 0, 0, 'PNG', 'http://www.finquesfarnos.com', '', false, 150);
     }
 
     /**
@@ -28,11 +26,41 @@ class CustomTcpdf extends \TCPDF
      */
     public function Footer()
     {
-        // Position at 15 mm from bottom
-        $this->SetY(-15);
-        // Set font
-        $this->SetFont('helvetica', 'I', 8);
-        // Page number
-        $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        $this->SetY(-20);
+        $this->SetFont('helvetica', '', 9);
+        $this->setGreyColor();
+        $this->drawBrandLine($this->GetY());
+        $this->setCellPaddings(0, 0, 0, 0);
+        $this->Cell(0, 15, 'C. Corsini 61 · 43870 Amposta · Tarragona · 977 702 721 · info@finquesfarnos.com · www.finquesfarnos.com', 0, false, 'L', 0, '', 0, false, 'T', 'C');
+    }
+
+    public function setOrangeColor()
+    {
+        $this->SetTextColor(216, 111, 36);
+    }
+
+    public function setGreyColor()
+    {
+        $this->SetTextColor(101, 91, 69);
+    }
+
+    public function setBodyTextGreyColor()
+    {
+        $this->SetTextColor(100, 100, 100);
+    }
+
+    public static function brandLineStyle()
+    {
+        return array(
+            'width' => 2,
+            'cap' => 'square',
+            'join' => 'miter',
+            'color' => array(216, 111, 36),
+        );
+    }
+
+    public function drawBrandLine($y)
+    {
+        $this->Line($this->getMargins()['left'], $y, $this->getMargins()['right'], $y, $this->brandLineStyle());
     }
 }
