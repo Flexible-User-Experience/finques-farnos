@@ -11,6 +11,7 @@ use FinquesFarnos\AppBundle\Entity\Property;
 use Symfony\Component\Templating\EngineInterface;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * PropertyWebPdfGenerator class
@@ -21,6 +22,11 @@ use Symfony\Bundle\FrameworkBundle\Translation\Translator;
  */
 class PropertyWebPdfGenerator extends AbstractPdfGenerator
 {
+    /**
+     * @var RouterInterface $router
+     */
+    private $router;
+
     /**
      * @var Translator
      */
@@ -41,9 +47,10 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
      */
     private $krd;
 
-    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, Translator $translator, CacheManager $cm, UploaderHelper $uh, $krd)
+    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, RouterInterface $router, Translator $translator, CacheManager $cm, UploaderHelper $uh, $krd)
     {
         parent::__construct($factoryRegistry, $templatingEngine);
+        $this->router = $router;
         $this->translator = $translator;
         $this->cm = $cm;
         $this->uh = $uh;
@@ -76,7 +83,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $builder->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $builder->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
         $builder->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-        $builder->SetMargins(15, 30, 195); // (left, top, right)
+        $builder->SetMargins(15, 30, 196); // (left, top, right)
         $builder->SetHeaderMargin(PDF_MARGIN_HEADER);
         $builder->SetFooterMargin(PDF_MARGIN_FOOTER);
         $builder->SetAutoPageBreak(false, PDF_MARGIN_BOTTOM);
@@ -116,7 +123,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         if ($row > 1) {
             $row = 1;
         }
-        // --> text
+        // --> left text
         $y = 39 + ($row + 1) * 48; //135;
         $builder->setCellPaddings(0, 0, 0, 1);
         $this->drawBrandLine($builder, $y);
@@ -141,8 +148,22 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $this->setBodyTextAndColor($builder);
         $builder->MultiCell(115, 5, '', 0, 'L', false, 1);
         $builder->MultiCell(115, 0, $property->getDescription(), 0, 'L', false, 1);
+        // --> right text
+        $builder->SetX(120);
+        $builder->SetY($y + 5);
+        $builder->SetFont('helvetica', 'B', 18, '', true);
+        $this->setGreyColor($builder);
+        $builder->MultiCell(55, 0, strtoupper($this->getTrans('property.energy.efficiency')), 0, 'L', false, 2, 140, $y + 5);
 
         // FOOTER
+        $url = $this->router->generate('front_property', array(
+                'type' => $property->getType()->getNameSlug(),
+                'city' => $property->getCity()->getNameSlug(),
+                'name' => $property->getNameSlug(),
+                'reference' => $property->getReference(),
+            ), true);
+        $builder->SetFont('helvetica', '', 9, '', true);
+        $builder->Text($builder->getMargins()['left'], 250, $url);
         $builder->Footer();
 
         // Return the original PDF, calling getContents to retrieve the rendered content
