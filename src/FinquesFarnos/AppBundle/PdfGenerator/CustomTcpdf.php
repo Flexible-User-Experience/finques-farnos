@@ -16,9 +16,8 @@ class CustomTcpdf extends \TCPDF
      */
     public function Header()
     {
-        $this->SetY(30);
-        $this->drawBrandLine($this->GetY());
-        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-ff.png', $this->getMargins()['left'], 5, 0, 0, 'PNG', 'http://www.finquesfarnos.com', '', false, 150);
+        $this->drawBrandLine(23);
+        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-ff.png', $this->getMargins()['left'], 5, 30, 0, 'PNG', 'http://www.finquesfarnos.com', '', false, 150);
     }
 
     /**
@@ -52,7 +51,7 @@ class CustomTcpdf extends \TCPDF
     public static function brandLineStyle()
     {
         return array(
-            'width' => 2,
+            'width' => 1.5,
             'cap' => 'square',
             'join' => 'miter',
             'color' => array(216, 111, 36),
