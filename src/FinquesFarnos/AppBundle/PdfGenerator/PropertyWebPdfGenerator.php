@@ -154,6 +154,20 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $builder->SetFont('helvetica', 'B', 18, '', true);
         $this->setGreyColor($builder);
         $builder->MultiCell(55, 0, strtoupper($this->getTrans('property.energy.efficiency')), 0, 'L', false, 2, 140, $y + 5);
+        $builder->SetFont('helvetica', '', 12, '', true);
+        if ($property->getEnergyClass() == 0) {
+            $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 140, $y + 23);
+        } else if ($property->getEnergyClass() == 1) {
+            $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 140, $y + 23);
+        } else if ($property->getEnergyClass() > 1) {
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_A' . ($property->getEnergyClass() == 2 ? '' : '_01') . '.png', 140, $y + 25, 0, 0, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_B' . ($property->getEnergyClass() == 3 ? '' : '_01') . '.png', 140, $y + 35, 0, 0, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_C' . ($property->getEnergyClass() == 4 ? '' : '_01') . '.png', 140, $y + 45, 0, 0, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_D' . ($property->getEnergyClass() == 5 ? '' : '_01') . '.png', 140, $y + 55, 0, 0, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_E' . ($property->getEnergyClass() == 6 ? '' : '_01') . '.png', 140, $y + 65, 0, 0, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_F' . ($property->getEnergyClass() == 7 ? '' : '_01') . '.png', 140, $y + 75, 0, 0, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_G' . ($property->getEnergyClass() == 8 ? '' : '_01') . '.png', 140, $y + 85, 0, 0, 'PNG', '', '', false, 150);
+        }
 
         // FOOTER
         $url = $this->router->generate('front_property', array(
