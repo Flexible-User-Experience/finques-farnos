@@ -87,8 +87,8 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $col = 0;
         /** @var ImageProperty $image */
         foreach ($property->getImages() as $image) {
-            if ($image->getEnabled()) {
-                $builder->Image($this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), $builder->getMargins()['left'] + $col * 50, 35 + $row * 43, 50, 43);
+            if ($image->getEnabled() && $row < 2) {
+                $builder->Image($this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), $builder->getMargins()['left'] + $col * 62, 35 + $row * 47, 57, 43);
 
 //                $builder->MultiCell(115, 0, $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'), 0, 'L', false, 1);
 //                $builder->MultiCell(115, 0, $this->cm->generateUrl($this->uh->asset($image, 'imageFile'), '757x450'), 0, 'L', false, 1);
