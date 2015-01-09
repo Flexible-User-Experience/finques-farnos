@@ -90,7 +90,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $builder->setImageScale(PDF_IMAGE_SCALE_RATIO);
         $builder->setFontSubsetting(true);
         $builder->setJPEGQuality(85); // set JPEG quality
-        $builder->addPage();
+        $builder->addPage('P', 'A4');
 
         // HEADER
         $builder->Header();
@@ -110,7 +110,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
                 $builder->Image(
                     $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'),
                     $builder->getMargins()['left'] + $col * 62, // abscissa of the upper-left corner
-                    37 + $row * 48,                             // ordinate of the upper-left corner
+                    30 + $row * 48,                             // ordinate of the upper-left corner
                     57,                                         // width
                     43,                                         // height
                     '',                                         // image file extension
@@ -124,7 +124,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
             $row = 1;
         }
         // --> left text
-        $y = 39 + ($row + 1) * 48; //135;
+        $y = 33 + ($row + 1) * 48; //135;
         $builder->setCellPaddings(0, 0, 0, 1);
         $this->drawBrandLine($builder, $y);
         $builder->SetX($builder->getMargins()['left'] - 2);
@@ -138,7 +138,6 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         if ($property->getShowPriceOnlyWithNumbers()) {
             if ($property->getOldPrice()) {
                 $builder->MultiCell(115, 0, $property->getDecoratedPrice() . ' ' . $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), 0, 'L', false, 1);
-//                $builder->MultiCell(155, 0, $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 0);
             } else {
                 $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
             }
@@ -146,7 +145,13 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
             $builder->MultiCell(115, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
         }
         $this->setBodyTextAndColor($builder);
+        $builder->setLineStyle(array('width' => 0.25, 'cap' => 'square', 'join' => 'miter', 'color' => array(100, 100, 100)));
+        $builder->setCellPaddings(0, 0, 0, 0);
+        $builder->MultiCell(33, 15, $property->getSquareMeters() . ' m²', 1, 'C', 0, 0, '', '', true, 0, false, true, 30, 'B');
+        $builder->MultiCell(33, 15, $property->getRooms() . ' ' . $this->getTrans('homepage.property.rooms'), 1, 'C', 0, 0, '', '', true, 0, false, true, 30, 'B');
+        $builder->MultiCell(33, 15, $property->getBathrooms() . ' ' . $this->getTrans('homepage.property.bathrooms'), 1, 'C', 0, 1, '', '', true, 0, false, true, 30, 'B');
         $builder->MultiCell(115, 5, '', 0, 'L', false, 1);
+        $builder->setCellPaddings(0, 0, 0, 1);
         $builder->MultiCell(115, 0, $property->getDescription(), 0, 'L', false, 1);
         // --> right text
         $builder->SetX(120);
@@ -177,7 +182,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
                 'reference' => $property->getReference(),
             ), true);
         $builder->SetFont('helvetica', '', 9, '', true);
-        $builder->Text($builder->getMargins()['left'], 250, $url);
+        $builder->Text($builder->getMargins()['left'], 267, $url);
         $builder->Footer();
 
         // Return the original PDF, calling getContents to retrieve the rendered content
