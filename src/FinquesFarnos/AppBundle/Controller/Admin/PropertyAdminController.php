@@ -57,7 +57,7 @@ class PropertyAdminController extends Controller
             throw new NotFoundHttpException(sprintf('unable to find the object with ID: %s', $id));
         }
         /** @var PropertyShowcasePdfGenerator $generator */
-        $generator = $this->get('app.property_pdf_generator');
+        $generator = $this->get('app.property_showcase_pdf_generator');
         $pdf = $generator->generate(array('property' => $object));
 
         return new Response($pdf->getContents(), 200, array('Content-type' => 'application/pdf'));

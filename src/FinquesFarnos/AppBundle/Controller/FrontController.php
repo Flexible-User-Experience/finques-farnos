@@ -151,7 +151,7 @@ class FrontController extends Controller
     public function propertyPdfAction(Request $request, $property)
     {
         /** @var PropertyWebPdfGenerator $generator */
-        $generator = $this->get('app.property_pdf_generator');
+        $generator = $this->get('app.property_web_pdf_generator');
         $pdf = $generator->generate(array('property' => $property));
 
         return new Response($pdf->getContents(), 200, array('Content-type' => 'application/pdf'));

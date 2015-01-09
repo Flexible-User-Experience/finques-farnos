@@ -12,8 +12,11 @@ services:
             - { name: doctrine.event_listener, event: postLoad }
 
 # Orkestra PDF
-    app.property_pdf_generator:
-        class: FinquesFarnos\AppBundle\PdfGenerator\PropertyGenerator
+    app.property_showcase_pdf_generator:
+        class: FinquesFarnos\AppBundle\PdfGenerator\PropertyShowcasePdfGenerator
+        arguments: [ @orkestra.pdf.factory_registry, @templating ]
+    app.property_web_pdf_generator:
+        class: FinquesFarnos\AppBundle\PdfGenerator\PropertyWebPdfGenerator
         arguments: [ @orkestra.pdf.factory_registry, @templating ]
 
 # Sonata Admin
