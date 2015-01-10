@@ -68,7 +68,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * Get filtered properties
      *
      * @Rest\View(serializerGroups={"api"})
-     * @Rest\Get("/get-properties-filtered/{type}/{city}/{area}/{rooms}/{price}", options={"expose"=true})
+     * @Rest\Get("/get-properties-filtered/{categories}/{type}/{city}/{area}/{rooms}/{price}", options={"expose"=true})
      *
      * @ApiDoc(
      *  section="Properties",
@@ -76,6 +76,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      *  description="Get filtered properties"
      * )
      *
+     * @param int $categories
      * @param int $type
      * @param int $city
      * @param int $area
@@ -84,7 +85,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      *
      * @return mixed
      */
-    public function propertiesFilteredAction($type, $city, $area, $rooms, $price)
+    public function propertiesFilteredAction($categories, $type, $city, $area, $rooms, $price)
     {
         if ($area !== 'undefined' && $rooms !== 'undefined' && $price !== 'undefined') {
             return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $city, $area, $rooms, $price);

@@ -32,7 +32,7 @@ angular.module('propertiesApp')
 
         this.getProperties = function($scope) {
             var deferred = $q.defer();
-            $http.get(Routing.generate('api_properties_api_filtered', {type: $scope.type.id, city: $scope.city.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
+            $http.get(Routing.generate('api_properties_api_filtered', {categories: -1, type: $scope.type.id, city: $scope.city.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
                     $log.log('[getProperties]', response.length, 'properties fetched');
                     $scope.properties = response;
@@ -89,7 +89,7 @@ angular.module('propertiesApp')
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, filteredProperties) {
-            $scope.category = {};
+            $scope.categories = {};
             $scope.type = {};
             $scope.city = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
@@ -145,7 +145,6 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerRooms);
             }
             timerRooms = $timeout(function() {
-                $log.log('[watcher]', newValue, oldValue, this);
                 if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });

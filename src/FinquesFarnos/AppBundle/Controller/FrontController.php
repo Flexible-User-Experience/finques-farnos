@@ -42,11 +42,12 @@ class FrontController extends Controller
     public function propertiesAction()
     {
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
-        $filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
+        //$filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
         $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
-                // TODO: make more dynamic & adaptative (exclude type & city values with no items related)
-                'type' => $filters['types'][0]['id'],
-                'city' => $filters['cities'][0]['id'],
+                // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
+                'categories' => -1,
+                'type' => -1,
+                'city' => -1,
                 'area' => 0,
                 'rooms' => 0,
                 'price' => 0,

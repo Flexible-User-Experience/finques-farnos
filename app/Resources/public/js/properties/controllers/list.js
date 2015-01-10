@@ -7,7 +7,7 @@ angular.module('propertiesApp')
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, filteredProperties) {
-            $scope.category = {};
+            $scope.categories = {};
             $scope.type = {};
             $scope.city = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
@@ -63,7 +63,6 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerRooms);
             }
             timerRooms = $timeout(function() {
-                $log.log('[watcher]', newValue, oldValue, this);
                 if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
