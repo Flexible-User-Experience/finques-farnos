@@ -84,4 +84,15 @@ angular.module('propertiesApp')
             return Routing.generate('front_property', {type: property.type_name_slug, city: property.city_name_slug, name: property.name_slug, reference: property.reference});
         };
 
+        $scope.getSerializedCategories = function() {
+            var ss = '';
+            angular.forEach($scope.categories, function(value, key) {
+                ss = ss + value.id + '-';
+            }, ss);
+
+            if (ss === '') return '-1';
+
+            return ss;
+        }
+
     }]);

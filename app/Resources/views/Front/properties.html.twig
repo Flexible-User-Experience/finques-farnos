@@ -24,7 +24,7 @@
                     <form name="filterForm" action="" role="form">
                         <div class="form-group">
                             <label for="propertyCategory" class="control-label">{{ 'properties.form.category' | trans | upper }}</label>
-                            <select multiple id="propertyCategory" class="form-control" data-ng-model="categories" required="required" data-ng-options="cat.name for cat in form.categories" data-ng-change="formListener()">
+                            <select multiple id="propertyCategory" class="form-control" data-ng-model="categories" required="required" data-ng-options="cat.name for cat in form.categories" data-ng-change="formListener()"></select>
                             {#<div class="btn-group btn-group-sm" role="group" data-aria-label="propertyCategory">#}
                                 {#<button type="button" class="btn btn-default">Left</button>#}
                                 {#<button type="button" class="btn btn-default">Middle</button>#}
