@@ -12,7 +12,7 @@ frontend:
 homepage:
   property:
     banner:
-      main: la propriété que vous recherchez à Finques Farnós
+      main: formalité en affaires depuis 1984
       years: 30 années · 1984-2014
     noitems: Désolé, nous ne avons pas tout bien présenté sur cette page
     before: avant
@@ -57,25 +57,25 @@ property:
 
 about:
   left:
-    main: Finques Farnós began his professional career in 1984 as a family business, offering its state agent services from Amposta throughout the Delta del Ebro, with a continuity that guarantees a good knowledge of the profession.
+    main: Finques Farnés a commencé sa carrière professionnelle en 1984 comme une entreprise familiale, offrant ses services d'agent de l'Etat de Amposta à travers le Delta de l'Ebre, avec une continuité qui garantit une bonne connaissance de la profession.
   right:
     company:
       title: company
       text: |
-        Our philosophy is to act with full transparency, working with professionalism and honesty, so we get our management do buyers and sellers satisfied.<br><br>
-        Our experience, technical skills and professionalism, allow us to offer a quality service backed by the trust of our customers that they have placed in our management during all of these years.<br><br>
-        At Finques Farnós we are <a target="_blank" href="http://www.apitarragona.com">Agentes de la Propiedad Inmobiliaria (API)</a> that supports a further guarantee of our professionalism and academic training.
+        Notre philosophie est d'agir en toute transparence, en collaboration avec le professionnalisme et l'honnêteté, ainsi nous obtenons notre gestion font acheteurs et les vendeurs satisfaits.<br><br>
+        Notre expérience, les compétences techniques et le professionnalisme, nous permettent d'offrir un service de qualité soutenu par la confiance de nos clients qu'ils ont mis dans notre gestion durant toutes ces années.<br><br>
+        Au Finques Farnós nous sommes <a target="_blank" href="http://www.apitarragona.com">Agentes de la Propiedad Inmobiliaria (API)</a> qui prend en charge une garantie supplémentaire de notre professionnalisme et de formation académique.
     services:
       title: services
       text: |
         <ul>
-        <li>Management on the sale of rural and urban places.</li>
-        <li>Exchanges and transfers.</li>
-        <li>Rentals.</li>
-        <li>Valuation.</li>
-        <li>Funding: management in mortgage lending</li>
-        <li>Situation reports and planning register.</li>
-        <li>Investment advisory services.</li>
+        <li>Gestion de la vente de localités rurales et urbaines.</li>
+        <li>Échanges et transferts.</li>
+        <li>Location.</li>
+        <li>Évaluation.</li>
+        <li>Financement: la gestion des prêts hypothécaires</li>
+        <li>Rapports de situation et registre de planification.</li>
+        <li>Services de conseils en placement.</li>
         </ul>
 
 contact:

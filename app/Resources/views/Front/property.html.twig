@@ -75,7 +75,7 @@
             </div>
             <div class="col-md-4">
                 <div class="property-right-side-box">
-                    <h2 class="no-m no-bold-font">Ref. {{ property.reference }}</h2>
+                    <h2 class="no-m no-bold-font font-size-17">Ref. {{ property.reference }}</h2>
                     <h2 class="no-m">{{ property.name | upper }}</h2>
                     {% if property.showPriceOnlyWithNumbers %}
                         <h3 class="no-m-top extra-m-bottom">{{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}</h3>
@@ -115,6 +115,7 @@
             </div>
         </div>
     </div>
+    <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-arrow-circle-up"></i></span></div>
 {% endblock %}
 
 {% block javascriptsbody %}
@@ -129,6 +130,7 @@
             });
         });
     </script>
+    {% include ':Front/commons:scroll-to-top-js.html.twig' %}
 {% endblock %}
 
 {% block footlangca %}{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference, '_locale': 'ca'}) }}{% endblock %}

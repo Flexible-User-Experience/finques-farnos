@@ -68,9 +68,9 @@
                     <div class="wrapper" data-ng-class="{ 'bg-dark-orange': property.offer_special || property.offer_discount }">
                         <div class="row ">
                             <div class="col-md-6">
-                                <h2 class="no-m no-bold-font"><a href="[[ getUrlPropertyDetail(property) ]]">Ref. [[ property.reference ]]</a></h2>
+                                <h2 class="no-m no-bold-font font-size-13"><a href="[[ getUrlPropertyDetail(property) ]]">Ref. [[ property.reference ]]</a></h2>
                                 <h2 class="no-m"><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name | uppercase ]]</a></h2>
-                                <h3 class="no-m-top extra-m-bottom" data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
+                                <h3 class="no-m-top extra-m-bottom-27" data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
                                 <h3 class="no-m-top extra-m-bottom" data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
                             </div>
                             <div class="col-md-6">
@@ -104,6 +104,12 @@
             </div>
         </div>
     </div>
+    {# Scroll-Top effect #}
+    <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-arrow-circle-up"></i></span></div>
+{% endblock %}
+
+{% block javascriptsbody %}
+    {% include ':Front/commons:scroll-to-top-js.html.twig' %}
 {% endblock %}
 
 {% block footlangca %}{{ path('front_properties', {'_locale': 'ca'}) }}{% endblock %}
