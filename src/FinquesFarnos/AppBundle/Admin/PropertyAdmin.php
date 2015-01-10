@@ -152,7 +152,7 @@ class PropertyAdmin extends BaseAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('reference', null, array('label' => 'Ref.', 'editable' => false))
+            ->add('reference', null, array('label' => 'Ref.', 'editable' => true))
             ->add('name', null, array('label' => 'Immoble', 'editable' => true))
             ->add('categories', null, array('label' => 'Categories'))
             ->add('type', null, array(
@@ -161,14 +161,13 @@ class PropertyAdmin extends BaseAdmin
                     'sort_field_mapping' => array('fieldName' => 'name'),
                     'sort_parent_association_mappings' => array(array('fieldName' => 'type')),
                 ))
-            ->add('squareMeters', 'integer', array('label' => 'Metres cuadrats', 'editable' => true))
             ->add('price', 'integer', array('label' => 'Preu', 'editable' => true))
             ->add('imagesCount', 'integer', array('label' => 'Imatges', 'template' => '::Admin/property_images_count_list_field.html.twig'))
             ->add('totalVisits', 'integer', array('label' => 'Visites', 'editable' => false))
             ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(
-                        'edit' => array(),
+                        'edit' => array('label' => ' '),
                         'visit' => array('template' => '::Admin/list__action_property_visit_button.html.twig'),
                         'pdf' => array('template' => '::Admin/list__action_property_pdf_button.html.twig'),
                         'delete' => array(),
@@ -195,7 +194,6 @@ class PropertyAdmin extends BaseAdmin
                     'expanded' => false,
                     'multiple' => true,
                 ))
-            ->add('squareMeters', null, array('label' => 'Metres cuadrats'))
             ->add('price', null, array('label' => 'Preu'))
             ->add('totalVisits', null, array('label' => 'Visites'))
             ->add('enabled', null, array('label' => 'Actiu'));
@@ -208,6 +206,8 @@ class PropertyAdmin extends BaseAdmin
      */
     public function configureRoutes(RouteCollection $collection)
     {
+        $collection->remove('delete');
+        $collection->remove('batch');
         $collection->remove('show');
         $collection->add('visit', $this->getRouterIdParameter().'/visit');
         $collection->add('pdf', $this->getRouterIdParameter().'/pdf');
