@@ -1,6 +1,6 @@
 {% extends 'Front/layout.html.twig' %}
 
-{% block title %}{{ parent() }}{% endblock %}
+{% block title %}{{ parent() }} · {{ 'homepage.property.banner.main' | trans | capitalize }}{% endblock %}
 {% block metadescription %}{% endblock %}
 {% block metakeywords %}{% endblock %}
 
@@ -52,7 +52,9 @@
                         <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
                             {% if property.images | length > 0 %}
                                 {% set image = property.images[0] %}
-                                <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('373x270') }}" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}></a>
+                                <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
+                                    <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x400') }}" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
+                                </a>
                             {% endif %}
                             <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
                                 <div class="caption">
@@ -63,7 +65,6 @@
                                     {% else %}
                                         <h3 class="no-m-top">{{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €</h3>
                                     {% endif %}
-                                    {#<p>{{ property.description }}</p>#}
                                     {% include ':Front/commons:property-icons-list.html.twig' with {'property': property} %}
                                 </div>
                             </a>
