@@ -170,14 +170,14 @@ class Property extends Base
      * @Assert\Range(min = -180, max = 180)
      * @var float
      */
-    private $gpsLongitude;
+    private $gpsLongitude = 0.5801695000000109;
 
     /**
      * @ORM\Column(type="float", precision=14, name="gps_latitude", nullable=false)
      * @Assert\Range(min = -90, max = 90)
      * @var float
      */
-    private $gpsLatitude;
+    private $gpsLatitude = 40.7067997;
 
     /**
      * @ORM\Column(name="radius", type="integer", nullable=true)
