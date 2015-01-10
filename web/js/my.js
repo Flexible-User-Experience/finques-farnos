@@ -89,6 +89,7 @@ angular.module('propertiesApp')
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, filteredProperties) {
+            $scope.category = {};
             $scope.type = {};
             $scope.city = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
@@ -135,7 +136,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerArea);
             }
             timerArea = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -144,7 +145,8 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerRooms);
             }
             timerRooms = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                $log.log('[watcher]', newValue, oldValue, this);
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -153,7 +155,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerPrice);
             }
             timerPrice = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
