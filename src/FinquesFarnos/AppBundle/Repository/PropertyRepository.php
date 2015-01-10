@@ -134,7 +134,7 @@ class PropertyRepository extends EntityRepository
         if ($city > 0) {
             $qb->andWhere('p.city = :city')->setParameter('city', $city);
         }
-        $qb->setMaxResults(2); // TODO remove this
+//        $qb->setMaxResults(2); // TODO remove this
 
         return $qb->getQuery()->getResult();
     }
