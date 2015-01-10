@@ -1,0 +1,20 @@
+{% extends 'Front/layout.html.twig' %}
+
+{% block title %}{% trans %}errors.anerroroccurred{% endtrans %}: {{ status_text }} |
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <i class="fa fa-exclamation-triangle fa-5x"></i>
+            </div>
+            <div class="col-md-8">
+                <div class="well error404">
+                    <h3>Oops! {% trans %}errors.anerroroccurred{% endtrans %}</h3>
+                    <p class="lead">{% trans %}errors.theserverreturneda{% endtrans %} "<span>{{ status_code }} {{ status_text }}</span>".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
