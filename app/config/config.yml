@@ -255,7 +255,7 @@ liip_imagine:
 
 # A2lix Translations
 a2lix_translation_form:
-    locales:          [ es, en ]
+    locales:          [ es, en, fr ]
     default_required: true
     manager_registry: doctrine
     templating:       "::A2lix/default.html.twig"
@@ -263,7 +263,7 @@ a2lix_translation_form:
 # JMS i18n Routing
 jms_i18n_routing:
     default_locale: ca
-    locales:        [ ca, es, en ]
+    locales:        [ ca, es, en, fr ]
     strategy:       prefix
 
 # KNP Paginator

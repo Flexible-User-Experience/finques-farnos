@@ -1,59 +1,59 @@
 menu:
-  home: Home
-  properties: Properties
-  about: About us
+  home: Accueil
+  properties: Propriétés
+  about: À propos de nous
   contact: Contact
 
 frontend:
-  privacy: privacy
-  legal: legal
-  credits: credits
+  privacy: privacité
+  legal: avertissement légal
+  credits: crédits
 
 homepage:
   property:
     banner:
-      main: the property you are looking for at Finques Farnós
-      years: 30 years · 1984-2014
-    noitems: sorry, we do not have any property featured on this page
-    before: before
-    since: since
-    rooms: rooms
-    bathrooms: bathrooms
+      main: la propriété que vous recherchez à Finques Farnós
+      years: 30 années · 1984-2014
+    noitems: Désolé, nous ne avons pas tout bien présenté sur cette page
+    before: avant
+    since: depuis
+    rooms: chambres
+    bathrooms: salles de bains
     offer:
-      special: special
-      discount: discount
+      special: spécial
+      discount: rabais
 
 properties:
   heading:
-    title: here you will find your property
-  searching: searching for results
+    title: vous trouverez ici votre propriété
+  searching: la recherche de résultats
   list:
-    empty: any result found
+    empty: aucun résultat trouvé
     button:
-      more: more info
-      back: back to list
-      prev: previous
-      next: next
+      more: plus d'info
+      back: retour à la liste
+      prev: précédent
+      next: suivant
   form:
     type: type
-    city: city
-    area: area
-    rooms: rooms
-    price: or more
-    search: search
-    results: items found
+    city: ville
+    area: superficie
+    rooms: chambres
+    price: ou plus
+    search: recherche
+    results: objets trouvés
     select:
       any:
-        type: any type
-        city: any city
+        type: ne importe quel type
+        city: ne importe quelle ville
 
 property:
-  localization: localization
-  form: contact request
+  localization: localisation
+  form: demande de contact
   energy:
-    efficiency: ENERGY EFFICIENCY
-    noclass: without class
-    pending: pending
+    efficiency: EFFICACITÉ ÉNERGÉTIQUE
+    noclass: sans classe
+    pending: en attendant
 
 about:
   left:
@@ -80,15 +80,15 @@ about:
 
 contact:
   form:
-    title: contact form
-    name: name
-    phone: phone
+    title: formulaire de contact
+    name: nom
+    phone: téléphone
     email: email
     message: message
-    send: send
+    send: envoyer
     thankyou:
-      title: Thank you
-      message: Your message has been sent, we will reply as soon as possible. Thank you very much for contacting Finques Farnós.
+      title: Merci
+      message: Votre message a été envoyé, nous vous répondrons dès que possible. Merci beaucoup pour contacter Finques Farnós.
 
 privacy:
   confidenciality:
@@ -142,5 +142,5 @@ credits:
     <p>All rights reserved.</p>
     <p>&copy; Finques Farnós, SL.
 
-errors.anerroroccurred: There was an error
-errors.theserverreturneda: The server returned the message
+errors.anerroroccurred: Il y avait une erreur
+errors.theserverreturneda: Le serveur a renvoyé le message

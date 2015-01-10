@@ -11,7 +11,8 @@
     <meta name="keywords" content="{% block metakeywords %}{% endblock %}">
     <meta name="author" content="www.flux.cat">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
     {% block extrametas %}{% endblock %}
     {% block stylesheets %}
         <link rel="stylesheet" href="/css/main.css">
@@ -70,6 +71,7 @@
                             {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-sm">català</a>{% endif %}
                             {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-sm">español</a>{% endif %}
                             {% if app.request.locale != 'en' %}<a href="{% block footlangen %}{{ path('front_homepage', {'_locale': 'en'}) }}{% endblock %}" class="btn btn-default btn-sm">english</a>{% endif %}
+                            {% if app.request.locale != 'fr' %}<a href="{% block footlangfr %}{{ path('front_homepage', {'_locale': 'fr'}) }}{% endblock %}" class="btn btn-default btn-sm">français</a>{% endif %}
                         </div>
                     </div>
                 </div>
