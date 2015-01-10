@@ -233,12 +233,33 @@ footer {
 }
 
 .carousel-homepage-banners-wrapper {
-  img {
+  div.banner-main {
     position: absolute;
-    top: 35px;
+    top: 20px;
+    left: 20px;
     z-index: 1000;
-    &.banner-main { left: 35px; }
-    &.banner-years { right: 35px; }
+    padding: 10px;
+    color: white;
+    background: rgba(216, 111, 36, 0.85);
+    font-size: @ff-font-size-12;
+    @media(min-width: 768px) {
+      font-size: @ff-font-size-14;
+      padding: 15px;
+      top: 25px;
+      left: 25px;
+    }
+    @media(min-width: 992px) {
+      font-size: @ff-font-size-18;
+      padding: 20px;
+      top: 30px;
+      left: 30px;
+    }
+    @media(min-width: 1200px) {
+      font-size: @ff-font-size-20;
+      padding: 25px;
+      top: 35px;
+      left: 35px;
+    }
   }
 }
 

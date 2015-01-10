@@ -9,8 +9,7 @@
         <div class="container">
             <div id="carousel-homepage" class="carousel slide" data-ride="carousel">
                 <div class="carousel-homepage-banners-wrapper">
-                    <img class="banner-main hidden-xs" src="{{ asset('bundles/app/images/banner_immoble.png') }}" alt="{{ 'homepage.property.banner.main' | trans }}"/>
-                    <img class="banner-years hidden-xs" src="{{ asset('bundles/app/images/banner_30_anys.png') }}" alt="{{ 'homepage.property.banner.years' | trans }}"/>
+                    <div class="banner-main">{{ 'homepage.property.banner.main' | trans | upper }}</div>
                 </div>
                 {#<!-- Indicators -->#}
                 {% if slides | length > 1 %}
