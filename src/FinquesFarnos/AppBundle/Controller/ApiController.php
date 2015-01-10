@@ -8,6 +8,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class FrontController
@@ -75,6 +76,9 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         if ($area !== 'undefined' && $rooms !== 'undefined' && $price !== 'undefined') {
             return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $city, $area, $rooms, $price);
         }
+        $session = new Session();
+        $session->start();
+        $session->set('pfilter', array($type, $city, $area, $rooms, $price));
 
         return array();
     }
