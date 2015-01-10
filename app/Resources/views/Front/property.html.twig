@@ -115,6 +115,7 @@
             </div>
         </div>
     </div>
+    <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-arrow-circle-up"></i></span></div>
 {% endblock %}
 
 {% block javascriptsbody %}
@@ -129,6 +130,7 @@
             });
         });
     </script>
+    {% include ':Front/commons:scroll-to-top-js.html.twig' %}
 {% endblock %}
 
 {% block footlangca %}{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference, '_locale': 'ca'}) }}{% endblock %}
