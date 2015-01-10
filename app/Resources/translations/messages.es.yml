@@ -35,6 +35,7 @@ properties:
       prev: anterior
       next: siguiente
   form:
+    category: categoría
     type: tipo
     city: población
     area: superficie

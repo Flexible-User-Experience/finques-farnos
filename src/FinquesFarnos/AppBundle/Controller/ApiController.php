@@ -2,6 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\Controller;
 
+use FinquesFarnos\AppBundle\Entity\Category;
 use FinquesFarnos\AppBundle\Entity\Type;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -30,8 +31,15 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      */
     public function propertiesFormFilterAction()
     {
-        $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsSortedByNameArrayResult();
-        array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
+        // categories
+        $categories = array();
+        $categoriesCollection = $this->getDoctrine()->getRepository('AppBundle:Category')->getEnabledItemsSortedByName();
+        // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
+        /** @var Category $category */
+        foreach ($categoriesCollection as $category) {
+            $categories[] = array('id' => $category->getId(), 'name' => $category->getName());
+        }
+        // types
         $types = array(array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.type')));
         $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledItemsSortedByName();
         // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
@@ -39,8 +47,13 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         foreach ($typesCollection as $type) {
             $types[] = array('id' => $type->getId(), 'name' => $type->getName());
         }
+        // cities
+        $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsSortedByNameArrayResult();
+        array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
+        // property attributes
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
+            'categories' => $categories,
             'types' => $types,
             'cities' => $cities,
             'area' => array('min' => 0, 'max' => intval($filters['max_area'])),

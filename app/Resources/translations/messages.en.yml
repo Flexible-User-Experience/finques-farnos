@@ -35,6 +35,7 @@ properties:
       prev: previous
       next: next
   form:
+    category: category
     type: type
     city: city
     area: area
@@ -114,7 +115,7 @@ privacy:
   send:
     title: Transfer of data to third parties
     text: FINQUES FARNÓS SL not transfer user data to third parties.
-  spam: In FINQUES Farnós we do not like spam and contribute to eradicate
+  spam: At FINQUES FARNÓS we do not like spam and we contribute to eradicate it
 
 legal:
   text: This legal notice (hereinafter "Legal Notice") governs the use of the Internet portal service http://www.finquesfarnos.com (hereinafter Web) FINQUES FARNÓS SL based in C. CORSINI, 63-43870 AMPOSTA (TARRAGONA), CIF B43524149 and registered in the Commercial Register took 1,367, folio 214, sheet T-16267, entry 1, CIF B43524149
