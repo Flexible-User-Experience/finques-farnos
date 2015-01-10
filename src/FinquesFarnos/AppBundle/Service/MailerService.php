@@ -117,7 +117,7 @@ class MailerService
         $emailMessage = \Swift_Message::newInstance()
             ->setSubject('Formulari de contacte pàgina web www.finquesfarnos.com')
             ->setFrom('webapp@finquesfarnos.com')
-            ->setTo('info@fiquesfarnos.com')
+            ->setTo('info@finquesfarnos.com')
             ->setBody(
                 $this->templating->render(
                     'Front/contact.email.html.twig',
