@@ -133,7 +133,7 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         $this->setGreyColor($builder);
         $builder->MultiCell(115, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 18, '', true);
-        $builder->MultiCell(115, 0, $property->getName(), 0, 'L', false, 1);
+        $builder->MultiCell(115, 0, mb_strtoupper($property->getName()), 0, 'L', false, 1);
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
             if ($property->getOldPrice()) {
@@ -144,8 +144,9 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         } else {
             $builder->MultiCell(115, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
         }
-
-        $this->setBodyTextAndColor($builder);
+        // ribbons
+        $this->setGreyColor($builder);
+        $builder->SetFont('helvetica', '', 9, '', true);
         $builder->setLineStyle(array('width' => 0.25, 'cap' => 'square', 'join' => 'miter', 'color' => array(100, 100, 100)));
         $builder->setCellPaddings(0, 0, 0, 0);
         $builder->MultiCell(115, 1, '', 0, 'L', false, 1);
@@ -160,8 +161,9 @@ class PropertyWebPdfGenerator extends AbstractPdfGenerator
         if ($property->getBathrooms()) {
             $builder->MultiCell(33, 15, $property->getBathrooms() . ' ' . $this->getTrans('homepage.property.bathrooms'), 'L', 'C', 0, 0, '', '', true, 0, false, true, 17, 'B');
             $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'banys_color.png', 93, $y + 37);
-
         }
+        // description
+        $this->setBodyTextAndColor($builder);
         $builder->MultiCell(33, 15, '', 0, 'C', 0, 1, '', '', true, 0, false, true, 17, 'B');
         $builder->MultiCell(115, 5, '', 0, 'L', false, 1);
         $builder->setCellPaddings(0, 0, 0, 1);
