@@ -6,18 +6,15 @@ angular.module('propertiesApp')
         var timerArea, timerRooms, timerPrice = false;
         numeral.language('es');
 
-        $scope.init = function(propertiesFormFilter, filteredProperties) {
-            $scope.categories = {};
-            $scope.type = {};
-            $scope.city = {};
+        $scope.init = function(propertiesFormFilter, selectedPropertiesFormFilter, filteredProperties) {
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
             $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
 
             $scope.form = angular.fromJson(propertiesFormFilter);
+            $scope.selectedPropertiesFormFilter = angular.fromJson(selectedPropertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
-//            $log.log(filteredProperties);
-//            $log.log($scope.properties);
+            $log.log('[selectedPropertiesFormFilter]', selectedPropertiesFormFilter);
 
             $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
@@ -25,19 +22,31 @@ angular.module('propertiesApp')
             $scope.form.price.min = Math.ceil($scope.form.price.min / 1000) * 1000;
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
             $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
-            $scope.type = $scope.form.types[0];
-            $scope.city = $scope.form.cities[0];
-            $scope.area = 0; //180; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
-            $scope.rooms = 0; //5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
-            $scope.price = 0; //60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
-
-//            $log.log('init propertiesFormFilter', $scope.form);
-//            $log.log('init filteredProperties', $scope.properties);
-//            $log.log('init type', $scope.type);
-//            $log.log('init city', $scope.city);
-//            $log.log('init area', $scope.area);
-//            $log.log('init rooms', $scope.rooms);
-//            $log.log('init price', $scope.price);
+            $log.log('selectedPropertiesFormFilter[0]', $scope.selectedPropertiesFormFilter[0]);
+            $scope.categories = [];
+            if ($scope.selectedPropertiesFormFilter[0].length === 0) {
+                $scope.categories = [];
+            } else {
+                //$scope.categories = $scope.selectedPropertiesFormFilter[0];
+                angular.forEach($scope.selectedPropertiesFormFilter[0], function(value) {
+                    $log.log('selectedPropertiesFormFilter[0].lenght > 0', parseInt(value));
+                    $scope.categories.push(parseInt(value));
+                });
+            }
+            //$scope.categories = $scope.selectedPropertiesFormFilter[0];
+            if ($scope.selectedPropertiesFormFilter[1] === -1) {
+                $scope.type = $scope.form.types[0];
+            } else {
+                $scope.type = $scope.form.types[$scope.selectedPropertiesFormFilter[1]];
+            }
+            if ($scope.selectedPropertiesFormFilter[2] === -1) {
+                $scope.city = $scope.form.cities[0];
+            } else {
+                $scope.city = $scope.form.cities[$scope.selectedPropertiesFormFilter[2]];
+            }
+            $scope.area = $scope.selectedPropertiesFormFilter[3];
+            $scope.rooms = $scope.selectedPropertiesFormFilter[4];
+            $scope.price = $scope.selectedPropertiesFormFilter[5];
         };
 
         uiGmapGoogleMapApi.then(function(maps) {
@@ -87,16 +96,14 @@ angular.module('propertiesApp')
         $scope.getSerializedCategories = function() {
             var ss = '';
             angular.forEach($scope.categories, function(value) {
-                ss = ss + value.id + '-';
+                ss = ss + value + '-';
             }, ss);
-
             if (ss === '') {
                 ss = '-1';
             } else {
                 ss = ss.slice(0, -1); // remove last '-' char from serialized categories
             }
-            $log.log($scope.categories);
-            $log.log(ss);
+            $log.log($scope.categories, 'serialization=' + ss);
 
             return ss;
         };

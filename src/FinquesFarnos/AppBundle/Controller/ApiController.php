@@ -90,7 +90,11 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     {
         $catArray = array();
         if ($categories != '-1' && $categories != 'any') {
-            $catArray = explode('-', $categories);
+            if (is_array($categories)) {
+                $catArray = $categories;
+            } else {
+                $catArray = explode('-', $categories);
+            }
         }
         $request->getSession()->set('pfilter', array($catArray, $type, $city, $area, $rooms, $price));
 

@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ propertiesFormFilter }}', {{ filteredProperties }})">
+    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init('{{ propertiesFormFilter }}', {{ selectedPropertiesFormFilter }}, {{ filteredProperties }})">
         <div class="row no-m-bottom">
             <div class="col-md-12">
                 <h1 class="c-orange no-m-botton properties-list-h1"><span class="search-icon"></span>{{ 'properties.heading.title' | trans | upper }}</h1>
@@ -32,6 +32,14 @@
                                 <input type="checkbox" name="selectedCategories[]" value="[[ cat.id ]]"  data-ng-click="toggleSelection(cat)"> [[ cat.name ]]
                             </label>
                         </div>#}
+                        <div class="form-group">
+                            <label for="propertyCategory" class="control-label">{{ 'properties.form.category' | trans | upper }}</label><br>
+                            {#<div class="btn-group btn-group-sm" role="button" data-toggle="buttons">#}
+                                <label {#class="btn btn-default"#} data-ng-repeat="cat in form.categories">
+                                    <input checked="checked" type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()"> [[ cat.name ]]&nbsp;&nbsp;
+                                </label>
+                            {#</div>#}
+                        </div>
                         <div class="form-group">
                             <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
                             <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">

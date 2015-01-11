@@ -39,22 +39,34 @@ class FrontController extends Controller
     /**
      * @Route("/properties/", name="front_properties", options={"sitemap" = true})
      */
-    public function propertiesAction()
+    public function propertiesAction(Request $request)
     {
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
-        //$filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
+        if ($request->getSession()->has('pfilter')) {
+            $selectedPropertiesFormFilter = array(
+                $request->getSession()->get('pfilter')[0],
+                intval($request->getSession()->get('pfilter')[1]),
+                intval($request->getSession()->get('pfilter')[2]),
+                intval($request->getSession()->get('pfilter')[3]),
+                intval($request->getSession()->get('pfilter')[4]),
+                intval($request->getSession()->get('pfilter')[5]),
+            );
+        } else {
+            $selectedPropertiesFormFilter = array(-1, -1, -1, 0, 0, 0);
+        }
         $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
-                // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
-                'categories' => -1,
-                'type' => -1,
-                'city' => -1,
-                'area' => 0,
-                'rooms' => 0,
-                'price' => 0,
-            ), array('_format' => 'json'));
+            // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
+            'categories' => $selectedPropertiesFormFilter[0],
+            'type' => $selectedPropertiesFormFilter[1],
+            'city' => $selectedPropertiesFormFilter[2],
+            'area' => $selectedPropertiesFormFilter[3],
+            'rooms' => $selectedPropertiesFormFilter[4],
+            'price' => $selectedPropertiesFormFilter[5],
+        ), array('_format' => 'json'));
 
         return $this->render('Front/properties.html.twig', array(
                 'propertiesFormFilter' => $propertiesFormFilter->getContent(),
+                'selectedPropertiesFormFilter' => json_encode($selectedPropertiesFormFilter),
                 'filteredProperties'   => $filteredProperties->getContent(),
             ));
     }
@@ -62,16 +74,10 @@ class FrontController extends Controller
     /**
      * @Route("/property/previous/{id}/", name="front_property_prev", options={"expose" = false})
      */
-    public function prevPropertyForwardAction($id)
+    public function prevPropertyForwardAction(Request $request, $id)
     {
         /** @var Property $previousProperty */
-        $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPrevProperty($id);
-        if (is_null($previousProperty)) {
-            $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getLastEnabledProperty();
-            if (is_null($previousProperty)) {
-                $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->find($id);
-            }
-        }
+        $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPrevProperty($id, $request->getSession()->get('pfilter'));
 
         return $this->redirectToRoute('front_property', array(
                'type' => $previousProperty->getType()->getNameSlug(),
@@ -84,16 +90,10 @@ class FrontController extends Controller
     /**
      * @Route("/property/next/{id}/", name="front_property_next", options={"expose" = false})
      */
-    public function nextPropertyForwardAction($id)
+    public function nextPropertyForwardAction(Request $request, $id)
     {
         /** @var Property $nextProperty */
-        $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledNextProperty($id);
-        if (is_null($nextProperty)) {
-            $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getFirstEnabledProperty();
-            if (is_null($nextProperty)) {
-                $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->find($id);
-            }
-        }
+        $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledNextProperty($id, $request->getSession()->get('pfilter'));
 
         return $this->redirectToRoute('front_property', array(
                 'type' => $nextProperty->getType()->getNameSlug(),

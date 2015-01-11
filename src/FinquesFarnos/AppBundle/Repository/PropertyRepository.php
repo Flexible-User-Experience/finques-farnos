@@ -109,6 +109,23 @@ class PropertyRepository extends EntityRepository
      */
     public function filterBy($categories, $type, $city, $area, $rooms, $price)
     {
+        return $this->filterByQuery($categories, $type, $city, $area, $rooms, $price)->getResult();
+    }
+
+    /**
+     * Get filtered properties query
+     *
+     * @param array $categories
+     * @param int   $type
+     * @param int   $city
+     * @param int   $area
+     * @param int   $rooms
+     * @param int   $price
+     *
+     * @return ArrayCollection
+     */
+    public function filterByQuery($categories, $type, $city, $area, $rooms, $price)
+    {
         /** @var QueryBuilder $qb */
         $qb = $this->createQueryBuilder('p')
             ->select('p, i, t, c')
@@ -121,11 +138,11 @@ class PropertyRepository extends EntityRepository
             ->leftJoin('p.type', 't')
             ->leftJoin('p.categories', 'c')
             ->setParameters(array(
-                    'enabled' => true,
-                    'area' => $area,
-                    'rooms' => $rooms,
-                    'price' => $price,
-                ))
+                'enabled' => true,
+                'area' => $area,
+                'rooms' => $rooms,
+                'price' => $price,
+            ))
             ->addOrderBy('p.price', 'ASC')
             ->addOrderBy('p.name', 'ASC')
             ->addOrderBy('p.totalVisits', 'DESC');
@@ -140,9 +157,8 @@ class PropertyRepository extends EntityRepository
                 $qb->andWhere('c.id = :cid')->setParameter('cid', $categoryId);
             }
         }
-        //$qb->setMaxResults(5); // TODO remove this
 
-        return $qb->getQuery()->getResult();
+        return $qb->getQuery();
     }
 
     /**
@@ -164,41 +180,53 @@ class PropertyRepository extends EntityRepository
     /**
      * Get enabled previous property
      *
-     * @param $id
+     * @param int   $id
+     * @param mixed $filter
      *
      * @return Property|null
      */
-    public function getEnabledPrevProperty($id)
+    public function getEnabledPrevProperty($id, $filter)
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.enabled = :enabled')
-            ->andWhere('p.id < :id')
-            ->setParameter('enabled', true)
-            ->setParameter('id', $id)
-            ->orderBy('p.id', 'DESC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult();
+        $filteredProperties = $this->handleFilter($filter);
+        $index = 0;
+        /** @var Property $filteredProperty */
+        foreach ($filteredProperties as $filteredProperty) {
+            if ($filteredProperty->getId() == $id) {
+                break;
+            }
+            $index++;
+        }
+        if ($index == 0) {
+            return $filteredProperties[count($filteredProperties) - 1];
+        }
+
+        return $filteredProperties[$index - 1];
     }
 
     /**
      * Get enabled next property
      *
-     * @param $id
+     * @param int   $id
+     * @param mixed $filter
      *
      * @return Property|null
      */
-    public function getEnabledNextProperty($id)
+    public function getEnabledNextProperty($id, $filter)
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.enabled = :enabled')
-            ->andWhere('p.id > :id')
-            ->setParameter('enabled', true)
-            ->setParameter('id', $id)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult();
+        $filteredProperties = $this->handleFilter($filter);
+        $index = 0;
+        /** @var Property $filteredProperty */
+        foreach ($filteredProperties as $filteredProperty) {
+            if ($filteredProperty->getId() == $id) {
+                break;
+            }
+            $index++;
+        }
+        if ($index == count($filteredProperties) - 1) {
+            return $filteredProperties[0];
+        }
+
+        return $filteredProperties[$index + 1];
     }
 
     /**
@@ -215,5 +243,19 @@ class PropertyRepository extends EntityRepository
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    private function handleFilter($filter)
+    {
+        $catArray = array();
+        if ($filter[0] != '-1' && $filter[0] != 'any') {
+            if (is_array($filter[0])) {
+                $catArray = $filter[0];
+            } else {
+                $catArray = explode('-', $filter[0]);
+            }
+        }
+
+        return $this->filterBy($catArray, $filter[1], $filter[2], $filter[3], $filter[4], $filter[5]);
     }
 }
