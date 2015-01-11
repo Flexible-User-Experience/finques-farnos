@@ -33,7 +33,6 @@ angular.module('propertiesApp')
 
         this.getProperties = function($scope) {
             var deferred = $q.defer();
-//            $log.log($scope.getSerializedCategories());
             $http.get(Routing.generate('api_properties_api_filtered', {categories: $scope.getSerializedCategories(), type: $scope.type.id, city: $scope.city.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
                     $log.log('[getProperties]', response.length, 'properties fetched');
@@ -91,9 +90,6 @@ angular.module('propertiesApp')
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, selectedPropertiesFormFilter, filteredProperties) {
-            $scope.categories = [];
-            $scope.type = {};
-            $scope.city = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
             $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
@@ -109,6 +105,18 @@ angular.module('propertiesApp')
             $scope.form.price.min = Math.ceil($scope.form.price.min / 1000) * 1000;
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
             $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
+            $log.log('selectedPropertiesFormFilter[0]', $scope.selectedPropertiesFormFilter[0]);
+            $scope.categories = [];
+            if ($scope.selectedPropertiesFormFilter[0].length === 0) {
+                $scope.categories = [];
+            } else {
+                //$scope.categories = $scope.selectedPropertiesFormFilter[0];
+                angular.forEach($scope.selectedPropertiesFormFilter[0], function(value) {
+                    $log.log('selectedPropertiesFormFilter[0].lenght > 0', parseInt(value));
+                    $scope.categories.push(parseInt(value));
+                });
+            }
+            //$scope.categories = $scope.selectedPropertiesFormFilter[0];
             if ($scope.selectedPropertiesFormFilter[1] === -1) {
                 $scope.type = $scope.form.types[0];
             } else {

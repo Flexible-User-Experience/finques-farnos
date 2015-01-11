@@ -42,7 +42,6 @@ class FrontController extends Controller
     public function propertiesAction(Request $request)
     {
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
-        //$filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
         if ($request->getSession()->has('pfilter')) {
             $selectedPropertiesFormFilter = array(
                 $request->getSession()->get('pfilter')[0],
