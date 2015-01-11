@@ -76,24 +76,24 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      *  description="Get filtered properties"
      * )
      *
-     * @param int $categories
-     * @param int $type
-     * @param int $city
-     * @param int $area
-     * @param int $rooms
-     * @param int $price
+     * @param Request $request
+     * @param string  $categories
+     * @param int     $type
+     * @param int     $city
+     * @param int     $area
+     * @param int     $rooms
+     * @param int     $price
      *
      * @return mixed
      */
-    public function propertiesFilteredAction($categories, $type, $city, $area, $rooms, $price)
+    public function propertiesFilteredAction(Request $request, $categories, $type, $city, $area, $rooms, $price)
     {
-        if ($area !== 'undefined' && $rooms !== 'undefined' && $price !== 'undefined') {
-            return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $city, $area, $rooms, $price);
+        $catArray = array();
+        if ($categories != '-1' && $categories != 'any') {
+            $catArray = explode('-', $categories);
         }
-        $session = new Session();
-        $session->start();
-        $session->set('pfilter', array($type, $city, $area, $rooms, $price));
+        $request->getSession()->set('pfilter', array($catArray, $type, $city, $area, $rooms, $price));
 
-        return array();
+        return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($catArray, $type, $city, $area, $rooms, $price);
     }
 }
