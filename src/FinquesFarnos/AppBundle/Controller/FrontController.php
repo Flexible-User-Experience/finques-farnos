@@ -91,16 +91,10 @@ class FrontController extends Controller
     /**
      * @Route("/property/next/{id}/", name="front_property_next", options={"expose" = false})
      */
-    public function nextPropertyForwardAction($id)
+    public function nextPropertyForwardAction(Request $request, $id)
     {
         /** @var Property $nextProperty */
-        $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledNextProperty($id);
-        if (is_null($nextProperty)) {
-            $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getFirstEnabledProperty();
-            if (is_null($nextProperty)) {
-                $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->find($id);
-            }
-        }
+        $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledNextProperty($id, $request->getSession()->get('pfilter'));
 
         return $this->redirectToRoute('front_property', array(
                 'type' => $nextProperty->getType()->getNameSlug(),

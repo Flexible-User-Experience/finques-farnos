@@ -187,15 +187,7 @@ class PropertyRepository extends EntityRepository
      */
     public function getEnabledPrevProperty($id, $filter)
     {
-        $catArray = array();
-        if ($filter[0] != '-1' && $filter[0] != 'any') {
-            if (is_array($filter[0])) {
-                $catArray = $filter[0];
-            } else {
-                $catArray = explode('-', $filter[0]);
-            }
-        }
-        $filteredProperties = $this->filterBy($catArray, $filter[1], $filter[2], $filter[3], $filter[4], $filter[5]);
+        $filteredProperties = $this->handleFilter($filter);
         $index = 0;
         /** @var Property $filteredProperty */
         foreach ($filteredProperties as $filteredProperty) {
@@ -214,21 +206,27 @@ class PropertyRepository extends EntityRepository
     /**
      * Get enabled next property
      *
-     * @param $id
+     * @param int   $id
+     * @param mixed $filter
      *
      * @return Property|null
      */
-    public function getEnabledNextProperty($id)
+    public function getEnabledNextProperty($id, $filter)
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.enabled = :enabled')
-            ->andWhere('p.id > :id')
-            ->setParameter('enabled', true)
-            ->setParameter('id', $id)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult();
+        $filteredProperties = $this->handleFilter($filter);
+        $index = 0;
+        /** @var Property $filteredProperty */
+        foreach ($filteredProperties as $filteredProperty) {
+            if ($filteredProperty->getId() == $id) {
+                break;
+            }
+            $index++;
+        }
+        if ($index == count($filteredProperties) - 1) {
+            return $filteredProperties[0];
+        }
+
+        return $filteredProperties[$index + 1];
     }
 
     /**
@@ -245,5 +243,19 @@ class PropertyRepository extends EntityRepository
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    private function handleFilter($filter)
+    {
+        $catArray = array();
+        if ($filter[0] != '-1' && $filter[0] != 'any') {
+            if (is_array($filter[0])) {
+                $catArray = $filter[0];
+            } else {
+                $catArray = explode('-', $filter[0]);
+            }
+        }
+
+        return $this->filterBy($catArray, $filter[1], $filter[2], $filter[3], $filter[4], $filter[5]);
     }
 }
