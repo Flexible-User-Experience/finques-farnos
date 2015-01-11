@@ -97,7 +97,6 @@ angular.module('propertiesApp')
             $scope.form = angular.fromJson(propertiesFormFilter);
             $scope.selectedPropertiesFormFilter = angular.fromJson(selectedPropertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
-            $log.log('[selectedPropertiesFormFilter]', selectedPropertiesFormFilter);
 
             $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
@@ -105,18 +104,14 @@ angular.module('propertiesApp')
             $scope.form.price.min = Math.ceil($scope.form.price.min / 1000) * 1000;
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
             $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
-            $log.log('selectedPropertiesFormFilter[0]', $scope.selectedPropertiesFormFilter[0]);
             $scope.categories = [];
             if ($scope.selectedPropertiesFormFilter[0].length === 0) {
                 $scope.categories = [];
             } else {
-                //$scope.categories = $scope.selectedPropertiesFormFilter[0];
                 angular.forEach($scope.selectedPropertiesFormFilter[0], function(value) {
-                    $log.log('selectedPropertiesFormFilter[0].lenght > 0', parseInt(value));
                     $scope.categories.push(parseInt(value));
                 });
             }
-            //$scope.categories = $scope.selectedPropertiesFormFilter[0];
             if ($scope.selectedPropertiesFormFilter[1] === -1) {
                 $scope.type = $scope.form.types[0];
             } else {
@@ -186,7 +181,6 @@ angular.module('propertiesApp')
             } else {
                 ss = ss.slice(0, -1); // remove last '-' char from serialized categories
             }
-            $log.log($scope.categories, 'serialization=' + ss);
 
             return ss;
         };

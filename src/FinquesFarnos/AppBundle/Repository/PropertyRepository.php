@@ -153,9 +153,11 @@ class PropertyRepository extends EntityRepository
             $qb->andWhere('p.city = :city')->setParameter('city', $city);
         }
         if ($categories) {
+            $orWhereExpr = $qb->expr()->orX();
             foreach ($categories as $categoryId) {
-                $qb->andWhere('c.id = :cid')->setParameter('cid', $categoryId);
+                $orWhereExpr->add($qb->expr()->orX($qb->expr()->eq('c.id', $categoryId)));
             }
+            $qb->andWhere($orWhereExpr);
         }
 
         return $qb->getQuery();
