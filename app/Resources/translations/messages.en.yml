@@ -9,7 +9,8 @@ frontend:
   legal: legal
   credits: credits
   cookies:
-    warning: Este sitio web utiliza cookies de terceros para obtener información estadística sobre la navegación. Si continúa navegando, consideraremos que acepta su uso.
+    warning: This website uses third party cookies to obtain statistical information about navigation. If you continue to browse means you accept its use.
+    button: hide this message forever
 
 homepage:
   property:

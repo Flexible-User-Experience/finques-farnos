@@ -9,7 +9,8 @@ frontend:
   legal: avertissement légal
   credits: crédits
   cookies:
-    warning: Este sitio web utiliza cookies de terceros para obtener información estadística sobre la navegación. Si continúa navegando, consideraremos que acepta su uso.
+    warning: Ce site utilise les cookies tiers pour obtenir des informations statistiques sur la navigation. Si vous continuez à naviguer signifie que vous acceptez son utilisation.
+    button: ne pas montrer ce message
 
 homepage:
   property:
