@@ -33,6 +33,13 @@
                             </label>
                         </div>#}
                         <div class="form-group">
+                            {#<div class="btn-group btn-group-sm" data-toggle="buttons">#}
+                                <label class="btn btn-default" ng-repeat="cat in form.categories">
+                                    <input type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()"> [[ cat.name ]]
+                                </label>
+                            {#</div>#}
+                        </div>
+                        <div class="form-group">
                             <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
                             <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">
                             </select>
