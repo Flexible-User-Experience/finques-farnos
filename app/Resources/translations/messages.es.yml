@@ -8,6 +8,9 @@ frontend:
   privacy: privacidad
   legal: aviso legal
   credits: créditos
+  cookies:
+    warning: Este sitio web utiliza galletas de terceros (cookies) para obtener información estadística sobre la navegación. Si continúa navegando, consideraremos que acepta su uso.
+    button: no mostrar más este mensaje
 
 homepage:
   property:

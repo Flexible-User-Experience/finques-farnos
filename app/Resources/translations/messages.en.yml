@@ -8,6 +8,9 @@ frontend:
   privacy: privacy
   legal: legal
   credits: credits
+  cookies:
+    warning: This website uses third party cookies to obtain statistical information about navigation. If you continue to browse means you accept its use.
+    button: hide this message forever
 
 homepage:
   property:

@@ -8,6 +8,9 @@ frontend:
   privacy: privacitat
   legal: avís legal
   credits: crèdits
+  cookies:
+    warning: Aquest lloc web utilitza galetes de tercers (cookies) per obtenir informació estadística sobre la navegació. Si continua navegant, considerarem que accepta el seu ús.
+    button: no mostrar més aquest missatge
 
 homepage:
   property:

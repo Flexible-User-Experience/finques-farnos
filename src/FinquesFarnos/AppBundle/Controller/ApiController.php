@@ -100,4 +100,21 @@ class ApiController extends FOSRestController implements ClassResourceInterface
 
         return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($catArray, $type, $city, $area, $rooms, $price);
     }
+
+    /**
+     * Get filtered properties
+     *
+     * @Rest\View(serializerGroups={"api"})
+     * @Rest\Get("/set-accept-cookie-warning", options={"expose"=true})
+     *
+     * @param Request $request
+     *
+     * @return mixed
+     */
+    public function setAcceptCookieWarningAction(Request $request)
+    {
+        $request->getSession()->set('acceptCookiesWarning', true);
+
+        return array('result' => 'OK');
+    }
 }

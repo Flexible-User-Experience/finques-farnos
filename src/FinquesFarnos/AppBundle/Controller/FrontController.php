@@ -76,6 +76,9 @@ class FrontController extends Controller
      */
     public function prevPropertyForwardAction(Request $request, $id)
     {
+        if (!$request->getSession()->has('pfilter')) {
+            $request->getSession()->set('pfilter', array(-1, -1, -1, 0, 0, 0));
+        }
         /** @var Property $previousProperty */
         $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPrevProperty($id, $request->getSession()->get('pfilter'));
 
@@ -92,6 +95,9 @@ class FrontController extends Controller
      */
     public function nextPropertyForwardAction(Request $request, $id)
     {
+        if (!$request->getSession()->has('pfilter')) {
+            $request->getSession()->set('pfilter', array(-1, -1, -1, 0, 0, 0));
+        }
         /** @var Property $nextProperty */
         $nextProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledNextProperty($id, $request->getSession()->get('pfilter'));
 
