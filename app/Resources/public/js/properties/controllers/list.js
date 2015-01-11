@@ -17,9 +17,7 @@ angular.module('propertiesApp')
             $scope.form = angular.fromJson(propertiesFormFilter);
             $scope.selectedPropertiesFormFilter = angular.fromJson(selectedPropertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
-//            $log.log(filteredProperties);
             $log.log('[selectedPropertiesFormFilter]', selectedPropertiesFormFilter);
-//            $log.log($scope.properties);
 
             $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
@@ -37,17 +35,9 @@ angular.module('propertiesApp')
             } else {
                 $scope.city = $scope.form.cities[$scope.selectedPropertiesFormFilter[2]];
             }
-            $scope.area = $scope.selectedPropertiesFormFilter[3]; //180; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
-            $scope.rooms = $scope.selectedPropertiesFormFilter[4]; //5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
-            $scope.price = $scope.selectedPropertiesFormFilter[5]; //60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
-
-//            $log.log('init propertiesFormFilter', $scope.form);
-//            $log.log('init filteredProperties', $scope.properties);
-//            $log.log('init type', $scope.type);
-//            $log.log('init city', $scope.city);
-//            $log.log('init area', $scope.area);
-//            $log.log('init rooms', $scope.rooms);
-//            $log.log('init price', $scope.price);
+            $scope.area = $scope.selectedPropertiesFormFilter[3];
+            $scope.rooms = $scope.selectedPropertiesFormFilter[4];
+            $scope.price = $scope.selectedPropertiesFormFilter[5];
         };
 
         uiGmapGoogleMapApi.then(function(maps) {
@@ -99,14 +89,12 @@ angular.module('propertiesApp')
             angular.forEach($scope.categories, function(value) {
                 ss = ss + value.id + '-';
             }, ss);
-
             if (ss === '') {
                 ss = '-1';
             } else {
                 ss = ss.slice(0, -1); // remove last '-' char from serialized categories
             }
-            $log.log($scope.categories);
-            $log.log(ss);
+            $log.log($scope.categories, 'serialization=' + ss);
 
             return ss;
         };
