@@ -39,11 +39,22 @@ class FrontController extends Controller
     /**
      * @Route("/properties/", name="front_properties", options={"sitemap" = true})
      */
-    public function propertiesAction()
+    public function propertiesAction(Request $request)
     {
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
         //$filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
-        $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
+        if ($request->getSession()->has('pfilter')) {
+            $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
+                // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
+                'categories' => $request->getSession()->get('pfilter')[0],
+                'type' => $request->getSession()->get('pfilter')[1],
+                'city' => $request->getSession()->get('pfilter')[2],
+                'area' => $request->getSession()->get('pfilter')[3],
+                'rooms' => $request->getSession()->get('pfilter')[4],
+                'price' => $request->getSession()->get('pfilter')[5],
+            ), array('_format' => 'json'));
+        } else {
+            $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
                 // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
                 'categories' => -1,
                 'type' => -1,
@@ -52,6 +63,7 @@ class FrontController extends Controller
                 'rooms' => 0,
                 'price' => 0,
             ), array('_format' => 'json'));
+        }
 
         return $this->render('Front/properties.html.twig', array(
                 'propertiesFormFilter' => $propertiesFormFilter->getContent(),
