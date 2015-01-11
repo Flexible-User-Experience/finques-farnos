@@ -36,7 +36,8 @@
     "restangular": "~1.4.0",
     "angular-google-maps": "~2.0.11",
     "numeral": "~1.5.3",
-    "checklist-model": "~0.1.3"
+    "checklist-model": "~0.1.3",
+    "awesome-bootstrap-checkbox": "~0.2.3"
   },
   "private": true,
   "resolutions": {

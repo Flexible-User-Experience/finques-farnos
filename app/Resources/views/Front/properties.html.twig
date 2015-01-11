@@ -22,23 +22,12 @@
             <div class="col-md-4">
                 <div class="left-search-panel">
                     <form name="filterForm" action="" role="form">
-                        {#<div class="form-group">
-                            {#<label for="propertyCategory" class="control-label">{{ 'properties.form.category' | trans | upper }}</label>
-                            {#<select multiple id="propertyCategory" class="form-control" data-ng-model="categories" required="required" data-ng-options="cat.name for cat in form.categories" data-ng-change="formListener()"></select>#}
-                            {#<div class="btn-group btn-group-sm" role="group" data-aria-label="propertyCategory">
-                                <label class="btn btn-default" data-ng-repeat="cat in form.categories" data-ng-model="categories" data-btn-radio="'cat.id'" data-ng-change="formListener()">[[ cat.name ]]</label>
-                            {#</div>#
-                            <label class="checkbox-inline" data-ng-repeat="cat in form.categories">
-                                <input type="checkbox" name="selectedCategories[]" value="[[ cat.id ]]"  data-ng-click="toggleSelection(cat)"> [[ cat.name ]]
-                            </label>
-                        </div>#}
                         <div class="form-group">
-                            <label for="propertyCategory" class="control-label">{{ 'properties.form.category' | trans | upper }}</label><br>
-                            {#<div class="btn-group btn-group-sm" role="button" data-toggle="buttons">#}
-                                <label {#class="btn btn-default"#} data-ng-repeat="cat in form.categories">
-                                    <input checked="checked" type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()"> [[ cat.name ]]&nbsp;&nbsp;
-                                </label>
-                            {#</div>#}
+                            {#<label for="propertyCategory" class="control-label">{{ 'properties.form.category' | trans | upper }}</label>#}
+                            <div class="checkbox checkbox-inline checkbox-warning" data-ng-repeat="cat in form.categories">
+                                <input id="checkbox[[ cat.id ]]" type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()">
+                                <label for="checkbox[[ cat.id ]]">[[ cat.name ]]</label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
