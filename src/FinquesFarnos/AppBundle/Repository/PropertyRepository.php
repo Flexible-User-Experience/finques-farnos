@@ -98,15 +98,16 @@ class PropertyRepository extends EntityRepository
     /**
      * Filter properties by
      *
-     * @param int $type
-     * @param int $city
-     * @param int $area
-     * @param int $rooms
-     * @param int $price
+     * @param array $categories
+     * @param int   $type
+     * @param int   $city
+     * @param int   $area
+     * @param int   $rooms
+     * @param int   $price
      *
      * @return ArrayCollection
      */
-    public function filterBy($type, $city, $area, $rooms, $price)
+    public function filterBy($categories, $type, $city, $area, $rooms, $price)
     {
         /** @var QueryBuilder $qb */
         $qb = $this->createQueryBuilder('p')
@@ -134,7 +135,12 @@ class PropertyRepository extends EntityRepository
         if ($city > 0) {
             $qb->andWhere('p.city = :city')->setParameter('city', $city);
         }
-//        $qb->setMaxResults(2); // TODO remove this
+        if ($categories) {
+            foreach ($categories as $categoryId) {
+                $qb->andWhere('c.id = :cid')->setParameter('cid', $categoryId);
+            }
+        }
+        //$qb->setMaxResults(5); // TODO remove this
 
         return $qb->getQuery()->getResult();
     }

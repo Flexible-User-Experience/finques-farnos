@@ -2,6 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\Controller;
 
+use FinquesFarnos\AppBundle\Entity\Category;
 use FinquesFarnos\AppBundle\Entity\Type;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -30,8 +31,15 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      */
     public function propertiesFormFilterAction()
     {
-        $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsSortedByNameArrayResult();
-        array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
+        // categories
+        $categories = array();
+        $categoriesCollection = $this->getDoctrine()->getRepository('AppBundle:Category')->getEnabledItemsSortedByName();
+        // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
+        /** @var Category $category */
+        foreach ($categoriesCollection as $category) {
+            $categories[] = array('id' => $category->getId(), 'name' => $category->getName());
+        }
+        // types
         $types = array(array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.type')));
         $typesCollection = $this->getDoctrine()->getRepository('AppBundle:Type')->getEnabledItemsSortedByName();
         // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
@@ -39,8 +47,13 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         foreach ($typesCollection as $type) {
             $types[] = array('id' => $type->getId(), 'name' => $type->getName());
         }
+        // cities
+        $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsSortedByNameArrayResult();
+        array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
+        // property attributes
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
         $data = array(
+            'categories' => $categories,
             'types' => $types,
             'cities' => $cities,
             'area' => array('min' => 0, 'max' => intval($filters['max_area'])),
@@ -55,7 +68,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * Get filtered properties
      *
      * @Rest\View(serializerGroups={"api"})
-     * @Rest\Get("/get-properties-filtered/{type}/{city}/{area}/{rooms}/{price}", options={"expose"=true})
+     * @Rest\Get("/get-properties-filtered/{categories}/{type}/{city}/{area}/{rooms}/{price}", options={"expose"=true})
      *
      * @ApiDoc(
      *  section="Properties",
@@ -63,23 +76,24 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      *  description="Get filtered properties"
      * )
      *
-     * @param int $type
-     * @param int $city
-     * @param int $area
-     * @param int $rooms
-     * @param int $price
+     * @param Request $request
+     * @param string  $categories
+     * @param int     $type
+     * @param int     $city
+     * @param int     $area
+     * @param int     $rooms
+     * @param int     $price
      *
      * @return mixed
      */
-    public function propertiesFilteredAction($type, $city, $area, $rooms, $price)
+    public function propertiesFilteredAction(Request $request, $categories, $type, $city, $area, $rooms, $price)
     {
-        if ($area !== 'undefined' && $rooms !== 'undefined' && $price !== 'undefined') {
-            return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($type, $city, $area, $rooms, $price);
+        $catArray = array();
+        if ($categories != '-1' && $categories != 'any') {
+            $catArray = explode('-', $categories);
         }
-        $session = new Session();
-        $session->start();
-        $session->set('pfilter', array($type, $city, $area, $rooms, $price));
+        $request->getSession()->set('pfilter', array($catArray, $type, $city, $area, $rooms, $price));
 
-        return array();
+        return $this->getDoctrine()->getRepository('AppBundle:Property')->filterBy($catArray, $type, $city, $area, $rooms, $price);
     }
 }

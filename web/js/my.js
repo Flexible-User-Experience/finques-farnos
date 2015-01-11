@@ -32,7 +32,8 @@ angular.module('propertiesApp')
 
         this.getProperties = function($scope) {
             var deferred = $q.defer();
-            $http.get(Routing.generate('api_properties_api_filtered', {type: $scope.type.id, city: $scope.city.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
+//            $log.log($scope.getSerializedCategories());
+            $http.get(Routing.generate('api_properties_api_filtered', {categories: $scope.getSerializedCategories(), type: $scope.type.id, city: $scope.city.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
                     $log.log('[getProperties]', response.length, 'properties fetched');
                     $scope.properties = response;
@@ -89,6 +90,7 @@ angular.module('propertiesApp')
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, filteredProperties) {
+            $scope.categories = {};
             $scope.type = {};
             $scope.city = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
@@ -135,7 +137,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerArea);
             }
             timerArea = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -144,7 +146,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerRooms);
             }
             timerRooms = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -153,7 +155,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerPrice);
             }
             timerPrice = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -163,6 +165,23 @@ angular.module('propertiesApp')
 
         $scope.getUrlPropertyDetail = function(property) {
             return Routing.generate('front_property', {type: property.type_name_slug, city: property.city_name_slug, name: property.name_slug, reference: property.reference});
+        };
+
+        $scope.getSerializedCategories = function() {
+            var ss = '';
+            angular.forEach($scope.categories, function(value) {
+                ss = ss + value.id + '-';
+            }, ss);
+
+            if (ss === '') {
+                ss = '-1';
+            } else {
+                ss = ss.slice(0, -1); // remove last '-' char from serialized categories
+            }
+            $log.log($scope.categories);
+            $log.log(ss);
+
+            return ss;
         };
 
     }]);

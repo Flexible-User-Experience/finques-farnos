@@ -7,6 +7,7 @@ angular.module('propertiesApp')
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, filteredProperties) {
+            $scope.categories = {};
             $scope.type = {};
             $scope.city = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
@@ -53,7 +54,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerArea);
             }
             timerArea = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -62,7 +63,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerRooms);
             }
             timerRooms = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -71,7 +72,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerPrice);
             }
             timerPrice = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -81,6 +82,23 @@ angular.module('propertiesApp')
 
         $scope.getUrlPropertyDetail = function(property) {
             return Routing.generate('front_property', {type: property.type_name_slug, city: property.city_name_slug, name: property.name_slug, reference: property.reference});
+        };
+
+        $scope.getSerializedCategories = function() {
+            var ss = '';
+            angular.forEach($scope.categories, function(value) {
+                ss = ss + value.id + '-';
+            }, ss);
+
+            if (ss === '') {
+                ss = '-1';
+            } else {
+                ss = ss.slice(0, -1); // remove last '-' char from serialized categories
+            }
+            $log.log($scope.categories);
+            $log.log(ss);
+
+            return ss;
         };
 
     }]);

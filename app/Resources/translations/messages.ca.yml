@@ -35,6 +35,7 @@ properties:
       prev: anterior
       next: següent
   form:
+    category: categoria
     type: tipus
     city: població
     area: superfície
@@ -114,7 +115,7 @@ privacy:
   send:
     title: Cessió de dades a tercers
     text: FINQUES FARNÓS SL no realitzarà cessió de dades dels usuaris a tercers.
-  spam: A FINQUES FARNÓS no ens agrada el correu brossa i contribuïm a eradicar
+  spam: A FINQUES FARNÓS no ens agrada el correu brossa i contribuïm a eradicar-lo
 
 legal:
   text: El present avís legal (d'ara endavant "Avís Legal") regula l'ús del servei del portal d'Internet http://www.finquesfarnos.com (d'ara endavant, Web) de FINQUES FARNÓS SL amb domicili a C. CORSINI, 63-43.870 AMPOSTA (TARRAGONA), i amb CIF B43524149 i inscrita en el Registre Mercantil tom 1.367, foli 214, full T-16267, inscripció 1a, CIF B43524149
