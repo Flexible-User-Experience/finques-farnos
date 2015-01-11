@@ -75,16 +75,10 @@ class FrontController extends Controller
     /**
      * @Route("/property/previous/{id}/", name="front_property_prev", options={"expose" = false})
      */
-    public function prevPropertyForwardAction($id)
+    public function prevPropertyForwardAction(Request $request, $id)
     {
         /** @var Property $previousProperty */
-        $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPrevProperty($id);
-        if (is_null($previousProperty)) {
-            $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getLastEnabledProperty();
-            if (is_null($previousProperty)) {
-                $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->find($id);
-            }
-        }
+        $previousProperty = $this->getDoctrine()->getRepository('AppBundle:Property')->getEnabledPrevProperty($id, $request->getSession()->get('pfilter'));
 
         return $this->redirectToRoute('front_property', array(
                'type' => $previousProperty->getType()->getNameSlug(),
