@@ -8,6 +8,8 @@ frontend:
   privacy: privacité
   legal: avertissement légal
   credits: crédits
+  cookies:
+    warning: Este sitio web utiliza cookies de terceros para obtener información estadística sobre la navegación. Si continúa navegando, consideraremos que acepta su uso.
 
 homepage:
   property:

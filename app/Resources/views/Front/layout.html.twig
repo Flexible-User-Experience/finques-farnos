@@ -47,6 +47,14 @@
 </nav>
 {#<!-- Main content -->#}
 {% block main %}{% endblock %}
+{#<!-- Cookies warning -->#}
+{% if not app.request.cookies.has('acceptCookiesWarning') %}
+    <div class="sticky-footer">
+        <div class="container">
+            <p>{{ 'frontend.cookies.warning' | trans }}</p>
+        </div>
+    </div>
+{% endif %}
 {#<!-- Footer -->#}
 <footer>
     <div class="container">
