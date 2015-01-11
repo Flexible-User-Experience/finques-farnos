@@ -86,11 +86,15 @@ angular.module('propertiesApp')
 
         $scope.getSerializedCategories = function() {
             var ss = '';
-            angular.forEach($scope.categories, function(value, key) {
+            angular.forEach($scope.categories, function(value) {
                 ss = ss + value.id + '-';
             }, ss);
 
-            if (ss === '') return '-1';
+            if (ss === '') {
+                ss = '-1';
+            } else {
+                ss = ss.slice(0, -1); // remove last '-' char from serialized categories
+            }
 
             return ss;
         }

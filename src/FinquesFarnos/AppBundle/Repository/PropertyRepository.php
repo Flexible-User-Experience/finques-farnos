@@ -140,7 +140,7 @@ class PropertyRepository extends EntityRepository
                 $qb->andWhere('c.id = :cid')->setParameter('cid', $categoryId);
             }
         }
-        $qb->setMaxResults(5); // TODO remove this
+        //$qb->setMaxResults(5); // TODO remove this
 
         return $qb->getQuery()->getResult();
     }
