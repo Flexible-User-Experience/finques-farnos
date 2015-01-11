@@ -7,7 +7,7 @@ angular.module('propertiesApp')
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, selectedPropertiesFormFilter, filteredProperties) {
-            $scope.categories = {};
+            $scope.categories = [];
             $scope.type = {};
             $scope.city = {};
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
@@ -87,7 +87,7 @@ angular.module('propertiesApp')
         $scope.getSerializedCategories = function() {
             var ss = '';
             angular.forEach($scope.categories, function(value) {
-                ss = ss + value.id + '-';
+                ss = ss + value + '-';
             }, ss);
             if (ss === '') {
                 ss = '-1';
