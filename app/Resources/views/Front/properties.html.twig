@@ -24,7 +24,7 @@
                     <form name="filterForm" action="" role="form">
                         <div class="form-group">
                             {#<label for="propertyCategory" class="control-label">{{ 'properties.form.category' | trans | upper }}</label>#}
-                            <div class="checkbox checkbox-inline checkbox-warning" data-ng-repeat="cat in form.categories">
+                            <div class="checkbox checkbox-inline checkbox-info" data-ng-repeat="cat in form.categories">
                                 <input id="checkbox[[ cat.id ]]" type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()">
                                 <label for="checkbox[[ cat.id ]]">[[ cat.name ]]</label>
                             </div>
