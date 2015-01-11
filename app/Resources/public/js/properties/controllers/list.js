@@ -95,8 +95,10 @@ angular.module('propertiesApp')
             } else {
                 ss = ss.slice(0, -1); // remove last '-' char from serialized categories
             }
+            $log.log($scope.categories);
+            $log.log(ss);
 
             return ss;
-        }
+        };
 
     }]);
