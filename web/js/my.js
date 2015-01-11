@@ -89,7 +89,7 @@ angular.module('propertiesApp')
         var timerArea, timerRooms, timerPrice = false;
         numeral.language('es');
 
-        $scope.init = function(propertiesFormFilter, filteredProperties) {
+        $scope.init = function(propertiesFormFilter, selectedPropertiesFormFilter, filteredProperties) {
             $scope.categories = {};
             $scope.type = {};
             $scope.city = {};
@@ -98,8 +98,10 @@ angular.module('propertiesApp')
             $scope.map.control = {};
 
             $scope.form = angular.fromJson(propertiesFormFilter);
+            $scope.selectedPropertiesFormFilter = angular.fromJson(selectedPropertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
 //            $log.log(filteredProperties);
+            $log.log('[selectedPropertiesFormFilter]', selectedPropertiesFormFilter);
 //            $log.log($scope.properties);
 
             $scope.form.area.min = Math.ceil($scope.form.area.min / 10) * 10;
@@ -108,11 +110,19 @@ angular.module('propertiesApp')
             $scope.form.price.min = Math.ceil($scope.form.price.min / 1000) * 1000;
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
             $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
-            $scope.type = $scope.form.types[0];
-            $scope.city = $scope.form.cities[0];
-            $scope.area = 0; //180; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
-            $scope.rooms = 0; //5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
-            $scope.price = 0; //60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
+            if ($scope.selectedPropertiesFormFilter[1] === -1) {
+                $scope.type = $scope.form.types[0];
+            } else {
+                $scope.type = $scope.form.types[$scope.selectedPropertiesFormFilter[1]];
+            }
+            if ($scope.selectedPropertiesFormFilter[2] === -1) {
+                $scope.city = $scope.form.cities[0];
+            } else {
+                $scope.city = $scope.form.cities[$scope.selectedPropertiesFormFilter[2]];
+            }
+            $scope.area = $scope.selectedPropertiesFormFilter[3]; //180; // $scope.form.area.min + Math.round(($scope.form.area.max - $scope.form.area.min) / 2);
+            $scope.rooms = $scope.selectedPropertiesFormFilter[4]; //5; // $scope.form.rooms.min + Math.round(($scope.form.rooms.max - $scope.form.rooms.min) / 2);
+            $scope.price = $scope.selectedPropertiesFormFilter[5]; //60000; //$scope.form.price.min + Math.round(($scope.form.price.max - $scope.form.price.min) / 2);
 
 //            $log.log('init propertiesFormFilter', $scope.form);
 //            $log.log('init filteredProperties', $scope.properties);

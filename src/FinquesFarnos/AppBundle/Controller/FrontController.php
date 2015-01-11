@@ -44,29 +44,30 @@ class FrontController extends Controller
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
         //$filters = json_decode($propertiesFormFilter->getContent(), true/* get array format */);
         if ($request->getSession()->has('pfilter')) {
-            $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
-                // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
-                'categories' => $request->getSession()->get('pfilter')[0],
-                'type' => $request->getSession()->get('pfilter')[1],
-                'city' => $request->getSession()->get('pfilter')[2],
-                'area' => $request->getSession()->get('pfilter')[3],
-                'rooms' => $request->getSession()->get('pfilter')[4],
-                'price' => $request->getSession()->get('pfilter')[5],
-            ), array('_format' => 'json'));
+            $selectedPropertiesFormFilter = array(
+                $request->getSession()->get('pfilter')[0],
+                intval($request->getSession()->get('pfilter')[1]),
+                intval($request->getSession()->get('pfilter')[2]),
+                intval($request->getSession()->get('pfilter')[3]),
+                intval($request->getSession()->get('pfilter')[4]),
+                intval($request->getSession()->get('pfilter')[5]),
+            );
         } else {
-            $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
-                // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
-                'categories' => -1,
-                'type' => -1,
-                'city' => -1,
-                'area' => 0,
-                'rooms' => 0,
-                'price' => 0,
-            ), array('_format' => 'json'));
+            $selectedPropertiesFormFilter = array(-1, -1, -1, 0, 0, 0);
         }
+        $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
+            // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
+            'categories' => $selectedPropertiesFormFilter[0],
+            'type' => $selectedPropertiesFormFilter[1],
+            'city' => $selectedPropertiesFormFilter[2],
+            'area' => $selectedPropertiesFormFilter[3],
+            'rooms' => $selectedPropertiesFormFilter[4],
+            'price' => $selectedPropertiesFormFilter[5],
+        ), array('_format' => 'json'));
 
         return $this->render('Front/properties.html.twig', array(
                 'propertiesFormFilter' => $propertiesFormFilter->getContent(),
+                'selectedPropertiesFormFilter' => json_encode($selectedPropertiesFormFilter),
                 'filteredProperties'   => $filteredProperties->getContent(),
             ));
     }
