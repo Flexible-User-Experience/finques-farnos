@@ -92,6 +92,15 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $builder->Text($builder->getMargins()['left'], 267, $url);
         $builder->Footer();
 
+        // Help dashed line
+        $builder->Line($builder->getMargins()['left'] + 5, 36, $builder->getMargins()['right'] - 5, 36, array(
+                'width' => 0.2,
+                'cap' => 'square',
+                'join' => 'miter',
+                'dash' => '5,10',
+                'color' => array(200, 200, 200),
+            ));
+
         // Return the original PDF, calling getContents to retrieve the rendered content
         return $pdf;
     }
