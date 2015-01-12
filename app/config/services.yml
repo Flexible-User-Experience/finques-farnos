@@ -14,7 +14,14 @@ services:
 # Orkestra PDF
     app.property_showcase_pdf_generator:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyShowcasePdfGenerator
-        arguments: [ @orkestra.pdf.factory_registry, @templating ]
+        arguments:
+            - @orkestra.pdf.factory_registry
+            - @templating
+            - @router
+            - @translator.default
+            - @liip_imagine.cache.manager
+            - @vich_uploader.templating.helper.uploader_helper
+            - "%kernel.root_dir%"
     app.property_web_pdf_generator:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyWebPdfGenerator
         arguments:
