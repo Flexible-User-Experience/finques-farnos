@@ -58,7 +58,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerArea);
             }
             timerArea = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== oldValue) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -67,7 +67,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerRooms);
             }
             timerRooms = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== oldValue) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
@@ -76,7 +76,7 @@ angular.module('propertiesApp')
                 $timeout.cancel(timerPrice);
             }
             timerPrice = $timeout(function() {
-                if (newValue !== undefined && oldValue !== undefined && newValue !== 0) { API.getProperties($scope); }
+                if (newValue !== undefined && oldValue !== undefined && newValue !== oldValue) { API.getProperties($scope); }
             }, CFG.DELAY);
         });
 
