@@ -116,6 +116,7 @@ class FrontController extends Controller
     public function propertyAction(Request $request, Property $property)
     {
         $adminListPropertiesRoute = $this->generateUrl('admin_finquesfarnos_app_property_list');
+        $frontRoute = $this->generateUrl('front_homepage', array(), true);
         if (strpos($request->headers->get('referer'), $adminListPropertiesRoute) == 0) {
             // Referer request is not an admin route so add a visit record
             /** @var EntityManager $em */
@@ -145,6 +146,7 @@ class FrontController extends Controller
         );
 
         return $this->render('Front/property.html.twig', array(
+                'showNavigationArrows' => $request->headers->get('referer') != $frontRoute,
                 'property' => $property,
                 'localization' => json_encode($localization),
                 'form' => $form->createView(),
