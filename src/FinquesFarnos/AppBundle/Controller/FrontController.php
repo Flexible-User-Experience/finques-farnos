@@ -28,8 +28,10 @@ class FrontController extends Controller
     /**
      * @Route("/", name="front_homepage", options={"sitemap" = true})
      */
-    public function homepageAction()
+    public function homepageAction(Request $request)
     {
+        $request->getSession()->remove('pfilter');
+
         return $this->render('Front/homepage.html.twig', array(
                 'slides' => $this->getDoctrine()->getRepository('AppBundle:ImageSlider')->getHomepageItems(),
                 'properties' => $this->getDoctrine()->getRepository('AppBundle:Property')->getHomepageItems(),
@@ -41,6 +43,7 @@ class FrontController extends Controller
      */
     public function propertiesAction(Request $request)
     {
+        $backToListRoute = $this->generateUrl('front_property_return', array(), true);
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
         if ($request->getSession()->has('pfilter')) {
             $selectedPropertiesFormFilter = array(
@@ -110,6 +113,20 @@ class FrontController extends Controller
     }
 
     /**
+     * @Route("/property/back-to-list/", name="front_property_return", options={"expose" = false})
+     */
+    public function backToListAction(Request $request)
+    {
+        if (!$request->getSession()->has('pfilter')) {
+            $request->getSession()->set('pfilter', array(-1, -1, -1, 0, 0, 0));
+        }
+
+//        $path = $request->attributes->all();
+//        return $this->forward('AppBundle:Front:Properties', array('request' => $request));
+        return $this->redirectToRoute('front_properties');
+    }
+
+    /**
      * @Route("/{type}/{city}/{name}/{reference}/", name="front_property", options={"expose" = true})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"reference": "reference"}})
      */
@@ -157,7 +174,7 @@ class FrontController extends Controller
      * @Route("/property/pdf/{id}/", name="front_property_pdf", options={"expose" = false})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"id": "id"}})
      */
-    public function propertyPdfAction(Request $request, $property)
+    public function propertyPdfAction($property)
     {
         /** @var PropertyWebPdfGenerator $generator */
         $generator = $this->get('app.property_web_pdf_generator');
@@ -169,8 +186,10 @@ class FrontController extends Controller
     /**
      * @Route("/about-us/", name="front_about", options={"sitemap" = true})
      */
-    public function aboutAction()
+    public function aboutAction(Request $request)
     {
+        $request->getSession()->remove('pfilter');
+
         return $this->render('Front/about.html.twig');
     }
 
@@ -179,6 +198,7 @@ class FrontController extends Controller
      */
     public function contactAction(Request $request)
     {
+        $request->getSession()->remove('pfilter');
         $contact = new Contact();
         $form = $this->createForm(new ContactType(), $contact);
         $form->handleRequest($request);
@@ -207,24 +227,30 @@ class FrontController extends Controller
     /**
      * @Route("/privacy/", name="front_privacy", options={"sitemap" = true})
      */
-    public function privacyAction()
+    public function privacyAction(Request $request)
     {
+        $request->getSession()->remove('pfilter');
+
         return $this->render('Front/privacy.html.twig');
     }
 
     /**
      * @Route("/legal/", name="front_legal", options={"sitemap" = true})
      */
-    public function legalAction()
+    public function legalAction(Request $request)
     {
+        $request->getSession()->remove('pfilter');
+
         return $this->render('Front/legal.html.twig');
     }
 
     /**
      * @Route("/credits/", name="front_credits", options={"sitemap" = true})
      */
-    public function creditsAction()
+    public function creditsAction(Request $request)
     {
+        $request->getSession()->remove('pfilter');
+
         return $this->render('Front/credits.html.twig');
     }
 }
