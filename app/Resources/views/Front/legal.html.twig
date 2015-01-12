@@ -7,20 +7,20 @@
 {% block main %}
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <img class="img-responsive" src="http://lorempixel.com/c/360/300/nature/" alt="dummy"/>
-            </div>
-            <div class="col-md-8">
+            {#<div class="col-md-4">#}
+                {#<img class="img-responsive" src="http://lorempixel.com/c/360/300/nature/" alt="dummy"/>#}
+            {#</div>#}
+            <div class="col-md-12">
                 <div class="well">
-                    <h1 class="no-m-top extra-m-bottom">{{ 'frontend.legal' | trans | upper }}</h1>
+                    <h1 class="no-m-top extra-m-bottom"><i class="fa fa-exclamation-triangle"></i> {{ 'frontend.legal' | trans | upper }}</h1>
                     <p>{{ 'legal.text' | trans | raw }}</p>
-                    <h4 class="special-h4-addons">{{ 'legal.law.title' | trans }}</h4>
+                    <h4 class="special-h4-addons"><i class="fa fa-legal"></i> {{ 'legal.law.title' | trans }}</h4>
                     <p>{{ 'legal.law.text' | trans | raw }}</p>
-                    <h4 class="special-h4-addons">{{ 'legal.content.title' | trans }}</h4>
+                    <h4 class="special-h4-addons"><i class="fa fa-file-o"></i> {{ 'legal.content.title' | trans }}</h4>
                     <p>{{ 'legal.content.text' | trans | raw }}</p>
-                    <h4 class="special-h4-addons">{{ 'legal.property.title' | trans }}</h4>
+                    <h4 class="special-h4-addons"><i class="fa fa-copyright"></i> {{ 'legal.property.title' | trans }}</h4>
                     <p>{{ 'legal.property.text' | trans | raw }}</p>
-                    <h4 class="special-h4-addons">{{ 'legal.links.title' | trans }}</h4>
+                    <h4 class="special-h4-addons"><i class="fa fa-link"></i> {{ 'legal.links.title' | trans }}</h4>
                     <p>{{ 'legal.links.text' | trans | raw }}</p>
                 </div>
             </div>
