@@ -35,12 +35,11 @@ angular.module('propertiesApp')
             var deferred = $q.defer();
             $http.get(Routing.generate('api_properties_api_filtered', {categories: $scope.getSerializedCategories(), type: $scope.type.id, city: $scope.city.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
-                    $log.log('[getProperties]', response.length, 'properties fetched');
                     $scope.properties = response;
                     deferred.resolve(response);
                 })
                 .error(function(data) {
-                    $log.error('getProperties', data);
+                    $log.error('[API.getProperties]', data);
                     deferred.reject(data);
                 });
 

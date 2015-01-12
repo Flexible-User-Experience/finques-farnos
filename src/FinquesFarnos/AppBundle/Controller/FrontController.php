@@ -42,7 +42,8 @@ class FrontController extends Controller
     public function propertiesAction(Request $request)
     {
         $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
-        if ($request->getSession()->has('pfilter')) {
+        if ($request->getSession()->has('isbacktolistredirect')) {
+            $request->getSession()->remove('isbacktolistredirect');
             $selectedPropertiesFormFilter = array(
                 $request->getSession()->get('pfilter')[0],
                 intval($request->getSession()->get('pfilter')[1]),
@@ -110,6 +111,19 @@ class FrontController extends Controller
     }
 
     /**
+     * @Route("/property/back-to-list/", name="front_property_return", options={"expose" = false})
+     */
+    public function backToListAction(Request $request)
+    {
+        if (!$request->getSession()->has('pfilter')) {
+            $request->getSession()->set('pfilter', array(-1, -1, -1, 0, 0, 0));
+        }
+        $request->getSession()->set('isbacktolistredirect', true);
+
+        return $this->redirectToRoute('front_properties');
+    }
+
+    /**
      * @Route("/{type}/{city}/{name}/{reference}/", name="front_property", options={"expose" = true})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"reference": "reference"}})
      */
@@ -157,7 +171,7 @@ class FrontController extends Controller
      * @Route("/property/pdf/{id}/", name="front_property_pdf", options={"expose" = false})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"id": "id"}})
      */
-    public function propertyPdfAction(Request $request, $property)
+    public function propertyPdfAction($property)
     {
         /** @var PropertyWebPdfGenerator $generator */
         $generator = $this->get('app.property_web_pdf_generator');

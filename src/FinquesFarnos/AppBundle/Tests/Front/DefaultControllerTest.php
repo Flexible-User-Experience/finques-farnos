@@ -90,6 +90,9 @@ class DefaultControllerTest extends WebTestCase
             array('/ca/immoble/seguent/1/'),
             array('/es/inmueble/siguiente/1/'),
             array('/en/property/next/1/'),
+            array('/ca/immoble/tornar-al-llistat/'),
+            array('/es/inmueble/volver-al-listado/'),
+            array('/en/property/back-to-list/'),
         );
     }
 }
