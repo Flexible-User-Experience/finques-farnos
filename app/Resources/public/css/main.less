@@ -15,7 +15,7 @@
 @doubleextramargin: 50px;
 @ff-space-25: 25px;
 @ff-space-50: 50px;
-@extraborder: 9px;
+@extraborder: 2px;
 @ff-font-size-12: 12px;
 @ff-font-size-13: 13px;
 @ff-font-size-14: 14px;
@@ -59,14 +59,17 @@ div#navbar {
       margin-bottom: 10px;
       padding: 0 15px;
       &:last-child { padding-right: 0; }
-      &.active, &:hover {
-        a { border-bottom: solid @extraborder @fforange; }
+      &.active {
+        a {
+          color: @fforange;
+          font-weight: bold;
+        }
       }
       a {
         padding: 53px 0 1px 0;
         font-size: 15px;
-        font-weight: bold;
-        &, &:hover { color: @ffgreylogo; }
+        color: @ffgreylogo;
+        &:hover { color: @fforange; }
       }
     }
   }
@@ -213,9 +216,10 @@ footer {
   padding: 20px 10px 40px 10px;
   a {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
     &:hover {
       color: white;
+      text-decoration: underline;
     }
   }
   a.btn {
