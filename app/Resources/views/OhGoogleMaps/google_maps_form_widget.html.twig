@@ -2,9 +2,12 @@
     <div {{ block('widget_container_attributes') }}>
         {% block oh_google_maps_html %}
             <div id="{{ id }}_container">
-                {#<input type="text" id="{{ id }}_input" /><button id="{{ id }}_search_button" class="btn">Search</button><br /><a href="#" id="{{ id }}_current_position">Current location</a>#}
-                <div id="{{ id }}_map_canvas" class="gmap" style="width: 100%; height: 350px"></div>
-                <div id="{{ id }}_error"></div>
+                <div class="form-group">
+                    <label for="{{ id }}_inut" class="control-label inline"></label>
+                    <input type="text" class="form-control inline" id="{{ id }}_input" style="width:50%;"/><button id="{{ id }}_search_button" class="btn btn-default" style="margin-top:-3px">Buscar</button>
+                    <div id="{{ id }}_map_canvas" class="gmap" style="width: 100%; height: 350px"></div>
+                    <div id="{{ id }}_error"></div>
+                </div>
             </div>
         {% endblock %}
         {% block oh_google_maps_fields %}
@@ -31,7 +34,7 @@
                         'current_position_el': $('#{{ id }}_current_position'),
                         'default_lat'        : '{% if value is defined and value.lat %}{{ value.lat }}{% else %}40.7067997{% endif %}',
                         'default_lng'        : '{% if value is defined and value.lng %}{{ value.lng }}{% else %}0.5801695000000109{% endif %}',
-                        'default_zoom'       : {% if value is defined and value.lat and value.lng %}15{% else %}14{% endif %},
+                        'default_zoom'       : {% if value is defined and value.lat != 40.7067997 and value.lng != 0.5801695000000109 %}15{% else %}10{% endif %},
                         'lat_field'          : $('#{{ attribute(form, lat_name).vars.id }}'),
                         'lng_field'          : $('#{{ attribute(form, lng_name).vars.id }}'),
                         'callback'           : oh_google_maps_callback
