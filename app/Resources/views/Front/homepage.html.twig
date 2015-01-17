@@ -7,9 +7,9 @@
 {% block main %}
     {% if slides | length > 0 %}
         <div class="container">
-            <div id="carousel-homepage" class="carousel slide" data-ride="carousel" data-interval="2500">
+            <div id="carousel-homepage" class="carousel slide" data-ride="carousel" data-interval="3000">
                 <div class="carousel-homepage-banners-wrapper">
-                    <div class="banner-main">{{ 'homepage.property.banner.main' | trans | lower }}</div>
+                    <div class="banner-main">{{ 'homepage.property.banner.main' | trans | capitalize }}</div>
                 </div>
                 {#<!-- Indicators -->#}
                 {% if slides | length > 1 %}
