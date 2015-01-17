@@ -37,7 +37,10 @@ class ContactAdmin extends BaseAdmin
             ->with('Contacte', array('class' => 'col-md-6'))
             ->add('name', null, array('label' => 'Nom'))
             ->add('phone', null, array('label' => 'Telèfon'))
-            ->add('email', null, array('label' => 'Email'))
+            ->add('email', null, array(
+                'label' => 'Email',
+                'read_only' => true, // TODO ajust acording new entity
+                ))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
@@ -64,7 +67,7 @@ class ContactAdmin extends BaseAdmin
         $listMapper
             ->add('name', null, array('label' => 'Nom', 'editable' => true))
             ->add('phone', null, array('label' => 'Telèfon', 'editable' => true))
-            ->add('email', null, array('label' => 'Email', 'editable' => true))
+            ->add('email', null, array('label' => 'Email', 'editable' => false))
             ->add('messages', 'integer', array('label' => 'Missatges', 'template' => '::Admin/contact_messages_count_list_field.html.twig'))
             ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
             ->add('_action', 'actions', array(
