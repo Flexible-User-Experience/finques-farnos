@@ -55,7 +55,7 @@ property:
   localization: localisation
   form: demande de contact
   energy:
-    efficiency: EFFICACITÉ ÉNERGÉTIQUE
+    efficiency: COTE ÉNERGÉTIQUE
     noclass: sans classe
     pending: en attendant
 
