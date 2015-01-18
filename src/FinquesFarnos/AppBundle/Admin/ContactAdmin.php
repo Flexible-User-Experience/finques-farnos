@@ -69,6 +69,7 @@ class ContactAdmin extends BaseAdmin
             ->add('phone', null, array('label' => 'Telèfon', 'editable' => true))
             ->add('email', null, array('label' => 'Email', 'editable' => false))
             ->add('messages', 'integer', array('label' => 'Missatges', 'template' => '::Admin/contact_messages_count_list_field.html.twig'))
+            ->add('date', 'date', array('label' => 'Últim missatge', 'template' => '::Admin/contact_messages_date_list_field.html.twig'))
             ->add('enabled', null, array('label' => 'Actiu', 'editable' => true))
             ->add('_action', 'actions', array(
                     'actions' => array(

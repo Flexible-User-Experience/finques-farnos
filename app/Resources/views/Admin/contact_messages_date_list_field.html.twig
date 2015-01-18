@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    {% spaceless %}
+        {{ object.messages[object.messages | length - 1].createdAt | date('d/m/Y') }}
+    {% endspaceless %}
+{% endblock %}
