@@ -206,8 +206,8 @@ class PropertyAdmin extends BaseAdmin
      */
     public function configureRoutes(RouteCollection $collection)
     {
-        $collection->remove('delete');
-        $collection->remove('batch');
+        //$collection->remove('delete');
+        //$collection->remove('batch');
         $collection->remove('show');
         $collection->add('visit', $this->getRouterIdParameter().'/visit');
         $collection->add('pdf', $this->getRouterIdParameter().'/pdf');

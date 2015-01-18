@@ -187,7 +187,7 @@ class Property extends Base
     private $radius = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="FinquesFarnos\AppBundle\Entity\PropertyVisit", mappedBy="property", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="FinquesFarnos\AppBundle\Entity\PropertyVisit", mappedBy="property", cascade={"persist", "remove"})
      * @ORM\OrderBy({"createdAt" = "ASC"})
      * @var ArrayCollection
      */

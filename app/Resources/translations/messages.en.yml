@@ -55,7 +55,7 @@ property:
   localization: localization
   form: contact request
   energy:
-    efficiency: ENERGY EFFICIENCY
+    efficiency: ENERGY RATING
     noclass: without class
     pending: pending
 
