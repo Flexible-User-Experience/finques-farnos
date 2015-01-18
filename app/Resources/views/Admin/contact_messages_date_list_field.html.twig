@@ -2,6 +2,10 @@
 
 {% block field%}
     {% spaceless %}
-        {{ object.messages[object.messages | length - 1].createdAt | date('d/m/Y') }}
+        {% if object.messages | length %}
+            {{ object.messages[object.messages | length - 1].createdAt | date('d/m/Y') }}
+        {% else %}
+            ---
+        {% endif %}
     {% endspaceless %}
 {% endblock %}
