@@ -39,7 +39,7 @@ class ContactAdmin extends BaseAdmin
             ->add('phone', null, array('label' => 'Telèfon'))
             ->add('email', null, array(
                 'label' => 'Email',
-                'read_only' => true, // TODO ajust acording new entity
+                'read_only' => $this->id($this->getSubject()),
                 ))
             ->end()
             ->with('Controls', array('class' => 'col-md-6'))
