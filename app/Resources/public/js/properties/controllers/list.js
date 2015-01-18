@@ -15,12 +15,8 @@ angular.module('propertiesApp')
             $scope.selectedPropertiesFormFilter = angular.fromJson(selectedPropertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
 
-            $scope.form.area.min = 0;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
-            $scope.form.area.step = Math.round(($scope.form.area.max - $scope.form.area.min) / CFG.RANGE_STEPS);
-            $scope.form.price.min = 0;
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
-            $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
             $scope.categories = [];
             if ($scope.selectedPropertiesFormFilter[0].length === 0) {
                 $scope.categories = [];
@@ -29,16 +25,8 @@ angular.module('propertiesApp')
                     $scope.categories.push(parseInt(value));
                 });
             }
-            if ($scope.selectedPropertiesFormFilter[1] === -1) {
-                $scope.type = $scope.form.types[0];
-            } else {
-                $scope.type = $scope.form.types[$scope.selectedPropertiesFormFilter[1]];
-            }
-            if ($scope.selectedPropertiesFormFilter[2] === -1) {
-                $scope.city = $scope.form.cities[0];
-            } else {
-                $scope.city = $scope.form.cities[$scope.selectedPropertiesFormFilter[2]];
-            }
+            $scope.type = $scope.selectedPropertiesFormFilter[1];
+            $scope.city = $scope.selectedPropertiesFormFilter[2];
             $scope.area = $scope.selectedPropertiesFormFilter[3];
             $scope.rooms = $scope.selectedPropertiesFormFilter[4];
             $scope.price = $scope.selectedPropertiesFormFilter[5];

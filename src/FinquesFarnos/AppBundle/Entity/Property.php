@@ -40,6 +40,13 @@ class Property extends Base
     private $type;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="properties", fetch="EAGER")
+     * @ORM\JoinColumns({@ORM\JoinColumn(name="customer_id", referencedColumnName="id")})
+     * @var Customer
+     */
+    private $customer;
+
+    /**
      * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      * @var ArrayCollection
@@ -47,9 +54,15 @@ class Property extends Base
     private $images;
 
     /**
+     * @ORM\OneToMany(targetEntity="ContactMessage", mappedBy="property", cascade={"persist", "remove"})
+     * @var ArrayCollection
+     */
+    private $messages;
+
+    /**
      * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=true)
      * @JMS\Groups({"api"})
-     * @Assert\Regex("/^[0-9a-zA-Z]+-?[0-9a-zA-Z]+$/", match=true, message="Només lletres i números separats entre mig per 1 guionet (-). Sense caràcters especials")
+     * @Assert\Regex("/^[0-9a-zA-Z]+-?[0-9a-zA-Z]+$/", match=true, message="Només lletres i números, opcionalment separats entre mig per 1 guionet (-). Sense caràcters especials")
      * @var string
      */
     private $reference;
@@ -154,6 +167,24 @@ class Property extends Base
     private $showPriceOnlyWithNumbers = true;
 
     /**
+     * @ORM\Column(name="reserved", type="boolean", nullable=false)
+     * @var boolean
+     */
+    private $reserved = false;
+
+    /**
+     * @ORM\Column(name="sold", type="boolean", nullable=false)
+     * @var boolean
+     */
+    private $sold = false;
+
+    /**
+     * @ORM\Column(name="sold_at", type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    protected $soldAt;
+
+    /**
      * @ORM\Column(name="energy_class", type="integer", nullable=true)
      * @var integer
      */
@@ -224,6 +255,7 @@ class Property extends Base
     {
         $this->categories = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->messages = new ArrayCollection();
         $this->translations = new ArrayCollection();
         $this->visits = new ArrayCollection();
     }
@@ -715,6 +747,22 @@ class Property extends Base
     }
 
     /**
+     * @return Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @param Customer $customer
+     */
+    public function setCustomer($customer)
+    {
+        $this->customer = $customer;
+    }
+
+    /**
      * Add category
      *
      * @param Category $category
@@ -818,6 +866,51 @@ class Property extends Base
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Add message
+     *
+     * @param ContactMessage $message
+     *
+     * @return $this
+     */
+    public function addMessage(ContactMessage $message)
+    {
+        $message->setProperty($this);
+        $this->messages[] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Remove message
+     *
+     * @param ContactMessage $message
+     *
+     * @return $this
+     */
+    public function removeMessage(ContactMessage $message)
+    {
+        $this->messages->removeElement($message);
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    /**
+     * @param ArrayCollection $messages
+     */
+    public function setMessages($messages)
+    {
+        $this->messages = $messages;
     }
 
     /**
@@ -988,6 +1081,54 @@ class Property extends Base
         $this->showPriceOnlyWithNumbers = $showPriceOnlyWithNumbers;
 
         return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isReserved()
+    {
+        return $this->reserved;
+    }
+
+    /**
+     * @param boolean $reserved
+     */
+    public function setReserved($reserved)
+    {
+        $this->reserved = $reserved;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isSold()
+    {
+        return $this->sold;
+    }
+
+    /**
+     * @param boolean $sold
+     */
+    public function setSold($sold)
+    {
+        $this->sold = $sold;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getSoldAt()
+    {
+        return $this->soldAt;
+    }
+
+    /**
+     * @param \DateTime $soldAt
+     */
+    public function setSoldAt($soldAt)
+    {
+        $this->soldAt = $soldAt;
     }
 
     /**

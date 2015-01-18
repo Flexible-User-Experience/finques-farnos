@@ -45,12 +45,12 @@
                                 {% endif %}
                             {% endfor %}
                             {% if property.images | length > 1 %}
-                                <div class="controls">
+                                <div id="thumb-slider" class="controls">
                                     <ul class="nav">
                                         {% for image in property.images %}
                                             {% if image.enabled %}
                                                 <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
-                                                    <a href="#">
+                                                    <a id="thumb-img-slider-{{ image.id }}" onclick="moveCurrentThumb(this)" href="#">
                                                         <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x95') }}" alt="{% if image.metaAlt %}{{ image.metaAlt }}{% else %}{{ property.name }} · {{ property.type.name }} · {{ property.city.name }}{% endif %}">
                                                     </a>
                                                 </li>
@@ -133,6 +133,18 @@
                         jQuery('#custom_carousel .controls li:eq(' + jQuery(evt.relatedTarget).index() + ')').addClass('active');
             });
         });
+        function moveCurrentThumb(evt) {
+            console.log(evt.id);
+            centerItFixedWidth('#' + evt.id, '#thumb-slider');
+        }
+        function centerItFixedWidth(target, outer) {
+            var out = $(outer);
+            var tar = $(target);
+            var x = out.width();
+            var y = tar.outerWidth(true);
+            var z = tar.index();
+            out.scrollLeft(Math.max(0, (y * z) - (x - y)/2));
+        }
     </script>
     {% include ':Front/commons:scroll-to-top-js.html.twig' %}
 {% endblock %}

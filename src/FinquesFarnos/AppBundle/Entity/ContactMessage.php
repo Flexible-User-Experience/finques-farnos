@@ -24,7 +24,7 @@ class ContactMessage extends Base
     private $contact;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Property")
+     * @ORM\ManyToOne(targetEntity="Property", inversedBy="messages")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="property_id", referencedColumnName="id", nullable=true)})
      * @var Property
      */
