@@ -23,7 +23,6 @@
                 <div class="left-search-panel">
                     <form name="filterForm" action="" role="form">
                         <div class="form-group">
-                            {#<label for="propertyCategory" class="control-label">{{ 'properties.form.category' | trans | upper }}</label>#}
                             <div class="checkbox checkbox-inline checkbox-info" data-ng-repeat="cat in form.categories">
                                 <input id="checkbox[[ cat.id ]]" type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()">
                                 <label for="checkbox[[ cat.id ]]">[[ cat.name ]]</label>
@@ -31,7 +30,8 @@
                         </div>
                         <div class="form-group">
                             <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
-                            <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-options="t.name for t in form.types" data-ng-change="formListener()">
+                            <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-change="formListener()">
+                                <option data-ng-selected="[[ t.id == type ]]" data-ng-repeat="t in form.types" value="[[ t.id ]]">[[ t.name ]]</option>
                             </select>
                         </div>
                         <div class="form-group">
