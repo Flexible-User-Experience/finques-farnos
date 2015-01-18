@@ -33,7 +33,7 @@ angular.module('propertiesApp')
 
         this.getProperties = function($scope) {
             var deferred = $q.defer();
-            $http.get(Routing.generate('api_properties_api_filtered', {categories: $scope.getSerializedCategories(), type: $scope.type.id, city: $scope.city.id, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
+            $http.get(Routing.generate('api_properties_api_filtered', {categories: $scope.getSerializedCategories(), type: $scope.type.id, city: $scope.city, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
                     $scope.properties = response;
                     deferred.resolve(response);
@@ -113,11 +113,13 @@ angular.module('propertiesApp')
             } else {
                 $scope.type = $scope.form.types[$scope.selectedPropertiesFormFilter[1]];
             }
+            /*$log.log('ty', $scope.selectedPropertiesFormFilter[2]);
             if ($scope.selectedPropertiesFormFilter[2] === -1) {
                 $scope.city = $scope.form.cities[0];
             } else {
                 $scope.city = $scope.form.cities[$scope.selectedPropertiesFormFilter[2]];
-            }
+            }*/
+            $scope.city = $scope.selectedPropertiesFormFilter[2];
             $scope.area = $scope.selectedPropertiesFormFilter[3];
             $scope.rooms = $scope.selectedPropertiesFormFilter[4];
             $scope.price = $scope.selectedPropertiesFormFilter[5];

@@ -31,11 +31,13 @@ angular.module('propertiesApp')
             } else {
                 $scope.type = $scope.form.types[$scope.selectedPropertiesFormFilter[1]];
             }
+            /*$log.log('ty', $scope.selectedPropertiesFormFilter[2]);
             if ($scope.selectedPropertiesFormFilter[2] === -1) {
                 $scope.city = $scope.form.cities[0];
             } else {
                 $scope.city = $scope.form.cities[$scope.selectedPropertiesFormFilter[2]];
-            }
+            }*/
+            $scope.city = $scope.selectedPropertiesFormFilter[2];
             $scope.area = $scope.selectedPropertiesFormFilter[3];
             $scope.rooms = $scope.selectedPropertiesFormFilter[4];
             $scope.price = $scope.selectedPropertiesFormFilter[5];

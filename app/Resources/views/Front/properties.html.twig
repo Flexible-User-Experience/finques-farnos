@@ -36,7 +36,8 @@
                         </div>
                         <div class="form-group">
                             <label for="propertyCity" class="control-label">{{ 'properties.form.city' | trans | upper }}</label>
-                            <select id="propertyCity" class="form-control" data-ng-model="city" required="required" data-ng-options="c.name for c in form.cities" data-ng-change="formListener()">
+                            <select id="propertyCity" class="form-control" data-ng-model="city" required="required" data-ng-change="formListener()">
+                                <option data-ng-selected="[[ c.id == city ]]" data-ng-repeat="c in form.cities" value="[[ c.id ]]">[[ c.name ]]</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -48,7 +49,7 @@
                             <input id="propertyRooms" type="range" name="propertyRooms" min="0" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]" step="1">
                         </div>
                         <div class="form-group">
-                            <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]] &euro; {# 'properties.form.price' | trans | raw #}</label>
+                            <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]] &euro;</label>
                             <input id="propertyPrice" type="range" name="propertyPrice" min="0" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" step="10000">
                         </div>
                         <div class="form-group">
