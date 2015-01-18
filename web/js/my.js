@@ -95,14 +95,11 @@ angular.module('propertiesApp')
 
             $scope.form = angular.fromJson(propertiesFormFilter);
             $scope.selectedPropertiesFormFilter = angular.fromJson(selectedPropertiesFormFilter);
+            $log.log('select', $scope.selectedPropertiesFormFilter);
             $scope.properties = angular.fromJson(filteredProperties);
 
-            $scope.form.area.min = 0;
             $scope.form.area.max = Math.floor($scope.form.area.max / 10) * 10;
-            $scope.form.area.step = Math.round(($scope.form.area.max - $scope.form.area.min) / CFG.RANGE_STEPS);
-            $scope.form.price.min = 0;
             $scope.form.price.max = Math.floor($scope.form.price.max / 1000) * 1000;
-            $scope.form.price.step = Math.round(($scope.form.price.max - $scope.form.price.min) / CFG.RANGE_STEPS);
             $scope.categories = [];
             if ($scope.selectedPropertiesFormFilter[0].length === 0) {
                 $scope.categories = [];
