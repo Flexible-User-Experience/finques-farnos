@@ -120,6 +120,8 @@ FinquesFarnos\AppBundle\Entity\Property:
         gpsLatitude: <randomFloat(14, 40.49709237269567, 42.884014670442525)>
         radius: <numberBetween(50, 250)>
         enabled: <boolean(90)>
+        sold: <boolean(10)>
+        reserved: <boolean(30)>
     property{101..299}:
         categories:
             - @category1
@@ -144,6 +146,8 @@ FinquesFarnos\AppBundle\Entity\Property:
         gpsLatitude: <randomFloat(14, 40.49709237269567, 42.884014670442525)>
         radius: <numberBetween(50, 250)>
         enabled: <boolean(90)>
+        sold: <boolean(10)>
+        reserved: <boolean(30)>
     property300:
         categories:
             - @category0
@@ -168,6 +172,8 @@ FinquesFarnos\AppBundle\Entity\Property:
         gpsLatitude: <randomFloat(14, 40.49709237269567, 42.884014670442525)>
         radius: <numberBetween(50, 250)>
         enabled: <boolean(90)>
+        sold: <boolean(10)>
+        reserved: <boolean(30)>
 
 FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation:
     propertyNameEs{1..300}:
