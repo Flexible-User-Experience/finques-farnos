@@ -38,6 +38,12 @@ class Customer extends Base
     private $phone;
 
     /**
+     * @ORM\Column(type="string", length=255, name="mobile", nullable=true, unique=false)
+     * @var string
+     */
+    private $mobile;
+
+    /**
      * @ORM\Column(type="string", length=255, name="email", nullable=true, unique=true)
      * @Assert\Email(
      *     strict = true,
@@ -64,6 +70,12 @@ class Customer extends Base
      * @var string
      */
     private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255, name="postal_code", nullable=true, unique=false)
+     * @var string
+     */
+    private $postalCode;
 
     /**
      * @ORM\Column(type="string", length=255, name="province", nullable=true, unique=false)
@@ -180,6 +192,54 @@ class Customer extends Base
     public function setPhone($phone)
     {
         $this->phone = $phone;
+    }
+
+    /**
+     * Set Mobile
+     *
+     * @param string $mobile mobile
+     *
+     * @return $this
+     */
+    public function setMobile($mobile)
+    {
+        $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get Mobile
+     *
+     * @return string
+     */
+    public function getMobile()
+    {
+        return $this->mobile;
+    }
+
+    /**
+     * Set PostalCode
+     *
+     * @param string $postalCode postalCode
+     *
+     * @return $this
+     */
+    public function setPostalCode($postalCode)
+    {
+        $this->postalCode = $postalCode;
+
+        return $this;
+    }
+
+    /**
+     * Get PostalCode
+     *
+     * @return string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
     }
 
     /**

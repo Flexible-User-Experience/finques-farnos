@@ -75,6 +75,9 @@ class DefaultControllerTest extends WebTestCase
             array('/admin/property/1/edit'),
             array('/admin/property/1/pdf'),
             array('/admin/property/1/delete'),
+            array('/admin/customer/list'),
+            array('/admin/customer/create'),
+            array('/admin/customer/1/edit'),
         );
     }
 }
