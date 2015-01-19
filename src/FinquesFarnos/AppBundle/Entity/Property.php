@@ -168,12 +168,14 @@ class Property extends Base
 
     /**
      * @ORM\Column(name="reserved", type="boolean", nullable=false)
+     * @JMS\Groups({"api"})
      * @var boolean
      */
     private $reserved = false;
 
     /**
      * @ORM\Column(name="sold", type="boolean", nullable=false)
+     * @JMS\Groups({"api"})
      * @var boolean
      */
     private $sold = false;
