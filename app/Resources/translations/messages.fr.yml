@@ -61,25 +61,25 @@ property:
 
 about:
   left:
-    main: Finques Farnós a commencé sa carrière professionnelle en 1984 comme une entreprise familiale, offrant ses services d'agent de l'Etat de Amposta à travers le Delta de l'Ebre, avec une continuité qui garantit une bonne connaissance de la profession.
+    main: FINQUES FARNÓS DÉBUTE SON PARCOURS PROFESSIONNEL EN 1984 EN TANT QU'ENTREPRISE FAMILIALE, OFFRANT DES SERVICES IMMOBILIERS ENGLOBANT AMPOSTA, LE DELTA ET LES TERRES DE L'ÈBRE. LA CONTINUITÉ ASSURÉE JUSQU'À CE JOUR EST GARANTE DE SA QUALITÉ ET DE SON EXPÉRIENCE PROFESSIONNELLE.
   right:
     company:
-      title: company
+      title: L'ENTREPRISE
       text: |
-        Notre philosophie est d'agir en toute transparence, en collaboration avec le professionnalisme et l'honnêteté, ainsi nous obtenons notre gestion font acheteurs et les vendeurs satisfaits.<br><br>
-        Notre expérience, les compétences techniques et le professionnalisme, nous permettent d'offrir un service de qualité soutenu par la confiance de nos clients qu'ils ont mis dans notre gestion durant toutes ces années.<br><br>
-        Au Finques Farnós nous sommes <a target="_blank" href="http://www.apitarragona.com">Agentes de la Propiedad Inmobiliaria (API)</a> qui prend en charge une garantie supplémentaire de notre professionnalisme et de formation académique.
+        Notre philosophie à pour base d'agir dans une totale transparence. En travaillant avec professionnalisme et honnêteté, notre gestion obtient autant de satisfaction des acheteurs comme des vendeurs.<br><br>
+        Notre expérience, notre capacité technique et professionnelle, nous permettent d'offrir un service de qualité garanti par la confiance que nos clients nous ont démontré au cours du temps.<br><br>
+        FINQUES FARNÓS est également <a target="_blank" href="http://www.apitarragona.com">Agent de la Propriété Immobilière</a> (API), garantie supplémentaire d'un professionnalisme et d'une formation académique assurés.
     services:
-      title: services
+      title: NOS SERVICES
       text: |
         <ul>
-        <li>Gestion de la vente de localités rurales et urbaines.</li>
-        <li>Échanges et transferts.</li>
-        <li>Location.</li>
-        <li>Évaluation.</li>
-        <li>Financement: la gestion des prêts hypothécaires</li>
-        <li>Rapports de situation et registre de planification.</li>
-        <li>Services de conseils en placement.</li>
+        <li>Gestion d'achat-vente de propriétés rurales et urbaines.</li>
+        <li>Transferts de propriétés et cessions de baux.</li>
+        <li>Locations.</li>
+        <li>Estimations.</li>
+        <li>Financement: gestion de prêts hypothécaires.</li>
+        <li>Comptes-rendus urbains et inscriptions au registre.</li>
+        <li>Conseil en investissements.</li>
         </ul>
 
 contact:
