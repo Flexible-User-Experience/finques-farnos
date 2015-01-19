@@ -168,12 +168,14 @@ class Property extends Base
 
     /**
      * @ORM\Column(name="reserved", type="boolean", nullable=false)
+     * @JMS\Groups({"api"})
      * @var boolean
      */
     private $reserved = false;
 
     /**
      * @ORM\Column(name="sold", type="boolean", nullable=false)
+     * @JMS\Groups({"api"})
      * @var boolean
      */
     private $sold = false;
@@ -182,7 +184,7 @@ class Property extends Base
      * @ORM\Column(name="sold_at", type="datetime", nullable=true)
      * @var \DateTime
      */
-    protected $soldAt;
+    private $soldAt;
 
     /**
      * @ORM\Column(name="energy_class", type="integer", nullable=true)

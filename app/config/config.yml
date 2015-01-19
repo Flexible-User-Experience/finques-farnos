@@ -107,7 +107,6 @@ sonata_admin:
                     content: >
                         <h1 style="margin: -20px 0 10px 0">Administrador de continguts</h1>
                         <h4 style="margin-bottom: 40px">Benvingut a l'administrador de continguts de la pàgina web <a href="http://www.finquesfarnos.com" target="_blank">www.finquesfarnos.com</a></h4>
-
             -
                 position: left
                 type: sonata.admin.block.admin_list
@@ -277,3 +276,7 @@ knp_paginator:
     page_range: 10
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+
+# Genemu Bundle
+genemu_form:
+    date: ~

@@ -295,3 +295,15 @@ FinquesFarnos\AppBundle\Entity\ContactMessage:
         property: @property<numberBetween(1, 300)>
         text: <sentence(10)>
         createdAt: <dateTimeThisYear()>
+
+FinquesFarnos\AppBundle\Entity\Customer:
+    customer{1..20}:
+        name: <firstName()> <lastName()>
+        phone: <phoneNumber()>
+        mobile: <phoneNumber()>
+        email: <email()>
+        dni: <bothify('########?')>
+        address: <streetAddress()>
+        city: <city()>
+        postalCode: <bothify('#####')>
+        province: <state()>

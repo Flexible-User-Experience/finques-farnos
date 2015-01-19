@@ -105,6 +105,16 @@ services:
             - AppBundle:Admin/PropertyAdmin
         calls:
             - [ setTranslationDomain, [AppBundle] ]
+    sonata.admin.customer:
+        class: FinquesFarnos\AppBundle\Admin\CustomerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Client", label: "Clients" }
+        arguments:
+            - ~
+            - FinquesFarnos\AppBundle\Entity\Customer
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle] ]
 
 # Sonata Block
     sonata.admin.block.visit_stats:

@@ -52,9 +52,16 @@
                         <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
                             {% if property.images | length > 0 %}
                                 {% set image = property.images[0] %}
-                                <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
-                                    <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x400') }}" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
-                                </a>
+                                <div class="extra-ribbons-wrapper">
+                                    {% if property.sold %}
+                                        <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/sold-small-' ~ app.request.locale ~ '.png') }}" alt="sold label"/>
+                                    {% elseif property.reserved %}
+                                        <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/reserved-small-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
+                                    {% endif %}
+                                    <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
+                                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x400') }}" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
+                                    </a>
+                                </div>
                             {% endif %}
                             <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
                                 <div class="caption">

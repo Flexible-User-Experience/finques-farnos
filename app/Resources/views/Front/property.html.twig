@@ -37,6 +37,11 @@
                     <div id="custom_carousel" class="carousel slide" data-ride="carousel">
                         {#<!-- Wrapper for slides -->#}
                         <div class="carousel-inner">
+                            {% if property.sold %}
+                                <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/sold-big-' ~ app.request.locale ~ '.png') }}" alt="sold label"/>
+                            {% elseif property.reserved %}
+                                <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/reserved-big-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
+                            {% endif %}
                             {% for image in property.images %}
                                 {% if image.enabled %}
                                     <div class="item{% if loop.first %} active{% endif %}">
