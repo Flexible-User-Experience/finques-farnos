@@ -100,8 +100,6 @@ class PropertyAdmin extends BaseAdmin
             ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
             ->add('offerDiscount', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb descompte', 'required' => false))
             ->add('offerSpecial', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb preu rebaixat', 'required' => false))
-            ->add('reserved', 'checkbox', array('label' => 'Reservat', 'required' => false))
-            ->add('sold', 'checkbox', array('label' => 'Venut', 'required' => false))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
             ->end();
         if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
@@ -134,6 +132,18 @@ class PropertyAdmin extends BaseAdmin
                     Property::SHOW_MAP_STREET => 'mostrar l\'adreça sense marcar cap punt',
                     Property::SHOW_MAP_AREA => 'dibuixar una àrea segons el radi sense mostrar l\'adreça',
                 )))
+            ->end()
+            ->with('Venda', array('class' => 'col-md-6'))
+            ->add('reserved', 'checkbox', array('label' => 'Reservat', 'required' => false))
+            ->add('sold', 'checkbox', array('label' => 'Venut', 'required' => false))
+            ->add('soldAt', 'genemu_jquerydate', array('label' => 'Data de venda', 'widget' => 'single_text', 'required' => false))
+            ->add('customer', 'sonata_type_model', array(
+                    'required' => false,
+                    'expanded' => false,
+                    'multiple' => false,
+                    'label' => 'Client',
+                    'btn_add' => 'Crear nou client',
+                ))
             ->end()
             ->with('Visites', array('class' => 'col-md-6'))
             ->add('totalVisits', null, array(

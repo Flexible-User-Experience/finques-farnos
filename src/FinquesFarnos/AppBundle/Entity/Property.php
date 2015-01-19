@@ -182,7 +182,7 @@ class Property extends Base
      * @ORM\Column(name="sold_at", type="datetime", nullable=true)
      * @var \DateTime
      */
-    protected $soldAt;
+    private $soldAt;
 
     /**
      * @ORM\Column(name="energy_class", type="integer", nullable=true)

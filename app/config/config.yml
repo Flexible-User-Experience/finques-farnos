@@ -276,3 +276,7 @@ knp_paginator:
     page_range: 10
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+
+# Genemu Bundle
+genemu_form:
+    date: ~
