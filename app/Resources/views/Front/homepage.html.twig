@@ -54,7 +54,7 @@
                                 {% set image = property.images[0] %}
                                 <div class="extra-ribbons-wrapper">
                                     {% if property.sold %}
-                                        <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/sold-small-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
+                                        <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/sold-small-' ~ app.request.locale ~ '.png') }}" alt="sold label"/>
                                     {% elseif property.reserved %}
                                         <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/reserved-small-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
                                     {% endif %}
