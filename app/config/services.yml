@@ -112,7 +112,7 @@ services:
         arguments:
             - ~
             - FinquesFarnos\AppBundle\Entity\Customer
-            - AppBundle:Admin/CustomerAdmin
+            - ~
         calls:
             - [ setTranslationDomain, [AppBundle] ]
 
