@@ -85,6 +85,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $builder->MultiCell(130, 0, $property->getDescription(), 0, 'L', false, 1);
 
         // Energy efficency
+        $builder->setCellPaddings(0, 0, 0, 2);
         $transCode = array(2 => 'A', 3 => 'B', 4 => 'C', 5 => 'D', 6 => 'E', 7 => 'F', 8 => 'G');
         $builder->SetX(155);
         $builder->SetY($y + 5);
@@ -97,7 +98,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 155);
         } else if ($property->getEnergyClass() > 1) {
             $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_' . $transCode[$property->getEnergyClass()] . '.png', 155, $builder->getY(), 14 + (4.5 * ($property->getEnergyClass() - 2)), 5, 'PNG', '', '', false, 150);
-            $builder->setY($builder->getY() + 5);
+            $builder->setY($builder->getY() + 7);
         }
 
         // QR Code
