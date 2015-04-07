@@ -29,6 +29,9 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $property = $parameters['property'];
         // Use the createPdf method to create the desired type of PDF
         $options['className'] = 'FinquesFarnos\AppBundle\PdfGenerator\CustomTcpdf';
+        $options['format'] = 'A4';
+        $options['encoding'] = 'UTF-8';
+        $options['unicode'] = true;
         $pdf = $this->createPdf('tcpdf', $options);
         // Call any native methods on the underlying library object
         /** @var \TCPDF $builder */
@@ -60,11 +63,11 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $this->drawBrandLine($builder, $y);
         $builder->SetX($builder->getMargins()['left'] - 2);
         $builder->SetY($y + 5);
-        $builder->SetFont('helvetica', '', 18, '', true);
+        $builder->SetFont('helvetica', '', 15, '', true);
         $this->setGreyColor($builder);
         $builder->MultiCell(130, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 30, '', true);
-        $builder->MultiCell(130, 0, mb_strtoupper($property->getName()), 0, 'L', false, 1);
+        $builder->MultiCell(130, 0, mb_strtoupper($property->getName(), 'UTF-8'), 0, 'L', false, 1);
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
             if ($property->getOldPrice()) {
@@ -81,15 +84,43 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $builder->setCellPaddings(0, 0, 0, 1);
         $builder->MultiCell(130, 0, $property->getDescription(), 0, 'L', false, 1);
 
-        // FOOTER
+        // Energy efficency
+        $transCode = array(2 => 'A', 3 => 'B', 4 => 'C', 5 => 'D', 6 => 'E', 7 => 'F', 8 => 'G');
+        $builder->SetX(155);
+        $builder->SetY($y + 5);
+        $builder->SetFont('helvetica', 'B', 12, '', true);
+        $this->setGreyColor($builder);
+        $builder->MultiCell(55, 0, $this->getTrans('property.energy.efficiency'), 0, 'L', false, 2, 155);
+        if ($property->getEnergyClass() == 0) {
+            $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 155);
+        } else if ($property->getEnergyClass() == 1) {
+            $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 155);
+        } else if ($property->getEnergyClass() > 1) {
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_' . $transCode[$property->getEnergyClass()] . '.png', 155, $builder->getY(), 14 + (4.5 * ($property->getEnergyClass() - 2)), 5, 'PNG', '', '', false, 150);
+            $builder->setY($builder->getY() + 5);
+        }
+
+        // QR Code
         $url = $this->router->generate('front_property', array(
-                'type' => $property->getType()->getNameSlug(),
-                'city' => $property->getCity()->getNameSlug(),
-                'name' => $property->getNameSlug(),
-                'reference' => $property->getReference(),
-            ), true);
+            'type' => $property->getType()->getNameSlug(),
+            'city' => $property->getCity()->getNameSlug(),
+            'name' => $property->getNameSlug(),
+            'reference' => $property->getReference(),
+        ), true);
+        $style = array(
+            'border' => false,
+            'vpadding' => 0,
+            'hpadding' => 0,
+            'fgcolor' => array(0, 0, 0),
+            'bgcolor' => false, //array(255,255,255)
+            'module_width' => 1, // width of a single module in points
+            'module_height' => 1 // height of a single module in points
+        );
+        $builder->write2DBarcode($url, 'QRCODE,M', 155, $builder->getY() + 5, 41, 41, $style, 'N', true);
+
+        // FOOTER
         $builder->SetFont('helvetica', '', 9, '', true);
-        $builder->Text($builder->getMargins()['left'], 267, $url);
+        //$builder->Text($builder->getMargins()['left'], 267, $url);
         $builder->Footer();
 
         // Help dashed line
