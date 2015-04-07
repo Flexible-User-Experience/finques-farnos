@@ -29,6 +29,9 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $property = $parameters['property'];
         // Use the createPdf method to create the desired type of PDF
         $options['className'] = 'FinquesFarnos\AppBundle\PdfGenerator\CustomTcpdf';
+        $options['format'] = 'A4';
+        $options['encoding'] = 'UTF-8';
+        $options['unicode'] = true;
         $pdf = $this->createPdf('tcpdf', $options);
         // Call any native methods on the underlying library object
         /** @var \TCPDF $builder */
@@ -91,7 +94,7 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $this->setGreyColor($builder);
         $builder->MultiCell(115, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 18, '', true);
-        $builder->MultiCell(115, 0, mb_strtoupper($property->getName()), 0, 'L', false, 1);
+        $builder->MultiCell(115, 0, mb_strtoupper($property->getName(), 'UTF-8'), 0, 'L', false, 1);
         $builder->SetFont('helvetica', '', 15, '', true);
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
