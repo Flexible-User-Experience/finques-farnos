@@ -38,9 +38,11 @@
                         {#<!-- Wrapper for slides -->#}
                         <div class="carousel-inner">
                             {% if property.sold %}
-                                <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/sold-big-' ~ app.request.locale ~ '.png') }}" alt="sold label"/>
+                                <img class="extra-label hidden-xs" src="{{ asset('bundles/app/images/extra_ribbons/sold-big-' ~ app.request.locale ~ '.png') }}" alt="sold label"/>
+                                <img class="extra-label visible-xs" src="{{ asset('bundles/app/images/extra_ribbons/sold-small-' ~ app.request.locale ~ '.png') }}" alt="sold label"/>
                             {% elseif property.reserved %}
-                                <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/reserved-big-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
+                                <img class="extra-label hidden-xs" src="{{ asset('bundles/app/images/extra_ribbons/reserved-big-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
+                                <img class="extra-label visible-xs" src="{{ asset('bundles/app/images/extra_ribbons/reserved-small-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
                             {% endif %}
                             {% for image in property.images %}
                                 {% if image.enabled %}
