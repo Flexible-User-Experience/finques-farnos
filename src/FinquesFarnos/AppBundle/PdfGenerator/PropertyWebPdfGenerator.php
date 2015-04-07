@@ -87,11 +87,12 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $this->drawBrandLine($builder, $y);
         $builder->SetX($builder->getMargins()['left'] - 2);
         $builder->SetY($y + 5);
-        $builder->SetFont('helvetica', '', 18, '', true);
+        $builder->SetFont('helvetica', '', 12, '', true);
         $this->setGreyColor($builder);
         $builder->MultiCell(115, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 18, '', true);
         $builder->MultiCell(115, 0, mb_strtoupper($property->getName()), 0, 'L', false, 1);
+        $builder->SetFont('helvetica', '', 15, '', true);
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
             if ($property->getOldPrice()) {
@@ -103,6 +104,7 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
             $builder->MultiCell(115, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
         }
         // ribbons
+        $builder->SetY($y + 32);
         $this->setGreyColor($builder);
         $builder->SetFont('helvetica', '', 9, '', true);
         $builder->setLineStyle(array('width' => 0.25, 'cap' => 'square', 'join' => 'miter', 'color' => array(100, 100, 100)));
