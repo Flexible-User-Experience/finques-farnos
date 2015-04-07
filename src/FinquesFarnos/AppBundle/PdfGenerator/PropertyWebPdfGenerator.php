@@ -119,6 +119,11 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
             $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'oferta_color.png', $x - 4, $y + 37);
             $x = $x + 24;
         }
+        if ($property->getOfferDiscount() && !$property->getOfferSpecial()) {
+            $builder->MultiCell(23, 15, $this->getTrans('homepage.property.offer.discount'), 'L', 'C', 0, 0, '', '', true, 0, false, true, 17, 'B');
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'rebaixa_color.png', $x - 4, $y + 37);
+            $x = $x + 24;
+        }
         if ($property->getSquareMeters()) {
             $builder->MultiCell(23, 15, $property->getSquareMeters() . ' m²', 'L', 'C', 0, 0, '', '', true, 0, false, true, 17, 'B');
             $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'casa_color.png', $x - 5, $y + 37);
