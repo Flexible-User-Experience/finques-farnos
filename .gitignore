@@ -19,3 +19,4 @@
 /web/bundles/
 /web/media/cache/
 !web/media/.gitkeep
+/web/uploads/
