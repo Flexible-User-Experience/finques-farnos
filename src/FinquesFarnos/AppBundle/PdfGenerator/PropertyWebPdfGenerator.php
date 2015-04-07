@@ -114,6 +114,11 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $builder->setCellPaddings(0, 0, 0, 0);
         $builder->MultiCell(115, 1, '', 0, 'L', false, 1);
         $x = $builder->getMargins()['left'] + 11;
+        if ($property->getOfferSpecial()) {
+            $builder->MultiCell(23, 15, $this->getTrans('homepage.property.offer.special'), 'L', 'C', 0, 0, '', '', true, 0, false, true, 17, 'B');
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'oferta_color.png', $x - 4, $y + 37);
+            $x = $x + 24;
+        }
         if ($property->getSquareMeters()) {
             $builder->MultiCell(23, 15, $property->getSquareMeters() . ' m²', 'L', 'C', 0, 0, '', '', true, 0, false, true, 17, 'B');
             $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'immobiliaria' . DIRECTORY_SEPARATOR . 'color' . DIRECTORY_SEPARATOR . 'casa_color.png', $x - 5, $y + 37);
