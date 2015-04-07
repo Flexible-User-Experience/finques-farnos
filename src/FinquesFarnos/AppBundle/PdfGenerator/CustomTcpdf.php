@@ -53,7 +53,7 @@ class CustomTcpdf extends \TCPDF
     public static function brandLineStyle()
     {
         return array(
-            'width' => 0.8,
+            'width' => 0.5,
             'cap' => 'square',
             'join' => 'miter',
             'color' => array(216, 111, 36),
