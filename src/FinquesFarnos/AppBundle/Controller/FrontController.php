@@ -3,17 +3,16 @@
 namespace FinquesFarnos\AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
-use FinquesFarnos\AppBundle\Entity\ContactMessage;
 use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use FinquesFarnos\AppBundle\PdfGenerator\PropertyWebPdfGenerator;
 use FinquesFarnos\AppBundle\Service\MailerService;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -38,6 +37,10 @@ class FrontController extends Controller
 
     /**
      * @Route("/properties/", name="front_properties", options={"sitemap" = true})
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function propertiesAction(Request $request)
     {
@@ -74,6 +77,11 @@ class FrontController extends Controller
 
     /**
      * @Route("/property/previous/{id}/", name="front_property_prev", options={"expose" = false})
+     *
+     * @param Request $request
+     * @param int $id
+     *
+     * @return Response
      */
     public function prevPropertyForwardAction(Request $request, $id)
     {
@@ -93,6 +101,11 @@ class FrontController extends Controller
 
     /**
      * @Route("/property/next/{id}/", name="front_property_next", options={"expose" = false})
+     *
+     * @param Request $request
+     * @param int $id
+     *
+     * @return Response
      */
     public function nextPropertyForwardAction(Request $request, $id)
     {
@@ -112,6 +125,10 @@ class FrontController extends Controller
 
     /**
      * @Route("/property/back-to-list/", name="front_property_return", options={"expose" = false})
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function backToListAction(Request $request)
     {
@@ -126,6 +143,11 @@ class FrontController extends Controller
     /**
      * @Route("/{type}/{city}/{name}/{reference}/", name="front_property", options={"expose" = true})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"reference": "reference"}})
+     *
+     * @param Request $request
+     * @param Property $property
+     *
+     * @return Response
      */
     public function propertyAction(Request $request, Property $property)
     {
@@ -170,6 +192,10 @@ class FrontController extends Controller
     /**
      * @Route("/property/pdf/{id}/", name="front_property_pdf", options={"expose" = false})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"id": "id"}})
+     *
+     * @param Property $property
+     *
+     * @return Response
      */
     public function propertyPdfAction($property)
     {
@@ -190,6 +216,10 @@ class FrontController extends Controller
 
     /**
      * @Route("/contact/", name="front_contact", options={"sitemap" = true})
+     *
+     * @param Request $request
+     *
+     * @return Response
      */
     public function contactAction(Request $request)
     {
