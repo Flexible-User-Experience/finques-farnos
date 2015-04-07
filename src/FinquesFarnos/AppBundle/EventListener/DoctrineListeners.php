@@ -74,7 +74,10 @@ class DoctrineListeners
             /** @var ImageProperty $enabledImagesSortedByPosition */
             $enabledImagesSortedByPosition = $em->getRepository('AppBundle:ImageProperty')->getFirstEnabledImageOfPropertyId($entity->getId());
             if ($enabledImagesSortedByPosition) {
-                $entity->setVirtualFirstEnabledImageUrl($this->cm->generateUrl($this->uh->asset($enabledImagesSortedByPosition, 'imageFile'), '373x192'));
+                $entity->setVirtualFirstEnabledImageUrl(
+                    $this->cm->generateUrl(
+                        $this->uh->asset($enabledImagesSortedByPosition, 'imageFile'),
+                        '373x192'));
             }
 //        } else if ($entity instanceof ImageProperty) {
 //            /** @var ImageProperty $entity */

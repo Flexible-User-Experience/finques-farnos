@@ -11,16 +11,16 @@
     <meta name="keywords" content="{% block metakeywords %}{% endblock %}">
     <meta name="author" content="www.flux.cat">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}">
     {% block extrametas %}{% endblock %}
     {% block stylesheets %}
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     {% endblock %}
     {% block javascriptshead %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        <script src="/js/main.min.js"></script>
+        <script src="{{ asset('js/main.min.js') }}"></script>
     {% endblock %}
 </head>
 <body {% block bodyattr %}{% endblock %}>
