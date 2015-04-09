@@ -1,0 +1,11 @@
+{% spaceless %}
+    {% if app.request.locale == 'es' %}
+        Inmobiliaria Finques Farnós ofrece servicios de gestión en la compra-venta de fincas rústicas y urbanas, permutas y traspasos, alquileres, valoraciones, financiación sobre concesión de hipotecas, informes de situación urbanística y registro y asesoramiento sobre inversiones. Formalidad con los negocios desde 1984. Empresa familiar ubicada en Amposta, en el Delta y las Tierras del Ebro.
+    {% elseif app.request.locale == 'en' %}
+        Real Estate Finques Farnós provides in the sale of rural and urban, exchanges and transfers, rentals, valuations, financing on mortgage lending, situation reports and registration planning and investment advice. Formality with the family business since 1984. Company located in Amposta, Delta and Terres de l'Ebre.
+    {% elseif app.request.locale == 'fr' %}
+        Immobilier Finques Farnós Gestion de patrimoine fournit dans la vente des échanges rurales et urbaines, et les transferts, locations, évaluations, financement sur les prêts hypothécaires, les rapports de situation et la planification d'inscription et des conseils d'investissement. Formalité avec l'entreprise familiale depuis 1984. L'entreprise est située à Amposta, Delta et Terres de l'Ebre.
+    {% else %}
+        Immobiliària Finques Farnós ofereix serveis de gestió en la compra-venda de finques rústiques i urbanes, permutes i traspassos, lloguers, valoracions, finançament sobre concessió d'hipoteques, informes de situació urbanística i registral i assessorament sobre inversions. Formalitat amb els negocis des de 1984. Empresa familiar ubicada a Amposta, al Delta i les Terres de l'Ebre.
+    {% endif %}
+{% endspaceless %}
