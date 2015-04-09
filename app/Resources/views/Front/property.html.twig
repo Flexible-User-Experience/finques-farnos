@@ -2,7 +2,7 @@
 
 {% block title %}{{ property.name }} · {{ property.city.name }} · {{ property.type.name }} · {{ parent() }}{% endblock %}
 {% block metadescription %}{{ property.description }}{% endblock %}
-{% block metakeywords %}{% endblock %}
+{% block metakeywords %}{{ parent() }}{% endblock %}
 {% block extrametas %}
     <meta name="og:title" content="{{ property.name }}"/>
     <meta name="og:description" content="{{ property.description }}"/>

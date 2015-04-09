@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>     <html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]>        <html class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]>        <html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<!--[if lt IE 7]>     <html lang="{{ app.request.locale }}" class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]>        <html lang="{{ app.request.locale }}" class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]>        <html lang="{{ app.request.locale }}" class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="{{ app.request.locale }}" class="no-js"><!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
     <title>{% block title %}Finques Farnós{% endblock %}</title>
     <meta name="description" content="{% block metadescription %}{% endblock %}">
-    <meta name="keywords" content="{% block metakeywords %}{% endblock %}">
+    <meta name="keywords" content="{% block metakeywords %}{% include ':Front/commons:i18n-meta-keywords.html.twig' %}{% endblock %}">
     <meta name="author" content="www.flux.cat">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
@@ -71,8 +71,8 @@
                 </address>
             </div>
             <div class="col-md-6 text-center">
-                <img src="{{ asset('bundles/app/images/logo-footer-api.png') }}" alt="API Número col·legiat 379 Cinta Farnós i Bel"/>
-                <img src="{{ asset('bundles/app/images/logo-footer-rm.png') }}" alt="Registre Agents immobiliaris de Catalunya aicat 2237"/>
+                <a href="http://www.apitarragona.com" target="_blank"><img src="{{ asset('bundles/app/images/logo-footer-api.png') }}" alt="API Número col·legiat 379 Cinta Farnós i Bel"/></a>
+                <a href="http://www.agenciahabitatge.cat/wps/portal?WCM_GLOBAL_CONTEXT=ca/ahc/web/serveis/registreAgents" target="_blank"><img src="{{ asset('bundles/app/images/logo-footer-rm.png') }}" alt="Registre Agents immobiliaris de Catalunya aicat 2237"/></a>
             </div>
             <div class="col-md-3">
                 <div class="row">

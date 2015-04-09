@@ -1,23 +1,24 @@
 <?php
 
-namespace FinquesFarnos\AppBundle\Tests\Api;
+namespace FinquesFarnos\AppBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Bundle\FrameworkBundle\Client;
 
 /**
  * Class DefaultControllerTest
  *
  * @category Test
- * @package  FinquesFarnos\AppBundle\Tests\Admin
+ * @package  FinquesFarnos\AppBundle\Tests
  * @author   David Romaní <david@flux.cat>
  */
-class DefaultControllerTest extends WebTestCase
+class ApiControllerTest extends WebTestCase
 {
     /**
      * Test page is successful
      *
      * @dataProvider provideUrls
+     *
+     * @param string $url
      */
     public function testAdminPagesAreSuccessful($url)
     {
