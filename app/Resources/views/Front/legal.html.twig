@@ -2,7 +2,7 @@
 
 {% block title %}{{ 'frontend.legal' | trans | capitalize }} · {{ parent() }}{% endblock %}
 {% block metadescription %}{% endblock %}
-{% block metakeywords %}{% endblock %}
+{% block metakeywords %}{{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container">

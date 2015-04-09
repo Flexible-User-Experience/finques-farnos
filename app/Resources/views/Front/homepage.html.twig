@@ -2,7 +2,7 @@
 
 {% block title %}{{ parent() }} · {{ 'homepage.property.banner.main' | trans | capitalize }}{% endblock %}
 {% block metadescription %}{% endblock %}
-{% block metakeywords %}{% endblock %}
+{% block metakeywords %}{{ parent() }}{% endblock %}
 
 {% block main %}
     {% if slides | length > 0 %}

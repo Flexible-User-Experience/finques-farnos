@@ -1,0 +1,11 @@
+{% spaceless %}
+    {% if app.request.locale == 'es' %}
+        inmobiliaria, piso, casa, apartamento, finca, parcela, rustica, torre, amposta, delta, ebro, montsia, tarragona, cataluña, costa, inmobiliarias, pisos, casas, aparatamentos, fincas, parcelas, rusticas, torres
+    {% elseif app.request.locale == 'en' %}
+        real estate, apartment, house, apartment, farm, land, rustic, tower, amposta, delta, ebro, montsia, tarragona, catalonia, coast, apartments, houses, aparatamentos, farms, plots, towers
+    {% elseif app.request.locale == 'fr' %}
+        immobilier, appartement, maison, appartement, ferme, terre, rustique, tour, amposta, delta, ebro, montsia, tarragona, catalogne, côte, immobilier, appartements, maisons, aparatamentos, fermes, terrains, rustique, tours
+    {% else %}
+        immobiliària, pis, casa, apartament, àtic, parcel·la, rústica, torre, amposta, delta, ebre, montsià, tarragona, catalunya, costa, immobiliàries, pisos, cases, aparataments, finques, parcel·les, rústiques, torres
+    {% endif %}
+{% endspaceless %}

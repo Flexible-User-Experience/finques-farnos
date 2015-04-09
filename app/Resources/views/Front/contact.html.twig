@@ -2,7 +2,7 @@
 
 {% block title %}{{ 'menu.contact' | trans }} · {{ parent() }}{% endblock %}
 {% block metadescription %}{% endblock %}
-{% block metakeywords %}{% endblock %}
+{% block metakeywords %}{{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container">
