@@ -1,0 +1,11 @@
+{% spaceless %}
+    {% if app.request.locale == 'es' %}
+        inmobiliaria, piso, casa, apartamento, finca, parcela, rustica, torre, amposta, delta, ebro, montsia, tarragona, cataluña, costa, inmobiliarias, pisos, casas, aparatamentos, fincas, parcelas, rusticas, torres
+    {% elseif app.request.locale == 'en' %}
+        real estate, apartment, house, apartment, farm, land, rustic, tower, amposta, delta, ebro, montsia, tarragona, catalonia, coast, apartments, houses, aparatamentos, farms, plots, towers
+    {% elseif app.request.locale == 'fr' %}
+        immobilier, appartement, maison, appartement, ferme, terre, rustique, tour, amposta, delta, ebro, montsia, tarragona, catalogne, côte, immobilier, appartements, maisons, aparatamentos, fermes, terrains, rustique, tours
+    {% else %}
+        Immobiliària Finques Farnós ofereix serveis de gestió en la compra-venda de finques rústiques i urbanes, permutes i traspassos, lloguers, valoracions, finançament sobre concessió d'hipoteques, informes de situació urbanística i registral i assessorament sobre inversions. Formalitat amb els negocis des de 1984. Empresa familiar ubicada a Amposta, al Delta i les Terres de l'Ebre.
+    {% endif %}
+{% endspaceless %}

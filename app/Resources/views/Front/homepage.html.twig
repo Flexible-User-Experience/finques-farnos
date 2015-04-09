@@ -1,7 +1,7 @@
 {% extends 'Front/layout.html.twig' %}
 
 {% block title %}{{ parent() }} · {{ 'homepage.property.banner.main' | trans | capitalize }}{% endblock %}
-{% block metadescription %}{% endblock %}
+{% block metadescription %}{{ parent() }}{% endblock %}
 {% block metakeywords %}{{ parent() }}{% endblock %}
 
 {% block main %}

@@ -1,7 +1,7 @@
 {% extends 'Front/layout.html.twig' %}
 
 {% block title %}{{ 'menu.properties' | trans }} · {{ parent() }}{% endblock %}
-{% block metadescription %}{% endblock %}
+{% block metadescription %}{{ parent() }}{% endblock %}
 {% block metakeywords %}{{ parent() }}{% endblock %}
 
 {% block bodyattr %}data-ng-app="propertiesApp"{% endblock %}
