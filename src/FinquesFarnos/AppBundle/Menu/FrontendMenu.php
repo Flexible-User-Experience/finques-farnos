@@ -6,6 +6,8 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Translator;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * Class MenuBuilder
@@ -27,15 +29,29 @@ class FrontendMenu
     private $translator;
 
     /**
+     * @var TokenStorageInterface
+     */
+    private $ts;
+
+    /**
+     * @var AuthorizationCheckerInterface
+     */
+    private $ac;
+
+    /**
      * Contructor
      *
-     * @param FactoryInterface $factory
-     * @param Translator       $translator
+     * @param FactoryInterface              $factory
+     * @param Translator                    $translator
+     * @param TokenStorageInterface         $ts
+     * @param AuthorizationCheckerInterface $ac
      */
-    public function __construct(FactoryInterface $factory, Translator $translator)
+    public function __construct(FactoryInterface $factory, Translator $translator, TokenStorageInterface $ts, AuthorizationCheckerInterface $ac)
     {
         $this->factory = $factory;
         $this->translator = $translator;
+        $this->ts = $ts;
+        $this->ac = $ac;
     }
 
     /**
@@ -69,6 +85,18 @@ class FrontendMenu
                 'label' => $this->translator->trans('menu.contact'),
                 'route' => 'front_contact',
             ));
+        if ($this->ac->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $menu->addChild('admin', array(
+                'label' => '<i class="fa fa-cog"></i>',
+                'route' => 'sonata_admin_dashboard',
+                'extras' => array('safe_label' => true),
+            ));
+            $menu->addChild('logout', array(
+                'label' => '<i class="fa fa-power-off"></i>',
+                'route' => 'sonata_user_admin_security_logout',
+                'extras' => array('safe_label' => true),
+            ));
+        }
 
         return $menu;
     }
