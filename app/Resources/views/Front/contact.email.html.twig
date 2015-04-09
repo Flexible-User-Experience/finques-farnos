@@ -24,7 +24,7 @@
             <td style="padding:8px;margin:10px;">Referència:</td>
             <td style="padding:8px;background:#FFF;color:#000;margin:10px;">{{ property.reference }}</td>
             <td style="padding:8px;margin:10px;">Immoble:</td>
-            <td colspan="3" style="padding:8px;background:#FFF;color:#000;margin:10px;"><a href="{{ path('admin_finquesfarnos_app_property_edit', {id: property.id}) }}">{{ property.name }}</a></td>
+            <td colspan="3" style="padding:8px;background:#FFF;color:#000;margin:10px;"><a href="{{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">{{ property.name }}</a></td>
             <td style="padding:8px;margin:10px;"></td>
         </tr>
     {% endif %}
