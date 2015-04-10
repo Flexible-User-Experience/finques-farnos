@@ -91,9 +91,10 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $builder->SetX($builder->getMargins()['left'] - 2);
         $builder->SetY($y + 5);
         $builder->SetFont('helvetica', '', 12, '', true);
-        $this->setGreyColor($builder);
+        $this->setBlackColor($builder);
         $builder->MultiCell(115, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 18, '', true);
+        $this->setGreyColor($builder);
         $builder->MultiCell(115, 0, mb_strtoupper($property->getName(), 'UTF-8'), 0, 'L', false, 1);
         $builder->SetFont('helvetica', '', 15, '', true);
         $this->setOrangeColor($builder);
@@ -113,9 +114,9 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         // ribbons
         $frozenY = $y;
         $builder->SetY($builder->getY() + 5); $y = $builder->getY() + 5;
-        $this->setGreyColor($builder);
+        $this->setBlackColor($builder);
         $builder->SetFont('helvetica', '', 9, '', true);
-        $builder->setLineStyle(array('width' => 0.25, 'cap' => 'square', 'join' => 'miter', 'color' => array(100, 100, 100)));
+        $builder->setLineStyle(array('width' => 0.25, 'cap' => 'square', 'join' => 'miter', 'color' => array(0, 0, 0)));
         $builder->setCellPaddings(0, 0, 0, 0);
         $builder->MultiCell(115, 1, '', 0, 'L', false, 1);
         $x = $builder->getMargins()['left'] + 11;
@@ -149,13 +150,14 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $builder->MultiCell(33, 15, '', 0, 'C', 0, 1, '', '', true, 0, false, true, 17, 'B');
         $builder->MultiCell(115, 5, '', 0, 'L', false, 1);
         $builder->setCellPaddings(0, 0, 0, 1);
+        $this->setBlackColor($builder);
         $builder->MultiCell(115, 0, $property->getDescription(), 0, 'L', false, 1);
         // --> right text
         $y = $frozenY;
         $builder->SetX(120);
         $builder->SetY($y + 5);
         $builder->SetFont('helvetica', '', 15, '', true);
-        $this->setGreyColor($builder);
+        $this->setBlackColor($builder);
         $builder->MultiCell(55, 0, mb_convert_case($this->getTrans('property.energy.efficiency'), MB_CASE_TITLE, 'UTF-8'), 0, 'L', false, 2, 140, $y + 5);
         $y = $y + 15;
         $builder->SetFont('helvetica', '', 10, '', true);
