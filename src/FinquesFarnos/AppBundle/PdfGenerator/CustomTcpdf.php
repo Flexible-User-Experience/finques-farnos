@@ -18,8 +18,8 @@ class CustomTcpdf extends \TCPDF
     {
         $this->drawBrandLine(23);
         $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-ff.png', $this->getMargins()['left'], 5, 30, 0, 'PNG', 'http://www.finquesfarnos.com', '', false, 150);
-        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-pdf-rm.png', $this->getMargins()['left'] + 122, 10, 40, 0);
-        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-pdf-api.png', $this->getMargins()['left'] + 167, 10, 15, 0);
+        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-pdf-api.jpg', $this->getMargins()['left'] + 122, 10, 15, 0);
+        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-pdf-rm.jpg', $this->getMargins()['left'] + 141, 10, 40, 0);
     }
 
     /**
@@ -29,10 +29,10 @@ class CustomTcpdf extends \TCPDF
     {
         $this->SetY(-20);
         $this->SetFont('helvetica', '', 9);
-        $this->setGreyColor();
+        $this->setBlackColor();
         $this->drawBrandLine($this->GetY());
         $this->setCellPaddings(0, 0, 0, 0);
-        $this->Cell(0, 15, 'C. Corsini 61 · 43870 Amposta · Tarragona · 977 702 721 · info@finquesfarnos.com · www.finquesfarnos.com', 0, false, 'L', 0, '', 0, false, 'T', 'C');
+        $this->Cell($this->getMargins()['right'] - $this->getMargins()['left'], 15, 'C. Corsini 61 · 43870 Amposta · Tarragona · 977 702 721 · info@finquesfarnos.com · www.finquesfarnos.com', 0, false, 'C', 0, '', 0, false, 'T', 'C');
     }
 
     public function setOrangeColor()
@@ -48,6 +48,11 @@ class CustomTcpdf extends \TCPDF
     public function setBodyTextGreyColor()
     {
         $this->SetTextColor(100, 100, 100);
+    }
+
+    public function setBlackColor()
+    {
+        $this->SetTextColor(0, 0, 0);
     }
 
     public static function brandLineStyle()

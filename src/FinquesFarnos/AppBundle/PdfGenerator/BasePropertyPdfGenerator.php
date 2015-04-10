@@ -82,6 +82,12 @@ abstract class BasePropertyPdfGenerator extends AbstractPdfGenerator
         $builder->SetTextColor(101, 91, 69);
     }
 
+    protected function setBlackColor($builder)
+    {
+        /** @var \TCPDF $builder */
+        $builder->SetTextColor(0, 0, 0);
+    }
+
     protected function setBodyTextGreyColor($builder)
     {
         /** @var \TCPDF $builder */

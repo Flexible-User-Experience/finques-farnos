@@ -1,3 +1,7 @@
+pdf:
+  print:
+    date: Data impressió
+
 menu:
   home: Inici
   properties: Immobles
