@@ -64,9 +64,10 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $builder->SetX($builder->getMargins()['left'] - 2);
         $builder->SetY($y + 5);
         $builder->SetFont('helvetica', '', 15, '', true);
-        $this->setGreyColor($builder);
+        $this->setBlackColor($builder);
         $builder->MultiCell(135, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 30, '', true);
+        $this->setGreyColor($builder);
         $builder->MultiCell(135, 0, mb_strtoupper($property->getName(), 'UTF-8'), 0, 'L', false, 1);
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
@@ -79,7 +80,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
             $builder->MultiCell(135, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
         }
         // description
-        $this->setGreyColor($builder);
+        $this->setBlackColor($builder);
         $builder->SetFont('helvetica', '', 18, '', true);
         $builder->setCellPaddings(0, 0, 0, 1);
         $builder->MultiCell(135, 55, $property->getDescription(), 0, 'J', false, 1, null, null, true, 1, false, false, 60, 'T', true);
@@ -90,7 +91,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $builder->SetX(155);
         $builder->SetY($y + 5);
         $builder->SetFont('helvetica', '', 11, '', true);
-        $this->setGreyColor($builder);
+        $this->setBlackColor($builder);
         $builder->MultiCell(55, 0, mb_convert_case($this->getTrans('property.energy.efficiency'), MB_CASE_TITLE, 'UTF-8'), 0, 'L', false, 2, 155);
         if ($property->getEnergyClass() == 0) {
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 155);
