@@ -29,11 +29,6 @@ class FrontendMenu
     private $translator;
 
     /**
-     * @var TokenStorageInterface
-     */
-    private $ts;
-
-    /**
      * @var AuthorizationCheckerInterface
      */
     private $ac;
@@ -43,14 +38,12 @@ class FrontendMenu
      *
      * @param FactoryInterface              $factory
      * @param Translator                    $translator
-     * @param TokenStorageInterface         $ts
      * @param AuthorizationCheckerInterface $ac
      */
-    public function __construct(FactoryInterface $factory, Translator $translator, TokenStorageInterface $ts, AuthorizationCheckerInterface $ac)
+    public function __construct(FactoryInterface $factory, Translator $translator, AuthorizationCheckerInterface $ac)
     {
         $this->factory = $factory;
         $this->translator = $translator;
-        $this->ts = $ts;
         $this->ac = $ac;
     }
 
