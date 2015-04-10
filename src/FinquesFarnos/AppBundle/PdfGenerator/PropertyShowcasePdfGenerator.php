@@ -117,7 +117,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
             'module_width' => 1, // width of a single module in points
             'module_height' => 1 // height of a single module in points
         );
-        $builder->write2DBarcode($url, 'QRCODE,M', 155, $builder->getY() + 5, 41, 41, $style, 'N', true);
+        $builder->write2DBarcode($url, 'QRCODE,M', 155, $builder->getY() + 10, 41, 41, $style, 'N', true);
 
         // FOOTER
         $builder->SetFont('helvetica', '', 9, '', true);
