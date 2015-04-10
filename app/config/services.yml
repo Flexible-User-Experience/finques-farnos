@@ -129,7 +129,7 @@ services:
 # KNP Menu
     app.menu.frontmenu:
         class: FinquesFarnos\AppBundle\Menu\FrontendMenu
-        arguments: [ "@knp_menu.factory", "@translator.default" ]
+        arguments: [ "@knp_menu.factory", "@translator.default", "@security.authorization_checker" ]
     app.menu.main:
         class: Knp\Menu\MenuItem
         factory_service: app.menu.frontmenu

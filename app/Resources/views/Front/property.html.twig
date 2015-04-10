@@ -136,14 +136,21 @@
                 pause: true,
                 interval: false
             }).on('slide.bs.carousel', function(evt) {
-                        jQuery('#custom_carousel .controls li.active').removeClass('active');
-                        jQuery('#custom_carousel .controls li:eq(' + jQuery(evt.relatedTarget).index() + ')').addClass('active');
+                var extraLabelsOffset = {% if property.sold or property.reserved %}2{% else %}0{% endif %};
+                var index = jQuery(evt.relatedTarget).index() - extraLabelsOffset;
+//                console.log('jQuery(evt.relatedTarget)', jQuery(evt.relatedTarget));
+//                console.log('extraLabelsOffset', extraLabelsOffset);
+//                console.log('index', index);
+                jQuery('#custom_carousel .controls li.active').removeClass('active');
+                jQuery('#custom_carousel .controls li:eq(' + index + ')').addClass('active');
             });
         });
         function moveCurrentThumb(evt) {
+//            console.log('moveCurrentThumb', evt);
             centerItFixedWidth('#thumb-slider li.active', '#thumb-slider');
         }
         function centerItFixedWidth(target, outer) {
+//            console.log('centerItFixedWidth', target, outer);
             var out = $(outer);
             var tar = $(target);
             var x = out.width();
