@@ -72,7 +72,12 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
             if ($property->getOldPrice()) {
-                $builder->MultiCell(135, 0, $property->getDecoratedPrice() . ' ' . $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), 0, 'L', false, 1);
+                $builder->Text($builder->getMargins()['left'], $builder->getY(), $property->getDecoratedPrice(), false, false, true, 0, 0);
+                $xOffset = $builder->getMargins()['left'] + $builder->GetStringWidth($property->getDecoratedPrice()) + 3;
+                $builder->SetFont('helvetica', '', 16, '', true);
+                $this->setBlackColor($builder);
+                $builder->Text($xOffset, $builder->getY() + 5, $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), false, false, true, 0);
+                $builder->Ln(); $builder->setY($builder->getY() + 3);
             } else {
                 $builder->MultiCell(135, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
             }
