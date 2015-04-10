@@ -32,7 +32,7 @@ class CustomTcpdf extends \TCPDF
         $this->setGreyColor();
         $this->drawBrandLine($this->GetY());
         $this->setCellPaddings(0, 0, 0, 0);
-        $this->Cell(0, 15, 'C. Corsini 61 · 43870 Amposta · Tarragona · 977 702 721 · info@finquesfarnos.com · www.finquesfarnos.com', 0, false, 'L', 0, '', 0, false, 'T', 'C');
+        $this->Cell($this->getMargins()['right'] - $this->getMargins()['left'], 15, 'C. Corsini 61 · 43870 Amposta · Tarragona · 977 702 721 · info@finquesfarnos.com · www.finquesfarnos.com', 0, false, 'C', 0, '', 0, false, 'T', 'C');
     }
 
     public function setOrangeColor()
