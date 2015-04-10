@@ -98,7 +98,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         } else if ($property->getEnergyClass() == 1) {
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 155);
         } else if ($property->getEnergyClass() > 1) {
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_' . $transCode[$property->getEnergyClass()] . '.png', 155, $builder->getY(), 14 + (4.5 * ($property->getEnergyClass() - 2)), 5, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_' . $transCode[$property->getEnergyClass()] . '.png', 155, $builder->getY(), 14 + (4.5 * ($property->getEnergyClass() - 2)), 7, 'PNG', '', '', false, 150);
             $builder->setY($builder->getY() + 7);
         }
 
