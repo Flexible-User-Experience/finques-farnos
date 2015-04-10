@@ -89,9 +89,9 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $transCode = array(2 => 'A', 3 => 'B', 4 => 'C', 5 => 'D', 6 => 'E', 7 => 'F', 8 => 'G');
         $builder->SetX(155);
         $builder->SetY($y + 5);
-        $builder->SetFont('helvetica', 'B', 12, '', true);
+        $builder->SetFont('helvetica', '', 11, '', true);
         $this->setGreyColor($builder);
-        $builder->MultiCell(55, 0, $this->getTrans('property.energy.efficiency'), 0, 'L', false, 2, 155);
+        $builder->MultiCell(55, 0, mb_convert_case($this->getTrans('property.energy.efficiency'), MB_CASE_TITLE, 'UTF-8'), 0, 'L', false, 2, 155);
         if ($property->getEnergyClass() == 0) {
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 155);
         } else if ($property->getEnergyClass() == 1) {
