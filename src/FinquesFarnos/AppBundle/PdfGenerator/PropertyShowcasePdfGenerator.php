@@ -65,24 +65,24 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $builder->SetY($y + 5);
         $builder->SetFont('helvetica', '', 15, '', true);
         $this->setGreyColor($builder);
-        $builder->MultiCell(130, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
+        $builder->MultiCell(135, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 30, '', true);
-        $builder->MultiCell(130, 0, mb_strtoupper($property->getName(), 'UTF-8'), 0, 'L', false, 1);
+        $builder->MultiCell(135, 0, mb_strtoupper($property->getName(), 'UTF-8'), 0, 'L', false, 1);
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
             if ($property->getOldPrice()) {
-                $builder->MultiCell(130, 0, $property->getDecoratedPrice() . ' ' . $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), 0, 'L', false, 1);
+                $builder->MultiCell(135, 0, $property->getDecoratedPrice() . ' ' . $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), 0, 'L', false, 1);
             } else {
-                $builder->MultiCell(130, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
+                $builder->MultiCell(135, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
             }
         } else {
-            $builder->MultiCell(130, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
+            $builder->MultiCell(135, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
         }
         // description
         $this->setGreyColor($builder);
         $builder->SetFont('helvetica', '', 18, '', true);
         $builder->setCellPaddings(0, 0, 0, 1);
-        $builder->MultiCell(130, 0, $property->getDescription(), 0, 'L', false, 1);
+        $builder->MultiCell(135, 55, $property->getDescription(), 0, 'J', false, 1, null, null, true, 1, false, false, 60, 'T', true);
 
         // Energy efficency
         $builder->setCellPaddings(0, 0, 0, 2);
@@ -113,7 +113,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
             'vpadding' => 0,
             'hpadding' => 0,
             'fgcolor' => array(0, 0, 0),
-            'bgcolor' => false, //array(255,255,255)
+            'bgcolor' => false,  // array(255, 255, 255)
             'module_width' => 1, // width of a single module in points
             'module_height' => 1 // height of a single module in points
         );
