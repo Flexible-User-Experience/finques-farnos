@@ -71,7 +71,7 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
                 $builder->Image(
                     $this->krd . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'web' . $this->uh->asset($image, 'imageFile'),
                     $builder->getMargins()['left'] + $col * 62, // abscissa of the upper-left corner
-                    30 + $row * 48,                             // ordinate of the upper-left corner
+                    35 + $row * 48,                             // ordinate of the upper-left corner
                     57,                                         // width
                     43,                                         // height
                     '',                                         // image file extension
@@ -85,7 +85,7 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
             $row = 1;
         }
         // --> left text
-        $y = 33 + ($row + 1) * 48; //135;
+        $y = 38 + ($row + 1) * 48; //135;
         $builder->setCellPaddings(0, 0, 0, 1);
         $this->drawBrandLine($builder, $y);
         $builder->SetX($builder->getMargins()['left'] - 2);
