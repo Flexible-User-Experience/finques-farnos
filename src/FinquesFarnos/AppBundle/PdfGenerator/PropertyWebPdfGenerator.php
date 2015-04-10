@@ -100,11 +100,12 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $this->setOrangeColor($builder);
         if ($property->getShowPriceOnlyWithNumbers()) {
             if ($property->getOldPrice()) {
-                $builder->MultiCell(115, 0, $property->getDecoratedPrice() . ' ' . $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), 0, 'L', false, 1);
-//                TODO below
-//                $builder->Write(14, $property->getDecoratedPrice(), '', true, 'L', false, 0);
-//                $builder->Cell(0, 0, $property->getDecoratedPrice(), 0, false, 'C', 0, '', 0, false, 'M', 'M');
-//                $builder->Text(15, $y + 20, 'HIT!', false, false, true, 'T', 'L', false);
+                $builder->Text($builder->getMargins()['left'], $builder->getY(), $property->getDecoratedPrice(), false, false, true);
+                $xOffset = $builder->getMargins()['left'] + $builder->GetStringWidth($property->getDecoratedPrice()) + 2;
+                $builder->SetFont('helvetica', '', 10, '', true);
+                $this->setBlackColor($builder);
+                $builder->Text($xOffset, $builder->getY() + 1.75, $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), false, false, true, 0);
+                $builder->Ln(); $builder->setY($builder->getY() + 3);
             } else {
                 $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
             }
