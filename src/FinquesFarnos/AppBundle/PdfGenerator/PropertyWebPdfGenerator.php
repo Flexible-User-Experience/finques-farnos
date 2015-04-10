@@ -180,8 +180,10 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
                 'name' => $property->getNameSlug(),
                 'reference' => $property->getReference(),
             ), true);
+        $printDate = date_format(new \DateTime('now'), 'd/m/Y');
         $builder->SetFont('helvetica', '', 9, '', true);
-        $builder->Text($builder->getMargins()['left'], 267, $url);
+        $builder->Text($builder->getMargins()['left'], 264, $this->getTrans('pdf.print.date'). ': ' . $printDate);
+        $builder->Text($builder->getMargins()['left'], 269, $url);
         $builder->Footer();
 
         // Return the original PDF, calling getContents to retrieve the rendered content

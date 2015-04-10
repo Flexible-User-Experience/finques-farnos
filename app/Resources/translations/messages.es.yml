@@ -1,3 +1,7 @@
+pdf:
+  print:
+    date: Fecha impresión
+
 menu:
   home: Inicio
   properties: Inmuebles

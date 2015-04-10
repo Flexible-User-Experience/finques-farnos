@@ -1,3 +1,7 @@
+pdf:
+  print:
+    date: Impression de date
+
 menu:
   home: Accueil
   properties: Propriétés
