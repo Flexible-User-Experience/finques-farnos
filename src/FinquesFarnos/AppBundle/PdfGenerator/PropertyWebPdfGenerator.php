@@ -100,6 +100,10 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         if ($property->getShowPriceOnlyWithNumbers()) {
             if ($property->getOldPrice()) {
                 $builder->MultiCell(115, 0, $property->getDecoratedPrice() . ' ' . $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), 0, 'L', false, 1);
+//                TODO below
+//                $builder->Write(14, $property->getDecoratedPrice(), '', true, 'L', false, 0);
+//                $builder->Cell(0, 0, $property->getDecoratedPrice(), 0, false, 'C', 0, '', 0, false, 'M', 'M');
+//                $builder->Text(15, $y + 20, 'HIT!', false, false, true, 'T', 'L', false);
             } else {
                 $builder->MultiCell(115, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
             }
@@ -153,19 +157,20 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $builder->SetFont('helvetica', '', 15, '', true);
         $this->setGreyColor($builder);
         $builder->MultiCell(55, 0, mb_convert_case($this->getTrans('property.energy.efficiency'), MB_CASE_TITLE, 'UTF-8'), 0, 'L', false, 2, 140, $y + 5);
+        $y = $y + 15;
         $builder->SetFont('helvetica', '', 10, '', true);
         if ($property->getEnergyClass() == 0) {
-            $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 140, $y + 15);
+            $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 140, $y);
         } else if ($property->getEnergyClass() == 1) {
-            $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 140, $y + 15);
+            $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 140, $y);
         } else if ($property->getEnergyClass() > 1) {
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_A' . ($property->getEnergyClass() == 2 ? '' : '_01') . '.png', 140, $y + 25, 14, 5, 'PNG', '', '', false, 150);
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_B' . ($property->getEnergyClass() == 3 ? '' : '_01') . '.png', 140, $y + 33, 20, 5, 'PNG', '', '', false, 150);
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_C' . ($property->getEnergyClass() == 4 ? '' : '_01') . '.png', 140, $y + 41, 28, 5, 'PNG', '', '', false, 150);
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_D' . ($property->getEnergyClass() == 5 ? '' : '_01') . '.png', 140, $y + 49, 35, 5, 'PNG', '', '', false, 150);
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_E' . ($property->getEnergyClass() == 6 ? '' : '_01') . '.png', 140, $y + 57, 43, 5, 'PNG', '', '', false, 150);
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_F' . ($property->getEnergyClass() == 7 ? '' : '_01') . '.png', 140, $y + 65, 50, 5, 'PNG', '', '', false, 150);
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_G' . ($property->getEnergyClass() == 8 ? '' : '_01') . '.png', 140, $y + 73, 57, 5, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_A' . ($property->getEnergyClass() == 2 ? '' : '_01') . '.png', 140, $y, 14, 5, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_B' . ($property->getEnergyClass() == 3 ? '' : '_01') . '.png', 140, $y + 8, 20, 5, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_C' . ($property->getEnergyClass() == 4 ? '' : '_01') . '.png', 140, $y + 16, 28, 5, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_D' . ($property->getEnergyClass() == 5 ? '' : '_01') . '.png', 140, $y + 24, 35, 5, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_E' . ($property->getEnergyClass() == 6 ? '' : '_01') . '.png', 140, $y + 32, 43, 5, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_F' . ($property->getEnergyClass() == 7 ? '' : '_01') . '.png', 140, $y + 40, 50, 5, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_G' . ($property->getEnergyClass() == 8 ? '' : '_01') . '.png', 140, $y + 48, 57, 5, 'PNG', '', '', false, 150);
         }
 
         // FOOTER
