@@ -11,6 +11,7 @@
 @ffgrey: #424242;
 @ffgreylight: lighten(@ffgrey, 25%);
 @fffootgrey: #666;
+@ffwhite: #FFF;
 @extramargin: 20px;
 @doubleextramargin: 50px;
 @ff-space-25: 25px;
@@ -631,5 +632,16 @@ span.download-icon {
     font-size: 1.25em;
     font-weight: bold;
   }
-  input.btn-grey { color: white; }
+}
+
+// Buttons
+.btn-grey {
+  color: @ffwhite;
+  background-color: @fffootgrey;
+  border-color: @fffootgrey;
+  .transition(all 0.25s ease-out);
+  &:hover {
+    color: @ffwhite;
+    background-color: @ffgrey;
+  }
 }
