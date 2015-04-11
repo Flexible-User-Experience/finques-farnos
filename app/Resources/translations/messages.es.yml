@@ -15,6 +15,10 @@ frontend:
   cookies:
     warning: Este sitio web utiliza galletas de terceros (cookies) para obtener información estadística sobre la navegación. Si continúa navegando, consideraremos que acepta su uso.
     button: no mostrar más este mensaje
+  layout:
+    browser:
+      happy: |
+        Usted está utilizando un navegador <strong>obsoleto</strong>. Por favor, <a href="http://browsehappy.com/">actualice su navegador</a> para mejorar la visualización de esta página.
 
 homepage:
   property:
