@@ -47,7 +47,7 @@
         {% if properties | length > 0 %}
             <div class="row">
                 {% for property in properties %}
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-6">
                         <hr class="hr-homepage">
                         <div class="thumbnail homepage{% if property.offerSpecial or property.offerDiscount %} bg-dark-orange{% endif %}">
                             {% if property.images | length > 0 %}
@@ -81,7 +81,7 @@
             </div>
         {% else %}
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <hr class="hr-homepage">
                     <p class="lead">{{ 'homepage.property.noitems' | trans }}</p>
                 </div>
