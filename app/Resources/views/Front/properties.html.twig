@@ -67,30 +67,30 @@
         <hr class="hr-homepage">
         <div data-ng-repeat="property in properties">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="extra-ribbons-wrapper">
-                        <img data-ng-if="property.first_image_path && property.sold" class="extra-label" src="/bundles/app/images/extra_ribbons/sold-small-{{ app.request.locale }}.png" alt="sold label"/>
-                        <img data-ng-if="property.first_image_path && !property.sold && property.reserved" class="extra-label" src="/bundles/app/images/extra_ribbons/reserved-small-{{ app.request.locale }}.png" alt="sold label"/>
-                        <a data-ng-if="property.first_image_path" href="[[ getUrlPropertyDetail(property) ]]">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="extra-ribbons-wrapper" data-ng-if="property.first_image_path">
+                        <img data-ng-if="property.sold" class="extra-label" src="/bundles/app/images/extra_ribbons/sold-small-{{ app.request.locale }}.png" alt="sold label"/>
+                        <img data-ng-if="!property.sold && property.reserved" class="extra-label" src="/bundles/app/images/extra_ribbons/reserved-small-{{ app.request.locale }}.png" alt="sold label"/>
+                        <a href="[[ getUrlPropertyDetail(property) ]]">
                             <img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[ property.name ]]">
                         </a>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-sm-8 col-xs-12">
                     <div class="wrapper" data-ng-class="{ 'bg-dark-orange': property.offer_special || property.offer_discount }">
-                        <div class="row ">
-                            <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-6">
                                 <h2 class="no-m no-bold-font font-size-13"><a href="[[ getUrlPropertyDetail(property) ]]">Ref. [[ property.reference ]]</a></h2>
                                 <h2 class="no-m"><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name | uppercase ]]</a></h2>
                                 <h3 class="no-m-top extra-m-bottom-27" data-ng-if="property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
                                 <h3 class="no-m-top extra-m-bottom" data-ng-if="!property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-xs-6">
                                 <p>[[ property.description | words:10:ignoreSpaces ]]</p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-xs-6">
                                 <ul class="no-m-bottom ribbons list-unstyled list-inline">
                                     <li data-ng-if="property.offer_special" class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
                                     <li data-ng-if="property.offer_discount && !property.offer_special" class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
