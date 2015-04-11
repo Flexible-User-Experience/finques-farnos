@@ -50,8 +50,13 @@
 nav.ff {
   a.navbar-brand { margin-top: -16px; }
 }
+.navbar-header {
+  height: 93px;
+  @media(max-width: @screen-xs-max){ border-bottom: solid 2px @fforange; }
+}
 .navbar { border: none }
 div#navbar {
+  //&.navbar-collapse.collapse { display: block; }
   border-bottom: solid 2px @fforange;
   ul {
     li {
