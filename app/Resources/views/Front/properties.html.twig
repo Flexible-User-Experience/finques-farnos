@@ -72,7 +72,8 @@
                         <img data-ng-if="property.sold" class="extra-label" src="/bundles/app/images/extra_ribbons/sold-small-{{ app.request.locale }}.png" alt="sold label"/>
                         <img data-ng-if="!property.sold && property.reserved" class="extra-label" src="/bundles/app/images/extra_ribbons/reserved-small-{{ app.request.locale }}.png" alt="sold label"/>
                         <a href="[[ getUrlPropertyDetail(property) ]]">
-                            <img class="img-responsive" data-ng-src="[[ property.first_image_path ]]" alt="[[ property.name ]]">
+                            <img class="img-responsive hidden-xs" data-ng-src="[[ property.first_image_path ]]" alt="[[ property.name ]]">
+                            <img class="img-responsive visible-xs" data-ng-src="[[ property.first_image_path_big ]]" alt="[[ property.name ]]">
                         </a>
                     </div>
                 </div>

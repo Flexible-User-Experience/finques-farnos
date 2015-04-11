@@ -240,6 +240,13 @@ class Property extends Base
     private $virtualFirstEnabledImageUrl;
 
     /**
+     * @JMS\SerializedName("first_image_path_big")
+     * @JMS\Groups({"api"})
+     * @var string
+     */
+    private $virtualFirstEnabledImageUrlBig;
+
+    /**
      * @ORM\OneToMany(
      *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation",
      *     mappedBy="object",
@@ -1180,6 +1187,30 @@ class Property extends Base
     public function getVirtualFirstEnabledImageUrl()
     {
         return $this->virtualFirstEnabledImageUrl;
+    }
+
+    /**
+     * Set VirtualFirstEnabledImageUrlBig
+     *
+     * @param string $virtualFirstEnabledImageUrlBig
+     *
+     * @return $this
+     */
+    public function setVirtualFirstEnabledImageUrlBig($virtualFirstEnabledImageUrlBig)
+    {
+        $this->virtualFirstEnabledImageUrlBig = $virtualFirstEnabledImageUrlBig;
+
+        return $this;
+    }
+
+    /**
+     * Get VirtualFirstEnabledImageUrlBig
+     *
+     * @return string
+     */
+    public function getVirtualFirstEnabledImageUrlBig()
+    {
+        return $this->virtualFirstEnabledImageUrlBig;
     }
 
     /**
