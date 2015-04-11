@@ -78,10 +78,11 @@ class DoctrineListeners
                     $this->cm->generateUrl(
                         $this->uh->asset($enabledImagesSortedByPosition, 'imageFile'),
                         '373x192'));
+                $entity->setVirtualFirstEnabledImageUrlBig(
+                    $this->cm->generateUrl(
+                        $this->uh->asset($enabledImagesSortedByPosition, 'imageFile'),
+                        '700x400'));
             }
-//        } else if ($entity instanceof ImageProperty) {
-//            /** @var ImageProperty $entity */
-//            $entity->setMetaAlt($entity->getMetaAlt() ? $entity->getMetaAlt() : $entity->getProperty()->getName());
         }
     }
 }
