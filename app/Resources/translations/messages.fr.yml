@@ -15,6 +15,10 @@ frontend:
   cookies:
     warning: Ce site utilise les cookies tiers pour obtenir des informations statistiques sur la navigation. Si vous continuez à naviguer signifie que vous acceptez son utilisation.
     button: ne pas montrer ce message
+  layout:
+    browser:
+      happy: |
+        Vostè està utilitzant un navegador <strong>obsolet</strong>. Si us plau, <a href="http://browsehappy.com/">actualitzi el seu navegador</a> per millorar la visualització d'aquesta pàgina.
 
 homepage:
   property:
