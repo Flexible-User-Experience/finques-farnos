@@ -1316,16 +1316,16 @@
         },
         {
             "name": "endroid/qrcode",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/endroid/QrCode.git",
-                "reference": "d178018a109f46a7caf86ce76c8de6902cb57a82"
+                "reference": "66ae9d90c680094142ad0a6e138f56d700bc7312"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/endroid/QrCode/zipball/d178018a109f46a7caf86ce76c8de6902cb57a82",
-                "reference": "d178018a109f46a7caf86ce76c8de6902cb57a82",
+                "url": "https://api.github.com/repos/endroid/QrCode/zipball/66ae9d90c680094142ad0a6e138f56d700bc7312",
+                "reference": "66ae9d90c680094142ad0a6e138f56d700bc7312",
                 "shasum": ""
             },
             "require": {
@@ -1339,8 +1339,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Endroid": "src/"
+                "psr-4": {
+                    "Endroid\\": "src/Endroid/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1362,21 +1362,20 @@
                 "qr",
                 "qrcode"
             ],
-            "time": "2015-01-25 22:41:34"
+            "time": "2015-04-12 20:49:54"
         },
         {
             "name": "endroid/qrcode-bundle",
-            "version": "1.5.0",
-            "target-dir": "Endroid/Bundle/QrCodeBundle",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/endroid/EndroidQrCodeBundle.git",
-                "reference": "450777d82b6d50d9de8a1d97da4f01d862c500bc"
+                "reference": "e6f71700b89e5288cfbd091695a4f900988002d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/endroid/EndroidQrCodeBundle/zipball/450777d82b6d50d9de8a1d97da4f01d862c500bc",
-                "reference": "450777d82b6d50d9de8a1d97da4f01d862c500bc",
+                "url": "https://api.github.com/repos/endroid/EndroidQrCodeBundle/zipball/e6f71700b89e5288cfbd091695a4f900988002d8",
+                "reference": "e6f71700b89e5288cfbd091695a4f900988002d8",
                 "shasum": ""
             },
             "require": {
@@ -1402,8 +1401,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Endroid\\Bundle\\QrCodeBundle": ""
+                "psr-4": {
+                    "Endroid\\Bundle\\QrCodeBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1427,7 +1426,7 @@
                 "qrcode",
                 "symfony"
             ],
-            "time": "2015-01-25 22:42:57"
+            "time": "2015-04-12 20:36:34"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
