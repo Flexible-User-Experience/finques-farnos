@@ -65,7 +65,7 @@ property:
   form: solicitud de contacto
   energy:
     efficiency: CALIFICACIÓN ENERGÉTICA
-    noclass: sin clasificación
+    noclass: no requiere
     pending: en trámite
 
 about:
