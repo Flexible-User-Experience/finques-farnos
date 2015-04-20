@@ -65,7 +65,7 @@ property:
   form: contact request
   energy:
     efficiency: ENERGY RATING
-    noclass: without class
+    noclass: not necessary
     pending: pending
 
 about:

@@ -65,7 +65,7 @@ property:
   form: demande de contact
   energy:
     efficiency: COTE ÉNERGÉTIQUE
-    noclass: sans classe
+    noclass: pas nécessaire
     pending: en attendant
 
 about:

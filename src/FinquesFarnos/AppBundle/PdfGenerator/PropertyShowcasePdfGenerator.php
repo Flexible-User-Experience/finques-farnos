@@ -58,7 +58,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
 
         // BODY
         // --> left text
-        $y = 172;
+        $y = 166;
         $builder->setCellPaddings(0, 0, 0, 1);
         $this->drawBrandLine($builder, $y);
         $builder->SetX($builder->getMargins()['left'] - 2);
@@ -86,9 +86,9 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         }
         // description
         $this->setBlackColor($builder);
-        $builder->SetFont('helvetica', '', 18, '', true);
+        $builder->SetFont('helvetica', '', 22, '', true);
         $builder->setCellPaddings(0, 0, 0, 1);
-        $builder->MultiCell(135, 55, $property->getDescription(), 0, 'J', false, 1, null, null, true, 1, false, false, 60, 'T', true);
+        $builder->MultiCell(135, 70, $property->getDescription(), 0, 'L', false, 1, null, null, true, 4, false, true /*auto padding*/, 70, 'T', true);
 
         // Energy efficency
         $builder->setCellPaddings(0, 0, 0, 2);
@@ -127,11 +127,10 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
 
         // FOOTER
         $builder->SetFont('helvetica', '', 9, '', true);
-        //$builder->Text($builder->getMargins()['left'], 267, $url);
         $builder->Footer();
 
         // Help dashed line
-        $builder->Line($builder->getMargins()['left'] + 5, 36, $builder->getMargins()['right'] - 5, 36, array(
+        $builder->Line($builder->getMargins()['left'] + 5, 31, $builder->getMargins()['right'] - 5, 31, array(
                 'width' => 0.2,
                 'cap' => 'square',
                 'join' => 'miter',
