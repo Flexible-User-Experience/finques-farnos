@@ -34,17 +34,24 @@ class FrontendMenu
     private $ac;
 
     /**
+     * @var TokenStorageInterface
+     */
+    private $ts;
+
+    /**
      * Contructor
      *
      * @param FactoryInterface              $factory
      * @param Translator                    $translator
      * @param AuthorizationCheckerInterface $ac
+     * @param TokenStorageInterface         $ts
      */
-    public function __construct(FactoryInterface $factory, Translator $translator, AuthorizationCheckerInterface $ac)
+    public function __construct(FactoryInterface $factory, Translator $translator, AuthorizationCheckerInterface $ac, TokenStorageInterface $ts)
     {
         $this->factory = $factory;
         $this->translator = $translator;
         $this->ac = $ac;
+        $this->ts = $ts;
     }
 
     /**
@@ -78,7 +85,7 @@ class FrontendMenu
                 'label' => $this->translator->trans('menu.contact'),
                 'route' => 'front_contact',
             ));
-        if ($this->ac->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if ($this->ts->getToken() && $this->ac->isGranted('IS_AUTHENTICATED_FULLY')) {
             $menu->addChild('admin', array(
                 'label' => '<i class="fa fa-cog"></i>',
                 'route' => 'sonata_admin_dashboard',
