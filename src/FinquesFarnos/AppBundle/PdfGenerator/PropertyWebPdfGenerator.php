@@ -163,7 +163,8 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $y = $y + 15;
         $builder->SetFont('helvetica', '', 10, '', true);
         if ($property->getEnergyClass() == 0) {
-            $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 140, $y);
+            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'warning.png', 140, $builder->getY() + 2, 4, 4, 'PNG', '', '', false, 150);
+            $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 145, $y);
         } else if ($property->getEnergyClass() == 1) {
             $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'warning.png', 140, $builder->getY() + 2, 4, 4, 'PNG', '', '', false, 150);
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 145, $y);
