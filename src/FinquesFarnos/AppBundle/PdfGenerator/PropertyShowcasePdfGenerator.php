@@ -88,7 +88,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $this->setBlackColor($builder);
         $builder->SetFont('helvetica', '', 18, '', true);
         $builder->setCellPaddings(0, 0, 0, 1);
-        $builder->MultiCell(135, 55, $property->getDescription(), 0, 'J', false, 1, null, null, true, 1, false, false, 60, 'T', true);
+        $builder->MultiCell(135, 55, $property->getDescription(), 0, 'L', false, 1, null, null, true, 1, false, false, 60, 'T', true);
 
         // Energy efficency
         $builder->setCellPaddings(0, 0, 0, 2);
