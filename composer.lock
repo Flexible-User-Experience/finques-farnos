@@ -3894,16 +3894,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "134cecf1c61256bd8e973e11376891a724543820"
+                "reference": "cecb1397087dc9c733796eda6e9d121336039cdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/134cecf1c61256bd8e973e11376891a724543820",
-                "reference": "134cecf1c61256bd8e973e11376891a724543820",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/cecb1397087dc9c733796eda6e9d121336039cdc",
+                "reference": "cecb1397087dc9c733796eda6e9d121336039cdc",
                 "shasum": ""
             },
             "require": {
@@ -3935,7 +3935,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2015-01-26 16:25:19"
+            "time": "2015-04-21 07:52:05"
         },
         {
             "name": "sonata-project/admin-bundle",
@@ -4551,12 +4551,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "1cbbd1615295d6f7f598f3e4e006b11e59c8c507"
+                "reference": "34a9a7f1020daba1b292ceab2379a762ef167b46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/1cbbd1615295d6f7f598f3e4e006b11e59c8c507",
-                "reference": "1cbbd1615295d6f7f598f3e4e006b11e59c8c507",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/34a9a7f1020daba1b292ceab2379a762ef167b46",
+                "reference": "34a9a7f1020daba1b292ceab2379a762ef167b46",
                 "shasum": ""
             },
             "require": {
@@ -4616,7 +4616,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2015-03-28 11:41:41"
+            "time": "2015-04-20 21:23:21"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
