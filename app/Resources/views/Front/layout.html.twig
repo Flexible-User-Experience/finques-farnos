@@ -94,6 +94,13 @@
             <div class="col-sm-4 col-xs-12">
                 <div class="row">
                     <div class="col-xs-12">
+                        <ul class="list-inline pull-right">
+                            <li><a href="https://twitter.com/finquesfarnos"><i class="icon-share_twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
                         <div class="btn-group pull-right" role="group" data-aria-label="languageSelector">
                             {% if app.request.locale != 'ca' %}<a href="{% block footlangca %}{{ path('front_homepage', {'_locale': 'ca'}) }}{% endblock %}" class="btn btn-default btn-xs">català</a>{% endif %}
                             {% if app.request.locale != 'es' %}<a href="{% block footlanges %}{{ path('front_homepage', {'_locale': 'es'}) }}{% endblock %}" class="btn btn-default btn-xs">español</a>{% endif %}
