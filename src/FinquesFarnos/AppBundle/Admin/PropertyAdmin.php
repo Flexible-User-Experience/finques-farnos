@@ -98,6 +98,7 @@ class PropertyAdmin extends BaseAdmin
             ->with('Controls', array('class' => 'col-md-3'))
             ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar l\'immoble a la homepage', 'required' => false))
             ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
+            ->add('hidePrice', 'checkbox', array('label' => 'Mostrar el text \'consultar\' enlloc del preu', 'required' => false))
             ->add('offerDiscount', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb descompte', 'required' => false))
             ->add('offerSpecial', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb preu rebaixat', 'required' => false))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
