@@ -1,0 +1,11 @@
+<h3 class="no-m-top">
+    {% if property.hidePrice %}
+        {{ 'homepage.property.ask' | trans }}
+    {% else %}
+        {% if property.showPriceOnlyWithNumbers %}
+            {{ property.price | number_format(0, '\'', '.') }} €{% if property.oldPrice %} <small>{{ 'homepage.property.before' | trans }} {{ property.oldPrice | number_format(0, '\'', '.') }} €</small>{% endif %}
+        {% else %}
+            {{ 'homepage.property.since' | trans }} {{ property.price | number_format(0, '\'', '.') }} €
+        {% endif %}
+    {% endif %}
+</h3>

@@ -22,6 +22,7 @@ frontend:
 
 homepage:
   property:
+    ask: consult
     banner:
       main: formality in business since 1984
       years: 30 years · 1984-2014
