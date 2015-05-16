@@ -112,6 +112,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         oldPrice: <numberBetween(60000, 300000)>
         rooms: <numberBetween(2, 5)>
         bathrooms: <numberBetween(1, 4)>
+        hidePrice: <boolean(10)>
         offerDiscount: <boolean(40)>
         offerSpecial: <boolean(20)>
         energyClass: <numberBetween(0, 8)>
@@ -138,6 +139,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         oldPrice: <numberBetween(60000, 300000)>
         rooms: <numberBetween(2, 5)>
         bathrooms: <numberBetween(1, 4)>
+        hidePrice: <boolean(10)>
         offerDiscount: <boolean(40)>
         offerSpecial: <boolean(20)>
         energyClass: <numberBetween(0, 8)>
@@ -164,6 +166,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         oldPrice: <numberBetween(60000, 300000)>
         rooms: <numberBetween(2, 5)>
         bathrooms: <numberBetween(1, 4)>
+        hidePrice: <boolean(10)>
         offerDiscount: <boolean(40)>
         offerSpecial: <boolean(20)>
         energyClass: <numberBetween(0, 8)>
