@@ -22,6 +22,7 @@ frontend:
 
 homepage:
   property:
+    ask: consultar
     banner:
       main: formalitat en els negocis des de 1984
       years: 30 anys · 1984-2014

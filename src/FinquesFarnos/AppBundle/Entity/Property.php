@@ -140,6 +140,13 @@ class Property extends Base
     private $bathrooms = 0;
 
     /**
+     * @ORM\Column(name="hide_price", type="boolean", nullable=false)
+     * @JMS\Groups({"api"})
+     * @var boolean
+     */
+    private $hidePrice = false;
+
+    /**
      * @ORM\Column(name="offer_discount", type="boolean", nullable=false)
      * @JMS\Groups({"api"})
      * @var boolean
@@ -529,6 +536,30 @@ class Property extends Base
     public function setOfferDiscount($offerDiscount)
     {
         $this->offerDiscount = $offerDiscount;
+
+        return $this;
+    }
+
+    /**
+     * Get HidePrice
+     *
+     * @return boolean
+     */
+    public function getHidePrice()
+    {
+        return $this->hidePrice;
+    }
+
+    /**
+     * Set HidePrice
+     *
+     * @param boolean $hidePrice HidePrice
+     *
+     * @return $this
+     */
+    public function setHidePrice($hidePrice)
+    {
+        $this->hidePrice = $hidePrice;
 
         return $this;
     }

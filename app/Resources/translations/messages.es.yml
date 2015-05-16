@@ -22,6 +22,7 @@ frontend:
 
 homepage:
   property:
+    ask: consultar
     banner:
       main: formalidad en los negocios desde 1984
       years: 30 años · 1984-2014

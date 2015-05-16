@@ -70,19 +70,23 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $this->setGreyColor($builder);
         $builder->MultiCell(135, 0, mb_strtoupper($property->getName(), 'UTF-8'), 0, 'L', false, 1);
         $this->setOrangeColor($builder);
-        if ($property->getShowPriceOnlyWithNumbers()) {
-            if ($property->getOldPrice()) {
-                $builder->Text($builder->getMargins()['left'], $builder->getY(), $property->getDecoratedPrice(), false, false, true, 0, 0);
-                $xOffset = $builder->getMargins()['left'] + $builder->GetStringWidth($property->getDecoratedPrice()) + 3;
-                $builder->SetFont('helvetica', '', 16, '', true);
-                $this->setBlackColor($builder);
-                $builder->Text($xOffset, $builder->getY() + 5, $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), false, false, true, 0);
-                $builder->Ln(); $builder->setY($builder->getY() + 3);
-            } else {
-                $builder->MultiCell(135, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
-            }
+        if ($property->getHidePrice()) {
+            $builder->MultiCell(115, 0, $this->getTrans('homepage.property.ask'), 0, 'L', false, 1);
         } else {
-            $builder->MultiCell(135, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
+            if ($property->getShowPriceOnlyWithNumbers()) {
+                if ($property->getOldPrice()) {
+                    $builder->Text($builder->getMargins()['left'], $builder->getY(), $property->getDecoratedPrice(), false, false, true, 0, 0);
+                    $xOffset = $builder->getMargins()['left'] + $builder->GetStringWidth($property->getDecoratedPrice()) + 3;
+                    $builder->SetFont('helvetica', '', 16, '', true);
+                    $this->setBlackColor($builder);
+                    $builder->Text($xOffset, $builder->getY() + 5, $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), false, false, true, 0);
+                    $builder->Ln(); $builder->setY($builder->getY() + 3);
+                } else {
+                    $builder->MultiCell(135, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
+                }
+            } else {
+                $builder->MultiCell(135, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
+            }
         }
         // description
         $this->setBlackColor($builder);
