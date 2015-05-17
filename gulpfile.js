@@ -3,14 +3,14 @@ var gulp   = require('gulp');
 var config = require('./gulp-config.json');
 
 // Plugins includes
-var jshint = require('gulp-jshint');
-var less = require('gulp-less');
-var concat = require('gulp-concat');
-var minifycss = require('gulp-minify-css');
+var jshint      = require('gulp-jshint');
+var less        = require('gulp-less');
+var concat      = require('gulp-concat');
+var minifycss   = require('gulp-minify-css');
 var browserSync = require('browser-sync');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var gutil = require('gulp-util');
+var uglify      = require('gulp-uglify');
+var rename      = require('gulp-rename');
+var gutil       = require('gulp-util');
 
 // BROWSER: Proxy sync
 gulp.task('browser-sync', function() {
