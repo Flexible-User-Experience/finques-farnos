@@ -1325,21 +1325,25 @@
         },
         {
             "name": "endroid/qrcode",
-            "version": "1.5.2",
+            "version": "1.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/endroid/QrCode.git",
-                "reference": "4e09a5aa1bceb8705b1b6a58293b03c66d5979fc"
+                "reference": "d2755338243f72535ef9398db8287f167eaf052d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/endroid/QrCode/zipball/4e09a5aa1bceb8705b1b6a58293b03c66d5979fc",
-                "reference": "4e09a5aa1bceb8705b1b6a58293b03c66d5979fc",
+                "url": "https://api.github.com/repos/endroid/QrCode/zipball/d2755338243f72535ef9398db8287f167eaf052d",
+                "reference": "d2755338243f72535ef9398db8287f167eaf052d",
                 "shasum": ""
             },
             "require": {
                 "ext-gd": "*",
                 "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "~1.9",
+                "phpunit/phpunit": "~4.7"
             },
             "type": "library",
             "extra": {
@@ -1349,7 +1353,10 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Endroid\\": "src/Endroid/"
+                    "Endroid\\QrCode\\": [
+                        "src/",
+                        "tests/"
+                    ]
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1371,7 +1378,7 @@
                 "qr",
                 "qrcode"
             ],
-            "time": "2015-06-01 12:26:44"
+            "time": "2015-06-25 13:27:56"
         },
         {
             "name": "endroid/qrcode-bundle",
@@ -4237,12 +4244,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDatagridBundle.git",
-                "reference": "78e3c9c35dcf88e97eece234691d413e62c23114"
+                "reference": "f3be409a041083c852af160bdbf2225461f4c69b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/78e3c9c35dcf88e97eece234691d413e62c23114",
-                "reference": "78e3c9c35dcf88e97eece234691d413e62c23114",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/f3be409a041083c852af160bdbf2225461f4c69b",
+                "reference": "f3be409a041083c852af160bdbf2225461f4c69b",
                 "shasum": ""
             },
             "require": {
@@ -4286,7 +4293,7 @@
                 "datagrid",
                 "sonata"
             ],
-            "time": "2015-06-19 12:01:46"
+            "time": "2015-06-26 10:13:20"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -4581,12 +4588,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "a8ed0e15486bcb3f11bb4a65ec43f9bd51a7ce63"
+                "reference": "84bd30c53edc80e728edec4b0e3af2552283e1e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/a8ed0e15486bcb3f11bb4a65ec43f9bd51a7ce63",
-                "reference": "a8ed0e15486bcb3f11bb4a65ec43f9bd51a7ce63",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/84bd30c53edc80e728edec4b0e3af2552283e1e3",
+                "reference": "84bd30c53edc80e728edec4b0e3af2552283e1e3",
                 "shasum": ""
             },
             "require": {
@@ -4651,7 +4658,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2015-06-15 22:55:43"
+            "time": "2015-06-26 10:01:43"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
