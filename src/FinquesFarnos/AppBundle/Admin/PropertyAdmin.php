@@ -5,7 +5,6 @@ namespace FinquesFarnos\AppBundle\Admin;
 use Doctrine\Common\Collections\ArrayCollection;
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use FinquesFarnos\AppBundle\Entity\Property;
-use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -77,7 +76,7 @@ class PropertyAdmin extends BaseAdmin
                     ),
                 ))
             ->end()
-            ->with('Propietats', array('class' => 'col-md-3'))
+            ->with('Atributs', array('class' => 'col-md-3'))
             ->add('squareMeters', null, array('label' => 'Metres cuadrats'))
             ->add('price', null, array('label' => 'Preu'))
             ->add('oldPrice', null, array('label' => 'Preu anterior'))
