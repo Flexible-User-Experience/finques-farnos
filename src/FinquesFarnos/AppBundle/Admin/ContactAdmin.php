@@ -4,7 +4,6 @@ namespace FinquesFarnos\AppBundle\Admin;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use FinquesFarnos\AppBundle\Entity\ContactMessage;
-use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

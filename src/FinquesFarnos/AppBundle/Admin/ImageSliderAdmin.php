@@ -2,7 +2,6 @@
 
 namespace FinquesFarnos\AppBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
