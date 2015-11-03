@@ -17,6 +17,11 @@ sonata_user:
     prefix:   /admin
     options:  { i18n: false }
 
+sonata_user_resetting:
+    resource: "@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml"
+    prefix: /resetting
+    options:  { i18n: false }
+
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
     prefix:   /admin
