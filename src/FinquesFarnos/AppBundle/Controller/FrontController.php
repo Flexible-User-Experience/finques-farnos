@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Class FrontController
@@ -151,6 +152,10 @@ class FrontController extends Controller
      */
     public function propertyAction(Request $request, Property $property)
     {
+        if (!$property->getEnabled()) {
+            throw new NotFoundHttpException();
+        }
+
         $adminListPropertiesRoute = $this->generateUrl('admin_finquesfarnos_app_property_list');
         $frontRoute = $this->generateUrl('front_homepage', array(), true);
         if (strpos($request->headers->get('referer'), $adminListPropertiesRoute) == 0) {
@@ -199,6 +204,10 @@ class FrontController extends Controller
      */
     public function propertyPdfAction($property)
     {
+        if (!$property->getEnabled()) {
+            throw new NotFoundHttpException();
+        }
+
         /** @var PropertyWebPdfGenerator $generator */
         $generator = $this->get('app.property_web_pdf_generator');
         $pdf = $generator->generate(array('property' => $property));
