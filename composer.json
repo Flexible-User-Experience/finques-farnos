@@ -46,7 +46,7 @@
         "sonata-project/doctrine-orm-admin-bundle": "2.3.*",
         "sonata-project/user-bundle": "2.3.x-dev",
         "stof/doctrine-extensions-bundle": "1.*",
-        "tecnickcom/tcpdf": "6.*",
+        "tecnick.com/tcpdf": "6.*",
         "twbs/bootstrap": "3.3.*",
         "vich/uploader-bundle": "0.*",
 

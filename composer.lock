@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "60e7d9b6700f37bda1d0950bf2306d39",
-    "content-hash": "2b85eba8853c0ac5ae99cc47a672f065",
+    "hash": "82da00cbfc29e1ba08a29cf5ac83409e",
+    "content-hash": "9b8145c868df326bc1cff469290a531f",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -5462,17 +5462,17 @@
             "time": "2015-10-27 19:07:24"
         },
         {
-            "name": "tecnickcom/tcpdf",
-            "version": "6.2.12",
+            "name": "tecnick.com/tcpdf",
+            "version": "6.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f"
+                "reference": "354433a33946ae7497c3eab291eaaf814bccbfab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/2f732eaa91b5665274689b1d40b285a7bacdc37f",
-                "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/354433a33946ae7497c3eab291eaaf814bccbfab",
+                "reference": "354433a33946ae7497c3eab291eaaf814bccbfab",
                 "shasum": ""
             },
             "require": {
@@ -5522,7 +5522,8 @@
                 "pdf417",
                 "qrcode"
             ],
-            "time": "2015-09-12 10:08:34"
+            "abandoned": "tecnickcom/tcpdf",
+            "time": "2015-08-02 12:30:27"
         },
         {
             "name": "twbs/bootstrap",
