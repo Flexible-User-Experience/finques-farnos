@@ -68,6 +68,26 @@ set :use_set_permissions,   true
 #        run "cd #{release_path} && php app/console fos:js-routing:dump --env=prod"
 #    end
 #end
+namespace :check do
+    desc "Check frontend HTTP response"
+    task :frontend do
+        print "Checking frontend HTTP response... "
+        if capture("curl -I http://www.finquesfarnos.com/ca/ 2>/dev/null | head -n 1 | cut -d$' ' -f2").strip == '200'
+          puts "Ok"
+        else
+          puts "Error"
+        end
+    end
+    desc "Check backend HTTP response"
+    task :backend do
+        print "Checking backend HTTP response... "
+        if capture("curl -I http://www.finquesfarnos.com/admin/login 2>/dev/null | head -n 1 | cut -d$' ' -f2").strip == '200'
+          puts "Ok"
+        else
+          puts "Error"
+        end
+    end
+end
 
 ############
 # Triggers #
@@ -77,6 +97,8 @@ set :use_set_permissions,   true
 #end
 after "deploy", "deploy:cleanup"
 #after "deploy", "symfony:assetic:dump"
+after "deploy", "check:frontend"
+after "deploy", "check:backend"
 
 ###########
 # Logging #
