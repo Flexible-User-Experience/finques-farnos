@@ -34,17 +34,24 @@ class MailerService
     private $mailer;
 
     /**
+     * @var string email_notifications_sender_domain
+     */
+    private $ensd;
+
+    /**
      * Constructor
      *
      * @param EntityManager $em
      * @param TwigEngine    $templating
      * @param Swift_Mailer  $mailer
+     * @param string        $ensd
      */
-    public function __construct(EntityManager $em, TwigEngine $templating, Swift_Mailer $mailer)
+    public function __construct(EntityManager $em, TwigEngine $templating, Swift_Mailer $mailer, $ensd)
     {
         $this->em = $em;
         $this->templating = $templating;
         $this->mailer = $mailer;
+        $this->ensd = $ensd;
     }
 
     /**
@@ -115,9 +122,9 @@ class MailerService
     {
         /** @var \Swift_Message $emailMessage */
         $emailMessage = \Swift_Message::newInstance()
-            ->setSubject('Formulari de contacte pàgina web www.finquesfarnos.com')
-            ->setFrom('webapp@finquesfarnos.com')
-            ->setTo('info@finquesfarnos.com')
+            ->setSubject('Formulari de contacte pàgina web www.' . $this->ensd)
+            ->setFrom('webapp@' . $this->ensd)
+            ->setTo('info@' . $this->ensd)
             ->setBody(
                 $this->templating->render(
                     'Front/contact.email.html.twig',
@@ -125,6 +132,7 @@ class MailerService
                         'form'     => $contactForm,
                         'message'  => $textMessage,
                         'property' => $property,
+                        'ensd'     => $this->ensd,
                     )
                 )
             )

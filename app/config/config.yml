@@ -13,7 +13,7 @@ framework:
     csrf_protection: ~
     validation:      { enable_annotations: true }
     templating:
-        engines: ['twig']
+        engines: [ "twig" ]
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -94,9 +94,9 @@ sonata_admin:
         pager_links:    10
     persist_filters: true
     templates:
-        layout:     ::Admin/custom_layout.html.twig
-        list_block: ::Admin/block_admin_list.html.twig
-        add_block:  ::Admin/add_block.html.twig
+        layout:     "::Admin/custom_layout.html.twig"
+        list_block: "::Admin/block_admin_list.html.twig"
+        add_block:  "::Admin/add_block.html.twig"
     dashboard:
         blocks:
             -
@@ -125,7 +125,7 @@ sonata_admin:
 
 # Sonata Block
 sonata_block:
-    default_contexts: [admin]
+    default_contexts: [ admin ]
     blocks:
         sonata.user.block.menu:
         sonata.user.block.account:
