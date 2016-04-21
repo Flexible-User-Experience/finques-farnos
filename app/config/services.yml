@@ -5,8 +5,8 @@ services:
     app.doctrine_listener:
         class: FinquesFarnos\AppBundle\EventListener\DoctrineListeners
         arguments:
-            - @liip_imagine.cache.manager
-            - @vich_uploader.templating.helper.uploader_helper
+            - "@liip_imagine.cache.manager"
+            - "@vich_uploader.templating.helper.uploader_helper"
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: postLoad }
@@ -15,22 +15,22 @@ services:
     app.property_showcase_pdf_generator:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyShowcasePdfGenerator
         arguments:
-            - @orkestra.pdf.factory_registry
-            - @templating
-            - @router
-            - @translator.default
-            - @liip_imagine.cache.manager
-            - @vich_uploader.templating.helper.uploader_helper
+            - "@orkestra.pdf.factory_registry"
+            - "@templating"
+            - "@router"
+            - "@translator.default"
+            - "@liip_imagine.cache.manager"
+            - "@vich_uploader.templating.helper.uploader_helper"
             - "%kernel.root_dir%"
     app.property_web_pdf_generator:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyWebPdfGenerator
         arguments:
-            - @orkestra.pdf.factory_registry
-            - @templating
-            - @router
-            - @translator.default
-            - @liip_imagine.cache.manager
-            - @vich_uploader.templating.helper.uploader_helper
+            - "@orkestra.pdf.factory_registry"
+            - "@templating"
+            - "@router"
+            - "@translator.default"
+            - "@liip_imagine.cache.manager"
+            - "@vich_uploader.templating.helper.uploader_helper"
             - "%kernel.root_dir%"
 
 # Sonata Admin
@@ -123,8 +123,8 @@ services:
             - { name: sonata.block }
         arguments:
             - sonata.admin.block.visit_stats
-            - @templating
-            - @doctrine.orm.entity_manager
+            - "@templating"
+            - "@doctrine.orm.entity_manager"
 
 # KNP Menu
     app.menu.frontmenu:
@@ -143,14 +143,15 @@ services:
     app.mailer.service:
         class: FinquesFarnos\AppBundle\Service\MailerService
         arguments:
-            - @doctrine.orm.entity_manager
-            - @templating
-            - @mailer
+            - "@doctrine.orm.entity_manager"
+            - "@templating"
+            - "@mailer"
+            - "%email_notifications_sender_domain%"
 
 # Presta Sitemap
     app.sitemap.listener:
         class: FinquesFarnos\AppBundle\EventListener\SitemapListener
         arguments:
-            - @router
-            - @doctrine.orm.entity_manager
+            - "@router"
+            - "@doctrine.orm.entity_manager"
         tags: [ {name: "presta.sitemap.listener"} ]
