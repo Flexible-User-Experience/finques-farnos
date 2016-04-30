@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: sonata.yml }
 
 framework:
     translator:      { fallback: "%locale%" }
@@ -81,67 +82,6 @@ swiftmailer:
     username:   "%mailer_user%"
     password:   "%mailer_password%"
     spool:      { type: memory }
-
-# Sonata Admin
-sonata_admin:
-    title:      "Finques Farnós"
-    title_logo: "bundles/app/images/logo-ff-mini.png"
-    options:
-        html5_validate: true
-        confirm_exit:   true
-        use_select2:    true
-        pager_links:    10
-    persist_filters: true
-    templates:
-        layout:     "::Admin/custom_layout.html.twig"
-        list_block: "::Admin/block_admin_list.html.twig"
-        add_block:  "::Admin/add_block.html.twig"
-    dashboard:
-        blocks:
-            -
-                position: top
-                type: sonata.block.service.text
-                class: col-md-12
-                settings:
-                    content: >
-                        <h1 style="margin: -20px 0 10px 0">Administrador de continguts</h1>
-                        <h4 style="margin-bottom: 40px">Benvingut a l'administrador de continguts de la pàgina web <a href="http://www.finquesfarnos.com" target="_blank">www.finquesfarnos.com</a></h4>
-            -
-                position: left
-                type: sonata.admin.block.admin_list
-            -
-                position: right
-                type: sonata.admin.block.visit_stats
-                settings:
-                    title: "Immobles més visitats"
-            -
-                position: bottom
-                type: sonata.block.service.text
-                class: col-md-12
-                settings:
-                    content: >
-                        <div class="alert alert-info" style="margin:40px 0"><p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Per rebre assistència tècnica o ajuda envieu un missatge a <a href="mailto:suport@flux.cat?subject=Ajuda administrador de continguts Finques Farnós">suport@flux.cat</a></p></div>
-
-# Sonata Block
-sonata_block:
-    default_contexts: [ admin ]
-    blocks:
-        sonata.user.block.menu:
-        sonata.user.block.account:
-        sonata.block.service.text:
-        sonata.admin.block.admin_list:
-        sonata.admin.block.visit_stats:
-
-# Sonata User
-sonata_user:
-    security_acl: false
-    manager_type: orm
-
-# Sonata Doctrine ORM Admin
-sonata_doctrine_orm_admin:
-    templates:
-        form:
-            - "::Admin/custom_form_admin_fields_checkbox_hack.html.twig"
 
 # Nelmio API Doc
 nelmio_api_doc: ~
