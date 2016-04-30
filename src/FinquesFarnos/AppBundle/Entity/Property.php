@@ -107,6 +107,7 @@ class Property extends Base
     /**
      * @ORM\ManyToOne(targetEntity="City", inversedBy="properties", fetch="EAGER")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="city_id", referencedColumnName="id")})
+     * @JMS\Groups({"api"})
      * @var City
      */
     private $city;

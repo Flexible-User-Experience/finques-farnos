@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * City class
@@ -27,6 +28,7 @@ class City extends Base
 
     /**
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
+     * @JMS\Groups({"api"})
      * @var string
      */
     private $name;

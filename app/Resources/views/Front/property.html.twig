@@ -84,6 +84,7 @@
                 <div class="property-right-side-box">
                     <h2 class="no-m no-bold-font font-size-17">Ref. {{ property.reference }}</h2>
                     <h2 class="no-m">{{ property.name | upper }}</h2>
+                    <h5 class="no-top">{{ property.city }}</h5>
                     {% include ':Front/commons:property-price.html.twig' with {property: property} %}
                     {% include ':Front/commons:property-icons-list.html.twig' with {property: property} %}
                     <hr>
