@@ -2,9 +2,6 @@
 
 namespace FinquesFarnos\AppBundle\Tests;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Bundle\FrameworkBundle\Client;
-
 /**
  * Class DefaultControllerTest
  *
@@ -12,40 +9,31 @@ use Symfony\Bundle\FrameworkBundle\Client;
  * @package  FinquesFarnos\AppBundle\Tests
  * @author   David Romaní <david@flux.cat>
  */
-class AdminControllerTest extends WebTestCase
+class AdminControllerTest extends AbstractBaseTest
 {
     /**
-     * Test page is successful
+     * Test admin login request is successful
+     */
+    public function testAdminLoginPageIsSuccessful()
+    {
+        $client = $this->createClient();           // anonymous user
+        $client->request('GET', '/admin/login');
+
+        $this->assertStatusCode(200, $client);
+    }
+
+    /**
+     * Test HTTP request is successful
      *
      * @dataProvider provideUrls
-     *
      * @param string $url
      */
     public function testAdminPagesAreSuccessful($url)
     {
-        $client = $this->getAdminClient();
+        $client = $this->makeClient(true);         // authenticated user
         $client->request('GET', $url);
-        $this->assertTrue($client->getResponse()->isSuccessful());
-    }
 
-    /**
-     * Get admin client
-     *
-     * @return Client
-     */
-    private function getAdminClient()
-    {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/admin/login');
-        $form = $crawler->selectButton('_submit')->form(
-            array(
-                '_username' => 'admin',
-                '_password' => 'jbMF7CZW',
-            )
-        );
-        $client->submit($form);
-
-        return $client;
+        $this->assertStatusCode(200, $client);
     }
 
     /**

@@ -96,7 +96,7 @@ FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation:
         content: "apartment"
 
 FinquesFarnos\AppBundle\Entity\Property:
-    property{1..200}:
+    property{1..10}:
         categories:
             - @category0
         reference: <bothify('####??')>
@@ -120,10 +120,10 @@ FinquesFarnos\AppBundle\Entity\Property:
         gpsLongitude: <randomFloat(14, 0.3076171875, 3.33984375)>
         gpsLatitude: <randomFloat(14, 40.49709237269567, 42.884014670442525)>
         radius: <numberBetween(50, 250)>
-        enabled: <boolean(90)>
+        enabled: true
         sold: <boolean(10)>
         reserved: <boolean(30)>
-    property{101..299}:
+    property{11..20}:
         categories:
             - @category1
         reference: <bothify('####??')>
@@ -150,7 +150,7 @@ FinquesFarnos\AppBundle\Entity\Property:
         enabled: <boolean(90)>
         sold: <boolean(10)>
         reserved: <boolean(30)>
-    property300:
+    property21:
         categories:
             - @category0
             - @category1
@@ -179,67 +179,67 @@ FinquesFarnos\AppBundle\Entity\Property:
         reserved: <boolean(30)>
 
 FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation:
-    propertyNameEs{1..300}:
+    propertyNameEs{1..21}:
         object: @property<current()>
         locale: "es"
         field: "name"
         content: ESP-<sentence(4)>
-    propertyDescriptionEs{1..300}:
+    propertyDescriptionEs{1..21}:
         object: @property<current()>
         locale: "es"
         field: "description"
         content: ESP-<sentence(40)>
-    propertyCityEs{1..300}:
+    propertyCityEs{1..21}:
         object: @property<current()>
         locale: "es"
         field: "city"
         content: ESP-<city()>
-    propertyNameEn{1..300}:
+    propertyNameEn{1..21}:
         object: @property<current()>
         locale: "en"
         field: "name"
         content: ENG-<sentence(4)>
-    propertyDescriptionEn{1..300}:
+    propertyDescriptionEn{1..21}:
         object: @property<current()>
         locale: "en"
         field: "description"
         content: ENG-<sentence(40)>
-    propertyCityEn{1..300}:
+    propertyCityEn{1..21}:
         object: @property<current()>
         locale: "en"
         field: "city"
         content: ENG-<city()>
 
 FinquesFarnos\AppBundle\Entity\PropertyVisit:
-    visit{1..900}:
-        property: @property<numberBetween(1, 300)>
+    visit{1..9}:
+        property: @property<numberBetween(1, 21)>
         createdAt: <dateTimeThisYear()>
 
 FinquesFarnos\AppBundle\Entity\ImageProperty:
-    image{1..500}:
-        property: @property<numberBetween(1, 300)>
+    image{1..5}:
+        property: @property<numberBetween(1, 21)>
         imageName: <numberBetween(1, 5)>.jpg
         metaTitle: <sentence(3)>
         metaAlt: <sentence(3)>
         position: <numberBetween(1, 5)>
 
 FinquesFarnos\AppBundle\Entity\Translations\ImagePropertyTranslation:
-    imageMetaTitleEs{1..500}:
+    imageMetaTitleEs{1..5}:
         object: @image<current()>
         locale: "es"
         field: "metaTitle"
         content: ESP-<sentence(3)>
-    imageMetaAltEs{1..500}:
+    imageMetaAltEs{1..5}:
         object: @image<current()>
         locale: "es"
         field: "metaAlt"
         content: ESP-<sentence(3)>
-    imageMetaTitleEn{1..500}:
+    imageMetaTitleEn{1..5}:
         object: @image<current()>
         locale: "en"
         field: "metaTitle"
         content: ENG-<sentence(3)>
-    imageMetaAltEn{1..500}:
+    imageMetaAltEn{1..5}:
         object: @image<current()>
         locale: "en"
         field: "metaAlt"
@@ -277,30 +277,30 @@ FinquesFarnos\AppBundle\Entity\Translations\ImageSliderTranslation:
 
 FinquesFarnos\UserBundle\Entity\User:
     admin:
-        username: admin
-        plainPassword: jbMF7CZW
+        username: <{private_admin_test_user}>
+        plainPassword: <{private_admin_test_pass}>
         email: "admin@admin.com"
         firstname: Roberto
         lastname: Palomeque
         enabled: true
         roles:
-            - ROLE_USER
+            - ROLE_SUPER_ADMIN
 
 FinquesFarnos\AppBundle\Entity\Contact:
-    contact{1..50}:
+    contact{1..5}:
         name: <firstName()> <lastName()>
         phone: <phoneNumber()>
         email: <email()>
 
 FinquesFarnos\AppBundle\Entity\ContactMessage:
-    contactMessage{1..150}:
-        contact: @contact<numberBetween(1, 50)>
-        property: @property<numberBetween(1, 300)>
+    contactMessage{1..5}:
+        contact: @contact<numberBetween(1, 5)>
+        property: @property<numberBetween(1, 21)>
         text: <sentence(10)>
         createdAt: <dateTimeThisYear()>
 
 FinquesFarnos\AppBundle\Entity\Customer:
-    customer{1..20}:
+    customer{1..2}:
         name: <firstName()> <lastName()>
         phone: <phoneNumber()>
         mobile: <phoneNumber()>

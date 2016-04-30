@@ -23,3 +23,8 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     email_notifications_sender_domain: "finquesfarnos.com"
+
+    private_admin_test_user: admin
+    private_admin_test_pass: admin
+
+    project_title: "Finques Farnós"

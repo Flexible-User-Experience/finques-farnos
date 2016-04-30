@@ -30,7 +30,7 @@ homepage:
     noitems: lo sentimos, todavía no tenemos ningún inmueble destacado disponible en esta página
     before: antes
     since: desde
-    rooms: habitaciones
+    rooms: hab.
     bathrooms: baños
     offer:
       special: oferta
@@ -52,7 +52,7 @@ properties:
     type: tipo
     city: población
     area: superficie
-    rooms: habitaciones
+    rooms: hab.
     price: o más
     search: buscar
     results: resultados obtenidos

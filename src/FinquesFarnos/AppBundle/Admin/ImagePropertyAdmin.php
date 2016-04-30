@@ -59,6 +59,7 @@ class ImagePropertyAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/image_list_field.html.twig'))
             ->addIdentifier('property', null, array(

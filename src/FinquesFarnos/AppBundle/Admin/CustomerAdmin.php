@@ -55,6 +55,7 @@ class CustomerAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add('dni', null, array('label' => 'DNI', 'editable' => true))
             ->add('name', null, array('label' => 'Nom', 'editable' => true))

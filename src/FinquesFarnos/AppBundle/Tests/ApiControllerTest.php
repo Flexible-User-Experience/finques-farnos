@@ -2,8 +2,6 @@
 
 namespace FinquesFarnos\AppBundle\Tests;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
 /**
  * Class DefaultControllerTest
  *
@@ -11,20 +9,20 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * @package  FinquesFarnos\AppBundle\Tests
  * @author   David Romaní <david@flux.cat>
  */
-class ApiControllerTest extends WebTestCase
+class ApiControllerTest extends AbstractBaseTest
 {
     /**
-     * Test page is successful
+     * Test HTTP request is successful
      *
      * @dataProvider provideUrls
-     *
      * @param string $url
      */
-    public function testAdminPagesAreSuccessful($url)
+    public function testPagesAreSuccessful($url)
     {
-        $client = static::createClient();
+        $client = $this->createClient();
         $client->request('GET', $url);
-        $this->assertTrue($client->getResponse()->isSuccessful());
+
+        $this->assertStatusCode(200, $client);
     }
 
     /**

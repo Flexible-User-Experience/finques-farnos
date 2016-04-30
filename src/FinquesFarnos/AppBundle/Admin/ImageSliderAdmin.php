@@ -5,6 +5,7 @@ namespace FinquesFarnos\AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
@@ -22,6 +23,17 @@ class ImageSliderAdmin extends BaseAdmin
      * @var string
      */
     protected $baseRoutePattern = 'slide';
+
+    /**
+     * Available routes
+     *
+     * @param RouteCollection $collection
+     */
+    public function configureRoutes(RouteCollection $collection)
+    {
+        $collection->remove('batch');
+        $collection->remove('show');
+    }
 
     /**
      * Form view
@@ -65,6 +77,7 @@ class ImageSliderAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/slide_list_field.html.twig'))
             ->add('link', null, array('label' => 'Enllaç', 'editable' => true))
@@ -74,6 +87,7 @@ class ImageSliderAdmin extends BaseAdmin
             ->add('_action', 'actions', array(
                     'actions' => array(
                         'edit' => array(),
+                        'delete' => array(),
                     ),
                     'label' => 'Accions',
                 ));
