@@ -3,67 +3,26 @@
 {# removes top search bar #}
 {% block sonata_sidebar_search %}{% endblock %}
 
-{# custom sidebar #}
-{% block side_bar_nav %}
-    {% if app.security.token %}
-        <ul class="sidebar-menu">
-            {% for group in admin_pool.dashboardgroups %}
-                {% set display = (group.roles is empty or is_granted('ROLE_SUPER_ADMIN') ) %}
-                {% for role in group.roles if not display %}
-                    {% set display = is_granted(role) %}
-                {% endfor %}
-                {# Do not display the group label if no item in group is available #}
-                {% set item_count = 0 %}
-                {% if display %}
-                    {% for admin in group.items if item_count == 0 %}
-                        {% if admin.hasroute('list') and admin.isGranted('LIST') and (is_granted('ROLE_ADMIN') and group.label == 'sonata_user' or is_granted('ROLE_USER') and group.label != 'sonata_user') %}
-                            {% set item_count = item_count+1 %}
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-                {% if display and (item_count > 0) %}
-                    {% set active = false %}
-                    {% for admin in group.items %}
-                        {% if admin.hasroute('list') and admin.isGranted('LIST') and app.request.get('_sonata_admin') == admin.code %}
-                            {% set active = true %}
-                        {% endif %}
-                    {% endfor %}
-                    <li class="treeview{% if active %} active{% endif %}">
-                        <a href="#">
-                            {% if group.icon|default() %}{{ group.icon|raw }}{% endif %}
-                            <span>{{ group.label|trans({}, group.label_catalogue) }}</span>
-                            <i class="fa pull-right fa-angle-left"></i>
-                        </a>
-                        <ul class="treeview-menu{% if active %} active{% endif %}">
-                            {% for admin in group.items %}
-                                {% if admin.hasroute('list') and admin.isGranted('LIST') %}
-                                    <li{% if app.request.get('_sonata_admin') == admin.code %} class="active"{% endif %}><a href="{{ admin.generateUrl('list')}}"><i class="fa fa-angle-double-right"></i> {{ admin.label|trans({}, admin.translationdomain) }}</a></li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endblock side_bar_nav %}
-
 {# custom sidebar footer #}
 {% block side_bar_after_nav %}
-<p class="text-left small" style="border-top: 1px solid #444444;padding:50px 0 0 20px;color:#EEE;">Desenvolupat per <a href="http://www.flux.cat" rel="noreferrer" target="_blank">www.flux.cat</a><br>&copy;{{ 'now' | date('Y') }} Finques Farnós</p>
+    <p class="text-left small" style="padding:50px 0 0 20px;color:#EEE;">v{{ admin_tag_version }}<br><i class="fa fa-code"></i> Developed by <a href="http://www.flux.cat" target="_blank">Flux</a><br><i class="fa fa-copyright"></i> {{ 'now' | date('Y') }} <a href="http://www.finquesfarnos.com" target="_blank">{{ project_title }}</a></p>
 {% endblock %}
 
 {# custom top menu #}
 {% block sonata_top_nav_menu %}
-    <div class="navbar-right">
-        <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-plus-square fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                {% include admin_pool.getTemplate('add_block') %}
-            </li>
-            <li><a href="{{ path('sonata_user_admin_security_logout') }}"><i class="fa fa-power-off"></i></a></li>
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ path('front_homepage') }}"><i class="fa fa-home"></i></a></li>
+            <li><a href="{{ path('sonata_user_admin_security_logout') }}"><i class="fa fa-power-off text-success"></i></a></li>
         </ul>
     </div>
 {% endblock %}
+
+{# override javascript includes #}
+{#{% block javascripts %}#}
+    {#{{ parent() }}#}
+    {#{{ tinymce_init() }}#}
+    {#<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>#}
+    {#<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>#}
+    {#<script src="{{ asset('js/fos_js_routes.js') }}"></script>#}
+{#{% endblock %}#}

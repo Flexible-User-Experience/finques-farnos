@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: sonata.yml }
+    - { resource: media.yml }
 
 framework:
     translator:      { fallback: "%locale%" }
@@ -34,6 +35,8 @@ twig:
     globals:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
+        project_title:            "%project_title%"
+        admin_tag_version:        "2.0.1"
 
 # Assetic Configuration
 assetic:
@@ -110,93 +113,6 @@ fos_user:
     service:
         user_manager: sonata.user.orm.user_manager
 
-# Vich Uploader
-vich_uploader:
-    db_driver: orm
-    mappings:
-        property_image:
-            namer:              vich_uploader.namer_uniqid
-            uri_prefix:         /uploads/images
-            upload_destination: %kernel.root_dir%/../web/uploads/images
-        slider_image:
-            namer:              vich_uploader.namer_uniqid
-            uri_prefix:         /uploads/slides
-            upload_destination: %kernel.root_dir%/../web/uploads/slides
-
-# Liip Imagine
-liip_imagine:
-    resolvers:
-       default:
-          web_path: ~
-    filter_sets:
-        cache: ~
-        60x60:
-            quality: 95
-            filters:
-                thumbnail: { size: [60, 60], mode: outbound }
-        100x60:
-            quality: 90
-            filters:
-                thumbnail: { size: [100, 60], mode: outbound }
-        100x100:
-            quality: 90
-            filters:
-                thumbnail: { size: [100, 100], mode: outbound }
-        140x95:
-            quality: 90
-            filters:
-                thumbnail: { size: [140, 95], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
-        300xY:
-            quality: 85
-            filters:
-                thumbnail: { size: [300, null], mode: outbound }
-        373x270:
-            quality: 85
-            filters:
-                thumbnail: { size: [373, 270], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
-        373x185:
-            quality: 85
-            filters:
-                thumbnail: { size: [373, 185], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
-        373x192:
-            quality: 85
-            filters:
-                thumbnail: { size: [373, 192], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
-        400xY:
-            quality: 80
-            filters:
-                thumbnail: { size: [400, null], mode: outbound }
-        700x400:
-            quality: 65
-            filters:
-                thumbnail: { size: [700, 400], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
-        750xY:
-            quality: 75
-            filters:
-                thumbnail: { size: [750, null], mode: outbound }
-        757x450:
-            quality: 75
-            filters:
-                thumbnail: { size: [757, 450], mode: outbound }
-                watermark: { image: Resources/imagine/watermark.png, size: 0.5, position: center }
-        800xY:
-            quality: 75
-            filters:
-                thumbnail: { size: [800, null], mode: outbound }
-        1200xY:
-            quality: 70
-            filters:
-                thumbnail: { size: [1200, null], mode: outbound }
-        1140x450:
-            quality: 70
-            filters:
-                thumbnail: { size: [1140, 450], mode: outbound }
-
 # A2lix Translations
 a2lix_translation_form:
     locales:          [ es, en, fr ]
@@ -214,7 +130,7 @@ jms_i18n_routing:
 knp_paginator:
     page_range: 10
     template:
-        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+        pagination: "KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig"
 
 # Genemu Bundle
 genemu_form:

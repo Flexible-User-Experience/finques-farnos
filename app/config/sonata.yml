@@ -1,6 +1,6 @@
 # Sonata Admin
 sonata_admin:
-    title:      "Finques Farnós"
+    title:      "%project_title%"
     title_logo: "bundles/app/images/logo-ff-mini.png"
     options:
         html5_validate: true

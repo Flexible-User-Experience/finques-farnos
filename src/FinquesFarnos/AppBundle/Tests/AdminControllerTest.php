@@ -25,7 +25,7 @@ class AdminControllerTest extends AbstractBaseTest
     /**
      * Test HTTP request is successful
      *
-     * @dataProvider provideSuccessfulUrls
+     * @dataProvider provideUrls
      * @param string $url
      */
     public function testAdminPagesAreSuccessful($url)

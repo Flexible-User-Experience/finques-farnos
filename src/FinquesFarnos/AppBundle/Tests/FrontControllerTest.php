@@ -14,7 +14,7 @@ class FrontControllerTest extends AbstractBaseTest
     /**
      * Test HTTP request is successful
      *
-     * @dataProvider provideSUrls
+     * @dataProvider provideUrls
      * @param string $url
      */
     public function testPagesAreSuccessful($url)
@@ -74,7 +74,7 @@ class FrontControllerTest extends AbstractBaseTest
         $client = $this->createClient();
         $client->request('GET', $url);
 
-        $this->assertStatusCode(301, $client);
+        $this->assertStatusCode(302, $client);
     }
 
     /**
