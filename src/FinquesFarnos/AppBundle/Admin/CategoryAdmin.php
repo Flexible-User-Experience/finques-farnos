@@ -2,8 +2,10 @@
 
 namespace FinquesFarnos\AppBundle\Admin;
 
+use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 
 /**
  * CategoryAdmin class
@@ -75,5 +77,21 @@ class CategoryAdmin extends BaseAdmin
     public function getExportFormats()
     {
         return array();
+    }
+
+    /**
+     * @param string $context
+     *
+     * @return ProxyQueryInterface
+     */
+    public function createQuery($context = 'list')
+    {
+        /** @var QueryBuilder $query */
+        $query = parent::createQuery($context);
+        $query
+            ->select($query->getRootAliases()[0] . ', p')
+            ->leftJoin($query->getRootAliases()[0] . '.properties', 'p');
+
+        return $query;
     }
 }

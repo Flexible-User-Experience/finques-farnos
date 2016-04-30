@@ -19,7 +19,7 @@
                     <tr class="clickableRow" data-href="{{ path('admin_finquesfarnos_app_property_edit', {id: property.id}) }}" style="cursor:pointer">
                         <td>{{ property.reference }}</td>
                         <td>{{ property.name }}</td>
-                        <td class="text-right">{{ property.totalVisits }}</td>
+                        <td class="text-right">{{ property.totalVisits | number_format(0, '\'', '.') }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
