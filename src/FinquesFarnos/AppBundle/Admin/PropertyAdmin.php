@@ -162,6 +162,7 @@ class PropertyAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add('reference', null, array('label' => 'Ref.', 'editable' => true))
             ->add('name', null, array('label' => 'Immoble', 'editable' => true))

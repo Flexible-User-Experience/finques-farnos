@@ -77,6 +77,7 @@ class ImageSliderAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add('imageFile', null, array('label' => 'Imatge', 'template' => '::Admin/slide_list_field.html.twig'))
             ->add('link', null, array('label' => 'Enllaç', 'editable' => true))

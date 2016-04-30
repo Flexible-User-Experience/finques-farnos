@@ -63,6 +63,7 @@ class ContactAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add('name', null, array('label' => 'Nom', 'editable' => true))
             ->add('phone', null, array('label' => 'Telèfon', 'editable' => true))

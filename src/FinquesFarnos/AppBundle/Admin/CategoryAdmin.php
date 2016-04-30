@@ -54,6 +54,7 @@ class CategoryAdmin extends BaseAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        unset($this->listModes['mosaic']);
         $listMapper
             ->add('name', null, array('label' => 'Categoria', 'editable' => true))
             ->add('propertiesCount', 'integer', array('label' => 'Immobles', 'template' => '::Admin/category_list_field.html.twig'))

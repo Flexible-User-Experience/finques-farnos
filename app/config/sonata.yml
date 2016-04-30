@@ -13,6 +13,15 @@ sonata_admin:
         list_block: "::Admin/block_admin_list.html.twig"
         add_block:  "::Admin/add_block.html.twig"
     dashboard:
+        groups:
+            Web:
+                icon: "<i class='fa fa-chrome'></i>"
+            Immoble:
+                icon: "<i class='fa fa-home'></i>"
+            Client:
+                icon: "<i class='fa fa-user'></i>"
+            Users:
+                icon: "<i class='fa fa-users'></i>"
         blocks:
             -
                 position: top
