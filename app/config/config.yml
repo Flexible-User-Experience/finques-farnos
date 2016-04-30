@@ -135,3 +135,9 @@ knp_paginator:
 # Genemu Bundle
 genemu_form:
     date: ~
+
+# Orkestra PDF
+orkestra_pdf:
+  tcpdf:
+    root_dir:   "%kernel.root_dir%/../vendor/tecnickcom/tcpdf"
+    fonts_dir:  "%kernel.root_dir%/../vendor/tecnickcom/tcpdf/fonts"
