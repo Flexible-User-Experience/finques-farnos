@@ -30,7 +30,7 @@ homepage:
     noitems: ho sentim, encara no tenim cap immoble destacat disponible en aquesta pàgina
     before: abans
     since: des de
-    rooms: habitacions
+    rooms: hab.
     bathrooms: banys
     offer:
       special: oferta
@@ -52,7 +52,7 @@ properties:
     type: tipus
     city: població
     area: superfície
-    rooms: habitacions
+    rooms: hab.
     price: o més
     search: buscar
     results: resultats obtinguts
