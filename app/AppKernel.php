@@ -36,7 +36,6 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Oh\GoogleMapFormTypeBundle\OhGoogleMapFormTypeBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
-            new Hautelook\AliceBundle\HautelookAliceBundle(),
             new Orkestra\Bundle\PdfBundle\OrkestraPdfBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
@@ -54,6 +53,8 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Cypress\GitElephantBundle\CypressGitElephantBundle();
+            $bundles[] = new Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
+            $bundles[] = new Hautelook\AliceBundle\HautelookAliceBundle();
         }
 
         return $bundles;

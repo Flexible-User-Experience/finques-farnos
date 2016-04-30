@@ -277,14 +277,14 @@ FinquesFarnos\AppBundle\Entity\Translations\ImageSliderTranslation:
 
 FinquesFarnos\UserBundle\Entity\User:
     admin:
-        username: admin
-        plainPassword: jbMF7CZW
+        username: <{private_admin_test_user}>
+        plainPassword: <{private_admin_test_pass}>
         email: "admin@admin.com"
         firstname: Roberto
         lastname: Palomeque
         enabled: true
         roles:
-            - ROLE_USER
+            - ROLE_SUPER_ADMIN
 
 FinquesFarnos\AppBundle\Entity\Contact:
     contact{1..50}:

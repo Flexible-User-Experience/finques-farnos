@@ -2,8 +2,6 @@
 
 namespace FinquesFarnos\AppBundle\Tests;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
 /**
  * Class DefaultControllerTest
  *
@@ -11,20 +9,20 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * @package  FinquesFarnos\AppBundle\Tests
  * @author   David Romaní <david@flux.cat>
  */
-class FrontControllerTest extends WebTestCase
+class FrontControllerTest extends AbstractBaseTest
 {
     /**
-     * Test page is successful
+     * Test HTTP request is successful
      *
-     * @dataProvider provideUrls
-     *
+     * @dataProvider provideSUrls
      * @param string $url
      */
-    public function testAdminPagesAreSuccessful($url)
+    public function testPagesAreSuccessful($url)
     {
-        $client = static::createClient();
+        $client = $this->createClient();
         $client->request('GET', $url);
-        $this->assertTrue($client->getResponse()->isSuccessful());
+
+        $this->assertStatusCode(200, $client);
     }
 
     /**
@@ -66,17 +64,17 @@ class FrontControllerTest extends WebTestCase
     }
 
     /**
-     * Test page is redirect
+     * Test HTTP request is redirection
      *
      * @dataProvider provideRedirectUrls
-     *
      * @param string $url
      */
-    public function testAdminPagesAreRedirects($url)
+    public function testPagesAreRedirect($url)
     {
-        $client = static::createClient();
+        $client = $this->createClient();
         $client->request('GET', $url);
-        $this->assertTrue($client->getResponse()->isRedirection());
+
+        $this->assertStatusCode(301, $client);
     }
 
     /**
