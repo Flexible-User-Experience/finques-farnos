@@ -241,7 +241,7 @@ class FrontController extends Controller
             $fc = $request->get('contact');
             $ms->performContactDeliveryAction($form->getData(), $fc['message']);
 
-            return $this->redirect($this->generateUrl('front_contact_thankyou'));
+            return $this->redirectToRoute('front_contact_thankyou');
         }
 
         return $this->render('Front/contact.html.twig', array(
