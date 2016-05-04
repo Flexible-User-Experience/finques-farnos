@@ -6,7 +6,8 @@ use Doctrine\ORM\EntityManager;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Sonata\BlockBundle\Block\BaseBlockService;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 /**
  * VisitStatsBlockService class
@@ -22,10 +23,16 @@ class VisitStatsBlockService extends BaseBlockService
      */
     protected $em;
 
-    public function __construct($type, $templating, $em)
+    /**
+     * VisitStatsBlockService constructor.
+     *
+     * @param string          $type
+     * @param EngineInterface $templating
+     * @param EntityManager   $em
+     */
+    public function __construct($type, EngineInterface $templating, EntityManager $em)
     {
-        $this->type = $type;
-        $this->templating = $templating;
+        parent::__construct($type, $templating);
         $this->em = $em;
     }
 
@@ -65,9 +72,9 @@ class VisitStatsBlockService extends BaseBlockService
     /**
      * Set defaultSettings
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultSettings(OptionsResolverInterface $resolver)
+    public function configureSettings(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             array(
