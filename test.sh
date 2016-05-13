@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Started at `date +"%T %d/%m/%Y"`"
+
 if [ -z "$1" ]
   then
     phpunit -c app/
@@ -17,3 +19,4 @@ if [ -z "$1" ]
         fi
 fi
 
+echo "Finished at `date +"%T %d/%m/%Y"`"
