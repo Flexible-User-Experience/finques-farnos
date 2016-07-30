@@ -66,7 +66,7 @@
                     </div>
                 {% endif %}
                 <h2 class="c-orange"><span class="house-icon"></span> {{ property.name | upper }}
-                    <a class="pull-right" href="{{ path('front_property_pdf', {id: property.id}) }}"><span class="download-icon"></span></a>
+                    <a target="_blank" class="pull-right" href="{{ path('front_property_pdf', {id: property.id}) }}"><span class="download-icon"></span></a>
                     <a class="pull-right" href="mailto:?subject={{ property.name }}%20·%20Finques%20Farnós&amp;body=Ref.{{ property.reference }}%20{{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><span class="envelope-icon"></span></a>
                     <a class="pull-right" href="https://twitter.com/share?url={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}" target="_blank"><span class="twitter-icon"></span></a>
                     <a class="pull-right" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) | url_encode }}&amp;p[images][0]={{ vich_uploader_asset(property.images[0], 'imageFile') | imagine_filter('757x450') }}&amp;p[title]={{ property.name }}&amp;p[summary]={{ property.description }}" target="_blank"><span class="facebook-icon"></span></a>
