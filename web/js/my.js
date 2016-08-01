@@ -7,6 +7,7 @@ angular.module('propertiesApp', [
         'ngRoute',
         'truncate',
         'checklist-model',
+        'nemLogging',
         'uiGmapgoogle-maps'
     ]).config(['$interpolateProvider', function ($interpolateProvider) {
         $interpolateProvider.startSymbol('[[');
@@ -14,9 +15,8 @@ angular.module('propertiesApp', [
     }]).config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
             key: 'AIzaSyB332MhD5g142kIo79ZagVcXUidQwHbWwk',
-            v: '3.17',
+            v: '3.23',
             language: 'es',
-            sensor: false,
             libraries: 'drawing,geometry,visualization'
         });
     })
