@@ -5,11 +5,11 @@ vich_uploader:
         property_image:
             namer:              vich_uploader.namer_uniqid
             uri_prefix:         /uploads/images
-            upload_destination: %kernel.root_dir%/../web/uploads/images
+            upload_destination: "%kernel.root_dir%/../web/uploads/images"
         slider_image:
             namer:              vich_uploader.namer_uniqid
             uri_prefix:         /uploads/slides
-            upload_destination: %kernel.root_dir%/../web/uploads/slides
+            upload_destination: "%kernel.root_dir%/../web/uploads/slides"
 
 # Liip Imagine
 liip_imagine:
