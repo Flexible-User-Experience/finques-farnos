@@ -63,6 +63,7 @@ gulp.task('scripts', function() {
             'bower_components/angular-route/angular-route.js',
             'bower_components/angular-touch/angular-touch.js',
             'bower_components/angular-truncate/src/truncate.js',
+            'bower_components/angular-simple-logger/dist/angular-simple-logger.js',
             'bower_components/checklist-model/checklist-model.js',
             'bower_components/angular-google-maps/dist/angular-google-maps.js'])
         .pipe(concat('main.js'))
