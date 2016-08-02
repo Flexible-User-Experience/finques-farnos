@@ -3,6 +3,10 @@
 {% block title %}{{ property.name }} · {{ property.city.name }} · {{ property.type.name }} · {{ parent() }}{% endblock %}
 {% block metadescription %}{{ property.description }}{% endblock %}
 {% block metakeywords %}{{ parent() }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/flexslider.css') }}">
+{% endblock %}
 {% block extrametas %}
     <meta name="og:title" content="{{ property.name }}"/>
     <meta name="og:description" content="{{ property.description }}"/>
@@ -14,6 +18,7 @@
 {% block javascriptshead %}
     {{ parent() }}
     <script src="{{ asset('js/my.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/jquery.flexslider-min.js') }}"></script>
 {% endblock %}
 
 {% block main %}
@@ -34,9 +39,9 @@
         <div class="row">
             <div class="col-md-8 property-detail-left-box">
                 {% if property.images | length > 0 %}
-                    <div id="custom_carousel" class="carousel slide" data-ride="carousel">
+                    <div>
                         {#<!-- Wrapper for slides -->#}
-                        <div class="carousel-inner">
+                        <div id="slider" class="flexslider">
                             {% if property.sold %}
                                 <img class="extra-label hidden-xs" src="{{ asset('bundles/app/images/extra_ribbons/sold-big-' ~ app.request.locale ~ '.png') }}" alt="sold label"/>
                                 <img class="extra-label visible-xs" src="{{ asset('bundles/app/images/extra_ribbons/sold-small-' ~ app.request.locale ~ '.png') }}" alt="sold label"/>
@@ -44,28 +49,26 @@
                                 <img class="extra-label hidden-xs" src="{{ asset('bundles/app/images/extra_ribbons/reserved-big-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
                                 <img class="extra-label visible-xs" src="{{ asset('bundles/app/images/extra_ribbons/reserved-small-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
                             {% endif %}
-                            {% for image in property.images if image.enabled %}
-                                <div class="item{% if loop.first %} active{% endif %}">
-                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('757x450') }}" class="img-responsive" alt="{% if image.metaAlt %}{{ image.metaAlt }}{% else %}{{ property.name }} · {{ property.type.name }} · {{ property.city.name }}{% endif %}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
-                                </div>
-                            {% endfor %}
-                            {% if property.images | length > 1 %}
-                                <div id="thumb-slider" class="controls">
-                                    <ul class="nav">
-                                        {% for image in property.images if image.enabled %}
-                                            <li data-target="#custom_carousel" data-slide-to="{{ loop.index - 1 }}" {% if loop.first %}class="active"{% endif %}>
-                                                <a onclick="moveCurrentThumb(this)" href="#">
-                                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x95') }}" alt="{% if image.metaAlt %}{{ image.metaAlt }}{% else %}{{ property.name }} · {{ property.type.name }} · {{ property.city.name }}{% endif %}">
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            {% endif %}
+                            <ul class="slides">
+                                {% for image in property.images if image.enabled %}
+                                    <li>
+                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('757x450') }}" class="img-responsive" alt="{% if image.metaAlt %}{{ image.metaAlt }}{% else %}{{ property.name }} · {{ property.type.name }} · {{ property.city.name }}{% endif %}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div id="carousel" class="flexslider">
+                            <ul class="slides">
+                                {% for image in property.images if image.enabled %}
+                                    <li>
+                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('140x95') }}" alt="{% if image.metaAlt %}{{ image.metaAlt }}{% else %}{{ property.name }} · {{ property.type.name }} · {{ property.city.name }}{% endif %}">
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 {% endif %}
-                <h2 class="c-orange"><span class="house-icon"></span> {{ property.name | upper }}
+                <h2 class="c-orange extra-m-top-30"><span class="house-icon"></span> {{ property.name | upper }}
                     <a target="_blank" class="pull-right" href="{{ path('front_property_pdf', {id: property.id}) }}"><span class="download-icon"></span></a>
                     <a class="pull-right" href="mailto:?subject={{ property.name }}%20·%20Finques%20Farnós&amp;body=Ref.{{ property.reference }}%20{{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><span class="envelope-icon"></span></a>
                     <a class="pull-right" href="https://twitter.com/share?url={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}" target="_blank"><span class="twitter-icon"></span></a>
@@ -125,32 +128,23 @@
 {% block javascriptsbody %}
     <script type="text/javascript">
         jQuery(document).ready(function() {
-            jQuery('#custom_carousel').carousel({
-                pause: true,
-                interval: false
-            }).on('slide.bs.carousel', function(evt) {
-                var extraLabelsOffset = {% if property.sold or property.reserved %}2{% else %}0{% endif %};
-                var index = jQuery(evt.relatedTarget).index() - extraLabelsOffset;
-                console.log('jQuery(evt.relatedTarget)', jQuery(evt.relatedTarget));
-                console.log('extraLabelsOffset', extraLabelsOffset);
-                console.log('index', index);
-                jQuery('#custom_carousel .controls li.active').removeClass('active');
-                jQuery('#custom_carousel .controls li:eq(' + index + ')').addClass('active');
+            jQuery('#slider').flexslider({
+                animation: 'slide',
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                sync: '#carousel'
+            });
+            jQuery('#carousel').flexslider({
+                animation: 'slide',
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                itemWidth: 150,
+                itemMargin: 5,
+                asNavFor: '#slider'
             });
         });
-        function moveCurrentThumb(evt) {
-//            console.log('moveCurrentThumb', evt);
-            centerItFixedWidth('#thumb-slider li.active', '#thumb-slider');
-        }
-        function centerItFixedWidth(target, outer) {
-//            console.log('centerItFixedWidth', target, outer);
-            var out = $(outer);
-            var tar = $(target);
-            var x = out.width();
-            var y = tar.outerWidth(true);
-            var z = tar.index();
-            out.animate({scrollLeft: Math.max(0, (y * z) - (x - y)/2)}, 200, 'swing');
-        }
     </script>
     {% include ':Front/commons:scroll-to-top-js.html.twig' %}
 {% endblock %}
