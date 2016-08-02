@@ -4,6 +4,7 @@ namespace FinquesFarnos\AppBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
+use FinquesFarnos\AppBundle\Entity\Category;
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Entity\PropertyVisit;
@@ -71,6 +72,12 @@ class DoctrineListeners
         if ($entity instanceof Property) {
             /** @var EntityManager $em */
             $em = $args->getEntityManager();
+            $categories = array();
+            /** @var Category $category */
+            foreach ($entity->getCategories() as $category) {
+                $categories[] = $category->getName();
+            }
+            $entity->setVirtualCategoriesString(implode(', ', $categories));
             /** @var ImageProperty $enabledImagesSortedByPosition */
             $enabledImagesSortedByPosition = $em->getRepository('AppBundle:ImageProperty')->getFirstEnabledImageOfPropertyId($entity->getId());
             if ($enabledImagesSortedByPosition) {
