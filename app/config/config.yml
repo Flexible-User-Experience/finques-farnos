@@ -35,6 +35,7 @@ twig:
     globals:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
+        google_maps_api_key:      "%google_maps_api_key%"
         project_title:            "%project_title%"
         admin_tag_version:        "2.4.7"
 
