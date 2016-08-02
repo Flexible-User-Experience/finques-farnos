@@ -166,9 +166,16 @@ class PropertyAdmin extends BaseAdmin
         $listMapper
             ->add('reference', null, array('label' => 'Ref.', 'editable' => true))
             ->add('name', null, array('label' => 'Immoble', 'editable' => true))
-            ->add('categories', null, array('label' => 'Categories'))
+            ->add('categories', null, array(
+                'label' => 'Categories',
+                'associated_property' => 'name',
+                'sortable' => true,
+                'sort_field_mapping' => array('fieldName' => 'name'),
+                'sort_parent_association_mappings' => array(array('fieldName' => 'categories')),
+            ))
             ->add('type', null, array(
                     'label' => 'Tipus',
+                    'associated_property' => 'name',
                     'sortable' => true,
                     'sort_field_mapping' => array('fieldName' => 'name'),
                     'sort_parent_association_mappings' => array(array('fieldName' => 'type')),
@@ -226,34 +233,6 @@ class PropertyAdmin extends BaseAdmin
         $collection->add('visit', $this->getRouterIdParameter().'/visit');
         $collection->add('pdf', $this->getRouterIdParameter().'/pdf');
         $collection->add('removeImage', $this->getRouterIdParameter().'/remove-image/{iid}');
-    }
-
-    /**
-     * Get image helper form mapper with thumbnail
-     *
-     * @return string
-     */
-    private function getImageHelperFormMapperWithThumbnail()
-    {
-        /** @var Router $rs */
-        $rs = $this->getConfigurationPool()->getContainer()->get('router');
-        /** @var CacheManager $lis */
-        $lis = $this->getConfigurationPool()->getContainer()->get('liip_imagine.cache.manager');
-        /** @var UploaderHelper $vus */
-        $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
-        /** @var ArrayCollection $images */
-        $images = $this->getSubject()->getImages();
-        if ($images->count() > 0) {
-            $result = '<div class="images-wrapper" style="float:left;margin-bottom:40px">';
-            /** @var ImageProperty $image */
-            foreach ($images as $image) {
-                $result .= '<div class="image-panel-wrapper" style="float:left;position:relative"><span><a href="'.$rs->generate('admin_finquesfarnos_app_imageproperty_edit', array('id' => $image->getId())).'" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute" title="edita"><i class="fa fa-pencil"></i></a></span><span><a href="'.$rs->generate('admin_finquesfarnos_app_property_removeImage', array('id' => $this->getSubject()->getId(), 'iid' => $image->getId())).'" class="btn btn-success btn-sm sonata-ba-action" style="position:absolute;left:69px" title="esborra"><i class="fa fa-times"></i></a></span><img src="'.$lis->getBrowserPath($vus->asset($image, 'imageFile'), '100x100').'" class="admin-preview" style="margin:0 10px 10px 0;float:left" alt="'.$image->getMetaAlt().'"/></div>';
-            }
-
-            return $result.'</div>';
-        }
-
-        return '';
     }
 
     /**
