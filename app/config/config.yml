@@ -36,7 +36,7 @@ twig:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
         project_title:            "%project_title%"
-        admin_tag_version:        "2.4.4"
+        admin_tag_version:        "2.4.5"
 
 # Assetic Configuration
 assetic:
