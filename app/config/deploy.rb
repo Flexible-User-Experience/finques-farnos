@@ -17,7 +17,7 @@ set :imagescache_dir,   "/media"
 ##################
 # SCM Repository #
 ##################
-set :repository,        "git@bitbucket.org:dromani/finques-farnos.git"
+set :repository,        "git@github.com:Flexible-User-Experience/finques-farnos.git"
 set :scm,               :git
 set :branch,            "master"
 
