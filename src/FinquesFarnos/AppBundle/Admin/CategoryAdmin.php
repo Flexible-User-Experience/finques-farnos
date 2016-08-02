@@ -5,7 +5,6 @@ namespace FinquesFarnos\AppBundle\Admin;
 use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 
 /**
  * CategoryAdmin class
@@ -82,7 +81,7 @@ class CategoryAdmin extends BaseAdmin
     /**
      * @param string $context
      *
-     * @return ProxyQueryInterface
+     * @return QueryBuilder
      */
     public function createQuery($context = 'list')
     {

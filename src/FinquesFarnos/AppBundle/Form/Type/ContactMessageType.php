@@ -31,8 +31,7 @@ class ContactMessageType extends AbstractType
                 array(
                     'attr' => array('rows' => '5'),
                 )
-            )
-        ;
+            );
     }
 
     /**
@@ -40,9 +39,11 @@ class ContactMessageType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
                 'data_class' => 'FinquesFarnos\AppBundle\Entity\ContactMessage',
-            ));
+            )
+        );
     }
 
     /**
