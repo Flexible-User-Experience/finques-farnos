@@ -4,7 +4,10 @@ namespace FinquesFarnos\AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
  * ContactType class
@@ -24,28 +27,48 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label' => 'contact.form.name'))
-            ->add('phone', null, array('label' => 'contact.form.phone'))
-            ->add('email', 'email', array('label' => 'contact.form.email'))
-            ->add('message', 'textarea', array(
-                    'label' => 'contact.form.message',
+            ->add(
+                'name',
+                TextType::class,
+                array(
+                    'label' => 'contact.form.name'
+                )
+            )
+            ->add(
+                'phone',
+                TextType::class,
+                array(
+                    'label' => 'contact.form.phone'
+                )
+            )
+            ->add(
+                'email',
+                EmailType::class,
+                array(
+                    'label' => 'contact.form.email'
+                )
+            )
+            ->add(
+                'message',
+                TextareaType::class,
+                array(
+                    'label'  => 'contact.form.message',
                     'mapped' => false,
-                    'attr' => array('rows' => '5'),
-                ))
-//            ->add('message', new ContactMessageType())
-        ;
+                    'attr'   => array('rows' => '5'),
+                )
+            );
     }
 
     /**
-     * Set default form options
-     *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults(
+            array(
                 'data_class' => 'FinquesFarnos\AppBundle\Entity\Contact',
-            ));
+            )
+        );
     }
 
     /**
@@ -53,7 +76,7 @@ class ContactType extends AbstractType
      *
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'contact';
     }
