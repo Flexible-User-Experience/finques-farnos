@@ -36,6 +36,7 @@ angular.module('propertiesApp')
             $http.get(Routing.generate('api_properties_api_filtered', {categories: $scope.getSerializedCategories(), type: $scope.type, city: $scope.city, area: $scope.area, rooms: $scope.rooms, price: $scope.price, _format: 'json'}))
                 .success(function(response) {
                     $scope.properties = response;
+                    $log.log($scope.properties);
                     deferred.resolve(response);
                 })
                 .error(function(data) {

@@ -255,6 +255,13 @@ class Property extends Base
     private $virtualFirstEnabledImageUrlBig;
 
     /**
+     * @JMS\SerializedName("categories_string")
+     * @JMS\Groups({"api"})
+     * @var string
+     */
+    private $virtualCategoriesString;
+
+    /**
      * @ORM\OneToMany(
      *     targetEntity="FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation",
      *     mappedBy="object",
@@ -1316,5 +1323,29 @@ class Property extends Base
     public function getCityNameSlug()
     {
         return $this->getCity()->getNameSlug();
+    }
+
+    /**
+     * Get VirtualCategoriesString
+     *
+     * @return string
+     */
+    public function getVirtualCategoriesString()
+    {
+        return $this->virtualCategoriesString;
+    }
+
+    /**
+     * Set VirtualCategoriesString
+     *
+     * @param string $virtualCategoriesString
+     *
+     * @return $this
+     */
+    public function setVirtualCategoriesString($virtualCategoriesString)
+    {
+        $this->virtualCategoriesString = $virtualCategoriesString;
+
+        return $this;
     }
 }

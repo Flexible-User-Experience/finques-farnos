@@ -105,7 +105,7 @@ class PropertyRepository extends EntityRepository
      * @param int   $rooms
      * @param int   $price
      *
-     * @return ArrayCollection
+     * @return array
      */
     public function filterBy($categories, $type, $city, $area, $rooms, $price)
     {
@@ -122,7 +122,7 @@ class PropertyRepository extends EntityRepository
      * @param int   $rooms
      * @param int   $price
      *
-     * @return ArrayCollection
+     * @return Query
      */
     public function filterByQuery($categories, $type, $city, $area, $rooms, $price)
     {
@@ -247,6 +247,11 @@ class PropertyRepository extends EntityRepository
             ->getOneOrNullResult();
     }
 
+    /**
+     * @param mixed $filter
+     *
+     * @return array
+     */
     private function handleFilter($filter)
     {
         $catArray = array();
