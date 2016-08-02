@@ -118,6 +118,6 @@ class ImagePropertyAdmin extends BaseAdmin
         /** @var UploaderHelper $vus */
         $vus = $this->getConfigurationPool()->getContainer()->get('vich_uploader.templating.helper.uploader_helper');
 
-        return ($this->getSubject() ? $this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '100x60').'" class="admin-preview" alt=""/>' : '' : '');
+        return ($this->getSubject() ? $this->getSubject()->getImageName() ? '<img src="'.$lis->getBrowserPath($vus->asset($this->getSubject(), 'imageFile'), '200xY').'" class="admin-preview" alt=""/>' : '' : '');
     }
 }

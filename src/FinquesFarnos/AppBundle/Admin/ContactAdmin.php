@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Routing\Router;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * ContactAdmin class
@@ -120,5 +121,24 @@ class ContactAdmin extends BaseAdmin
         }
 
         return '';
+    }
+
+    /**
+     * Override query list to reduce queries amount on list view (apply join strategy)
+     *
+     * @param string $context context
+     *
+     * @return QueryBuilder
+     */
+    public function createQuery($context = 'list')
+    {
+        /** @var QueryBuilder $query */
+        $query = parent::createQuery($context);
+        $query
+            ->select($query->getRootAliases()[0] . ', cm')
+            ->join($query->getRootAliases()[0] . '.messages', 'cm')
+        ;
+
+        return $query;
     }
 }
