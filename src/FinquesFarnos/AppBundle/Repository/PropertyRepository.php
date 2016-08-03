@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Query\Expr\Orx;
 use FinquesFarnos\AppBundle\Entity\Property;
 
 /**
@@ -153,6 +154,7 @@ class PropertyRepository extends EntityRepository
             $qb->andWhere('p.city = :city')->setParameter('city', $city);
         }
         if ($categories) {
+            /** @var Orx $orWhereExpr */
             $orWhereExpr = $qb->expr()->orX();
             foreach ($categories as $categoryId) {
                 $orWhereExpr->add($qb->expr()->orX($qb->expr()->eq('c.id', $categoryId)));

@@ -27,6 +27,8 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      *
      * @Rest\View()
      * @Rest\Get("/get-properties-form-filter", options={"expose"=true})
+     *
+     * @return array
      */
     public function propertiesFormFilterAction()
     {
@@ -51,6 +53,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
         // property attributes
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
+        /** @var array $data */
         $data = array(
             'categories' => $categories,
             'types'      => $types,
@@ -83,7 +86,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * @param int     $rooms
      * @param int     $price
      *
-     * @return mixed
+     * @return array
      */
     public function propertiesFilteredAction(Request $request, $categories, $type, $city, $area, $rooms, $price)
     {
@@ -101,14 +104,39 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     }
 
     /**
-     * Get filtered properties
+     * Get cities by type
+     *
+     * @Rest\View(serializerGroups={"api"})
+     * @Rest\Get("/get-cities-by-type/{type}", options={"expose"=true})
+     *
+     * @ApiDoc(
+     *  section="Properties",
+     *  resource=true,
+     *  description="Get filtered cities by type"
+     * )
+     *
+     * @param int $type ID
+     *
+     * @return array
+     */
+    public function getCitiesByTypeAction($type)
+    {
+        /** @var array $cities */
+        $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsFilteredByTypeIdSortedByNameArrayResult($type);
+        array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
+
+        return $cities;
+    }
+
+    /**
+     * Set accept cookie action
      *
      * @Rest\View(serializerGroups={"api"})
      * @Rest\Get("/set-accept-cookie-warning", options={"expose"=true})
      *
      * @param Request $request
      *
-     * @return mixed
+     * @return array
      */
     public function setAcceptCookieWarningAction(Request $request)
     {
