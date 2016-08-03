@@ -28,4 +28,16 @@ class CityRepository extends EntityRepository
             ->getQuery()
             ->getArrayResult();
     }
+
+    /**
+     * Get enabled items filtered by typeId and sorted by name
+     *
+     * @param $typeId
+     *
+     * @return array
+     */
+    public function getEnabledItemsFilteredByTypeIdSortedByNameArrayResult($typeId)
+    {
+
+    }
 }
