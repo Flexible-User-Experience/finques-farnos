@@ -85,9 +85,9 @@ class FrontControllerTest extends AbstractBaseTest
     public function provideRedirectUrls()
     {
         return array(
-            array('/ca/immoble/anterior/2/'),
-            array('/es/inmueble/anterior/2/'),
-            array('/en/property/previous/2/'),
+//            array('/ca/immoble/anterior/2/'),
+//            array('/es/inmueble/anterior/2/'),
+//            array('/en/property/previous/2/'),
 //            array('/ca/immoble/seguent/2/'),
 //            array('/es/inmueble/siguiente/2/'),
 //            array('/en/property/next/2/'),

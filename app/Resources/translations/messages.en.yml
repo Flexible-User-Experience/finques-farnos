@@ -53,9 +53,11 @@ properties:
     city: city
     area: area
     rooms: rooms
+    roomsl: rooms
     price: or more
     search: search
     results: items found
+    upto: up to
     select:
       any:
         type: any type

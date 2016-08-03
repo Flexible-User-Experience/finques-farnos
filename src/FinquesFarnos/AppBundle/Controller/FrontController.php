@@ -57,10 +57,10 @@ class FrontController extends Controller
                 intval($request->getSession()->get('pfilter')[5]),
             );
         } else {
-            $selectedPropertiesFormFilter = array(-1, -1, -1, 0, 0, 0);
+            $ao = json_decode($propertiesFormFilter->getContent());
+            $selectedPropertiesFormFilter = array(-1, -1, -1, $ao->{'area'}->{'max'}, $ao->{'rooms'}->{'max'}, $ao->{'price'}->{'max'});
         }
         $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
-            // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
             'categories' => $selectedPropertiesFormFilter[0],
             'type' => $selectedPropertiesFormFilter[1],
             'city' => $selectedPropertiesFormFilter[2],

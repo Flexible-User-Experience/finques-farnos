@@ -69,11 +69,10 @@ class CityRepository extends EntityRepository
                 ->innerJoin('c.properties', 'p')
                 ->innerJoin('p.type', 't')
                 ->andWhere('t.id = :tid')
-                ->andWhere('ps.enabled = 1')
+                ->andWhere('p.enabled = 1')
                 ->setParameter('tid', $typeId)
             ;
         }
-
 
         return $query->getQuery()->getResult();
     }

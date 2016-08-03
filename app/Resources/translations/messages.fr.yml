@@ -53,9 +53,11 @@ properties:
     city: ville
     area: superficie
     rooms: chambres
+    roomsl: chambres
     price: ou plus
     search: recherche
     results: objets trouvés
+    upto: jusqu'à
     select:
       any:
         type: ne importe quel type
