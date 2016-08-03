@@ -115,14 +115,14 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      *  description="Get filtered cities by type"
      * )
      *
-     * @param int $typeId
+     * @param int $type ID
      *
      * @return array
      */
-    public function getCitiesByTypeAction($typeId)
+    public function getCitiesByTypeAction($type)
     {
         /** @var array $cities */
-        $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsFilteredByTypeIdSortedByNameArrayResult($typeId);
+        $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsFilteredByTypeIdSortedByNameArrayResult($type);
         array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
 
         return $cities;

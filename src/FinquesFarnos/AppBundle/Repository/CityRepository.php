@@ -62,8 +62,9 @@ class CityRepository extends EntityRepository
         $query = $this->getEnabledItemsSortedByNameQB();
         $query
             ->select('c')
-            ->leftJoin('AppBundle:Property', 'p', Join::WITH, 'p.city = c.id')
-            ->leftJoin('AppBundle:Type', 't', Join::WITH, 'p.type = p.id')
+            ->innerJoin('AppBundle:Property', 'ps', Join::WITH, '1 = 1')
+            ->innerJoin('c.properties', 'p')
+            ->innerJoin('p.type', 't')
             ->andWhere('t.id = :tid')
             ->setParameter('tid', $typeId)
         ;
