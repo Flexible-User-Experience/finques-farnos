@@ -28,12 +28,9 @@ angular.module('propertiesApp')
             }
             $scope.type = $scope.selectedPropertiesFormFilter[1];
             $scope.city = $scope.selectedPropertiesFormFilter[2];
-            //$scope.area = $scope.selectedPropertiesFormFilter[3];
-            $scope.area = 12000;
-            //$scope.rooms = $scope.selectedPropertiesFormFilter[4];
+            $scope.area = $scope.form.area.max;
             $scope.rooms = $scope.form.rooms.max;
-            //$scope.price = $scope.selectedPropertiesFormFilter[5];
-            $scope.price = 800000;
+            $scope.price = $scope.form.price.max;
         };
 
         uiGmapGoogleMapApi.then(function(maps) {

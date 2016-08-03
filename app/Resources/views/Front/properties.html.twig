@@ -125,6 +125,14 @@
 
 {% block javascriptsbody %}
     {% include ':Front/commons:scroll-to-top-js.html.twig' %}
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            var pa = jQuery('#propertyArea');
+            var pp = jQuery('#propertyPrice');
+            pa.val(pa.prop('max'));
+            pp.val(pp.prop('max'));
+        });
+    </script>
 {% endblock %}
 
 {% block footlangca %}{{ path('front_properties', {'_locale': 'ca'}) }}{% endblock %}
