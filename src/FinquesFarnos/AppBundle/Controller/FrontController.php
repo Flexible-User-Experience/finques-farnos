@@ -61,7 +61,6 @@ class FrontController extends Controller
             $selectedPropertiesFormFilter = array(-1, -1, -1, $ao->{'area'}->{'max'}, $ao->{'rooms'}->{'max'}, $ao->{'price'}->{'max'});
         }
         $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
-            // TODO: make more dynamic & adaptative (exclude category, type & city values with no items related)
             'categories' => $selectedPropertiesFormFilter[0],
             'type' => $selectedPropertiesFormFilter[1],
             'city' => $selectedPropertiesFormFilter[2],
