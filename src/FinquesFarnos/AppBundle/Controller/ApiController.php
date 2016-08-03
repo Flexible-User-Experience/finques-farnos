@@ -53,6 +53,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
         // property attributes
         $filters = $this->getDoctrine()->getRepository('AppBundle:Property')->getFilters();
+        /** @var array $data */
         $data = array(
             'categories' => $categories,
             'types'      => $types,
@@ -120,6 +121,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      */
     public function getCitiesByTypeAction($typeId)
     {
+        /** @var array $cities */
         $cities = $this->getDoctrine()->getRepository('AppBundle:City')->getEnabledItemsFilteredByTypeIdSortedByNameArrayResult($typeId);
         array_unshift($cities, array('id' => -1, 'name' => $this->get('translator')->trans('properties.form.select.any.city')));
 
