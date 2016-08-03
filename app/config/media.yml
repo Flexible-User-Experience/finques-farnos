@@ -34,7 +34,7 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [140, 95], mode: outbound }
-                watermark: { image: Resources/imagine/watermark_2.png, size: 0.5, position: center }
+                watermark: { image: Resources/imagine/watermark_1.png, size: 0.5, position: center }
         200xY:
             quality: 85
             filters:
@@ -47,17 +47,17 @@ liip_imagine:
             quality: 85
             filters:
                 thumbnail: { size: [373, 270], mode: outbound }
-                watermark: { image: Resources/imagine/watermark_2.png, size: 0.5, position: center }
+                watermark: { image: Resources/imagine/watermark_1.png, size: 0.5, position: center }
         373x185:
             quality: 85
             filters:
                 thumbnail: { size: [373, 185], mode: outbound }
-                watermark: { image: Resources/imagine/watermark_2.png, size: 0.5, position: center }
+                watermark: { image: Resources/imagine/watermark_1.png, size: 0.5, position: center }
         373x192:
             quality: 85
             filters:
                 thumbnail: { size: [373, 192], mode: outbound }
-                watermark: { image: Resources/imagine/watermark_2.png, size: 0.5, position: center }
+                watermark: { image: Resources/imagine/watermark_1.png, size: 0.5, position: center }
         400xY:
             quality: 80
             filters:
@@ -66,7 +66,7 @@ liip_imagine:
             quality: 65
             filters:
                 thumbnail: { size: [700, 400], mode: outbound }
-                watermark: { image: Resources/imagine/watermark_2.png, size: 0.5, position: center }
+                watermark: { image: Resources/imagine/watermark_1.png, size: 0.5, position: center }
         750xY:
             quality: 75
             filters:
@@ -75,7 +75,7 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [757, 450], mode: outbound }
-                watermark: { image: Resources/imagine/watermark_2.png, size: 0.5, position: center }
+                watermark: { image: Resources/imagine/watermark_1.png, size: 0.5, position: center }
         800xY:
             quality: 75
             filters:

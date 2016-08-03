@@ -69,19 +69,26 @@
                     </div>
                 {% endif %}
                 <h2 class="c-orange extra-m-top-30"><span class="house-icon"></span> {{ property.name | upper }}
+                    <a target="_blank" class="pull-right hidden-xs" href="{{ path('front_property_pdf', {id: property.id}) }}"><span class="download-icon"></span></a>
+                    <a class="pull-right hidden-xs" href="mailto:?subject={{ property.name }}%20·%20Finques%20Farnós&amp;body=Ref.{{ property.reference }}%20{{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><span class="envelope-icon"></span></a>
+                    <a class="pull-right hidden-xs" href="https://twitter.com/share?url={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}" target="_blank"><span class="twitter-icon"></span></a>
+                    <a class="pull-right hidden-xs" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) | url_encode }}&amp;p[images][0]={{ vich_uploader_asset(property.images[0], 'imageFile') | imagine_filter('757x450') }}&amp;p[title]={{ property.name }}&amp;p[summary]={{ property.description }}" target="_blank"><span class="facebook-icon"></span></a>
+                </h2>
+                <hr class="thick">
+                <p>{{ property.description }}</p>
+                <p class="visible-xs">
                     <a target="_blank" class="pull-right" href="{{ path('front_property_pdf', {id: property.id}) }}"><span class="download-icon"></span></a>
                     <a class="pull-right" href="mailto:?subject={{ property.name }}%20·%20Finques%20Farnós&amp;body=Ref.{{ property.reference }}%20{{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}"><span class="envelope-icon"></span></a>
                     <a class="pull-right" href="https://twitter.com/share?url={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}" target="_blank"><span class="twitter-icon"></span></a>
                     <a class="pull-right" href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]={{ url('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) | url_encode }}&amp;p[images][0]={{ vich_uploader_asset(property.images[0], 'imageFile') | imagine_filter('757x450') }}&amp;p[title]={{ property.name }}&amp;p[summary]={{ property.description }}" target="_blank"><span class="facebook-icon"></span></a>
-                </h2>
-                <hr class="thick">
-                <p>{{ property.description }}</p>
-                <h2 class="c-orange h2-localization"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
-                <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
+                    <br><br>
+                </p>
+                <h2 class="hidden-xs c-orange h2-localization"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
+                <ui-gmap-google-map class="hidden-xs" center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
                     <ui-gmap-marker data-ng-if="localization.smt == 0" idKey="localization.id" coords="localization.coords"></ui-gmap-marker>
                     <ui-gmap-circle data-ng-if="localization.smt == 2" center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="false" draggable="false" clickable="false"></ui-gmap-circle>
                 </ui-gmap-google-map>
-                <p data-ng-if="localization.smt == 0 || localization.smt == 1" class="extra-m-top">{{ property.address }}</p>
+                <p data-ng-if="localization.smt == 0 || localization.smt == 1" class="hidden-xs extra-m-top">{{ property.address }}</p>
             </div>
             <div class="col-md-4">
                 <div class="property-right-side-box">
@@ -119,6 +126,16 @@
                         {% endif %}
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 property-detail-left-box">
+                <h2 class="visible-xs c-orange h2-localization" style="margin-top:0"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
+                <ui-gmap-google-map class="visible-xs" center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
+                    <ui-gmap-marker data-ng-if="localization.smt == 0" idKey="localization.id" coords="localization.coords"></ui-gmap-marker>
+                    <ui-gmap-circle data-ng-if="localization.smt == 2" center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="false" draggable="false" clickable="false"></ui-gmap-circle>
+                </ui-gmap-google-map>
+                <p data-ng-if="localization.smt == 0 || localization.smt == 1" class="visible-xs extra-m-top">{{ property.address }}</p>
             </div>
         </div>
     </div>
