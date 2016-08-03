@@ -128,6 +128,16 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-8 property-detail-left-box">
+                <h2 class="visible-xs c-orange h2-localization" style="margin-top:0"><span class="poi-icon"></span> {{ 'property.localization' | trans | upper }}</h2>
+                <ui-gmap-google-map class="visible-xs" center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
+                    <ui-gmap-marker data-ng-if="localization.smt == 0" idKey="localization.id" coords="localization.coords"></ui-gmap-marker>
+                    <ui-gmap-circle data-ng-if="localization.smt == 2" center="localization.coords" stroke="map.stroke" fill="map.fill" radius="map.radius" visible="true" geodesic="true" editable="false" draggable="false" clickable="false"></ui-gmap-circle>
+                </ui-gmap-google-map>
+                <p data-ng-if="localization.smt == 0 || localization.smt == 1" class="visible-xs extra-m-top">{{ property.address }}</p>
+            </div>
+        </div>
     </div>
     <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-arrow-circle-up"></i></span></div>
 {% endblock %}
