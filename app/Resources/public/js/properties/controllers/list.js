@@ -7,6 +7,7 @@ angular.module('propertiesApp')
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, selectedPropertiesFormFilter, filteredProperties) {
+
             $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
             $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
             $scope.map.control = {};
@@ -27,9 +28,12 @@ angular.module('propertiesApp')
             }
             $scope.type = $scope.selectedPropertiesFormFilter[1];
             $scope.city = $scope.selectedPropertiesFormFilter[2];
-            $scope.area = $scope.selectedPropertiesFormFilter[3];
-            $scope.rooms = $scope.selectedPropertiesFormFilter[4];
-            $scope.price = $scope.selectedPropertiesFormFilter[5];
+            //$scope.area = $scope.selectedPropertiesFormFilter[3];
+            $scope.area = 12000;
+            //$scope.rooms = $scope.selectedPropertiesFormFilter[4];
+            $scope.rooms = $scope.form.rooms.max;
+            //$scope.price = $scope.selectedPropertiesFormFilter[5];
+            $scope.price = 800000;
         };
 
         uiGmapGoogleMapApi.then(function(maps) {

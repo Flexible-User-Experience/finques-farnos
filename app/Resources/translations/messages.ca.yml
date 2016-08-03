@@ -53,9 +53,11 @@ properties:
     city: població
     area: superfície
     rooms: hab.
+    roomsl: habitacions
     price: o més
     search: buscar
     results: resultats obtinguts
+    upto: fins a
     select:
       any:
         type: qualsevol tipus

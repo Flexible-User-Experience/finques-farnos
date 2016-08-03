@@ -41,16 +41,16 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="propertyArea" class="control-label">[[ area ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
+                            <label for="propertyArea" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(area) ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
                             <input id="propertyArea" type="range" name="propertyArea" min="0" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="10">
                         </div>
                         <div class="form-group">
-                            <label for="propertyRooms" class="control-label">[[ rooms ]] {{ 'properties.form.rooms' | trans | upper }}</label>
+                            <label for="propertyRooms" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ rooms ]] {{ 'properties.form.roomsl' | trans | upper }}</label>
                             <input id="propertyRooms" type="range" name="propertyRooms" min="0" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]" step="1">
                         </div>
                         <div class="form-group">
-                            <label for="propertyPrice" class="control-label">[[ getCurrency(price) ]] &euro;</label>
-                            <input id="propertyPrice" type="range" name="propertyPrice" min="0" max="[[ form.price.max ]]" data-ng-model="price" value="[[ price ]]" step="10000">
+                            <label for="propertyPrice" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(price) ]] &euro;</label>
+                            <input id="propertyPrice" type="range" name="propertyPrice" min="0" max="[[ form.price.max ]]" data-ng-model="price" data-ng-init="price" value="[[ price ]]" step="10000">
                         </div>
                         <div class="form-group">
                             <p data-ng-show="properties.length > 0" class="form-control-static c-orange no-m no-p">[[ properties.length ]] {{ 'properties.form.results' | trans | lower }}</p>
