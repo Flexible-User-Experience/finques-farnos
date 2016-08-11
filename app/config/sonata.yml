@@ -45,7 +45,7 @@ sonata_admin:
                 class: col-md-12
                 settings:
                     content: >
-                        <div class="alert alert-info" style="margin:40px 0"><p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Per rebre assistència tècnica o ajuda envieu un missatge a <a href="mailto:suport@flux.cat?subject=Ajuda administrador de continguts Finques Farnós">suport@flux.cat</a></p></div>
+                        <div><hr style="margin-top:40px;border-top:solid 1px #d2d6de"><p><i class="fa fa-info-circle"></i> Per rebre assistència tècnica o ajuda envieu un missatge a <a href="mailto:suport@flux.cat?subject=Ajuda administrador de continguts Finques Farnós" style="color:#000">suport@flux.cat</a></p></div>
 
 # Sonata Block
 sonata_block:
