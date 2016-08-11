@@ -40,7 +40,7 @@
                                 <option data-ng-selected="[[ c.id == city ]]" data-ng-repeat="c in form.cities" value="[[ c.id ]]">[[ c.name ]]</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="hide form-group">
                             <label for="propertyArea" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(area) ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
                             <input id="propertyArea" type="range" name="propertyArea" min="0" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="10">
                         </div>
