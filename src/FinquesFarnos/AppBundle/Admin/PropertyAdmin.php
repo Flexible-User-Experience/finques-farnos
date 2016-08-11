@@ -3,15 +3,11 @@
 namespace FinquesFarnos\AppBundle\Admin;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use FinquesFarnos\AppBundle\Entity\Property;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Liip\ImagineBundle\Imagine\Cache\CacheManager;
-use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
 /**
  * PropertyAdmin class

@@ -33,7 +33,7 @@ twig:
         - "bootstrap_3_layout.html.twig"
         - "::OhGoogleMaps/google_maps_form_widget.html.twig"
     globals:
-        google_analytics_enabled: %google_analytics_enabled%
+        google_analytics_enabled: "%google_analytics_enabled%"
         google_analytics_account: "%google_analytics_account%"
         google_maps_api_key:      "%google_maps_api_key%"
         project_title:            "%project_title%"
