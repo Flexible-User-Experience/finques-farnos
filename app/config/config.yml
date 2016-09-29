@@ -5,6 +5,7 @@ imports:
     - { resource: sonata.yml }
     - { resource: media.yml }
 
+# Framework
 framework:
     translator:      { fallback: "%locale%" }
     secret:          "%secret%"
@@ -25,7 +26,7 @@ framework:
     fragments:       ~
     http_method_override: true
 
-# Twig Configuration
+# Twig
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
@@ -39,13 +40,13 @@ twig:
         project_title:            "%project_title%"
         admin_tag_version:        "2.5.6"
 
-# Assetic Configuration
+# Assetic
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ ]
 
-# Doctrine Configuration
+# Doctrine
 doctrine:
     dbal:
         driver:   "%database_driver%"
