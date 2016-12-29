@@ -62,5 +62,6 @@
 /gulp-config.json
 /node_modules/*
 !web/media/.gitkeep
+!web/images/.gitkeep
 /web/uploads/
 !.travis.yml
