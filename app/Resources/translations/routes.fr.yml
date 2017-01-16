@@ -1,4 +1,4 @@
-front_homepage: '/'
+front_homepage: ''
 front_properties: '/proprietes'
 front_property: '/{type}/{city}/{name}/{reference}'
 front_property_prev: '/propriete/precedent/{id}'
