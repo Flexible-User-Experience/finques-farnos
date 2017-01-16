@@ -9,21 +9,21 @@ imports:
 framework:
     translator:      { fallback: "%locale%" }
     secret:          "%secret%"
-    router:
-        resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: ~
     form:            ~
     csrf_protection: ~
     validation:      { enable_annotations: true }
-    templating:
-        engines: [ "twig" ]
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
-    session:
-        handler_id:  ~
-        cookie_lifetime: 31536000  # 1 year
     fragments:       ~
+    router:
+        resource:            "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    templating:
+        engines: [ "twig" ]
+    session:
+        handler_id:      ~
+        cookie_lifetime: 31536000  # 1 year
     http_method_override: true
 
 # Twig
@@ -38,13 +38,13 @@ twig:
         google_analytics_account: "%google_analytics_account%"
         google_maps_api_key:      "%google_maps_api_key%"
         project_title:            "%project_title%"
-        admin_tag_version:        "2.5.8"
+        admin_tag_version:        "2.5.9"
 
 # Assetic
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ AppBundle ]
 
 # Doctrine
 doctrine:
@@ -140,6 +140,6 @@ genemu_form:
 
 # Orkestra PDF
 orkestra_pdf:
-  tcpdf:
-    root_dir:   "%kernel.root_dir%/../vendor/tecnickcom/tcpdf"
-    fonts_dir:  "%kernel.root_dir%/../vendor/tecnickcom/tcpdf/fonts"
+    tcpdf:
+        root_dir:  "%kernel.root_dir%/../vendor/tecnickcom/tcpdf"
+        fonts_dir: "%kernel.root_dir%/../vendor/tecnickcom/tcpdf/fonts"
