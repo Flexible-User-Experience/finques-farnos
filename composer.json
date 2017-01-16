@@ -35,7 +35,7 @@
         "ircmaxell/password-compat": "~1.0",
         "knplabs/knp-paginator-bundle": "^2.5",
         "liip/functional-test-bundle": "^1.0",
-        "liip/imagine-bundle": "^1.0",
+        "liip/imagine-bundle": "1.6.0",
         "nelmio/api-doc-bundle": "2.7.*",
         "ocramius/proxy-manager": "1.0.2",
         "oh/google-map-form-type-bundle": "dev-master",
