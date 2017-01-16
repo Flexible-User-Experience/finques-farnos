@@ -96,4 +96,32 @@ class FrontControllerTest extends AbstractBaseTest
             array('/en/property/back-to-list'),
         );
     }
+
+    /**
+     * Test HTTP request is redirected
+     *
+     * @dataProvider provideRedirectedUrls
+     *
+     * @param string $url
+     */
+    public function testFrontendPagesAreRedirected($url)
+    {
+        $client = $this->createClient();
+        $client->request('GET', $url);
+
+        $this->assertStatusCode(301, $client);
+    }
+
+    /**
+     * Urls provider.
+     *
+     * @return array
+     */
+    public function provideRedirectedUrls()
+    {
+        return array(
+            array('/ca/immobles/'),
+            array('/ca/immoble/pdf/1/'),
+        );
+    }
 }

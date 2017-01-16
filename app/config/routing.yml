@@ -41,3 +41,8 @@ presta_sitemap:
     resource: '@PrestaSitemapBundle/Resources/config/routing.yml'
     prefix:   /
     options:  { i18n: false }
+
+_redirecting_trailing_slashes:
+    resource: "@AppBundle/Controller/RedirectingController.php"
+    type:     annotation
+    options:  { i18n: false }
