@@ -37,7 +37,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/properties/", name="front_properties", options={"sitemap" = true})
+     * @Route("/properties", name="front_properties", options={"sitemap" = true})
      *
      * @param Request $request
      *
@@ -77,7 +77,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/previous/{id}/", name="front_property_prev", options={"expose" = false})
+     * @Route("/property/previous/{id}", name="front_property_prev", options={"expose" = false})
      *
      * @param Request $request
      * @param int $id
@@ -101,7 +101,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/next/{id}/", name="front_property_next", options={"expose" = false})
+     * @Route("/property/next/{id}", name="front_property_next", options={"expose" = false})
      *
      * @param Request $request
      * @param int $id
@@ -125,7 +125,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/back-to-list/", name="front_property_return", options={"expose" = false})
+     * @Route("/property/back-to-list", name="front_property_return", options={"expose" = false})
      *
      * @param Request $request
      *
@@ -142,7 +142,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/{type}/{city}/{name}/{reference}/", name="front_property", options={"expose" = true})
+     * @Route("/{type}/{city}/{name}/{reference}", name="front_property", options={"expose" = true})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"reference": "reference"}})
      *
      * @param Request $request
@@ -195,7 +195,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/property/pdf/{id}/", name="front_property_pdf", options={"expose" = false})
+     * @Route("/property/pdf/{id}", name="front_property_pdf", options={"expose" = false})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"id": "id"}})
      *
      * @param Property $property
@@ -216,7 +216,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/about-us/", name="front_about", options={"sitemap" = true})
+     * @Route("/about-us", name="front_about", options={"sitemap" = true})
      */
     public function aboutAction()
     {
@@ -224,7 +224,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/contact/", name="front_contact", options={"sitemap" = true})
+     * @Route("/contact", name="front_contact", options={"sitemap" = true})
      *
      * @param Request $request
      *
@@ -250,7 +250,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/contact/thank-you/", name="front_contact_thankyou", options={"sitemap" = true})
+     * @Route("/contact/thank-you", name="front_contact_thankyou", options={"sitemap" = true})
      */
     public function contactThankYouAction()
     {
@@ -258,7 +258,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/privacy/", name="front_privacy", options={"sitemap" = true})
+     * @Route("/privacy", name="front_privacy", options={"sitemap" = true})
      */
     public function privacyAction()
     {
@@ -266,7 +266,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/legal/", name="front_legal", options={"sitemap" = true})
+     * @Route("/legal", name="front_legal", options={"sitemap" = true})
      */
     public function legalAction()
     {
@@ -274,7 +274,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/credits/", name="front_credits", options={"sitemap" = true})
+     * @Route("/credits", name="front_credits", options={"sitemap" = true})
      */
     public function creditsAction()
     {
