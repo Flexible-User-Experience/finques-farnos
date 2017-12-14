@@ -78,7 +78,7 @@ stof_doctrine_extensions:
             timestampable:  true
             sluggable:      true
 
-# Swiftmailer Configuration
+# Swiftmailer
 swiftmailer:
     encryption: ssl
     auth_mode:  login
@@ -102,7 +102,7 @@ fos_rest:
     body_listener: true
     format_listener: true
     view:
-        view_response_listener: 'force'
+        view_response_listener: "force"
 
 # FOS User
 fos_user:

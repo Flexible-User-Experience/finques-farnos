@@ -132,8 +132,7 @@ services:
         arguments: [ "@knp_menu.factory", "@translator.default", "@security.authorization_checker", "@security.token_storage" ]
     app.menu.main:
         class: Knp\Menu\MenuItem
-        factory_service: app.menu.frontmenu
-        factory_method: createMainMenu
+        factory: [ "@app.menu.frontmenu", createMainMenu ]
         arguments: [ "@request" ]
         scope: request
         tags:
