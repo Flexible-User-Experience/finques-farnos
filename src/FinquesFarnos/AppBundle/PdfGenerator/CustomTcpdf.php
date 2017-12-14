@@ -35,26 +35,41 @@ class CustomTcpdf extends \TCPDF
         $this->Cell($this->getMargins()['right'] - $this->getMargins()['left'], 10, 'C. Corsini 61 · 43870 Amposta · Tarragona · 977 702 721 · info@finquesfarnos.com · www.finquesfarnos.com', 0, false, 'C', 0, '', 0, false, 'T', 'C');
     }
 
+    /**
+     * Set color
+     */
     public function setOrangeColor()
     {
         $this->SetTextColor(216, 111, 36);
     }
 
+    /**
+     * Set color
+     */
     public function setGreyColor()
     {
         $this->SetTextColor(101, 91, 69);
     }
 
+    /**
+     * Set color
+     */
     public function setBodyTextGreyColor()
     {
         $this->SetTextColor(100, 100, 100);
     }
 
+    /**
+     * Set color
+     */
     public function setBlackColor()
     {
         $this->SetTextColor(0, 0, 0);
     }
 
+    /**
+     * @return array
+     */
     public static function brandLineStyle()
     {
         return array(
@@ -65,6 +80,9 @@ class CustomTcpdf extends \TCPDF
         );
     }
 
+    /**
+     * @param $y
+     */
     public function drawBrandLine($y)
     {
         $this->Line($this->getMargins()['left'], $y, $this->getMargins()['right'], $y, $this->brandLineStyle());

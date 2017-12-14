@@ -3,7 +3,7 @@
 namespace FinquesFarnos\AppBundle\PdfGenerator;
 
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use FinquesFarnos\AppBundle\Entity\Property;
 
 /**
@@ -211,15 +211,11 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
      * Configure the parameters OptionsResolver.
      * Use this method to specify default and required options
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    protected function setDefaultParameters(OptionsResolverInterface $resolver)
+    protected function setDefaultParameters(OptionsResolver $resolver)
     {
-        $resolver->setRequired(array(
-                'property',
-            ));
-        $resolver->setAllowedTypes(array(
-                'property' => 'FinquesFarnos\AppBundle\Entity\Property',
-            ));
+        $resolver->setRequired(array('property'));
+        $resolver->setAllowedTypes('property', array('property' => 'FinquesFarnos\AppBundle\Entity\Property'));
     }
 }
