@@ -3495,7 +3495,7 @@
                 "MIT"
             ],
             "description": "Provides integration between Symfony and PDF generation libraries",
-            "time": "2017-11-07 23:29:22"
+            "time": "2017-11-07T23:29:22+00:00"
         },
         {
             "name": "paragonie/random_compat",
