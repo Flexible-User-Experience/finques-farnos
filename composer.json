@@ -22,6 +22,7 @@
         "doctrine/migrations": "^1.0",
         "doctrine/orm": "^2.4.8",
         "egulias/email-validator": "^1.2",
+        "excelwebzone/recaptcha-bundle": "^1.4",
         "friendsofsymfony/jsrouting-bundle": "1.5.*",
         "friendsofsymfony/rest-bundle": "^1.7",
         "genemu/form-bundle": "^2.0",

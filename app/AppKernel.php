@@ -48,6 +48,7 @@ class AppKernel extends Kernel
             new JMS\TranslationBundle\JMSTranslationBundle(),
             new Presta\SitemapBundle\PrestaSitemapBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
+            new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
             // App bundles
             new FinquesFarnos\UserBundle\UserBundle(),
             new FinquesFarnos\AppBundle\AppBundle(),
