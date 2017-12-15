@@ -8,11 +8,11 @@ imports:
 # Framework
 framework:
     translator:      { fallback: "%locale%" }
+    validation:      { enable_annotations: true }
     secret:          "%secret%"
+    default_locale:  "%locale%"
     form:            ~
     csrf_protection: ~
-    validation:      { enable_annotations: true }
-    default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
     fragments:       ~
@@ -38,7 +38,7 @@ twig:
         google_analytics_account: "%google_analytics_account%"
         google_maps_api_key:      "%google_maps_api_key%"
         project_title:            "%project_title%"
-        admin_tag_version:        "2.6.2"
+        admin_tag_version:        "2.6.3"
 
 # Assetic
 assetic:
@@ -134,9 +134,14 @@ knp_paginator:
     template:
         pagination: "KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig"
 
-# Genemu Bundle
+# Genemu
 genemu_form:
     date: ~
+
+# Recaptcha
+ewz_recaptcha:
+    public_key:  "%recaptcha_site_key%"
+    private_key: "%recaptcha_secret%"
 
 # Orkestra PDF
 orkestra_pdf:
