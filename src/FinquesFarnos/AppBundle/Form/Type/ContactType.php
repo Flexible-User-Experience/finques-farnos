@@ -2,6 +2,8 @@
 
 namespace FinquesFarnos\AppBundle\Form\Type;
 
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,16 +12,16 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
- * ContactType class
+ * ContactType class.
  *
  * @category FormType
- * @package  FinsquesFarnos\AppBundle\Form\Type
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class ContactType extends AbstractType
 {
     /**
-     * Build form
+     * Build form.
      *
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -31,32 +33,51 @@ class ContactType extends AbstractType
                 'name',
                 TextType::class,
                 array(
-                    'label' => 'contact.form.name'
+                    'label' => 'contact.form.name',
                 )
             )
             ->add(
                 'phone',
                 TextType::class,
                 array(
-                    'label' => 'contact.form.phone'
+                    'label' => 'contact.form.phone',
                 )
             )
             ->add(
                 'email',
                 EmailType::class,
                 array(
-                    'label' => 'contact.form.email'
+                    'label' => 'contact.form.email',
                 )
             )
             ->add(
                 'message',
                 TextareaType::class,
                 array(
-                    'label'  => 'contact.form.message',
+                    'label' => 'contact.form.message',
                     'mapped' => false,
-                    'attr'   => array('rows' => '5'),
+                    'attr' => array('rows' => '4'),
                 )
-            );
+            )
+            ->add(
+                'captcha',
+                EWZRecaptchaType::class,
+                array(
+                    'label' => ' ',
+                    'attr' => array(
+                        'options' => array(
+                            'theme' => 'light',
+                            'type' => 'image',
+                            'size' => 'compact',
+                        ),
+                    ),
+                    'mapped' => false,
+                    'constraints' => array(
+                        new RecaptchaTrue(),
+                    ),
+                )
+            )
+        ;
     }
 
     /**
@@ -72,7 +93,7 @@ class ContactType extends AbstractType
     }
 
     /**
-     * Get form name
+     * Get form name.
      *
      * @return string
      */
