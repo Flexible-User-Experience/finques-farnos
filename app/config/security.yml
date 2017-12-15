@@ -33,5 +33,6 @@ security:
             anonymous: true
     access_control:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/sonata/, role: ROLE_ADMIN }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: [ ROLE_USER, ROLE_ADMIN ] }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
