@@ -1,8 +1,8 @@
 {
   "name": "finques-farnos",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "authors": [
-    "David Romaní<david@flux.cat>"
+    "David Romaní <david@flux.cat>"
   ],
   "description": "Finques Farnós webpage assets",
   "moduleType": [
@@ -34,7 +34,7 @@
     "moment": "2.8.*",
     "holderjs": "~2.4.1",
     "restangular": "~1.4.0",
-    "angular-google-maps": "~2.3.0",
+    "angular-google-maps": "~2.4.0",
     "numeral": "~1.5.3",
     "checklist-model": "~0.1.3",
     "awesome-bootstrap-checkbox": "~0.2.3"
