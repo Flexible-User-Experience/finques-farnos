@@ -1,8 +1,8 @@
 {
   "name": "finques-farnos",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "authors": [
-    "David Romaní<david@flux.cat>"
+    "David Romaní <david@flux.cat>"
   ],
   "description": "Finques Farnós webpage assets",
   "moduleType": [
