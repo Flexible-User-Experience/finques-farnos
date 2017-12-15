@@ -27,7 +27,11 @@
 
 # Assets and user uploads
 /web/bundles/
-/web/uploads/*
+!/web/uploads/images/1.jpg
+!/web/uploads/images/2.jpg
+!/web/uploads/images/3.jpg
+!/web/uploads/images/4.jpg
+!/web/uploads/images/5.jpg
 !/web/uploads/.gitkeep
 /web/media/*
 !/web/media/.gitkeep

@@ -33,7 +33,7 @@ class ApiControllerTest extends AbstractBaseTest
     public function provideUrls()
     {
         return array(
-            array('/api/doc/'),
+            array('/api/doc'),
             array('/api/get-properties-form-filter.json'),
             array('/api/set-accept-cookie-warning.json'),
             array('/api/get-properties-filtered/-1/-1/-1/0/0/0.json'),

@@ -1,5 +1,5 @@
 FinquesFarnos\AppBundle\Entity\City:
-    city{1..5}:
+    city{1..2}:
         name: <city()>
         enabled: <boolean(90)>
 
@@ -36,12 +36,6 @@ FinquesFarnos\AppBundle\Entity\Type:
         name: "àtic"
     type1:
         name: "casa"
-    type2:
-        name: "local comercial"
-    type3:
-        name: "pis"
-    type4:
-        name: "apartament"
 
 FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation:
     typeEs0:
@@ -54,21 +48,6 @@ FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation:
         locale: "es"
         field: "name"
         content: "casa"
-    typeEs2:
-        object: @type2
-        locale: "es"
-        field: "name"
-        content: "local comercial"
-    typeEs3:
-        object: @type3
-        locale: "es"
-        field: "name"
-        content: "piso"
-    typeEs4:
-        object: @type4
-        locale: "es"
-        field: "name"
-        content: "apartamento"
     typeEn0:
         object: @type0
         locale: "en"
@@ -79,32 +58,17 @@ FinquesFarnos\AppBundle\Entity\Translations\TypeTranslation:
         locale: "en"
         field: "name"
         content: "house"
-    typeEn2:
-        object: @type2
-        locale: "en"
-        field: "name"
-        content: "business premises"
-    typeEn3:
-        object: @type3
-        locale: "en"
-        field: "name"
-        content: "flat"
-    typeEn4:
-        object: @type4
-        locale: "en"
-        field: "name"
-        content: "apartment"
 
 FinquesFarnos\AppBundle\Entity\Property:
-    property{1..10}:
+    property{1..2}:
         categories:
             - @category0
         reference: <bothify('####??')>
         showInHomepage: <boolean(3)>
         showPriceOnlyWithNumbers: <boolean(85)>
         address: <streetAddress()>
-        city: @city<numberBetween(1, 5)>
-        type: @type<numberBetween(0, 4)>
+        city: @city<numberBetween(1, 2)>
+        type: @type<numberBetween(0, 1)>
         name: <sentence(4)>
         description: <sentence(40)>
         squareMeters: <numberBetween(40, 300)>
@@ -123,15 +87,15 @@ FinquesFarnos\AppBundle\Entity\Property:
         enabled: true
         sold: <boolean(10)>
         reserved: <boolean(30)>
-    property{11..20}:
+    property{3..4}:
         categories:
             - @category1
         reference: <bothify('####??')>
         showInHomepage: <boolean(3)>
         showPriceOnlyWithNumbers: <boolean(85)>
         address: <streetAddress()>
-        city: @city<numberBetween(1, 5)>
-        type: @type<numberBetween(0, 4)>
+        city: @city<numberBetween(1, 2)>
+        type: @type<numberBetween(0, 1)>
         name: <sentence(4)>
         description: <sentence(40)>
         squareMeters: <numberBetween(40, 300)>
@@ -150,15 +114,15 @@ FinquesFarnos\AppBundle\Entity\Property:
         enabled: <boolean(90)>
         sold: <boolean(10)>
         reserved: <boolean(30)>
-    property21:
+    property5:
         categories:
             - @category0
             - @category1
         reference: <bothify('####??')>
         showInHomepage: <boolean(3)>
         showPriceOnlyWithNumbers: <boolean(85)>
-        city: @city<numberBetween(1, 5)>
-        type: @type<numberBetween(0, 4)>
+        city: @city<numberBetween(1, 2)>
+        type: @type<numberBetween(0, 1)>
         name: <sentence(4)>
         description: <sentence(40)>
         squareMeters: <numberBetween(40, 300)>
@@ -179,32 +143,32 @@ FinquesFarnos\AppBundle\Entity\Property:
         reserved: <boolean(30)>
 
 FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation:
-    propertyNameEs{1..21}:
+    propertyNameEs{1..5}:
         object: @property<current()>
         locale: "es"
         field: "name"
         content: ESP-<sentence(4)>
-    propertyDescriptionEs{1..21}:
+    propertyDescriptionEs{1..5}:
         object: @property<current()>
         locale: "es"
         field: "description"
         content: ESP-<sentence(40)>
-    propertyCityEs{1..21}:
+    propertyCityEs{1..5}:
         object: @property<current()>
         locale: "es"
         field: "city"
         content: ESP-<city()>
-    propertyNameEn{1..21}:
+    propertyNameEn{1..5}:
         object: @property<current()>
         locale: "en"
         field: "name"
         content: ENG-<sentence(4)>
-    propertyDescriptionEn{1..21}:
+    propertyDescriptionEn{1..5}:
         object: @property<current()>
         locale: "en"
         field: "description"
         content: ENG-<sentence(40)>
-    propertyCityEn{1..21}:
+    propertyCityEn{1..5}:
         object: @property<current()>
         locale: "en"
         field: "city"
@@ -212,38 +176,16 @@ FinquesFarnos\AppBundle\Entity\Translations\PropertyTranslation:
 
 FinquesFarnos\AppBundle\Entity\PropertyVisit:
     visit{1..9}:
-        property: @property<numberBetween(1, 21)>
+        property: @property<numberBetween(1, 5)>
         createdAt: <dateTimeThisYear()>
 
 FinquesFarnos\AppBundle\Entity\ImageProperty:
     image{1..5}:
-        property: @property<numberBetween(1, 21)>
+        property: @property<numberBetween(1, 5)>
         imageName: <numberBetween(1, 5)>.jpg
         metaTitle: <sentence(3)>
         metaAlt: <sentence(3)>
         position: <numberBetween(1, 5)>
-
-FinquesFarnos\AppBundle\Entity\Translations\ImagePropertyTranslation:
-    imageMetaTitleEs{1..5}:
-        object: @image<current()>
-        locale: "es"
-        field: "metaTitle"
-        content: ESP-<sentence(3)>
-    imageMetaAltEs{1..5}:
-        object: @image<current()>
-        locale: "es"
-        field: "metaAlt"
-        content: ESP-<sentence(3)>
-    imageMetaTitleEn{1..5}:
-        object: @image<current()>
-        locale: "en"
-        field: "metaTitle"
-        content: ENG-<sentence(3)>
-    imageMetaAltEn{1..5}:
-        object: @image<current()>
-        locale: "en"
-        field: "metaAlt"
-        content: ENG-<sentence(3)>
 
 FinquesFarnos\AppBundle\Entity\ImageSlider:
     slider{1..5}:
@@ -253,54 +195,32 @@ FinquesFarnos\AppBundle\Entity\ImageSlider:
         link: <url()>
         position: <current()>
 
-FinquesFarnos\AppBundle\Entity\Translations\ImageSliderTranslation:
-    sliderMetaTitleEs{1..5}:
-        object: @slider<current()>
-        locale: "es"
-        field: "metaTitle"
-        content: ESP-<sentence(3)>
-    sliderMetaAltEs{1..5}:
-        object: @slider<current()>
-        locale: "es"
-        field: "metaAlt"
-        content: ESP-<sentence(3)>
-    sliderMetaTitleEn{1..5}:
-        object: @slider<current()>
-        locale: "en"
-        field: "metaTitle"
-        content: ENG-<sentence(3)>
-    sliderMetaAltEn{1..5}:
-        object: @slider<current()>
-        locale: "en"
-        field: "metaAlt"
-        content: ENG-<sentence(3)>
-
 FinquesFarnos\UserBundle\Entity\User:
     admin:
         username: <{private_admin_test_user}>
         plainPassword: <{private_admin_test_pass}>
         email: "admin@admin.com"
-        firstname: Roberto
-        lastname: Palomeque
+        firstname: John
+        lastname: Smith
         enabled: true
         roles:
             - ROLE_SUPER_ADMIN
 
 FinquesFarnos\AppBundle\Entity\Contact:
-    contact{1..5}:
+    contact{1..2}:
         name: <firstName()> <lastName()>
         phone: <phoneNumber()>
         email: <email()>
 
 FinquesFarnos\AppBundle\Entity\ContactMessage:
-    contactMessage{1..5}:
-        contact: @contact<numberBetween(1, 5)>
-        property: @property<numberBetween(1, 21)>
+    contactMessage{1..2}:
+        contact: @contact<numberBetween(1, 2)>
+        property: @property<numberBetween(1, 2)>
         text: <sentence(10)>
         createdAt: <dateTimeThisYear()>
 
 FinquesFarnos\AppBundle\Entity\Customer:
-    customer{1..2}:
+    customer1:
         name: <firstName()> <lastName()>
         phone: <phoneNumber()>
         mobile: <phoneNumber()>
