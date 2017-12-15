@@ -15,7 +15,7 @@ angular.module('propertiesApp', [
     }]).config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
             key: 'AIzaSyB332MhD5g142kIo79ZagVcXUidQwHbWwk',
-            v: '3.23',
+            v: '3.30',
             language: 'es',
             libraries: 'drawing,geometry,visualization'
         });
