@@ -3,27 +3,27 @@
 namespace FinquesFarnos\AppBundle\PdfGenerator;
 
 /**
- * Class CustomTcpdf
+ * Class CustomTcpdf.
  *
  * @category PdfGenerator
- * @package  FinquesFarnos\AppBundle\PdfGenerator
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class CustomTcpdf extends \TCPDF
 {
     /**
-     * Page header
+     * Page header.
      */
     public function Header()
     {
         $this->drawBrandLine(28);
-        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-ff.png', $this->getMargins()['left'], 5, 45, 0, 'PNG', 'http://www.finquesfarnos.com', '', false, 150);
-        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-pdf-api.jpg', $this->getMargins()['left'] + 122, 13, 15, 0);
-        $this->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'logo-pdf-rm.jpg', $this->getMargins()['left'] + 141, 13, 40, 0);
+        $this->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'logo-ff.png', $this->getMargins()['left'], 5, 45, 0, 'PNG', 'https://www.finquesfarnos.com', '', false, 150);
+        $this->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'logo-pdf-api.jpg', $this->getMargins()['left'] + 122, 13, 15, 0);
+        $this->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'logo-pdf-rm.jpg', $this->getMargins()['left'] + 141, 13, 40, 0);
     }
 
     /**
-     * Page footer
+     * Page footer.
      */
     public function Footer()
     {
@@ -36,7 +36,7 @@ class CustomTcpdf extends \TCPDF
     }
 
     /**
-     * Set color
+     * Set color.
      */
     public function setOrangeColor()
     {
@@ -44,7 +44,7 @@ class CustomTcpdf extends \TCPDF
     }
 
     /**
-     * Set color
+     * Set color.
      */
     public function setGreyColor()
     {
@@ -52,7 +52,7 @@ class CustomTcpdf extends \TCPDF
     }
 
     /**
-     * Set color
+     * Set color.
      */
     public function setBodyTextGreyColor()
     {
@@ -60,7 +60,7 @@ class CustomTcpdf extends \TCPDF
     }
 
     /**
-     * Set color
+     * Set color.
      */
     public function setBlackColor()
     {
@@ -81,7 +81,7 @@ class CustomTcpdf extends \TCPDF
     }
 
     /**
-     * @param $y
+     * @param int $y
      */
     public function drawBrandLine($y)
     {

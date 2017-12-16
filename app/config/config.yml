@@ -38,7 +38,7 @@ twig:
         google_analytics_account: "%google_analytics_account%"
         google_maps_api_key:      "%google_maps_api_key%"
         project_title:            "%project_title%"
-        admin_tag_version:        "2.6.5"
+        admin_tag_version:        "2.6.6"
 
 # Assetic
 assetic:
@@ -70,8 +70,8 @@ doctrine_migrations:
 
 # Stof Doctrine Extensions
 stof_doctrine_extensions:
-    default_locale:         "%locale%"
-    translation_fallback:   true
+    default_locale:       "%locale%"
+    translation_fallback: true
     orm:
         default:
             translatable:   true
@@ -107,9 +107,9 @@ fos_rest:
 
 # FOS User
 fos_user:
-    db_driver:      orm
-    firewall_name:  main
-    user_class:     FinquesFarnos\UserBundle\Entity\User
+    db_driver:     orm
+    firewall_name: main
+    user_class:    FinquesFarnos\UserBundle\Entity\User
     group:
         group_class:   FinquesFarnos\UserBundle\Entity\Group
         group_manager: sonata.user.orm.group_manager
