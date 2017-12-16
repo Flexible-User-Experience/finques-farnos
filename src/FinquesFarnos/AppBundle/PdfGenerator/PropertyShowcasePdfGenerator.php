@@ -57,6 +57,19 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $builder->Header();
 
         // BODY
+        // --> images
+        $coverImage = $property->getFirstEnabledImage();
+        if (!is_null($coverImage)) {
+            $builder->Image(
+                $this->krd.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'web'.$this->uh->asset($coverImage, 'imageFile'),
+                $builder->getMargins()['left'],                                               // abscissa of the upper-left corner
+                32,                                                                           // ordinate of the upper-left corner
+                210 - $builder->getMargins()['left'] - $builder->getMargins()['right'],       // width
+                130,                                                                          // height
+                '',                                                                           // image file extension
+                $this->cm->generateUrl($this->uh->asset($coverImage, 'imageFile'), '757x450') // link
+            );
+        }
         // --> left text
         $y = 166;
         $builder->setCellPaddings(0, 0, 0, 1);

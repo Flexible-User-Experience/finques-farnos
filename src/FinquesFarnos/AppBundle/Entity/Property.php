@@ -10,10 +10,10 @@ use Oh\GoogleMapFormTypeBundle\Validator\Constraints as OhAssert;
 use JMS\Serializer\Annotation as JMS;
 
 /**
- * Property class
+ * Property class.
  *
  * @category Entity
- * @package  FinquesFarnos\AppBundle\Entity
+ *
  * @author   David Romaní <david@flux.cat>
  *
  * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\PropertyRepository")
@@ -28,6 +28,7 @@ class Property extends Base
 
     /**
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="properties", cascade={"persist"})
+     *
      * @var ArrayCollection
      */
     private $categories;
@@ -35,6 +36,7 @@ class Property extends Base
     /**
      * @ORM\ManyToOne(targetEntity="Type", inversedBy="properties", fetch="EAGER")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="type_id", referencedColumnName="id")})
+     *
      * @var Type
      */
     private $type;
@@ -42,6 +44,7 @@ class Property extends Base
     /**
      * @ORM\ManyToOne(targetEntity="Customer", inversedBy="properties", fetch="EAGER")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="customer_id", referencedColumnName="id")})
+     *
      * @var Customer
      */
     private $customer;
@@ -49,12 +52,14 @@ class Property extends Base
     /**
      * @ORM\OneToMany(targetEntity="ImageProperty", mappedBy="property", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
+     *
      * @var ArrayCollection
      */
     private $images;
 
     /**
      * @ORM\OneToMany(targetEntity="ContactMessage", mappedBy="property", cascade={"persist", "remove"})
+     *
      * @var ArrayCollection
      */
     private $messages;
@@ -63,6 +68,7 @@ class Property extends Base
      * @ORM\Column(type="string", length=16, name="reference", nullable=false, unique=true)
      * @JMS\Groups({"api"})
      * @Assert\Regex("/^[0-9a-zA-Z]+-?[0-9a-zA-Z]+$/", match=true, message="Només lletres i números, opcionalment separats entre mig per 1 guionet (-). Sense caràcters especials")
+     *
      * @var string
      */
     private $reference;
@@ -71,6 +77,7 @@ class Property extends Base
      * @ORM\Column(type="string", length=255, name="name", nullable=false)
      * @Gedmo\Translatable
      * @JMS\Groups({"api"})
+     *
      * @var string
      */
     private $name;
@@ -79,6 +86,7 @@ class Property extends Base
      * @ORM\Column(type="string", length=255, name="name_slug", nullable=false)
      * @Gedmo\Slug(fields={"name"})
      * @JMS\Groups({"api"})
+     *
      * @var string
      */
     private $nameSlug;
@@ -87,6 +95,7 @@ class Property extends Base
      * @ORM\Column(type="text", length=4000, name="description", nullable=true)
      * @Gedmo\Translatable
      * @JMS\Groups({"api"})
+     *
      * @var string
      */
     private $description;
@@ -94,12 +103,14 @@ class Property extends Base
     /**
      * @ORM\Column(name="square_meters", type="integer", nullable=true)
      * @JMS\Groups({"api"})
-     * @var integer
+     *
+     * @var int
      */
     private $squareMeters = 0;
 
     /**
      * @ORM\Column(type="string", length=255, name="address", nullable=true)
+     *
      * @var string
      */
     private $address;
@@ -108,6 +119,7 @@ class Property extends Base
      * @ORM\ManyToOne(targetEntity="City", inversedBy="properties", fetch="EAGER")
      * @ORM\JoinColumns({@ORM\JoinColumn(name="city_id", referencedColumnName="id")})
      * @JMS\Groups({"api"})
+     *
      * @var City
      */
     private $city;
@@ -115,6 +127,7 @@ class Property extends Base
     /**
      * @ORM\Column(name="price", type="float", precision=2, nullable=true)
      * @JMS\Groups({"api"})
+     *
      * @var float
      */
     private $price = 0.0;
@@ -122,6 +135,7 @@ class Property extends Base
     /**
      * @ORM\Column(name="price_old", type="float", precision=2, nullable=true)
      * @JMS\Groups({"api"})
+     *
      * @var float
      */
     private $oldPrice = 0.0;
@@ -129,86 +143,99 @@ class Property extends Base
     /**
      * @ORM\Column(name="rooms", type="integer", nullable=true)
      * @JMS\Groups({"api"})
-     * @var integer
+     *
+     * @var int
      */
     private $rooms = 0;
 
     /**
      * @ORM\Column(name="bathrooms", type="integer", nullable=true)
      * @JMS\Groups({"api"})
-     * @var integer
+     *
+     * @var int
      */
     private $bathrooms = 0;
 
     /**
      * @ORM\Column(name="hide_price", type="boolean", nullable=false)
      * @JMS\Groups({"api"})
-     * @var boolean
+     *
+     * @var bool
      */
     private $hidePrice = false;
 
     /**
      * @ORM\Column(name="offer_discount", type="boolean", nullable=false)
      * @JMS\Groups({"api"})
-     * @var boolean
+     *
+     * @var bool
      */
     private $offerDiscount = false;
 
     /**
      * @ORM\Column(name="offer_special", type="boolean", nullable=false)
      * @JMS\Groups({"api"})
-     * @var boolean
+     *
+     * @var bool
      */
     private $offerSpecial = false;
 
     /**
      * @ORM\Column(name="show_in_homepage", type="boolean", nullable=false)
-     * @var boolean
+     *
+     * @var bool
      */
     private $showInHomepage = false;
 
     /**
      * @ORM\Column(name="show_price_only_with_numbers", type="boolean", nullable=false)
      * @JMS\Groups({"api"})
-     * @var boolean
+     *
+     * @var bool
      */
     private $showPriceOnlyWithNumbers = true;
 
     /**
      * @ORM\Column(name="reserved", type="boolean", nullable=false)
      * @JMS\Groups({"api"})
-     * @var boolean
+     *
+     * @var bool
      */
     private $reserved = false;
 
     /**
      * @ORM\Column(name="sold", type="boolean", nullable=false)
      * @JMS\Groups({"api"})
-     * @var boolean
+     *
+     * @var bool
      */
     private $sold = false;
 
     /**
      * @ORM\Column(name="sold_at", type="datetime", nullable=true)
+     *
      * @var \DateTime
      */
     private $soldAt;
 
     /**
      * @ORM\Column(name="energy_class", type="integer", nullable=true)
-     * @var integer
+     *
+     * @var int
      */
     private $energyClass = 0;
 
     /**
      * @ORM\Column(name="show_map_type", type="integer", nullable=false)
-     * @var integer
+     *
+     * @var int
      */
     private $showMapType = 0;
 
     /**
      * @ORM\Column(type="float", precision=14, name="gps_longitude", nullable=false)
      * @Assert\Range(min = -180, max = 180)
+     *
      * @var float
      */
     private $gpsLongitude = 0.5801695000000109;
@@ -216,6 +243,7 @@ class Property extends Base
     /**
      * @ORM\Column(type="float", precision=14, name="gps_latitude", nullable=false)
      * @Assert\Range(min = -90, max = 90)
+     *
      * @var float
      */
     private $gpsLatitude = 40.7067997;
@@ -223,26 +251,30 @@ class Property extends Base
     /**
      * @ORM\Column(name="radius", type="integer", nullable=true)
      * @JMS\Groups({"api"})
-     * @var integer
+     *
+     * @var int
      */
     private $radius = 0;
 
     /**
      * @ORM\OneToMany(targetEntity="FinquesFarnos\AppBundle\Entity\PropertyVisit", mappedBy="property", cascade={"persist", "remove"})
      * @ORM\OrderBy({"createdAt" = "ASC"})
+     *
      * @var ArrayCollection
      */
     private $visits;
 
     /**
      * @ORM\Column(name="total_visits", type="integer", nullable=true)
-     * @var integer
+     *
+     * @var int
      */
     private $totalVisits = 0;
 
     /**
      * @JMS\SerializedName("first_image_path")
      * @JMS\Groups({"api"})
+     *
      * @var string
      */
     private $virtualFirstEnabledImageUrl;
@@ -250,6 +282,7 @@ class Property extends Base
     /**
      * @JMS\SerializedName("first_image_path_big")
      * @JMS\Groups({"api"})
+     *
      * @var string
      */
     private $virtualFirstEnabledImageUrlBig;
@@ -257,6 +290,7 @@ class Property extends Base
     /**
      * @JMS\SerializedName("categories_string")
      * @JMS\Groups({"api"})
+     *
      * @var string
      */
     private $virtualCategoriesString;
@@ -268,12 +302,13 @@ class Property extends Base
      *     cascade={"persist", "remove"}
      * )
      * @Assert\Valid(deep = true)
+     *
      * @var ArrayCollection
      */
     private $translations;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -285,7 +320,7 @@ class Property extends Base
     }
 
     /**
-     * To String
+     * To String.
      *
      * @return string
      */
@@ -295,7 +330,7 @@ class Property extends Base
     }
 
     /**
-     * Set reference
+     * Set reference.
      *
      * @param string $reference
      *
@@ -309,7 +344,7 @@ class Property extends Base
     }
 
     /**
-     * Get reference
+     * Get reference.
      *
      * @return string
      */
@@ -319,7 +354,7 @@ class Property extends Base
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -333,7 +368,7 @@ class Property extends Base
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -343,7 +378,7 @@ class Property extends Base
     }
 
     /**
-     * Set name slug
+     * Set name slug.
      *
      * @param string $nameSlug
      *
@@ -357,7 +392,7 @@ class Property extends Base
     }
 
     /**
-     * Get name slug
+     * Get name slug.
      *
      * @return string
      */
@@ -367,7 +402,7 @@ class Property extends Base
     }
 
     /**
-     * Set Bathrooms
+     * Set Bathrooms.
      *
      * @param int $bathrooms bathrooms
      *
@@ -381,7 +416,7 @@ class Property extends Base
     }
 
     /**
-     * Get Bathrooms
+     * Get Bathrooms.
      *
      * @return int
      */
@@ -391,7 +426,7 @@ class Property extends Base
     }
 
     /**
-     * Set Description
+     * Set Description.
      *
      * @param string $description description
      *
@@ -405,7 +440,7 @@ class Property extends Base
     }
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string
      */
@@ -415,7 +450,7 @@ class Property extends Base
     }
 
     /**
-     * Set SquareMeters
+     * Set SquareMeters.
      *
      * @param int $squareMeters
      *
@@ -429,7 +464,7 @@ class Property extends Base
     }
 
     /**
-     * Get SquareMeters
+     * Get SquareMeters.
      *
      * @return int
      */
@@ -439,7 +474,7 @@ class Property extends Base
     }
 
     /**
-     * Set EnergyClass
+     * Set EnergyClass.
      *
      * @param int $energyClass energyClass
      *
@@ -453,7 +488,7 @@ class Property extends Base
     }
 
     /**
-     * Get EnergyClass
+     * Get EnergyClass.
      *
      * @return int
      */
@@ -463,7 +498,7 @@ class Property extends Base
     }
 
     /**
-     * Set GpsLatitude
+     * Set GpsLatitude.
      *
      * @param float $gpsLatitude gpsLatitude
      *
@@ -477,7 +512,7 @@ class Property extends Base
     }
 
     /**
-     * Get GpsLatitude
+     * Get GpsLatitude.
      *
      * @return float
      */
@@ -487,7 +522,7 @@ class Property extends Base
     }
 
     /**
-     * Set Radius
+     * Set Radius.
      *
      * @param int $radius
      *
@@ -501,7 +536,7 @@ class Property extends Base
     }
 
     /**
-     * Get Radius
+     * Get Radius.
      *
      * @return int
      */
@@ -511,7 +546,7 @@ class Property extends Base
     }
 
     /**
-     * Set GpsLongitude
+     * Set GpsLongitude.
      *
      * @param float $gpsLongitude gpsLongitude
      *
@@ -525,7 +560,7 @@ class Property extends Base
     }
 
     /**
-     * Get GpsLongitude
+     * Get GpsLongitude.
      *
      * @return float
      */
@@ -535,9 +570,9 @@ class Property extends Base
     }
 
     /**
-     * Set OfferDiscount
+     * Set OfferDiscount.
      *
-     * @param boolean $offerDiscount offerDiscount
+     * @param bool $offerDiscount offerDiscount
      *
      * @return $this
      */
@@ -549,9 +584,9 @@ class Property extends Base
     }
 
     /**
-     * Get HidePrice
+     * Get HidePrice.
      *
-     * @return boolean
+     * @return bool
      */
     public function getHidePrice()
     {
@@ -559,9 +594,9 @@ class Property extends Base
     }
 
     /**
-     * Set HidePrice
+     * Set HidePrice.
      *
-     * @param boolean $hidePrice HidePrice
+     * @param bool $hidePrice HidePrice
      *
      * @return $this
      */
@@ -573,9 +608,9 @@ class Property extends Base
     }
 
     /**
-     * Get OfferDiscount
+     * Get OfferDiscount.
      *
-     * @return boolean
+     * @return bool
      */
     public function getOfferDiscount()
     {
@@ -583,9 +618,9 @@ class Property extends Base
     }
 
     /**
-     * Set OfferSpecial
+     * Set OfferSpecial.
      *
-     * @param boolean $offerSpecial offerSpecial
+     * @param bool $offerSpecial offerSpecial
      *
      * @return $this
      */
@@ -597,9 +632,9 @@ class Property extends Base
     }
 
     /**
-     * Get OfferSpecial
+     * Get OfferSpecial.
      *
-     * @return boolean
+     * @return bool
      */
     public function getOfferSpecial()
     {
@@ -607,7 +642,7 @@ class Property extends Base
     }
 
     /**
-     * Set OldPrice
+     * Set OldPrice.
      *
      * @param float $oldPrice oldPrice
      *
@@ -621,7 +656,7 @@ class Property extends Base
     }
 
     /**
-     * Get OldPrice
+     * Get OldPrice.
      *
      * @return float
      */
@@ -631,7 +666,7 @@ class Property extends Base
     }
 
     /**
-     * Set Price
+     * Set Price.
      *
      * @param float $price price
      *
@@ -645,7 +680,7 @@ class Property extends Base
     }
 
     /**
-     * Get Price
+     * Get Price.
      *
      * @return float
      */
@@ -655,27 +690,27 @@ class Property extends Base
     }
 
     /**
-     * Get decoreted Price
+     * Get decoreted Price.
      *
      * @return float
      */
     public function getDecoratedPrice()
     {
-        return number_format($this->getPrice(), 0, '\'', '.') . ' €';
+        return number_format($this->getPrice(), 0, '\'', '.').' €';
     }
 
     /**
-     * Get decoreted Price
+     * Get decoreted Price.
      *
      * @return float
      */
     public function getDecoratedOldPrice()
     {
-        return number_format($this->getOldPrice(), 0, '\'', '.') . ' €';
+        return number_format($this->getOldPrice(), 0, '\'', '.').' €';
     }
 
     /**
-     * Set Rooms
+     * Set Rooms.
      *
      * @param int $rooms rooms
      *
@@ -689,7 +724,7 @@ class Property extends Base
     }
 
     /**
-     * Get Rooms
+     * Get Rooms.
      *
      * @return int
      */
@@ -699,7 +734,7 @@ class Property extends Base
     }
 
     /**
-     * Set Address
+     * Set Address.
      *
      * @param string $address address
      *
@@ -713,7 +748,7 @@ class Property extends Base
     }
 
     /**
-     * Get Address
+     * Get Address.
      *
      * @return string
      */
@@ -723,7 +758,7 @@ class Property extends Base
     }
 
     /**
-     * Set city
+     * Set city.
      *
      * @param City|null $city
      *
@@ -737,7 +772,7 @@ class Property extends Base
     }
 
     /**
-     * Get city
+     * Get city.
      *
      * @return City
      */
@@ -747,9 +782,9 @@ class Property extends Base
     }
 
     /**
-     * Set showInHomepage
+     * Set showInHomepage.
      *
-     * @param boolean $showInHomepage
+     * @param bool $showInHomepage
      *
      * @return $this
      */
@@ -761,9 +796,9 @@ class Property extends Base
     }
 
     /**
-     * Get showInHomepage
+     * Get showInHomepage.
      *
-     * @return boolean
+     * @return bool
      */
     public function getShowInHomepage()
     {
@@ -771,7 +806,7 @@ class Property extends Base
     }
 
     /**
-     * Set Type
+     * Set Type.
      *
      * @param \FinquesFarnos\AppBundle\Entity\Type $type type
      *
@@ -785,7 +820,7 @@ class Property extends Base
     }
 
     /**
-     * Get Type
+     * Get Type.
      *
      * @return \FinquesFarnos\AppBundle\Entity\Type
      */
@@ -811,7 +846,7 @@ class Property extends Base
     }
 
     /**
-     * Add category
+     * Add category.
      *
      * @param Category $category
      *
@@ -826,7 +861,7 @@ class Property extends Base
     }
 
     /**
-     * Remove category
+     * Remove category.
      *
      * @param Category $category
      *
@@ -840,7 +875,7 @@ class Property extends Base
     }
 
     /**
-     * Set categories
+     * Set categories.
      *
      * @param ArrayCollection $categories
      *
@@ -854,7 +889,7 @@ class Property extends Base
     }
 
     /**
-     * Get categories
+     * Get categories.
      *
      * @return ArrayCollection
      */
@@ -864,7 +899,7 @@ class Property extends Base
     }
 
     /**
-     * Add image
+     * Add image.
      *
      * @param ImageProperty $image
      *
@@ -879,7 +914,7 @@ class Property extends Base
     }
 
     /**
-     * Remove image
+     * Remove image.
      *
      * @param ImageProperty $image
      *
@@ -893,7 +928,7 @@ class Property extends Base
     }
 
     /**
-     * Set Images
+     * Set Images.
      *
      * @param ArrayCollection $images images
      *
@@ -907,7 +942,7 @@ class Property extends Base
     }
 
     /**
-     * Get Images
+     * Get Images.
      *
      * @return ArrayCollection
      */
@@ -917,7 +952,7 @@ class Property extends Base
     }
 
     /**
-     * Add message
+     * Add message.
      *
      * @param ContactMessage $message
      *
@@ -932,7 +967,7 @@ class Property extends Base
     }
 
     /**
-     * Remove message
+     * Remove message.
      *
      * @param ContactMessage $message
      *
@@ -962,7 +997,7 @@ class Property extends Base
     }
 
     /**
-     * Add translation
+     * Add translation.
      *
      * @param Translations\PropertyTranslation $translation
      *
@@ -979,7 +1014,7 @@ class Property extends Base
     }
 
     /**
-     * Remove translation
+     * Remove translation.
      *
      * @param Translations\PropertyTranslation $translation
      *
@@ -993,7 +1028,7 @@ class Property extends Base
     }
 
     /**
-     * Set translations
+     * Set translations.
      *
      * @param ArrayCollection $translations
      *
@@ -1007,7 +1042,7 @@ class Property extends Base
     }
 
     /**
-     * Get translations
+     * Get translations.
      *
      * @return ArrayCollection
      */
@@ -1017,7 +1052,7 @@ class Property extends Base
     }
 
     /**
-     * Set visits
+     * Set visits.
      *
      * @param ArrayCollection $visits
      *
@@ -1031,7 +1066,7 @@ class Property extends Base
     }
 
     /**
-     * Get visits
+     * Get visits.
      *
      * @return ArrayCollection
      */
@@ -1041,7 +1076,7 @@ class Property extends Base
     }
 
     /**
-     * Add visit
+     * Add visit.
      *
      * @param PropertyVisit $visit
      *
@@ -1056,7 +1091,7 @@ class Property extends Base
     }
 
     /**
-     * Remove visit
+     * Remove visit.
      *
      * @param PropertyVisit $visit
      *
@@ -1070,7 +1105,7 @@ class Property extends Base
     }
 
     /**
-     * Set totalVisits
+     * Set totalVisits.
      *
      * @param int $totalVisits
      *
@@ -1084,7 +1119,7 @@ class Property extends Base
     }
 
     /**
-     * Get totalVisits
+     * Get totalVisits.
      *
      * @return int
      */
@@ -1094,7 +1129,7 @@ class Property extends Base
     }
 
     /**
-     * Set showMapType
+     * Set showMapType.
      *
      * @param int $showMapType
      *
@@ -1108,7 +1143,7 @@ class Property extends Base
     }
 
     /**
-     * Get showMapType
+     * Get showMapType.
      *
      * @return int
      */
@@ -1118,9 +1153,9 @@ class Property extends Base
     }
 
     /**
-     * Set showPriceOnlyWithNumbers
+     * Set showPriceOnlyWithNumbers.
      *
-     * @param boolean $showPriceOnlyWithNumbers
+     * @param bool $showPriceOnlyWithNumbers
      *
      * @return $this
      */
@@ -1132,7 +1167,7 @@ class Property extends Base
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isReserved()
     {
@@ -1140,7 +1175,7 @@ class Property extends Base
     }
 
     /**
-     * @param boolean $reserved
+     * @param bool $reserved
      */
     public function setReserved($reserved)
     {
@@ -1148,7 +1183,7 @@ class Property extends Base
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isSold()
     {
@@ -1156,7 +1191,7 @@ class Property extends Base
     }
 
     /**
-     * @param boolean $sold
+     * @param bool $sold
      */
     public function setSold($sold)
     {
@@ -1180,9 +1215,9 @@ class Property extends Base
     }
 
     /**
-     * Get showPriceOnlyWithNumbers
+     * Get showPriceOnlyWithNumbers.
      *
-     * @return boolean
+     * @return bool
      */
     public function getShowPriceOnlyWithNumbers()
     {
@@ -1190,7 +1225,7 @@ class Property extends Base
     }
 
     /**
-     * Set LatLng
+     * Set LatLng.
      *
      * @param array $latlng
      *
@@ -1205,7 +1240,7 @@ class Property extends Base
     }
 
     /**
-     * Set VirtualFirstEnabledImageUrl
+     * Set VirtualFirstEnabledImageUrl.
      *
      * @param string $virtualFirstEnabledImageUrl
      *
@@ -1219,7 +1254,7 @@ class Property extends Base
     }
 
     /**
-     * Get VirtualFirstEnabledImageUrl
+     * Get VirtualFirstEnabledImageUrl.
      *
      * @return string
      */
@@ -1229,7 +1264,7 @@ class Property extends Base
     }
 
     /**
-     * Set VirtualFirstEnabledImageUrlBig
+     * Set VirtualFirstEnabledImageUrlBig.
      *
      * @param string $virtualFirstEnabledImageUrlBig
      *
@@ -1243,7 +1278,7 @@ class Property extends Base
     }
 
     /**
-     * Get VirtualFirstEnabledImageUrlBig
+     * Get VirtualFirstEnabledImageUrlBig.
      *
      * @return string
      */
@@ -1253,7 +1288,7 @@ class Property extends Base
     }
 
     /**
-     * Get LatLng
+     * Get LatLng.
      *
      * @Assert\NotBlank()
      * @OhAssert\LatLng()
@@ -1269,7 +1304,7 @@ class Property extends Base
     }
 
     /**
-     * Get Google Maps coords format
+     * Get Google Maps coords format.
      *
      * @JMS\VirtualProperty
      * @JMS\Type("array")
@@ -1285,7 +1320,7 @@ class Property extends Base
     }
 
     /**
-     * Get first enabled image. The collection is sorted by position (see line #39)
+     * Get first enabled image. The collection is sorted by position (see line #39).
      *
      * @return ImageProperty|null
      */
@@ -1296,6 +1331,7 @@ class Property extends Base
         foreach ($this->images as $image) {
             if ($image->getEnabled()) {
                 $firstImage = $image;
+
                 break;
             }
         }
@@ -1326,7 +1362,7 @@ class Property extends Base
     }
 
     /**
-     * Get VirtualCategoriesString
+     * Get VirtualCategoriesString.
      *
      * @return string
      */
@@ -1336,7 +1372,7 @@ class Property extends Base
     }
 
     /**
-     * Set VirtualCategoriesString
+     * Set VirtualCategoriesString.
      *
      * @param string $virtualCategoriesString
      *

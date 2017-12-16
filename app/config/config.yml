@@ -70,8 +70,8 @@ doctrine_migrations:
 
 # Stof Doctrine Extensions
 stof_doctrine_extensions:
-    default_locale:         "%locale%"
-    translation_fallback:   true
+    default_locale:       "%locale%"
+    translation_fallback: true
     orm:
         default:
             translatable:   true
@@ -107,9 +107,9 @@ fos_rest:
 
 # FOS User
 fos_user:
-    db_driver:      orm
-    firewall_name:  main
-    user_class:     FinquesFarnos\UserBundle\Entity\User
+    db_driver:     orm
+    firewall_name: main
+    user_class:    FinquesFarnos\UserBundle\Entity\User
     group:
         group_class:   FinquesFarnos\UserBundle\Entity\Group
         group_manager: sonata.user.orm.group_manager
