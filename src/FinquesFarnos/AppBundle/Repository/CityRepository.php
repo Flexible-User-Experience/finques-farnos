@@ -8,16 +8,16 @@ use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query\Expr\Join;
 
 /**
- * CityRepository class
+ * CityRepository class.
  *
  * @category Repository
- * @package  FinquesFarnos\AppBundle\Repository
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class CityRepository extends EntityRepository
 {
     /**
-     * Get enabled items sorted by name query builder
+     * Get enabled items sorted by name query builder.
      *
      * @return QueryBuilder
      */
@@ -31,7 +31,7 @@ class CityRepository extends EntityRepository
     }
 
     /**
-     * Get enabled items sorted by name query builder
+     * Get enabled items sorted by name query builder.
      *
      * @return Query
      */
@@ -41,7 +41,7 @@ class CityRepository extends EntityRepository
     }
 
     /**
-     * Get enabled items sorted by name array result
+     * Get enabled items sorted by name array result.
      *
      * @return array
      */
@@ -51,9 +51,9 @@ class CityRepository extends EntityRepository
     }
 
     /**
-     * Get enabled items filtered by typeId and sorted by name
+     * Get enabled items filtered by typeId and sorted by name.
      *
-     * @param $typeId
+     * @param int $typeId
      *
      * @return array
      */

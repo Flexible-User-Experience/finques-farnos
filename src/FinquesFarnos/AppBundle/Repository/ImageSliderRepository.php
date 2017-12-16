@@ -2,22 +2,21 @@
 
 namespace FinquesFarnos\AppBundle\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * ImageSliderRepository class
+ * ImageSliderRepository class.
  *
  * @category Repository
- * @package  FinquesFarnos\AppBundle\Repository
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class ImageSliderRepository extends EntityRepository
 {
     /**
-     * Get homepage items
+     * Get homepage items.
      *
-     * @return ArrayCollection
+     * @return array
      */
     public function getHomepageItems()
     {

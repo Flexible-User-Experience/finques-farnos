@@ -38,7 +38,7 @@ twig:
         google_analytics_account: "%google_analytics_account%"
         google_maps_api_key:      "%google_maps_api_key%"
         project_title:            "%project_title%"
-        admin_tag_version:        "2.6.4"
+        admin_tag_version:        "2.6.5"
 
 # Assetic
 assetic:
@@ -49,12 +49,13 @@ assetic:
 # Doctrine
 doctrine:
     dbal:
-        driver:   "%database_driver%"
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
+        driver:         "%database_driver%"
+        host:           "%database_host%"
+        port:           "%database_port%"
+        dbname:         "%database_name%"
+        user:           "%database_user%"
+        password:       "%database_password%"
+        server_version: "%database_server_version%"
         charset:  UTF8
         types:
             json: Sonata\Doctrine\Types\JsonType

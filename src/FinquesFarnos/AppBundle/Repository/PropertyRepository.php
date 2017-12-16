@@ -2,7 +2,6 @@
 
 namespace FinquesFarnos\AppBundle\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -10,18 +9,18 @@ use Doctrine\ORM\Query\Expr\Orx;
 use FinquesFarnos\AppBundle\Entity\Property;
 
 /**
- * PropertyRepository class
+ * PropertyRepository class.
  *
  * @category Repository
- * @package  FinquesFarnos\AppBundle\Repository
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class PropertyRepository extends EntityRepository
 {
     /**
-     * Get homepage items
+     * Get homepage items.
      *
-     * @return ArrayCollection
+     * @return array
      */
     public function getHomepageItems()
     {
@@ -40,7 +39,7 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get enabled properties sorted by price query
+     * Get enabled properties sorted by price query.
      *
      * @return Query
      */
@@ -54,7 +53,7 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get top 10 visited array
+     * Get top 10 visited array.
      *
      * @return array
      */
@@ -64,7 +63,7 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get most visited properties query
+     * Get most visited properties query.
      *
      * @return Query
      */
@@ -81,23 +80,24 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get filters
+     * Get filters.
      *
      * @return array
      */
     public function getFilters()
     {
-        return $this->createQueryBuilder('p')
-            ->select('p, MIN(p.squareMeters) AS min_area, MAX(p.squareMeters) AS max_area, MIN(p.rooms) AS min_rooms, MAX(p.rooms) AS max_rooms, MIN(p.price) AS min_price, MAX(p.price) AS max_price')
+        $qb = $this->createQueryBuilder('p')
+            ->select('MIN(p.squareMeters) AS min_area, MAX(p.squareMeters) AS max_area, MIN(p.rooms) AS min_rooms, MAX(p.rooms) AS max_rooms, MIN(p.price) AS min_price, MAX(p.price) AS max_price')
             ->where('p.enabled = :enabled')
             ->setParameter('enabled', true)
             ->orderBy('p.price', 'ASC')
-            ->getQuery()
-            ->getOneOrNullResult(Query::HYDRATE_ARRAY);
+        ;
+
+        return $qb->getQuery()->getSingleResult(Query::HYDRATE_ARRAY);
     }
 
     /**
-     * Filter properties by
+     * Filter properties by.
      *
      * @param array $categories
      * @param int   $type
@@ -114,7 +114,7 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get filtered properties query
+     * Get filtered properties query.
      *
      * @param array $categories
      * @param int   $type
@@ -166,7 +166,7 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get first enabled property
+     * Get first enabled property.
      *
      * @return Property|null
      */
@@ -182,7 +182,7 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get enabled previous property
+     * Get enabled previous property.
      *
      * @param int   $id
      * @param mixed $filter
@@ -198,7 +198,7 @@ class PropertyRepository extends EntityRepository
             if ($filteredProperty->getId() == $id) {
                 break;
             }
-            $index++;
+            ++$index;
         }
         if ($index == 0) {
             return $filteredProperties[count($filteredProperties) - 1];
@@ -208,7 +208,7 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get enabled next property
+     * Get enabled next property.
      *
      * @param int   $id
      * @param mixed $filter
@@ -224,7 +224,7 @@ class PropertyRepository extends EntityRepository
             if ($filteredProperty->getId() == $id) {
                 break;
             }
-            $index++;
+            ++$index;
         }
         if ($index == count($filteredProperties) - 1) {
             return $filteredProperties[0];
@@ -234,7 +234,7 @@ class PropertyRepository extends EntityRepository
     }
 
     /**
-     * Get last enabled property
+     * Get last enabled property.
      *
      * @return Property|null
      */
