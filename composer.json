@@ -14,7 +14,6 @@
     },
     "require": {
         "a2lix/translation-form-bundle": "^1.0",
-        "beberlei/DoctrineExtensions": "^1.0",
         "components/font-awesome": "^4.0",
         "components/jquery": "^2.0",
         "doctrine/doctrine-bundle": "~1.4",

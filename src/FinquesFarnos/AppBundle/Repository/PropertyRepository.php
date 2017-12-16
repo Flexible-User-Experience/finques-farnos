@@ -90,11 +90,10 @@ class PropertyRepository extends EntityRepository
             ->select('MIN(p.squareMeters) AS min_area, MAX(p.squareMeters) AS max_area, MIN(p.rooms) AS min_rooms, MAX(p.rooms) AS max_rooms, MIN(p.price) AS min_price, MAX(p.price) AS max_price')
             ->where('p.enabled = :enabled')
             ->setParameter('enabled', true)
-            ->orderBy('p.price', 'ASC');
-        $q = $qb->getQuery();
-        $r = $q->getSingleResult(Query::HYDRATE_ARRAY);
+            ->orderBy('p.price', 'ASC')
+        ;
 
-        return $r;
+        return $qb->getQuery()->getSingleResult(Query::HYDRATE_ARRAY);
     }
 
     /**
