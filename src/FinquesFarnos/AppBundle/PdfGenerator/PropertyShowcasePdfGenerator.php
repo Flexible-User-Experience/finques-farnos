@@ -4,23 +4,24 @@ namespace FinquesFarnos\AppBundle\PdfGenerator;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use FinquesFarnos\AppBundle\Entity\Property;
+use Orkestra\Bundle\PdfBundle\Pdf\PdfInterface;
 
 /**
- * PropertyShowcasePdfGenerator class
+ * PropertyShowcasePdfGenerator class.
  *
  * @category PdfGenerator
- * @package  FinquesFarnos\AppBundle\PdfGenerator
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
 {
     /**
-     * Performs the PDF generation
+     * Performs the PDF generation.
      *
      * @param array $parameters An array of parameters to be used to render the PDF
      * @param array $options    An array of options to be passed to the underlying PdfFactory
      *
-     * @return \Orkestra\Bundle\PdfBundle\Pdf\PdfInterface
+     * @return PdfInterface
      */
     protected function doGenerate(array $parameters, array $options)
     {
@@ -36,7 +37,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         /** @var \TCPDF $builder */
         $builder = $pdf->getNativeObject();
         $builder->SetAuthor('Finques Farnós, S.L.');
-        $builder->SetTitle('Ref_' . $property->getReference() . '_' . $property->getName());
+        $builder->SetTitle('Ref_'.$property->getReference().'_'.$property->getName());
         $builder->SetSubject('Immoble en PDF aparador');
         $builder->SetKeywords('PDF, immoble, aparador');
         $builder->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH);
@@ -64,7 +65,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $builder->SetY($y + 5);
         $builder->SetFont('helvetica', '', 15, '', true);
         $this->setBlackColor($builder);
-        $builder->MultiCell(135, 0, 'Ref. ' . $property->getReference(), 0, 'L', false, 1);
+        $builder->MultiCell(135, 0, 'Ref. '.$property->getReference(), 0, 'L', false, 1);
         $builder->SetFont('helvetica', 'B', 30, '', true);
         $this->setGreyColor($builder);
         $builder->MultiCell(135, 0, mb_strtoupper($property->getName(), 'UTF-8'), 0, 'L', false, 1);
@@ -78,13 +79,14 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
                     $xOffset = $builder->getMargins()['left'] + $builder->GetStringWidth($property->getDecoratedPrice()) + 3;
                     $builder->SetFont('helvetica', '', 16, '', true);
                     $this->setBlackColor($builder);
-                    $builder->Text($xOffset, $builder->getY() + 5, $this->getTrans('homepage.property.before') . ' ' . $property->getDecoratedOldPrice(), false, false, true, 0);
-                    $builder->Ln(); $builder->setY($builder->getY() + 3);
+                    $builder->Text($xOffset, $builder->getY() + 5, $this->getTrans('homepage.property.before').' '.$property->getDecoratedOldPrice(), false, false, true, 0);
+                    $builder->Ln();
+                    $builder->setY($builder->getY() + 3);
                 } else {
                     $builder->MultiCell(135, 0, $property->getDecoratedPrice(), 0, 'L', false, 1);
                 }
             } else {
-                $builder->MultiCell(135, 0, $this->getTrans('homepage.property.since') . ' ' . $property->getDecoratedPrice(), 0, 'L', false, 1);
+                $builder->MultiCell(135, 0, $this->getTrans('homepage.property.since').' '.$property->getDecoratedPrice(), 0, 'L', false, 1);
             }
         }
         // description
@@ -102,13 +104,13 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
         $this->setBlackColor($builder);
         $builder->MultiCell(55, 0, mb_convert_case($this->getTrans('property.energy.efficiency'), MB_CASE_TITLE, 'UTF-8'), 0, 'L', false, 2, 155);
         if ($property->getEnergyClass() == 0) {
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'warning.png', 155, $builder->getY(), 4, 4, 'PNG', '', '', false, 150);
+            $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'warning.png', 155, $builder->getY(), 4, 4, 'PNG', '', '', false, 150);
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 160);
-        } else if ($property->getEnergyClass() == 1) {
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'warning.png', 155, $builder->getY(), 4, 4, 'PNG', '', '', false, 150);
+        } elseif ($property->getEnergyClass() == 1) {
+            $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'warning.png', 155, $builder->getY(), 4, 4, 'PNG', '', '', false, 150);
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 160);
-        } else if ($property->getEnergyClass() > 1) {
-            $builder->Image(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'icones' . DIRECTORY_SEPARATOR . 'eficiencia_energetica' . DIRECTORY_SEPARATOR . 'EF_' . $transCode[$property->getEnergyClass()] . '.png', 155, $builder->getY(), 14 + (4.5 * ($property->getEnergyClass() - 2)), 6, 'PNG', '', '', false, 150);
+        } elseif ($property->getEnergyClass() > 1) {
+            $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'EF_'.$transCode[$property->getEnergyClass()].'.png', 155, $builder->getY(), 14 + (4.5 * ($property->getEnergyClass() - 2)), 6, 'PNG', '', '', false, 150);
             $builder->setY($builder->getY() + 7);
         }
 
@@ -126,7 +128,7 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
             'fgcolor' => array(0, 0, 0),
             'bgcolor' => false,  // array(255, 255, 255)
             'module_width' => 1, // width of a single module in points
-            'module_height' => 1 // height of a single module in points
+            'module_height' => 1, // height of a single module in points
         );
         $builder->write2DBarcode($url, 'QRCODE,M', 155, $builder->getY() + 10, 41, 41, $style, 'N', true);
 
@@ -140,13 +142,13 @@ class PropertyShowcasePdfGenerator extends BasePropertyPdfGenerator
 
     /**
      * Configure the parameters OptionsResolver.
-     * Use this method to specify default and required options
+     * Use this method to specify default and required options.
      *
      * @param OptionsResolver $resolver
      */
     protected function setDefaultParameters(OptionsResolver $resolver)
     {
         $resolver->setRequired(array('property'));
-        $resolver->setAllowedTypes('property', array('property' => 'FinquesFarnos\AppBundle\Entity\Property',));
+        $resolver->setAllowedTypes('property', array('property' => 'FinquesFarnos\AppBundle\Entity\Property'));
     }
 }
