@@ -21,6 +21,7 @@ services:
             - "@translator.default"
             - "@liip_imagine.cache.manager"
             - "@vich_uploader.templating.helper.uploader_helper"
+            - "@templating.helper.assets"
             - "%kernel.root_dir%"
     app.property_web_pdf_generator:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyWebPdfGenerator
@@ -31,6 +32,7 @@ services:
             - "@translator.default"
             - "@liip_imagine.cache.manager"
             - "@vich_uploader.templating.helper.uploader_helper"
+            - "@templating.helper.assets"
             - "%kernel.root_dir%"
 
 # Sonata Admin

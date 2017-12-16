@@ -9,6 +9,7 @@ use Symfony\Component\Templating\EngineInterface;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Bundle\FrameworkBundle\Templating\Helper\AssetsHelper;
 
 /**
  * BasePropertyPdfGenerator class.
@@ -40,6 +41,11 @@ abstract class BasePropertyPdfGenerator extends AbstractPdfGenerator
     protected $uh;
 
     /**
+     * @var AssetsHelper
+     */
+    protected $thas;
+
+    /**
      * @var string kernel root dir
      */
     protected $krd;
@@ -57,15 +63,17 @@ abstract class BasePropertyPdfGenerator extends AbstractPdfGenerator
      * @param Translator               $translator
      * @param CacheManager             $cm
      * @param UploaderHelper           $uh
+     * @param AssetsHelper             $thas
      * @param string                   $krd
      */
-    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, RouterInterface $router, Translator $translator, CacheManager $cm, UploaderHelper $uh, $krd)
+    public function __construct(FactoryRegistryInterface $factoryRegistry, EngineInterface $templatingEngine, RouterInterface $router, Translator $translator, CacheManager $cm, UploaderHelper $uh, AssetsHelper $thas, $krd)
     {
         parent::__construct($factoryRegistry, $templatingEngine);
         $this->router = $router;
         $this->translator = $translator;
         $this->cm = $cm;
         $this->uh = $uh;
+        $this->thas = $thas;
         $this->krd = $krd;
     }
 
