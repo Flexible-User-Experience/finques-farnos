@@ -1,5 +1,6 @@
 front_homepage: ''
 front_properties: '/immobles'
+front_properties_inmopc: '/immobles-inmopc'
 front_property: '/{type}/{city}/{name}/{reference}'
 front_property_prev: '/immoble/anterior/{id}'
 front_property_next: '/immoble/seguent/{id}'

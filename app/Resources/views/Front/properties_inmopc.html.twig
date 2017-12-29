@@ -1,0 +1,141 @@
+{% extends 'Front/layout.html.twig' %}
+
+{% block title %}{{ 'menu.properties' | trans }} · {{ parent() }} · {{ 'homepage.property.banner.metatitle' | trans }}{% endblock %}
+{% block metadescription %}{{ parent() }}{% endblock %}
+{% block metakeywords %}{{ parent() }}{% endblock %}
+
+{% block bodyattr %}data-ng-app="propertiesApp"{% endblock %}
+
+{% block javascriptshead %}
+    {{ parent() }}
+    <script src="{{ asset('js/my.js') }}"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="container" data-ng-controller="MainCtrl" data-ng-init="init({{ propertiesFormFilter }}, {{ selectedPropertiesFormFilter }}, {{ filteredProperties }})">
+        <div class="row no-m-bottom">
+            <div class="col-md-12">
+                <h1 class="c-orange no-m-botton properties-list-h1"><span class="search-icon"></span>{{ 'properties.heading.title' | trans | upper }}</h1>
+            </div>
+        </div>
+        <div class="row extra-m-bottom-30">
+            <div class="col-md-4">
+                <div class="left-search-panel">
+                    <form name="filterForm" action="" role="form">
+                        <div class="form-group">
+                            <div class="checkbox checkbox-inline checkbox-info" data-ng-repeat="cat in form.categories">
+                                <input id="checkbox[[ cat.id ]]" type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()">
+                                <label for="checkbox[[ cat.id ]]">[[ cat.name ]]</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
+                            <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-change="formListener()">
+                                <option data-ng-selected="[[ t.id == type ]]" data-ng-repeat="t in form.types" value="[[ t.id ]]">[[ t.name ]]</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyCity" class="control-label">{{ 'properties.form.city' | trans | upper }}</label>
+                            <select id="propertyCity" class="form-control" data-ng-model="city" required="required" data-ng-change="formListener()">
+                                <option data-ng-selected="[[ c.id == city ]]" data-ng-repeat="c in form.cities" value="[[ c.id ]]">[[ c.name ]]</option>
+                            </select>
+                        </div>
+                        <div class="hide form-group">
+                            <label for="propertyArea" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(area) ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
+                            <input id="propertyArea" type="range" name="propertyArea" min="0" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyRooms" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ rooms ]] {{ 'properties.form.roomsl' | trans | upper }}</label>
+                            <input id="propertyRooms" type="range" name="propertyRooms" min="0" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]" step="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="propertyPrice" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(price) ]] &euro;</label>
+                            <input id="propertyPrice" type="range" name="propertyPrice" min="0" max="[[ form.price.max ]]" data-ng-model="price" data-ng-init="price" value="[[ price ]]" step="10000">
+                        </div>
+                        <div class="form-group">
+                            <p data-ng-show="properties.length > 0" class="form-control-static c-orange no-m no-p">[[ properties.length ]] {{ 'properties.form.results' | trans | lower }}</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">
+                    <ui-gmap-markers data-ng-if="properties" models="properties" idKey="id" coords="'coords'" fit="true" doCluster="true" clusterOptions="map.clusterOptions" icon="'/bundles/images/gmap-cluster/m2.png'"></ui-gmap-markers>
+                </ui-gmap-google-map>
+            </div>
+        </div>
+        <hr class="hr-homepage">
+        <div data-ng-repeat="property in properties">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="extra-ribbons-wrapper" data-ng-if="property.first_image_path">
+                        <img data-ng-if="property.sold" class="extra-label" src="/bundles/app/images/extra_ribbons/sold-small-{{ app.request.locale }}.png" alt="sold label"/>
+                        <img data-ng-if="!property.sold && property.reserved" class="extra-label" src="/bundles/app/images/extra_ribbons/reserved-small-{{ app.request.locale }}.png" alt="sold label"/>
+                        <a href="[[ getUrlPropertyDetail(property) ]]">
+                            <img class="img-responsive hidden-xs" data-ng-src="[[ property.first_image_path ]]" alt="[[ property.name ]]">
+                            <img class="img-responsive visible-xs" data-ng-src="[[ property.first_image_path_big ]]" alt="[[ property.name ]]">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="wrapper" data-ng-class="{ 'bg-dark-orange': property.offer_special || property.offer_discount }">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h2 class="no-m no-bold-font font-size-13"><a href="[[ getUrlPropertyDetail(property) ]]">Ref. [[ property.reference ]]</a></h2>
+                                <h2 class="no-m"><a href="[[ getUrlPropertyDetail(property) ]]">[[ property.name | uppercase ]]</a></h2>
+                                <h3 class="no-m-top extra-m-bottom-27" data-ng-if="property.hide_price">{{ 'homepage.property.ask' | trans }}</h3>
+                                <h3 class="no-m-top extra-m-bottom-27" data-ng-if="!property.hide_price && property.show_price_only_with_numbers">[[ getCurrency(property.price) ]] € <small data-ng-if="property.old_price">{{ 'homepage.property.before' | trans }} [[ getCurrency(property.old_price) ]] €</small></h3>
+                                <h3 class="no-m-top extra-m-bottom-27" data-ng-if="!property.hide_price && !property.show_price_only_with_numbers">{{ 'homepage.property.since' | trans }} [[ getCurrency(property.price) ]] €</h3>
+                            </div>
+                            <div class="col-xs-6">
+                                <h4 style="font-size:15px" class="no-m-top">[[ property.city.name ]]</h4>
+                                <p>[[ property.description | words:10:ignoreSpaces ]]</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <ul class="no-m-bottom ribbons list-unstyled list-inline">
+                                    <li data-ng-if="property.offer_special" class="special-offer">{{ 'homepage.property.offer.special' | trans }}</li>
+                                    <li data-ng-if="property.offer_discount && !property.offer_special" class="discount-offer">{{ 'homepage.property.offer.discount' | trans }}</li>
+                                    <li data-ng-if="property.square_meters" class="square-meters">[[ property.square_meters ]] m<sup>2</sup></li>
+                                    <li data-ng-if="property.rooms" class="square-rooms">[[ property.rooms ]] {{ 'homepage.property.rooms' | trans }}</li>
+                                    <li data-ng-if="property.bathrooms" class="square-bathrooms">[[ property.bathrooms ]] {{ 'homepage.property.bathrooms' | trans }}</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="extra-m-top-35 no-m-bottom"><a class="c-orange" href="[[ getUrlPropertyDetail(property) ]]">{{ 'properties.list.button.more' | trans }}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr-properties" data-ng-class="{'last': $last}">
+        </div>
+        <div class="row" data-ng-hide="properties.length">
+            <div class="col-md-12">
+                <div class="well">
+                    <p class="lead">{{ 'properties.list.empty' | trans }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {# Scroll-Top effect #}
+    <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-arrow-circle-up"></i></span></div>
+{% endblock %}
+
+{% block javascriptsbody %}
+    {% include ':Front/commons:scroll-to-top-js.html.twig' %}
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            var pa = jQuery('#propertyArea');
+            var pp = jQuery('#propertyPrice');
+            pa.val(pa.prop('max'));
+            pp.val(pp.prop('max'));
+        });
+    </script>
+{% endblock %}
+
+{% block footlangca %}{{ path('front_properties', {_locale: 'ca'}) }}{% endblock %}
+{% block footlanges %}{{ path('front_properties', {_locale: 'es'}) }}{% endblock %}
+{% block footlangen %}{{ path('front_properties', {_locale: 'en'}) }}{% endblock %}
+{% block footlangfr %}{{ path('front_properties', {_locale: 'fr'}) }}{% endblock %}
