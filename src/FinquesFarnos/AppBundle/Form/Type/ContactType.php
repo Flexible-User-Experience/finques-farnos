@@ -68,7 +68,7 @@ class ContactType extends AbstractType
                         'options' => array(
                             'theme' => 'light',
                             'type' => 'image',
-                            'size' => 'compact',
+                            'size' => 'normal',
                         ),
                     ),
                     'mapped' => false,

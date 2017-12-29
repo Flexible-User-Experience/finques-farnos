@@ -93,7 +93,7 @@ angular.module('propertiesApp')
     }]);
 
 'use strict';
-var MAPS;
+
 angular.module('propertiesApp')
     .controller('MainCtrl', ['CFG', 'API', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$log', function (CFG, API, uiGmapGoogleMapApi, $scope, $timeout, $log) {
 
@@ -130,9 +130,6 @@ angular.module('propertiesApp')
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
             $log.log(maps);
-
-            MAPS = maps;
-            maps.event.trigger(maps, "resize");
         });
 
         $scope.formListener = function() {
