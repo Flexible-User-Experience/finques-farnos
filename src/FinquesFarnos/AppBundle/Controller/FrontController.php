@@ -112,9 +112,9 @@ class FrontController extends Controller
         ), array('_format' => 'json'));
 
         return $this->render('Front/properties_inmopc.html.twig', array(
-                'propertiesFormFilter' => $propertiesFormFilter->getContent(),
-                'selectedPropertiesFormFilter' => json_encode($selectedPropertiesFormFilter),
-                'filteredProperties' => $filteredProperties->getContent(),
+//                'propertiesFormFilter' => $propertiesFormFilter->getContent(),
+//                'selectedPropertiesFormFilter' => json_encode($selectedPropertiesFormFilter),
+//                'filteredProperties' => $filteredProperties->getContent(),
             ));
     }
 
