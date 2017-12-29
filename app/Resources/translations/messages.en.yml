@@ -107,8 +107,9 @@ contact:
       message: Your message has been sent, we will reply as soon as possible. Thank you very much for contacting Finques Farnós.
   timetable:
     title: Timetable
-    line_1: "Monday to Friday 09:30 to 13:30 and 16:00 to 20:00"
-    line_2: "Saturday 10:00 to 13:00"
+    line_1: "Monday to Friday:"
+    line_2: "09:30 to 13:30 and 16:00 to 20:00"
+    line_3: "Saturday 10:00 to 13:00"
 
 privacy:
   confidenciality:
