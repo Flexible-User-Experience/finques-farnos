@@ -9,6 +9,7 @@ use FinquesFarnos\AppBundle\Form\Type\ContactType;
 use FinquesFarnos\AppBundle\Entity\Contact;
 use FinquesFarnos\AppBundle\PdfGenerator\PropertyWebPdfGenerator;
 use FinquesFarnos\AppBundle\Service\MailerService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -17,10 +18,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Class FrontController
+ * Class FrontController.
  *
  * @category Controller
- * @package  FinquesFarnos\AppBundle\Controller
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class FrontController extends Controller
@@ -72,7 +73,48 @@ class FrontController extends Controller
         return $this->render('Front/properties.html.twig', array(
                 'propertiesFormFilter' => $propertiesFormFilter->getContent(),
                 'selectedPropertiesFormFilter' => json_encode($selectedPropertiesFormFilter),
-                'filteredProperties'   => $filteredProperties->getContent(),
+                'filteredProperties' => $filteredProperties->getContent(),
+            ));
+    }
+
+    /**
+     * @Route("/properties-inmopc", name="front_properties_inmopc", options={"sitemap"=false})
+     * @Security("has_role('ROLE_ADMIN')")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function propertiesInmopcAction(Request $request)
+    {
+        $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
+        if ($request->getSession()->has('isbacktolistredirect')) {
+            $request->getSession()->remove('isbacktolistredirect');
+            $selectedPropertiesFormFilter = array(
+                $request->getSession()->get('pfilter')[0],
+                intval($request->getSession()->get('pfilter')[1]),
+                intval($request->getSession()->get('pfilter')[2]),
+                intval($request->getSession()->get('pfilter')[3]),
+                intval($request->getSession()->get('pfilter')[4]),
+                intval($request->getSession()->get('pfilter')[5]),
+            );
+        } else {
+            $ao = json_decode($propertiesFormFilter->getContent());
+            $selectedPropertiesFormFilter = array(-1, -1, -1, $ao->{'area'}->{'max'}, $ao->{'rooms'}->{'max'}, $ao->{'price'}->{'max'});
+        }
+        $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
+            'categories' => $selectedPropertiesFormFilter[0],
+            'type' => $selectedPropertiesFormFilter[1],
+            'city' => $selectedPropertiesFormFilter[2],
+            'area' => $selectedPropertiesFormFilter[3],
+            'rooms' => $selectedPropertiesFormFilter[4],
+            'price' => $selectedPropertiesFormFilter[5],
+        ), array('_format' => 'json'));
+
+        return $this->render('Front/properties_inmopc.html.twig', array(
+//                'propertiesFormFilter' => $propertiesFormFilter->getContent(),
+//                'selectedPropertiesFormFilter' => json_encode($selectedPropertiesFormFilter),
+//                'filteredProperties' => $filteredProperties->getContent(),
             ));
     }
 
@@ -80,7 +122,7 @@ class FrontController extends Controller
      * @Route("/property/previous/{id}", name="front_property_prev", options={"expose"=false})
      *
      * @param Request $request
-     * @param int $id
+     * @param int     $id
      *
      * @return Response
      */
@@ -104,7 +146,7 @@ class FrontController extends Controller
      * @Route("/property/next/{id}", name="front_property_next", options={"expose"=false})
      *
      * @param Request $request
-     * @param int $id
+     * @param int     $id
      *
      * @return Response
      */
@@ -145,10 +187,11 @@ class FrontController extends Controller
      * @Route("/{type}/{city}/{name}/{reference}", name="front_property", options={"expose"=true})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"reference": "reference"}})
      *
-     * @param Request $request
+     * @param Request  $request
      * @param Property $property
      *
      * @return Response
+     *
      * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function propertyAction(Request $request, Property $property)

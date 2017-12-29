@@ -22,3 +22,4 @@ parameters:
     project_title: "Finques Farnós"
     recaptcha_site_key: "fake_key"
     recaptcha_secret: "fake_key"
+    inmopc_customer_code: "fake_cusromer_code"

@@ -105,6 +105,10 @@ contact:
     thankyou:
       title: Gràcies
       message: El teu missatge s'ha enviat correctament, el respondrem el més aviat possible. Moltes gràcies per contactar amb Finques Farnós.
+  timetable:
+    title: Horari
+    line_1: "De dilluns a divendres de 09:30 a 13:30 i de 16:00 a 20:00"
+    line_2: "Dissabte de 10:00 a 13:00"
 
 privacy:
   confidenciality:
