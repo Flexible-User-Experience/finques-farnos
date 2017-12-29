@@ -17,7 +17,7 @@ angular.module('propertiesApp', [
             key: 'AIzaSyB332MhD5g142kIo79ZagVcXUidQwHbWwk',
             v: '3.30',
             language: 'es',
-            libraries: 'drawing,geometry,visualization'
+            libraries: ''
         });
     })
     .constant('CFG', {

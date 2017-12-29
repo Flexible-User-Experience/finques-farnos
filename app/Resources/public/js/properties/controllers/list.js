@@ -8,8 +8,8 @@ angular.module('propertiesApp')
 
         $scope.init = function(propertiesFormFilter, selectedPropertiesFormFilter, filteredProperties) {
 
-            $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 4, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 20, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
-            $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 15 };
+            $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 2, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 15, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
+            $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 20 };
             $scope.map.control = {};
 
             $scope.form = angular.fromJson(propertiesFormFilter);

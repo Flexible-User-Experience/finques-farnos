@@ -21,7 +21,7 @@
     {% endblock %}
     {% block javascriptshead %}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script src="{{ path('fos_js_routing_js', {callback: 'fos.Router.setData'}) }}"></script>
         <script src="{{ asset('js/main.min.js') }}"></script>
     {% endblock %}
 </head>
@@ -52,7 +52,7 @@
             <p class="navbar-text text-hide">Finques Farnós</p>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            {{ knp_menu_render('frontend', {'currentClass': 'active', 'allow_safe_labels': true}) }}
+            {{ knp_menu_render('frontend', {currentClass: 'active', allow_safe_labels: true}) }}
         </div>
     </div>
 </nav>
@@ -113,9 +113,9 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <ul class="list-inline pull-right">
-                            <li><small><a href="{{ path('front_privacy', {'_locale': app.request.locale}) }}">{{ 'frontend.privacy' | trans }}</a></small></li>
-                            <li><small><a href="{{ path('front_legal', {'_locale': app.request.locale}) }}">{{ 'frontend.legal' | trans }}</a></small></li>
-                            <li><small><a href="{{ path('front_credits', {'_locale': app.request.locale}) }}">{{ 'frontend.credits' | trans }}</a></small></li>
+                            <li><small><a href="{{ path('front_privacy', {_locale: app.request.locale}) }}">{{ 'frontend.privacy' | trans }}</a></small></li>
+                            <li><small><a href="{{ path('front_legal', {_locale: app.request.locale}) }}">{{ 'frontend.legal' | trans }}</a></small></li>
+                            <li><small><a href="{{ path('front_credits', {_locale: app.request.locale}) }}">{{ 'frontend.credits' | trans }}</a></small></li>
                         </ul>
                     </div>
                 </div>
