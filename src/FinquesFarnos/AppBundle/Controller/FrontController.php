@@ -81,41 +81,11 @@ class FrontController extends Controller
      * @Route("/properties-inmopc", name="front_properties_inmopc", options={"sitemap"=false})
      * @Security("has_role('ROLE_ADMIN')")
      *
-     * @param Request $request
-     *
      * @return Response
      */
-    public function propertiesInmopcAction(Request $request)
+    public function propertiesInmopcAction()
     {
-        $propertiesFormFilter = $this->forward('AppBundle:Api:propertiesFormFilter', array(), array('_format' => 'json'));
-        if ($request->getSession()->has('isbacktolistredirect')) {
-            $request->getSession()->remove('isbacktolistredirect');
-            $selectedPropertiesFormFilter = array(
-                $request->getSession()->get('pfilter')[0],
-                intval($request->getSession()->get('pfilter')[1]),
-                intval($request->getSession()->get('pfilter')[2]),
-                intval($request->getSession()->get('pfilter')[3]),
-                intval($request->getSession()->get('pfilter')[4]),
-                intval($request->getSession()->get('pfilter')[5]),
-            );
-        } else {
-            $ao = json_decode($propertiesFormFilter->getContent());
-            $selectedPropertiesFormFilter = array(-1, -1, -1, $ao->{'area'}->{'max'}, $ao->{'rooms'}->{'max'}, $ao->{'price'}->{'max'});
-        }
-        $filteredProperties = $this->forward('AppBundle:Api:propertiesFiltered', array(
-            'categories' => $selectedPropertiesFormFilter[0],
-            'type' => $selectedPropertiesFormFilter[1],
-            'city' => $selectedPropertiesFormFilter[2],
-            'area' => $selectedPropertiesFormFilter[3],
-            'rooms' => $selectedPropertiesFormFilter[4],
-            'price' => $selectedPropertiesFormFilter[5],
-        ), array('_format' => 'json'));
-
-        return $this->render('Front/properties_inmopc.html.twig', array(
-//                'propertiesFormFilter' => $propertiesFormFilter->getContent(),
-//                'selectedPropertiesFormFilter' => json_encode($selectedPropertiesFormFilter),
-//                'filteredProperties' => $filteredProperties->getContent(),
-            ));
+        return $this->render('Front/properties_inmopc.html.twig');
     }
 
     /**
