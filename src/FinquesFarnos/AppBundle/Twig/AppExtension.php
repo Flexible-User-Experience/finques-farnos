@@ -2,6 +2,8 @@
 
 namespace FinquesFarnos\AppBundle\Twig;
 
+use FinquesFarnos\AppBundle\Service\InmopcHelperService;
+
 /**
  * Class AppExtension.
  *
@@ -11,17 +13,10 @@ namespace FinquesFarnos\AppBundle\Twig;
  */
 class AppExtension extends \Twig_Extension
 {
-    const INMOPC_BASE_URL = 'https://www.forocasas.com/recursos/nlistadom1.php?';
-
     /**
-     * @var string
+     * @var InmopcHelperService
      */
-    private $inmopcCustomerCode;
-
-    /**
-     * @var string
-     */
-    private $inmopcIframeSrcUrl;
+    private $ihs;
 
     /**
      * Methods.
@@ -30,12 +25,11 @@ class AppExtension extends \Twig_Extension
     /**
      * AppExtension constructor.
      *
-     * @param string $inmopcCustomerCode
+     * @param InmopcHelperService $ihs
      */
-    public function __construct($inmopcCustomerCode)
+    public function __construct(InmopcHelperService $ihs)
     {
-        $this->inmopcCustomerCode = $inmopcCustomerCode;
-        $this->inmopcIframeSrcUrl = self::INMOPC_BASE_URL.'cod_cliente='.$inmopcCustomerCode.'&cod_captacion='.$inmopcCustomerCode.'&est_bus=1';
+        $this->ihs = $ihs;
     }
 
     /**
@@ -57,6 +51,6 @@ class AppExtension extends \Twig_Extension
      */
     public function getInmopcIframeSrcGeneral()
     {
-        return $this->inmopcIframeSrcUrl;
+        return $this->ihs->getInmopcIframeSrcGeneral();
     }
 }

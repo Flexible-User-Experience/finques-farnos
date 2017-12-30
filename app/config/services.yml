@@ -154,6 +154,11 @@ services:
         arguments:
             - "@router"
             - "@doctrine.orm.entity_manager"
+# Inmopc Helper
+    app.inmopc_helper:
+        class: FinquesFarnos\AppBundle\Service\InmopcHelperService
+        arguments:
+            - "%inmopc_customer_code%"
 # Twig
     app.twig_extension:
         class: FinquesFarnos\AppBundle\Twig\AppExtension
@@ -161,4 +166,4 @@ services:
         tags:
             - { name: twig.extension }
         arguments:
-            - "%inmopc_customer_code%"
+            - "@app.inmopc_helper"
