@@ -1,16 +1,13 @@
-parameters:
-
 services:
 # Doctrine Listeners
     app.doctrine_listener:
         class: FinquesFarnos\AppBundle\EventListener\DoctrineListeners
-        arguments:
-            - "@liip_imagine.cache.manager"
-            - "@vich_uploader.templating.helper.uploader_helper"
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: postLoad }
-
+        arguments:
+            - "@liip_imagine.cache.manager"
+            - "@vich_uploader.templating.helper.uploader_helper"
 # Orkestra PDF
     app.property_showcase_pdf_generator:
         class: FinquesFarnos\AppBundle\PdfGenerator\PropertyShowcasePdfGenerator
@@ -34,7 +31,6 @@ services:
             - "@vich_uploader.templating.helper.uploader_helper"
             - "@templating.helper.assets"
             - "%kernel.root_dir%"
-
 # Sonata Admin
     sonata.admin.slide:
         class: FinquesFarnos\AppBundle\Admin\ImageSliderAdmin
@@ -117,7 +113,6 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle] ]
-
 # Sonata Block
     sonata.admin.block.visit_stats:
         class: FinquesFarnos\AppBundle\Admin\Block\VisitStatsBlockService
@@ -127,19 +122,22 @@ services:
             - sonata.admin.block.visit_stats
             - "@templating"
             - "@doctrine.orm.entity_manager"
-
 # KNP Menu
     app.menu.frontmenu:
         class: FinquesFarnos\AppBundle\Menu\FrontendMenu
-        arguments: [ "@knp_menu.factory", "@translator.default", "@security.authorization_checker", "@security.token_storage" ]
+        arguments:
+            - "@knp_menu.factory"
+            - "@translator.default"
+            - "@security.authorization_checker"
+            - "@security.token_storage"
     app.menu.main:
         class: Knp\Menu\MenuItem
         factory: [ "@app.menu.frontmenu", createMainMenu ]
-        arguments: [ "@request" ]
         scope: request
         tags:
             - { name: knp_menu.menu, alias: frontend }
-
+        arguments:
+            - "@request"
 # Mailer
     app.mailer.service:
         class: FinquesFarnos\AppBundle\Service\MailerService
@@ -148,11 +146,24 @@ services:
             - "@templating"
             - "@mailer"
             - "%email_notifications_sender_domain%"
-
 # Presta Sitemap
     app.sitemap.listener:
         class: FinquesFarnos\AppBundle\EventListener\SitemapListener
+        tags:
+            - { name: "presta.sitemap.listener" }
         arguments:
             - "@router"
             - "@doctrine.orm.entity_manager"
-        tags: [ {name: "presta.sitemap.listener"} ]
+# Inmopc Helper
+    app.inmopc_helper:
+        class: FinquesFarnos\AppBundle\Service\InmopcHelperService
+        arguments:
+            - "%inmopc_customer_code%"
+# Twig
+    app.twig_extension:
+        class: FinquesFarnos\AppBundle\Twig\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+        arguments:
+            - "@app.inmopc_helper"

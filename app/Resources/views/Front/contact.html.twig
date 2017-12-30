@@ -13,6 +13,16 @@
             <div class="col-md-4">
                 <div class="well well-lg">
                     <div class="ribbon-wrapper">
+                        <h2 class="no-m-top extra-m-bottom">{{ 'contact.timetable.title' | trans | upper }}</h2>
+                        <p class="no-m">
+                            {{ 'contact.timetable.line_1' | trans }}<br>
+                            {{ 'contact.timetable.line_2' | trans }}<br>
+                            {{ 'contact.timetable.line_3' | trans }}
+                        </p>
+                    </div>
+                </div>
+                <div class="well well-lg">
+                    <div class="ribbon-wrapper">
                         {% block contactform %}
                             <h2 class="no-m-top extra-m-bottom">{{ 'contact.form.title' | trans | upper }}</h2>
                             <form method="POST" action="{{ path('front_contact') }}" {{ form_enctype(form) }}>
@@ -20,15 +30,6 @@
                                 <input type="submit" value="{{ 'contact.form.send' | trans | upper }}" class="btn btn-grey">
                             </form>
                         {% endblock %}
-                    </div>
-                </div>
-                <div class="well well-lg">
-                    <div class="ribbon-wrapper">
-                        <h2 class="no-m-top extra-m-bottom">{{ 'contact.timetable.title' | trans | upper }}</h2>
-                        <p class="no-m">
-                            {{ 'contact.timetable.line_1' | trans }}<br>
-                            {{ 'contact.timetable.line_2' | trans }}
-                        </p>
                     </div>
                 </div>
             </div>

@@ -107,8 +107,9 @@ contact:
       message: Tu mensaje se ha enviado correctamente, le responderemos lo antes posible. Muchas gracias por contactar con Finques Farnós.
   timetable:
     title: Horario
-    line_1: "De lunes a viernes de 09:30 a 13:30 y de 16:00 a 20:00"
-    line_2: "Sábados de 10:00 a 13:00"
+    line_1: "De lunes a viernes:"
+    line_2: "de 09:30 a 13:30 y de 16:00 a 20:00"
+    line_3: "Sábado de 10:00 a 13:00"
 
 privacy:
   confidenciality:
