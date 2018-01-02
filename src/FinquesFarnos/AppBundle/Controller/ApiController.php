@@ -29,12 +29,15 @@ class ApiController extends FOSRestController implements ClassResourceInterface
      * @Rest\Get("/get-properties-form-filter", options={"expose"=true})
      *
      * @return array
+     *
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function propertiesFormFilterAction()
     {
         // categories
         $categories = array();
-        $categoriesCollection = $this->getDoctrine()->getRepository('AppBundle:Category')->getEnabledItemsSortedByNameLimit();
+        $categoriesCollection = $this->getDoctrine()->getRepository('AppBundle:Category')->getEnabledItemsSortedByName();
         // hack to achieve i18n translated names array because getEnabledArrayResultFilters respository result method doesn't return tranlated names
         /** @var Category $category */
         foreach ($categoriesCollection as $category) {

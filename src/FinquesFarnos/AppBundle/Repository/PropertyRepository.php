@@ -83,6 +83,9 @@ class PropertyRepository extends EntityRepository
      * Get filters.
      *
      * @return array
+     *
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function getFilters()
     {
@@ -111,6 +114,24 @@ class PropertyRepository extends EntityRepository
     public function filterBy($categories, $type, $city, $area, $rooms, $price)
     {
         return $this->filterByQuery($categories, $type, $city, $area, $rooms, $price)->getResult();
+    }
+
+    /**
+     * Filter properties by.
+     *
+     * @param array $categories
+     * @param int   $type
+     * @param int   $city
+     * @param int   $area
+     * @param int   $rooms
+     * @param int   $price
+     * @param int   $limit
+     *
+     * @return array
+     */
+    public function filterByLimited($categories, $type, $city, $area, $rooms, $price, $limit = 20)
+    {
+        return $this->filterByQuery($categories, $type, $city, $area, $rooms, $price)->setMaxResults($limit)->getResult();
     }
 
     /**
@@ -169,6 +190,8 @@ class PropertyRepository extends EntityRepository
      * Get first enabled property.
      *
      * @return Property|null
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function getFirstEnabledProperty()
     {
@@ -237,6 +260,8 @@ class PropertyRepository extends EntityRepository
      * Get last enabled property.
      *
      * @return Property|null
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function getLastEnabledProperty()
     {

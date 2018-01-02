@@ -3953,16 +3953,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "3.30.0",
+            "version": "3.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "e492eb6ad23eed69f250c0bee5a59990d4756bbc"
+                "reference": "dd9675e053255c1e5c0a56e7f6ddb8752d0e7510"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e492eb6ad23eed69f250c0bee5a59990d4756bbc",
-                "reference": "e492eb6ad23eed69f250c0bee5a59990d4756bbc",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/dd9675e053255c1e5c0a56e7f6ddb8752d0e7510",
+                "reference": "dd9675e053255c1e5c0a56e7f6ddb8752d0e7510",
                 "shasum": ""
             },
             "require": {
@@ -3973,6 +3973,7 @@
                 "sonata-project/block-bundle": "^3.2",
                 "sonata-project/core-bundle": "^3.6",
                 "sonata-project/exporter": "^1.7.1",
+                "symfony/asset": "^2.8 || ^3.2 || ^4.0",
                 "symfony/class-loader": "^2.8 || ^3.2 || ^4.0",
                 "symfony/config": "^2.8 || ^3.2 || ^4.0",
                 "symfony/console": "^2.8 || ^3.2 || ^4.0",
@@ -4047,7 +4048,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2017-12-25T16:13:27+00:00"
+            "time": "2018-01-02T08:27:49+00:00"
         },
         {
             "name": "sonata-project/block-bundle",
