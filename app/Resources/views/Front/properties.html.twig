@@ -21,7 +21,7 @@
         <div class="row extra-m-bottom-30">
             <div class="col-md-4">
                 <div class="left-search-panel">
-                    <form name="filterForm" action="" role="form">
+                    <form name="filterForm" role="form">
                         <div class="form-group">
                             <div class="checkbox checkbox-inline checkbox-info" data-ng-repeat="cat in form.categories">
                                 <input id="checkbox[[ cat.id ]]" type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()">
@@ -124,13 +124,13 @@
 {% endblock %}
 
 {% block javascriptsbody %}
-    {% include ':Front/commons:scroll-to-top-js.html.twig' %}
+    {% include ":Front/commons:scroll-to-top-js.html.twig" %}
     <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            var pa = jQuery('#propertyArea');
+        jQuery(document).ready(function() {
             var pp = jQuery('#propertyPrice');
-            pa.val(pa.prop('max'));
+            var pr = jQuery('#propertyRooms');
             pp.val(pp.prop('max'));
+            pr.val(1);
         });
     </script>
 {% endblock %}

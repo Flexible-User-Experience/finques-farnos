@@ -11,10 +11,10 @@ use FOS\RestBundle\Routing\ClassResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class FrontController
+ * Class FrontController.
  *
  * @category Controller
- * @package  FinquesFarnos\AppBundle\Controller
+ *
  * @author   David Romaní <david@flux.cat>
  *
  * @Rest\Prefix("api")
@@ -23,12 +23,15 @@ use Symfony\Component\HttpFoundation\Request;
 class ApiController extends FOSRestController implements ClassResourceInterface
 {
     /**
-     * Get min max frontend properties form filters
+     * Get min max frontend properties form filters.
      *
      * @Rest\View()
      * @Rest\Get("/get-properties-form-filter", options={"expose"=true})
      *
      * @return array
+     *
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function propertiesFormFilterAction()
     {
@@ -56,18 +59,18 @@ class ApiController extends FOSRestController implements ClassResourceInterface
         /** @var array $data */
         $data = array(
             'categories' => $categories,
-            'types'      => $types,
-            'cities'     => $cities,
-            'area'       => array('min' => 0, 'max' => intval($filters['max_area'])),
-            'rooms'      => array('min' => 0, 'max' => intval($filters['max_rooms'])),
-            'price'      => array('min' => 0, 'max' => intval($filters['max_price'])),
+            'types' => $types,
+            'cities' => $cities,
+            'area' => array('min' => 0, 'max' => intval($filters['max_area'])),
+            'rooms' => array('min' => 0, 'max' => intval($filters['max_rooms'])),
+            'price' => array('min' => 0, 'max' => intval($filters['max_price'])),
         );
 
         return $data;
     }
 
     /**
-     * Get filtered properties
+     * Get filtered properties.
      *
      * @Rest\View(serializerGroups={"api"})
      * @Rest\Get("/get-properties-filtered/{categories}/{type}/{city}/{area}/{rooms}/{price}", options={"expose"=true})
@@ -104,7 +107,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     }
 
     /**
-     * Get cities by type
+     * Get cities by type.
      *
      * @Rest\View(serializerGroups={"api"})
      * @Rest\Get("/get-cities-by-type/{type}", options={"expose"=true})
@@ -129,7 +132,7 @@ class ApiController extends FOSRestController implements ClassResourceInterface
     }
 
     /**
-     * Set accept cookie action
+     * Set accept cookie action.
      *
      * @Rest\View(serializerGroups={"api"})
      * @Rest\Get("/set-accept-cookie-warning", options={"expose"=true})
