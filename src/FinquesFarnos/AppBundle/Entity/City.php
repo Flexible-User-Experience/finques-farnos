@@ -5,14 +5,13 @@ namespace FinquesFarnos\AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as Assert;
 use JMS\Serializer\Annotation as JMS;
 
 /**
- * City class
+ * City class.
  *
  * @category Entity
- * @package  FinquesFarnos\AppBundle\Entity
+ *
  * @author   David Romaní <david@flux.cat>
  *
  * @ORM\Entity(repositoryClass="FinquesFarnos\AppBundle\Repository\CityRepository")
@@ -21,27 +20,34 @@ use JMS\Serializer\Annotation as JMS;
 class City extends Base
 {
     /**
-     * @ORM\OneToMany(targetEntity="Property", mappedBy="city", cascade={"persist"})
      * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Property", mappedBy="city", cascade={"persist"})
      */
     private $properties;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, name="name", nullable=false, unique=true)
      * @JMS\Groups({"api"})
-     * @var string
      */
     private $name;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, name="name_slug", nullable=false)
      * @Gedmo\Slug(fields={"name"})
-     * @var string
      */
     private $nameSlug;
 
     /**
-     * Constructor
+     * Methods.
+     */
+
+    /**
+     * Constructor.
      */
     public function __construct()
     {
@@ -49,17 +55,7 @@ class City extends Base
     }
 
     /**
-     * To String
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->name ? $this->name : '---';
-    }
-
-    /**
-     * Set name
+     * Set name.
      *
      * @param string $name
      *
@@ -73,7 +69,7 @@ class City extends Base
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -83,7 +79,7 @@ class City extends Base
     }
 
     /**
-     * Set name slug
+     * Set name slug.
      *
      * @param string $nameSlug
      *
@@ -97,7 +93,7 @@ class City extends Base
     }
 
     /**
-     * Get name slug
+     * Get name slug.
      *
      * @return string
      */
@@ -107,7 +103,7 @@ class City extends Base
     }
 
     /**
-     * Add property
+     * Add property.
      *
      * @param Property $property
      *
@@ -122,7 +118,7 @@ class City extends Base
     }
 
     /**
-     * Remove property
+     * Remove property.
      *
      * @param Property $property
      *
@@ -136,7 +132,7 @@ class City extends Base
     }
 
     /**
-     * Set Properties
+     * Set Properties.
      *
      * @param ArrayCollection $properties
      *
@@ -150,12 +146,22 @@ class City extends Base
     }
 
     /**
-     * Get Properties
+     * Get Properties.
      *
      * @return ArrayCollection
      */
     public function getProperties()
     {
         return $this->properties;
+    }
+
+    /**
+     * To String.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name ? $this->name : '---';
     }
 }

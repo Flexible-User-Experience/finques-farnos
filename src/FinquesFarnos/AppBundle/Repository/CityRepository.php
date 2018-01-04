@@ -25,9 +25,13 @@ class CityRepository extends EntityRepository
     {
         return $this->createQueryBuilder('c')
             ->select('c.id, c.name')
-            ->where('c.enabled = 1')
-            ->andWhere('SIZE(c.properties) > 0')
-            ->orderBy('c.name', 'ASC');
+            ->leftJoin('c.properties', 'p')
+            ->where('c.enabled = :enabled')
+            ->andWhere('p.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('c.name', 'ASC')
+            ->groupBy('c.name')
+        ;
     }
 
     /**
