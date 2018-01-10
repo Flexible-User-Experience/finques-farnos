@@ -158,9 +158,9 @@ legal:
 
 credits:
   text: |
-    This page has been developed by <a href="http://www.flux.cat">Flux</a> with <a href="http://www.w3.org/TR/html5">HTML5</a> using PHP <a href="http://www.symfony.com">Symfony2</a> framework and a modern stack of web technologies.</p>
-    <p>The artwork has been done by <a href="http://www.gonellcomunicacio.com">Gonell Comunicació</a>.</p>
-    <p>All rights reserved.</p>
+    Cette page web a été développée pour <a href="http://www.flux.cat">Flux</a> avec <a href="http://www.w3.org/TR/html5">HTML5</a> en utilisant le framework PHP <a href="http://www.symfony.com">Symfony2</a> et une pile moderne de technologies web.</p>
+    <p>Le design graphique a été réalisé pour <a href="http://www.gonellcomunicacio.com">Gonell Comunicació</a>.</p>
+    <p>Tous les droits réservés.</p>
     <p>&copy; Finques Farnós, SL.
 
 errors.anerroroccurred: Il y avait une erreur
