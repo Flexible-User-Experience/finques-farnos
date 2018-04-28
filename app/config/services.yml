@@ -130,6 +130,7 @@ services:
             - "@translator.default"
             - "@security.authorization_checker"
             - "@security.token_storage"
+            - "@request_stack"
     app.menu.main:
         class: Knp\Menu\MenuItem
         factory: [ "@app.menu.frontmenu", createMainMenu ]

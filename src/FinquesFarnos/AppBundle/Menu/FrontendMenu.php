@@ -5,15 +5,16 @@ namespace FinquesFarnos\AppBundle\Menu;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
- * Class MenuBuilder
+ * Class MenuBuilder.
  *
  * @category Menu
- * @package  FinquesFarnos\AppBundle\Menu
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class FrontendMenu
@@ -39,23 +40,30 @@ class FrontendMenu
     private $ts;
 
     /**
-     * Contructor
+     * @var RequestStack
+     */
+    private $rs;
+
+    /**
+     * Contructor.
      *
      * @param FactoryInterface              $factory
      * @param Translator                    $translator
      * @param AuthorizationCheckerInterface $ac
      * @param TokenStorageInterface         $ts
+     * @param RequestStack                  $rs
      */
-    public function __construct(FactoryInterface $factory, Translator $translator, AuthorizationCheckerInterface $ac, TokenStorageInterface $ts)
+    public function __construct(FactoryInterface $factory, Translator $translator, AuthorizationCheckerInterface $ac, TokenStorageInterface $ts, RequestStack $rs)
     {
         $this->factory = $factory;
         $this->translator = $translator;
         $this->ac = $ac;
         $this->ts = $ts;
+        $this->rs = $rs;
     }
 
     /**
-     * Create main menu
+     * Create main menu.
      *
      * @param Request $request
      *
@@ -71,6 +79,11 @@ class FrontendMenu
         $menu->addChild('home', array(
                 'label' => $this->translator->trans('menu.home'),
                 'route' => 'front_homepage',
+            ));
+        $menu->addChild('immoebre', array(
+                'label' => $this->translator->trans('menu.immoebre'),
+                'uri' => 'http://www.immoebre.com/catalan/index.html',
+                'linkAttributes' => array('target' => '_blank'),
             ));
         $menu->addChild('properties', array(
                 'label' => $this->translator->trans('menu.properties'),
