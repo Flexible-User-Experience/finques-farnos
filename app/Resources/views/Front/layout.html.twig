@@ -90,7 +90,7 @@
             <div class="col-sm-4 col-xs-12 text-center">
                 <a href="http://www.apitarragona.com" target="_blank"><img src="{{ asset('bundles/app/images/logo-footer-api.png') }}" alt="API Número col·legiat 379 Cinta Farnós i Bel" style="margin-right:10px"/></a>
                 <a href="http://www.agenciahabitatge.cat/wps/portal?WCM_GLOBAL_CONTEXT=ca/ahc/web/serveis/registreAgents" target="_blank"><img src="{{ asset('bundles/app/images/logo-footer-rm.png') }}" alt="Registre Agents immobiliaris de Catalunya aicat 2237"/></a>
-                <a href="#" target="_blank"><img src="{{ asset('bundles/app/images/immoebre_logo_bw.png') }}" alt="{{ 'menu.immoebre' | trans | capitalize }}"/></a>
+                <a href="{{ get_immoebre_uri_locale(app.request.locale) }}" target="_blank"><img src="{{ asset('bundles/app/images/immoebre_logo_bw.png') | imagine_filter('100x100') }}" alt="{{ 'menu.immoebre' | trans | capitalize }}"/></a>
             </div>
             <div class="col-sm-4 col-xs-12">
                 <div class="row">
