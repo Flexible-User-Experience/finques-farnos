@@ -6,6 +6,7 @@ use FinquesFarnos\AppBundle\Service\InmoebreUriLocaleService;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
@@ -40,6 +41,11 @@ class FrontendMenu
     private $ts;
 
     /**
+     * @var RequestStack
+     */
+    private $rs;
+
+    /**
      * @var InmoebreUriLocaleService
      */
     private $iuls;
@@ -51,14 +57,16 @@ class FrontendMenu
      * @param Translator                    $translator
      * @param AuthorizationCheckerInterface $ac
      * @param TokenStorageInterface         $ts
+     * @param RequestStack                  $rs
      * @param InmoebreUriLocaleService      $iuls
      */
-    public function __construct(FactoryInterface $factory, Translator $translator, AuthorizationCheckerInterface $ac, TokenStorageInterface $ts, InmoebreUriLocaleService $iuls)
+    public function __construct(FactoryInterface $factory, Translator $translator, AuthorizationCheckerInterface $ac, TokenStorageInterface $ts, RequestStack $rs, InmoebreUriLocaleService $iuls)
     {
         $this->factory = $factory;
         $this->translator = $translator;
         $this->ac = $ac;
         $this->ts = $ts;
+        $this->rs = $rs;
         $this->iuls = $iuls;
     }
 
@@ -82,7 +90,7 @@ class FrontendMenu
             ));
         $menu->addChild('immoebre', array(
                 'label' => $this->translator->trans('menu.immoebre'),
-                'uri' => $this->iuls->getUri(),
+                'uri' => $this->iuls->getUriFromLocale($this->rs->getCurrentRequest()->getLocale()),
                 'linkAttributes' => array('target' => '_blank'),
             ));
         $menu->addChild('properties', array(

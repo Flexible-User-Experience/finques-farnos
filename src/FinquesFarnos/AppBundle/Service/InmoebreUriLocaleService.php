@@ -2,8 +2,6 @@
 
 namespace FinquesFarnos\AppBundle\Service;
 
-use Symfony\Component\HttpFoundation\RequestStack;
-
 /**
  * Class InmoebreUriLocaleService.
  *
@@ -19,36 +17,23 @@ class InmoebreUriLocaleService
     const URI_IMMOEBRE_FR = 'http://www.immoebre.com/frances/index.html';
 
     /**
-     * @var RequestStack
-     */
-    private $rs;
-
-    /**
      * Methods.
      */
 
     /**
-     * InmopcHelperService constructor.
+     * @param string $locale
      *
-     * @param RequestStack $rs
-     */
-    public function __construct(RequestStack $rs)
-    {
-        $$this->rs = $rs;
-    }
-
-    /**
      * @return string
      */
-    public function getUri()
+    public function getUriFromLocale($locale = 'ca')
     {
         $result = self::URI_IMMOEBRE_CA;
 
-        if ($this->rs->getCurrentRequest()->getLocale() == 'es') {
+        if ($locale == 'es') {
             $result = self::URI_IMMOEBRE_ES;
-        } elseif ($this->rs->getCurrentRequest()->getLocale() == 'en') {
+        } elseif ($locale == 'en') {
             $result = self::URI_IMMOEBRE_EN;
-        } elseif ($this->rs->getCurrentRequest()->getLocale() == 'fr') {
+        } elseif ($locale == 'fr') {
             $result = self::URI_IMMOEBRE_FR;
         }
 
