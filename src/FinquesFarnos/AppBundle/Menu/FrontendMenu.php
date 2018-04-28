@@ -88,16 +88,16 @@ class FrontendMenu
                 'label' => $this->translator->trans('menu.home'),
                 'route' => 'front_homepage',
             ));
-        $menu->addChild('immoebre', array(
-                'label' => $this->translator->trans('menu.immoebre'),
-                'uri' => $this->iuls->getUriFromLocale($this->rs->getCurrentRequest()->getLocale()),
-                'linkAttributes' => array('target' => '_blank'),
-            ));
         $menu->addChild('properties', array(
                 'label' => $this->translator->trans('menu.properties'),
                 'route' => 'front_properties',
                 'current' => $request->get('_route') == 'front_properties' || $request->get('_route') == 'front_property',
             ));
+        $menu->addChild('immoebre', array(
+            'label' => $this->translator->trans('menu.immoebre'),
+            'uri' => $this->iuls->getUriFromLocale($this->rs->getCurrentRequest()->getLocale()),
+            'linkAttributes' => array('target' => '_blank'),
+        ));
         $menu->addChild('about', array(
                 'label' => $this->translator->trans('menu.about'),
                 'route' => 'front_about',
