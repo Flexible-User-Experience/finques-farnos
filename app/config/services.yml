@@ -130,7 +130,7 @@ services:
             - "@translator.default"
             - "@security.authorization_checker"
             - "@security.token_storage"
-            - "@request_stack"
+            - "@app.immoebre_locale_service"
     app.menu.main:
         class: Knp\Menu\MenuItem
         factory: [ "@app.menu.frontmenu", createMainMenu ]
@@ -160,6 +160,11 @@ services:
         class: FinquesFarnos\AppBundle\Service\InmopcHelperService
         arguments:
             - "%inmopc_customer_code%"
+# Inmoebre Uri Locale Service
+    app.immoebre_locale_service:
+        class: FinquesFarnos\AppBundle\Service\InmoebreUriLocaleService
+        arguments:
+            - "@request_stack"
 # Twig
     app.twig_extension:
         class: FinquesFarnos\AppBundle\Twig\AppExtension
