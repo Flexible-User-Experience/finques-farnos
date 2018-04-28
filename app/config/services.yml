@@ -172,3 +172,4 @@ services:
             - { name: twig.extension }
         arguments:
             - "@app.inmopc_helper"
+            - "@app.immoebre_locale_service"
