@@ -27,6 +27,7 @@
                             <h2 class="no-m-top extra-m-bottom">{{ 'contact.form.title' | trans | upper }}</h2>
                             <form method="POST" action="{{ path('front_contact') }}" {{ form_enctype(form) }}>
                                 {{ form_widget(form) }}
+                                {{ form_rest(form) }}
                                 <input type="submit" value="{{ 'contact.form.send' | trans | upper }}" class="btn btn-grey">
                             </form>
                         {% endblock %}

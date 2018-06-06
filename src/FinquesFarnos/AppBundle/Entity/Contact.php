@@ -48,6 +48,11 @@ class Contact extends Base
     private $email;
 
     /**
+     * @var boolean
+     */
+    private $privacy;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -189,4 +194,25 @@ class Contact extends Base
     {
         return $this->phone;
     }
+
+    /**
+     * @return bool
+     */
+    public function isPrivacy()
+    {
+        return $this->privacy;
+    }
+
+    /**
+     * @param bool $privacy
+     *
+     * @return $this
+     */
+    public function setPrivacy($privacy)
+    {
+        $this->privacy = $privacy;
+        return $this;
+    }
+
+
 }

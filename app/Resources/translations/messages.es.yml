@@ -102,6 +102,7 @@ contact:
     phone: teléfono
     email: email
     message: mensaje
+    privacy: acepto la política de privacidad
     send: enviar
     thankyou:
       title: Gracias
