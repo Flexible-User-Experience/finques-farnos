@@ -1,18 +1,19 @@
 {% extends 'Front/contact_common.html.twig' %}
 
 {% form_theme form _self %}
+
 {% block _contact_privacy_widget %}
     <div class="checkbox-inline">
         <input type="checkbox" {{ block('widget_attributes') }} />
-        <a href="{{path('front_privacy')}}">{{ 'contact.form.privacy'|trans|capitalize }}</a>
+        <a href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans | capitalize }}</a>
     </div>
 {% endblock %}
 
 {% block contactform %}
     <h2 class="no-m-top extra-m-bottom">{{ 'contact.form.title' | trans | upper }}</h2>
-    <form method="POST" action="{{ path('front_contact') }}" {{ form_enctype(form) }}>
+    {{ form_start(form) }}
         {{ form_widget(form) }}
-        {{ form_rest(form) }}
         <input type="submit" value="{{ 'contact.form.send' | trans | upper }}" class="btn btn-grey">
-    </form>
+        {{ form_rest(form) }}
+    {{ form_end(form) }}
 {% endblock %}
