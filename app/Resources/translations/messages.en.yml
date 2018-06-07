@@ -102,6 +102,7 @@ contact:
     phone: phone
     email: email
     message: message
+    privacy: I accept the privacy policy
     send: send
     thankyou:
       title: Thank you
@@ -115,18 +116,21 @@ contact:
 privacy:
   confidenciality:
     title: Privacy and data protection
-    text: For the purposes of the provisions of Law 15/1999, of December 13, Protection of Personal Data, FINQUES FARNÓS SL informs the user of the existence of an automated personal data created by and for FINQUES FARNÓS SL and under its responsibility, with the aim of maintaining and managing the relationship with the User and information work. Upon acceptance of these terms, FINQUES FARNÓS SL require the user to collect some data required for the provision of their services.
+    text: FINQUES FARNÓS SL, as the person in charge of the website, in accordance with the provisions of Regulation (EU) 2016/679 of April 27, 2016 (RGPD) regarding the protection of natural persons as regards the processing of personal data, and by Law 34/2002 of July 11, of Services of the Information Society and Electronic Commerce (LSSICE), informs to him that it has implemented the necessary security measures, of technical and organizational nature, to guarantee and to protect the Confidentiality, integrity and availability of the data entered.
   records:
     title: Registry Files and Forms
     text: |
-      The completion of the registration form is required to access and enjoy certain services offered on the Web. Failure to provide the requested personal data or not accepting this data protection policy is the inability to subscribe, register or participate in any promotions in which personal data are requested.</p>
-      <p>According to the provisions of Law 15/1999, of December 13, Protection of Personal Data, we inform you that the personal data obtained as a result of his registration as a user, will be included in a file owned by FINQUES FANRÓS SL CIF B43524149 and domiciled in C. CORSINI, 63-43870 AMPOSTA (TARRAGONA), having implemented the security measures established by Royal Decree 1720/2007 of 21 December.
+      <p>FINQUES FARNÓS SL, obtain the minimum and indispensable information through the contact form.</p>
+      <p><strong>Responsible for the treatment:</strong> FINQUES FARNÓS SL with ID CIF B43524149 and domiciled at C. CORSINI, 63-43.870 AMPOSTA (TARRAGONA).</p>
+      <p><strong>Purpose of the treatment</strong>: Your personal data will be used to carry out the necessary informative, commercial and administrative steps with the users of the website.</p>
+      <p><strong>Legitimacy of the treatment:</strong> The legal basis for the processing of the data is your consent granted to carry out the aforementioned purposes, which will be requested at the time of the corresponding box when collecting your data.</p>
+      <p><strong>Rights of the interested parties:</strong> As a user-interested, you can request the exercise of rights access, rectification, cancellation, opposition, limitation of treatment and portability. You can request the exercise of your rights before FINQUES FARNÓS SL submitting a letter with the subject "RGPD. Exercise Rights" to <a href="mailto:info@finquesfarnos.com?subject=RGPD. Exercise Rights">info@finquesfarnos.com</a></p>
   trustness:
     title: Accuracy and reliability of data
     text: The user is solely responsible for the accuracy and correctness of the data, exonerating FINQUES FARNÓS SL of any responsibility. Users guarantee and respond, in any case, the accuracy, validity and authenticity of the personal data, and undertake to keep them updated. You agree to provide complete and accurate information in the registration form or subscription. FINQUES FARNÓS SL is not responsible for the accuracy of the information we are homemade and indicating another source, and therefore assumes no liability whatsoever for possible damage that may arise from the use of such information. FINQUES FARNÓS SL reserves the right to update, modify or delete information contained in their Web pages to limit or deny access to such information. It exonerates FINQUES FARNÓS SL liability for any loss or damage you may suffer as a result of errors, defects or omissions in the information provided by FINQUES FARNÓS SL provided from sources outside FINQUES FARNÓS SL.
   cookies:
     title: Cookies
-    text: This website does not use cookies, considering such physical information files as staying in the terminal user and serve to facilitate user navigation through the portal. However, the user can configure the browser so as to prevent the installation of these files.
+    text: <p>In compliance with Royal Decree-Law 13/2012, FINQUES FARNÓS SL, requests its permission to install cookies in order to obtain statistical data of its navigation on this web page. By continuing to use the web you are accepting the installation and use of cookies.</p><p>FINQUES FARNÓS SL uses its own user session cookies and third-party analytics cookies, specifically for Google Analytics to provide us with data on visits to this website, always anonymously, and we can improve the content that we offer. You can check more information related to the privacy of your data and Google Analytics cookies:<ul><li><a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage</a></li></ul></p><p>To check and manage the cookies installed on your computer, you need to change the settings of your browser. You will find detailed information on the following links:</p><ul><li>If you navigate with Firefox: <a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer">https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer</a></li><li>If you navigate with Chrome: <a href="https://support.google.com/chrome/answer/95647?hl=en">https://support.google.com/chrome/answer/95647?hl=en</a></li><li>If you browse with Internet Explorer: <a href="https://support.microsoft.com/en-es/kb/278835">https://support.microsoft.com/en-es/kb/278835</a></li><li>If you navigate with Safari: <a href="https://support.apple.com/en-us/HT201265">https://support.apple.com/en-us/HT201265</a></li></ul>
   targets:
     title: Purpouse
     text: The purposes of FINQUES FARNÓS SL are maintaining and managing the relationship with the user, as well as information laborad.

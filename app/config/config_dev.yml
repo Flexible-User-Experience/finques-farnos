@@ -48,7 +48,7 @@ twig:
         google_analytics_enabled: false
 
 swiftmailer:
-    delivery_address: david@flux.cat
+    delivery_address: "%dev_delivery_address%"
 
 hautelook_alice:
     locale: es_ES

@@ -5,6 +5,7 @@ namespace FinquesFarnos\AppBundle\Form\Type;
 use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaType;
 use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrue as RecaptchaTrue;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -57,6 +58,15 @@ class ContactType extends AbstractType
                     'label' => 'contact.form.message',
                     'mapped' => false,
                     'attr' => array('rows' => '4'),
+                )
+            )
+            ->add(
+                'privacy',
+                CheckboxType::class,
+                array(
+                    'label' => 'contact.form.privacy',
+                    'mapped' => false,
+                    'required' => true,
                 )
             )
             ->add(
