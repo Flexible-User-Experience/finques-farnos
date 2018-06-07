@@ -5,7 +5,7 @@
 {% block _contact_privacy_widget %}
     <div class="checkbox-inline">
         <input type="checkbox" {{ block('widget_attributes') }} />
-        <a href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans | capitalize }}</a>
+        <span style="color: #424242">{{ 'contact.form.accept' | trans | capitalize }}</span> <a style="text-decoration: underline;" href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans }}</a>
     </div>
 {% endblock %}
 

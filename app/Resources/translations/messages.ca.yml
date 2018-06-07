@@ -102,7 +102,8 @@ contact:
     phone: telèfon
     email: email
     message: missatge
-    privacy: accepto la política de privacitat
+    accept: accepto la
+    privacy: política de privacitat
     send: enviar
     thankyou:
       title: Gràcies
