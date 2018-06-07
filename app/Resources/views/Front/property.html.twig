@@ -1,5 +1,14 @@
 {% extends "Front/layout.html.twig" %}
 
+{% form_theme form _self %}
+
+{% block _contact_privacy_widget %}
+    <div class="checkbox-inline">
+        <input type="checkbox" {{ block('widget_attributes') }} />
+        <a href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans | capitalize }}</a>
+    </div>
+{% endblock %}
+
 {% block title %}{{ property.name }} · {{ property.city.name }} · {{ property.type.name }} · {{ parent() }}{% endblock %}
 {% block metadescription %}{{ property.description }}{% endblock %}
 {% block metakeywords %}{{ parent() }}{% endblock %}
