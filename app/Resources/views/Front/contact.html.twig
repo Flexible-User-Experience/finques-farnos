@@ -1,4 +1,4 @@
-{% extends 'Front/layout.html.twig' %}
+{% extends 'Front/contact_common.html.twig' %}
 
 {% form_theme form _self %}
 {% block _contact_privacy_widget %}
@@ -8,46 +8,11 @@
     </div>
 {% endblock %}
 
-
-{% block title %}{{ 'menu.contact' | trans }} · {{ parent() }} · {{ 'homepage.property.banner.metatitle' | trans }}{% endblock %}
-{% block metadescription %}{{ parent() }}{% endblock %}
-{% block metakeywords %}{{ parent() }}{% endblock %}
-
-{% block main %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.259842959079!2d0.5805489999999973!3d40.71229600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a0fe750387ed8d%3A0x3255725413b90f22!2sFINQUES+FARN%C3%93S+-+API!5e0!3m2!1ses!2ses!4v1416764569771" width="100%" height="863" data-frameborder="0" style="border:0"></iframe>
-            </div>
-            <div class="col-md-4">
-                <div class="well well-lg">
-                    <div class="ribbon-wrapper">
-                        <h2 class="no-m-top extra-m-bottom">{{ 'contact.timetable.title' | trans | upper }}</h2>
-                        <p class="no-m">
-                            {{ 'contact.timetable.line_1' | trans }}<br>
-                            {{ 'contact.timetable.line_2' | trans }}<br>
-                            {{ 'contact.timetable.line_3' | trans }}
-                        </p>
-                    </div>
-                </div>
-                <div class="well well-lg">
-                    <div class="ribbon-wrapper">
-                        {% block contactform %}
-                            <h2 class="no-m-top extra-m-bottom">{{ 'contact.form.title' | trans | upper }}</h2>
-                            <form method="POST" action="{{ path('front_contact') }}" {{ form_enctype(form) }}>
-                                {{ form_widget(form) }}
-                                {{ form_rest(form) }}
-                                <input type="submit" value="{{ 'contact.form.send' | trans | upper }}" class="btn btn-grey">
-                            </form>
-                        {% endblock %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{% block contactform %}
+    <h2 class="no-m-top extra-m-bottom">{{ 'contact.form.title' | trans | upper }}</h2>
+    <form method="POST" action="{{ path('front_contact') }}" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        {{ form_rest(form) }}
+        <input type="submit" value="{{ 'contact.form.send' | trans | upper }}" class="btn btn-grey">
+    </form>
 {% endblock %}
-
-{% block footlangca %}{{ path('front_contact', {'_locale': 'ca'}) }}{% endblock %}
-{% block footlanges %}{{ path('front_contact', {'_locale': 'es'}) }}{% endblock %}
-{% block footlangen %}{{ path('front_contact', {'_locale': 'en'}) }}{% endblock %}
-{% block footlangfr %}{{ path('front_contact', {'_locale': 'fr'}) }}{% endblock %}
