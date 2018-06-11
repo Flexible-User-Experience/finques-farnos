@@ -1,16 +1,12 @@
 'use strict';
 
 angular.module('propertiesApp')
-    .controller('MainCtrl', ['CFG', 'API', 'uiGmapGoogleMapApi', '$scope', '$timeout', '$log', function (CFG, API, uiGmapGoogleMapApi, $scope, $timeout, $log) {
+    .controller('MainCtrl', ['CFG', 'API', '$scope', '$timeout', function (CFG, API, $scope, $timeout) {
 
         var timerArea, timerRooms, timerPrice = false;
         numeral.language('es');
 
         $scope.init = function(propertiesFormFilter, selectedPropertiesFormFilter, filteredProperties) {
-
-            $scope.map = { center: { latitude: 41, longitude: 0 }, zoom: 2, bounds: {}, clusterOptions: { gridSize: 80, maxZoom: 15, averageCenter: true, minimumClusterSize: 1, zoomOnClick: false } };
-            $scope.map.options = { scrollwheel: true, draggable: true, maxZoom: 20 };
-            $scope.map.control = {};
 
             $scope.form = angular.fromJson(propertiesFormFilter);
             $scope.selectedPropertiesFormFilter = angular.fromJson(selectedPropertiesFormFilter);
@@ -30,14 +26,8 @@ angular.module('propertiesApp')
             $scope.city = $scope.selectedPropertiesFormFilter[2];
             $scope.area = $scope.form.area.max;
             $scope.rooms = $scope.form.rooms.max;
-            // $scope.rooms = 1;
             $scope.price = $scope.form.price.max;
         };
-
-        uiGmapGoogleMapApi.then(function(maps) {
-            // promise done
-            // $log.log(maps);
-        });
 
         $scope.formListener = function() {
             API.getProperties($scope);
