@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "47e4366a10657320f6b3105849db2b60",
@@ -1395,16 +1395,16 @@
         },
         {
             "name": "excelwebzone/recaptcha-bundle",
-            "version": "v1.5.9",
+            "version": "v1.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/excelwebzone/EWZRecaptchaBundle.git",
-                "reference": "d6b5a8f8038c86e9e1ab886058410fb6c922a24a"
+                "reference": "32c70c0276d3644abc6391c2305a5d906d3c9c9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/excelwebzone/EWZRecaptchaBundle/zipball/d6b5a8f8038c86e9e1ab886058410fb6c922a24a",
-                "reference": "d6b5a8f8038c86e9e1ab886058410fb6c922a24a",
+                "url": "https://api.github.com/repos/excelwebzone/EWZRecaptchaBundle/zipball/32c70c0276d3644abc6391c2305a5d906d3c9c9b",
+                "reference": "32c70c0276d3644abc6391c2305a5d906d3c9c9b",
                 "shasum": ""
             },
             "require": {
@@ -1440,7 +1440,7 @@
             "keywords": [
                 "recaptcha"
             ],
-            "time": "2018-06-06T14:12:35+00:00"
+            "time": "2018-06-09T14:11:54+00:00"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
@@ -3854,16 +3854,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.21",
+            "version": "v5.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "eb6266b3b472e4002538610b28a0a04bcf94891a"
+                "reference": "209b11f8cee5bf71986dd703e45e27d3ed7a6d15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/eb6266b3b472e4002538610b28a0a04bcf94891a",
-                "reference": "eb6266b3b472e4002538610b28a0a04bcf94891a",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/209b11f8cee5bf71986dd703e45e27d3ed7a6d15",
+                "reference": "209b11f8cee5bf71986dd703e45e27d3ed7a6d15",
                 "shasum": ""
             },
             "require": {
@@ -3902,7 +3902,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2017-08-25T16:55:44+00:00"
+            "time": "2018-06-07T06:22:12+00:00"
         },
         {
             "name": "sensio/framework-extra-bundle",
