@@ -15,7 +15,7 @@ angular.module('propertiesApp', [
     }]).config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
             key: 'AIzaSyB332MhD5g142kIo79ZagVcXUidQwHbWwk',
-            v: '3.30',
+            v: '3.31',
             language: 'es',
             libraries: ''
         });
@@ -87,7 +87,7 @@ angular.module('propertiesApp')
 
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
-            $log.log(maps);
+            // $log.log(maps);
         });
 
     }]);
@@ -130,7 +130,7 @@ angular.module('propertiesApp')
 
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
-            $log.log(maps);
+            // $log.log(maps);
         });
 
         $scope.formListener = function() {
