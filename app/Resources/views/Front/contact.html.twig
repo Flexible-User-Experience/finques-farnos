@@ -3,9 +3,11 @@
 {% form_theme form _self %}
 
 {% block _contact_privacy_widget %}
-    <div class="checkbox-inline">
-        <input type="checkbox" {{ block('widget_attributes') }} />
-        <span style="color: #424242">{{ 'contact.form.accept' | trans | capitalize }}</span> <a style="text-decoration: underline;" href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans }}</a>
+    <div class="checkbox">
+        <input id="privacy_checkbox" type="checkbox" {{ block('widget_attributes') }} />
+        <label for="privacy_checkbox">
+            {{ 'contact.form.accept' | trans | lower }} <a href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans | lower }}</a>
+        </label>
     </div>
 {% endblock %}
 
