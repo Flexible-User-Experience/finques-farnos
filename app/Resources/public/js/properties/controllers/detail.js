@@ -25,7 +25,7 @@ angular.module('propertiesApp')
 
         uiGmapGoogleMapApi.then(function(maps) {
             // promise done
-            $log.log(maps);
+            // $log.log(maps);
         });
 
     }]);
