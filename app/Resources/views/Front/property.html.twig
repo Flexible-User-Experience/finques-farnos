@@ -3,7 +3,7 @@
 {% form_theme form _self %}
 
 {% block _contact_privacy_widget %}
-    <div class="checkbox">
+    <div class="checkbox checkbox-info">
         <input id="privacy_checkbox" type="checkbox" {{ block('widget_attributes') }} />
         <label for="privacy_checkbox">
             {{ 'contact.form.accept' | trans | lower }} <a style="color:#D86F24" href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans | lower }}</a>
