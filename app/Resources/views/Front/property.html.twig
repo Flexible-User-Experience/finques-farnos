@@ -3,15 +3,11 @@
 {% form_theme form _self %}
 
 {% block _contact_privacy_widget %}
-    <div class="checkbox-inline">
-        <input type="checkbox" {{ block('widget_attributes') }} />
-        {{ 'contact.form.accept' | trans | capitalize }} <a id="form-link" href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans }}</a>
-        <style>
-            #form-link:link { color: #d86f24; text-decoration: underline;}
-            #form-link:visited { color: #d86f24; text-decoration: underline;}
-            #form-link:active { color: #d86f24; text-decoration: underline;}
-            #form-link:hover { color: #964d19; text-decoration: underline;}
-        </style>
+    <div class="checkbox">
+        <input id="privacy_checkbox" type="checkbox" {{ block('widget_attributes') }} />
+        <label for="privacy_checkbox">
+            {{ 'contact.form.accept' | trans | lower }} <a style="color:#D86F24" href="{{ path('front_privacy')}}">{{ 'contact.form.privacy' | trans | lower }}</a>
+        </label>
     </div>
 {% endblock %}
 
