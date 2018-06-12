@@ -82,4 +82,13 @@ angular.module('propertiesApp')
             return ss;
         };
 
+        $scope.getRoomsArray = function () {
+            var result = [];
+            for (var i = 1; i <= $scope.form.rooms.max; i++) {
+                result.push(i);
+            }
+
+            return result;
+        }
+
     }]);

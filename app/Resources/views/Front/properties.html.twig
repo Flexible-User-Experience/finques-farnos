@@ -56,11 +56,10 @@
                             </div>
                             <div class="col-xs-3">
                                 <div class="form-group">
-                                    {#<label for="propertyRooms" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ rooms ]] {{ 'properties.form.roomsl' | trans | upper }}</label>#}
-                                    {#<input id="propertyRooms" type="range" name="propertyRooms" min="0" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]" step="1">#}
                                     <label for="propertyRooms" class="control-label">{{ 'properties.form.roomsl' | trans | upper }}</label>
                                     <select id="propertyRooms" class="form-control" data-ng-model="rooms" required="required" data-ng-change="formListener()">
-                                        <option value="0">fins a 7</option>
+                                        <option value="-1"></option>
+                                        <option data-ng-repeat="r in getRoomsArray()" value="[[ r ]]">{{ 'properties.form.upto' | trans }} [[ r ]]</option>
                                     </select>
                                 </div>
                             </div>

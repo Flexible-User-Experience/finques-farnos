@@ -151,12 +151,12 @@ class PropertyRepository extends EntityRepository
         /** @var QueryBuilder $qb */
         $qb = $this->createQueryBuilder('p')
             ->select('p, i, t, c')
-            ->where('p.enabled = :enabled')
-            ->andWhere('p.squareMeters <= :area')
-            ->andWhere('i.enabled = :enabled')
             ->leftJoin('p.images', 'i')
             ->leftJoin('p.type', 't')
             ->leftJoin('p.categories', 'c')
+            ->where('p.enabled = :enabled')
+            ->andWhere('p.squareMeters <= :area')
+            ->andWhere('i.enabled = :enabled')
             ->setParameters(
                 array(
                     'enabled' => true,
@@ -165,7 +165,8 @@ class PropertyRepository extends EntityRepository
             )
             ->addOrderBy('p.price', 'ASC')
             ->addOrderBy('p.name', 'ASC')
-            ->addOrderBy('p.totalVisits', 'DESC');
+            ->addOrderBy('p.totalVisits', 'DESC')
+        ;
         if ($type > 0) {
             $qb->andWhere('p.type = :type')->setParameter('type', $type);
         }
