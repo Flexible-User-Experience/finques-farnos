@@ -38,13 +38,15 @@
                             </div>
                         </div>
                         <div class="row no-m-bottom">
-                            <div class="col-xs-4">
+                            <div class="col-xs-3">
                                 <div class="form-group">
                                     <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
                                     <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-change="formListener()">
                                         <option data-ng-selected="[[ t.id == type ]]" data-ng-repeat="t in form.types" value="[[ t.id ]]">[[ t.name ]]</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-xs-3">
                                 <div class="form-group">
                                     <label for="propertyCity" class="control-label">{{ 'properties.form.city' | trans | upper }}</label>
                                     <select id="propertyCity" class="form-control" data-ng-model="city" required="required" data-ng-change="formListener()">
@@ -52,11 +54,13 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xs-4 col-xs-offset-1">
+                            <div class="col-xs-3">
                                 <div class="hide form-group">
                                     <label for="propertyArea" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(area) ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
                                     <input id="propertyArea" type="range" name="propertyArea" min="0" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="10">
                                 </div>
+                            </div>
+                            <div class="col-xs-3">
                                 <div class="form-group">
                                     <label for="propertyRooms" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ rooms ]] {{ 'properties.form.roomsl' | trans | upper }}</label>
                                     <input id="propertyRooms" type="range" name="propertyRooms" min="0" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]" step="1">
