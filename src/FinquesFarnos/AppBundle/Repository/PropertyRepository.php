@@ -153,18 +153,16 @@ class PropertyRepository extends EntityRepository
             ->select('p, i, t, c')
             ->where('p.enabled = :enabled')
             ->andWhere('p.squareMeters <= :area')
-            ->andWhere('p.rooms <= :rooms')
-            ->andWhere('p.price <= :price')
             ->andWhere('i.enabled = :enabled')
             ->leftJoin('p.images', 'i')
             ->leftJoin('p.type', 't')
             ->leftJoin('p.categories', 'c')
-            ->setParameters(array(
-                'enabled' => true,
-                'area' => $area,
-                'rooms' => $rooms,
-                'price' => $price,
-            ))
+            ->setParameters(
+                array(
+                    'enabled' => true,
+                    'area' => $area,
+                )
+            )
             ->addOrderBy('p.price', 'ASC')
             ->addOrderBy('p.name', 'ASC')
             ->addOrderBy('p.totalVisits', 'DESC');
@@ -181,6 +179,12 @@ class PropertyRepository extends EntityRepository
                 $orWhereExpr->add($qb->expr()->orX($qb->expr()->eq('c.id', $categoryId)));
             }
             $qb->andWhere($orWhereExpr);
+        }
+        if ($rooms > 0) {
+            $qb->andWhere('p.rooms <= :rooms')->setParameter('rooms', $rooms);
+        }
+        if ($price > 0) {
+            $qb->andWhere('p.price <= :price')->setParameter('price', $price);
         }
 
         return $qb->getQuery();
@@ -223,7 +227,7 @@ class PropertyRepository extends EntityRepository
             }
             ++$index;
         }
-        if ($index == 0) {
+        if (0 == $index) {
             return $filteredProperties[count($filteredProperties) - 1];
         }
 
@@ -282,7 +286,7 @@ class PropertyRepository extends EntityRepository
     private function handleFilter($filter)
     {
         $catArray = array();
-        if ($filter[0] != '-1' && $filter[0] != 'any') {
+        if ('-1' != $filter[0] && 'any' != $filter[0]) {
             if (is_array($filter[0])) {
                 $catArray = $filter[0];
             } else {
