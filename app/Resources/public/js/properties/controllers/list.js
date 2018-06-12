@@ -100,4 +100,8 @@ angular.module('propertiesApp')
             return result;
         };
 
+        $scope.getPriceString = function (price) {
+            return numeral(price).format('0,0');
+        };
+
     }]);

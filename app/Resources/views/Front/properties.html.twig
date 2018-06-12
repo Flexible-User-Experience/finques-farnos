@@ -68,7 +68,7 @@
                                     <label for="propertyPrice" class="control-label">{{ 'properties.form.pricel' | trans | upper }}</label>
                                     <select id="propertyPrice" class="form-control" data-ng-model="price" required="required" data-ng-change="formListener()">
                                         <option value="-1"></option>
-                                        <option data-ng-repeat="p in getPricesArray()" value="[[ p ]]">{{ 'properties.form.upto' | trans }} [[ p ]] €</option>
+                                        <option data-ng-repeat="p in getPricesArray()" value="[[ p ]]">{{ 'properties.form.upto' | trans }} [[ getPriceString(p) ]] €</option>
                                     </select>
                                 </div>
                                 {# hidden form widget, keep it #}
