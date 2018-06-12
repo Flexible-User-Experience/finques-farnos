@@ -89,6 +89,15 @@ angular.module('propertiesApp')
             }
 
             return result;
-        }
+        };
+
+        $scope.getPricesArray = function () {
+            var result = [];
+            for (var i = 0; i <= $scope.form.price.max; i+= 10000) {
+                result.push(i);
+            }
+
+            return result;
+        };
 
     }]);
