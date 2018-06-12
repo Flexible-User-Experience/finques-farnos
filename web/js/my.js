@@ -46,7 +46,6 @@ angular.module('propertiesApp')
             // on selected type, update filtered cities
             $http.get(Routing.generate('api_get_api_cities_by_type', {type: $scope.type, _format: 'json'}))
                 .success(function(response) {
-                    // $log.log(response);
                     $scope.form.cities = response;
                     deferred.resolve(response);
                 })
@@ -174,6 +173,28 @@ angular.module('propertiesApp')
             }
 
             return ss;
+        };
+        
+        $scope.getRoomsArray = function () {
+            var result = [];
+            for (var i = 1; i <= $scope.form.rooms.max; i++) {
+                result.push(i);
+            }
+
+            return result;
+        };
+
+        $scope.getPricesArray = function () {
+            var result = [];
+            for (var i = 10000; i <= $scope.form.price.max; i+= 10000) {
+                result.push(i);
+            }
+
+            return result;
+        };
+
+        $scope.getPriceString = function (price) {
+            return numeral(price).format('0,0');
         };
 
     }]);

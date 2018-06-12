@@ -56,6 +56,7 @@ properties:
     rooms: chambres
     roomsl: chambres
     price: ou plus
+    pricel: prix
     search: recherche
     results: objets trouvés
     upto: jusqu'à

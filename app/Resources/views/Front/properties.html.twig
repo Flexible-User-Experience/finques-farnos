@@ -23,42 +23,12 @@
                 <div class="left-search-panel">
                     <form name="filterForm" role="form">
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-xs-9">
                                 <div class="form-group">
                                     <div class="checkbox checkbox-inline checkbox-info" data-ng-repeat="cat in form.categories">
                                         <input id="checkbox[[ cat.id ]]" type="checkbox" checklist-model="categories" checklist-value="cat.id" data-ng-click="formListener()">
                                         <label for="checkbox[[ cat.id ]]">[[ cat.name ]]</label>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row no-m-bottom">
-                            <div class="col-xs-4">
-                                <div class="form-group">
-                                    <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
-                                    <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-change="formListener()">
-                                        <option data-ng-selected="[[ t.id == type ]]" data-ng-repeat="t in form.types" value="[[ t.id ]]">[[ t.name ]]</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="propertyCity" class="control-label">{{ 'properties.form.city' | trans | upper }}</label>
-                                    <select id="propertyCity" class="form-control" data-ng-model="city" required="required" data-ng-change="formListener()">
-                                        <option data-ng-selected="[[ c.id == city ]]" data-ng-repeat="c in form.cities" value="[[ c.id ]]">[[ c.name ]]</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-xs-4 col-xs-offset-1">
-                                <div class="hide form-group">
-                                    <label for="propertyArea" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(area) ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
-                                    <input id="propertyArea" type="range" name="propertyArea" min="0" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="10">
-                                </div>
-                                <div class="form-group">
-                                    <label for="propertyRooms" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ rooms ]] {{ 'properties.form.roomsl' | trans | upper }}</label>
-                                    <input id="propertyRooms" type="range" name="propertyRooms" min="0" max="[[ form.rooms.max ]]" data-ng-model="rooms" value="[[ rooms ]]" step="1">
-                                </div>
-                                <div class="form-group">
-                                    <label for="propertyPrice" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(price) ]] &euro;</label>
-                                    <input id="propertyPrice" type="range" name="propertyPrice" min="0" max="[[ form.price.max ]]" data-ng-model="price" data-ng-init="price" value="[[ price ]]" step="10000">
                                 </div>
                             </div>
                             <div class="col-xs-3 text-right">
@@ -67,14 +37,50 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row no-m-bottom">
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
+                                    <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-change="formListener()">
+                                        <option data-ng-selected="[[ t.id == type ]]" data-ng-repeat="t in form.types" value="[[ t.id ]]">[[ t.name ]]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label for="propertyCity" class="control-label">{{ 'properties.form.city' | trans | upper }}</label>
+                                    <select id="propertyCity" class="form-control" data-ng-model="city" required="required" data-ng-change="formListener()">
+                                        <option data-ng-selected="[[ c.id == city ]]" data-ng-repeat="c in form.cities" value="[[ c.id ]]">[[ c.name ]]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label for="propertyRooms" class="control-label">{{ 'properties.form.roomsl' | trans | upper }}</label>
+                                    <select id="propertyRooms" class="form-control" data-ng-model="rooms" required="required" data-ng-change="formListener()">
+                                        <option value="-1"></option>
+                                        <option data-ng-repeat="r in getRoomsArray()" value="[[ r ]]">{{ 'properties.form.upto' | trans }} [[ r ]]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="form-group" style="margin-bottom:0">
+                                    <label for="propertyPrice" class="control-label">{{ 'properties.form.pricel' | trans | upper }}</label>
+                                    <select id="propertyPrice" class="form-control" data-ng-model="price" required="required" data-ng-change="formListener()">
+                                        <option value="-1"></option>
+                                        <option data-ng-repeat="p in getPricesArray()" value="[[ p ]]">{{ 'properties.form.upto' | trans }} [[ getPriceString(p) ]] €</option>
+                                    </select>
+                                </div>
+                                {# hidden form widget, keep it #}
+                                <div class="hide form-group">
+                                    <label for="propertyArea" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(area) ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
+                                    <input id="propertyArea" type="range" name="propertyArea" min="0" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="10">
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
-            {#<div class="col-md-8">#}
-                {#<ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options" control="map.control" bounds="map.bounds">#}
-                    {#<ui-gmap-markers data-ng-if="properties" models="properties" idKey="id" coords="'coords'" fit="true" doCluster="true" clusterOptions="map.clusterOptions" icon="'/bundles/images/gmap-cluster/m2.png'"></ui-gmap-markers>#}
-                {#</ui-gmap-google-map>#}
-            {#</div>#}
         </div>
         <hr class="hr-homepage">
         <div data-ng-repeat="property in properties">

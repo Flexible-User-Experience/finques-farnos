@@ -82,4 +82,26 @@ angular.module('propertiesApp')
             return ss;
         };
 
+        $scope.getRoomsArray = function () {
+            var result = [];
+            for (var i = 1; i <= $scope.form.rooms.max; i++) {
+                result.push(i);
+            }
+
+            return result;
+        };
+
+        $scope.getPricesArray = function () {
+            var result = [];
+            for (var i = 0; i <= $scope.form.price.max; i+= 10000) {
+                result.push(i);
+            }
+
+            return result;
+        };
+
+        $scope.getPriceString = function (price) {
+            return numeral(price).format('0,0');
+        };
+
     }]);
