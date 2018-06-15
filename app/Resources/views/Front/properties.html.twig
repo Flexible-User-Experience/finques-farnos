@@ -40,7 +40,7 @@
                         <div class="row no-m-bottom">
                             <div class="col-xs-3">
                                 <div class="form-group">
-                                    <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | upper }}</label>
+                                    <label for="propertyType" class="control-label">{{ 'properties.form.type' | trans | lower }}</label>
                                     <select id="propertyType" class="form-control" data-ng-model="type" required="required" data-ng-change="formListener()">
                                         <option data-ng-selected="[[ t.id == type ]]" data-ng-repeat="t in form.types" value="[[ t.id ]]">[[ t.name ]]</option>
                                     </select>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="col-xs-3">
                                 <div class="form-group">
-                                    <label for="propertyCity" class="control-label">{{ 'properties.form.city' | trans | upper }}</label>
+                                    <label for="propertyCity" class="control-label">{{ 'properties.form.city' | trans | lower }}</label>
                                     <select id="propertyCity" class="form-control" data-ng-model="city" required="required" data-ng-change="formListener()">
                                         <option data-ng-selected="[[ c.id == city ]]" data-ng-repeat="c in form.cities" value="[[ c.id ]]">[[ c.name ]]</option>
                                     </select>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-xs-3">
                                 <div class="form-group">
-                                    <label for="propertyRooms" class="control-label">{{ 'properties.form.roomsl' | trans | upper }}</label>
+                                    <label for="propertyRooms" class="control-label">{{ 'properties.form.roomsl' | trans | lower }}</label>
                                     <select id="propertyRooms" class="form-control" data-ng-model="rooms" required="required" data-ng-change="formListener()">
                                         <option value="-1"></option>
                                         <option data-ng-repeat="r in getRoomsArray()" value="[[ r ]]">{{ 'properties.form.upto' | trans }} [[ r ]]</option>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-xs-3">
                                 <div class="form-group" style="margin-bottom:0">
-                                    <label for="propertyPrice" class="control-label">{{ 'properties.form.pricel' | trans | upper }}</label>
+                                    <label for="propertyPrice" class="control-label">{{ 'properties.form.pricel' | trans | lower }}</label>
                                     <select id="propertyPrice" class="form-control" data-ng-model="price" required="required" data-ng-change="formListener()">
                                         <option value="-1"></option>
                                         <option data-ng-repeat="p in getPricesArray()" value="[[ p ]]">{{ 'properties.form.upto' | trans }} [[ getPriceString(p) ]] €</option>
@@ -73,7 +73,7 @@
                                 </div>
                                 {# hidden form widget, keep it #}
                                 <div class="hide form-group">
-                                    <label for="propertyArea" class="control-label">{{ 'properties.form.upto' | trans | upper }} [[ getCurrency(area) ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
+                                    <label for="propertyArea" class="control-label">{{ 'properties.form.upto' | trans | lower }} [[ getCurrency(area) ]] M<sup>2</sup> {{ 'properties.form.area' | trans | upper }}</label>
                                     <input id="propertyArea" type="range" name="propertyArea" min="0" max="[[ form.area.max ]]" data-ng-model="area" value="[[ area ]]" step="10">
                                 </div>
                             </div>
