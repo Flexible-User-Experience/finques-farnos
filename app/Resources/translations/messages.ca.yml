@@ -65,7 +65,7 @@ properties:
         type: tots els tipus
         city: totes les població
         room: totes les habitacions
-        price: totes els preus habitacions
+        price: totes els preus
 
 property:
   localization: localització

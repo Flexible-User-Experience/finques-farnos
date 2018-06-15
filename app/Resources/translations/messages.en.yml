@@ -62,8 +62,10 @@ properties:
     upto: up to
     select:
       any:
-        type: any type
-        city: any city
+        type: all types
+        city: all cities
+        room: all rooms
+        price: all prices
 
 property:
   localization: localization
