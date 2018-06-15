@@ -119,7 +119,7 @@ angular.module('propertiesApp')
             $scope.city = $scope.selectedPropertiesFormFilter[2];
             $scope.area = $scope.form.area.max;
             $scope.rooms = $scope.form.rooms.max;
-            $scope.price = $scope.form.price.max;
+            $scope.price = 0;
         };
 
         $scope.formListener = function() {
