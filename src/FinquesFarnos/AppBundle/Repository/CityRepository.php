@@ -63,11 +63,9 @@ class CityRepository extends EntityRepository
      */
     public function getEnabledItemsFilteredByTypeIdSortedByNameArrayResult($typeId)
     {
-        $query = $this->getEnabledItemsSortedByNameQB();
-
         if ($typeId > 0) {
             // only real update when there is a specific typeID
-            $query
+            $query = $this->createQueryBuilder('c')
                 ->select('c')
                 ->innerJoin('AppBundle:Property', 'ps', Join::WITH, '1 = 1')
                 ->innerJoin('c.properties', 'p')
@@ -76,6 +74,15 @@ class CityRepository extends EntityRepository
                 ->andWhere('p.enabled = 1')
                 ->setParameter('tid', $typeId)
             ;
+        } else {
+            $query = $this->createQueryBuilder('c')
+                ->select('c.id, c.name')
+                ->leftJoin('c.properties', 'p')
+                ->where('c.enabled = :enabled')
+                ->andWhere('p.enabled = :enabled')
+                ->setParameter('enabled', true)
+                ->orderBy('c.name', 'ASC')
+                ->groupBy('c.name');
         }
 
         return $query->getQuery()->getResult();
