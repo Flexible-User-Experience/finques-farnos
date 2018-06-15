@@ -62,8 +62,10 @@ properties:
     upto: hasta
     select:
       any:
-        type: cualquier tipo
-        city: cualquier población
+        type: todos los tipos
+        city: todas las poblaciones
+        room: todas las habitaciones
+        price: todos los precios
 
 property:
   localization: localización

@@ -62,8 +62,10 @@ properties:
     upto: fins a
     select:
       any:
-        type: qualsevol tipus
-        city: qualsevol població
+        type: tots els tipus
+        city: totes les població
+        room: totes les habitacions
+        price: totes els preus
 
 property:
   localization: localització

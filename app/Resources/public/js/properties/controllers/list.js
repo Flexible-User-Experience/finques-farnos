@@ -26,7 +26,7 @@ angular.module('propertiesApp')
             $scope.city = $scope.selectedPropertiesFormFilter[2];
             $scope.area = $scope.form.area.max;
             $scope.rooms = $scope.form.rooms.max;
-            $scope.price = $scope.form.price.max;
+            $scope.price = 0;
         };
 
         $scope.formListener = function() {
@@ -93,7 +93,7 @@ angular.module('propertiesApp')
 
         $scope.getPricesArray = function () {
             var result = [];
-            for (var i = 0; i <= $scope.form.price.max; i+= 10000) {
+            for (var i = 10000; i <= $scope.form.price.max; i+= 10000) {
                 result.push(i);
             }
 
