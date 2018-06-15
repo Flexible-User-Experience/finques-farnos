@@ -39,7 +39,7 @@ twig:
         google_maps_api_key:      "%google_maps_api_key%"
         inmopc_customer_code:     "%inmopc_customer_code%"
         project_title:            "%project_title%"
-        admin_tag_version:        "2.8.4"
+        admin_tag_version:        "2.8.5"
 
 # Assetic
 assetic:
