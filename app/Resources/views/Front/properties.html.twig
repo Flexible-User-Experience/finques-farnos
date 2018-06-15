@@ -67,7 +67,7 @@
                                 <div class="form-group" style="margin-bottom:0">
                                     <label for="propertyPrice" class="control-label">{{ 'properties.form.pricel' | trans | lower }}</label>
                                     <select id="propertyPrice" class="form-control" data-ng-model="price" required="required" data-ng-change="formListener()">
-                                        <option value="0">{{ 'properties.form.select.any.price' | trans }}</option>
+                                        <option value="0" selected="selected">{{ 'properties.form.select.any.price' | trans }}</option>
                                         <option data-ng-repeat="p in getPricesArray()" value="[[ p ]]">{{ 'properties.form.upto' | trans }} [[ getPriceString(p) ]] €</option>
                                     </select>
                                 </div>
