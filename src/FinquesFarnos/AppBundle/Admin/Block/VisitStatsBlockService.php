@@ -5,18 +5,18 @@ namespace FinquesFarnos\AppBundle\Admin\Block;
 use Doctrine\ORM\EntityManager;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Sonata\BlockBundle\Block\BaseBlockService;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 /**
- * VisitStatsBlockService class
+ * VisitStatsBlockService class.
  *
  * @category BlockService
- * @package  FinquesFarnos\AppBundle\Admin\Block
+ *
  * @author   David Romaní <david@flux.cat>
  */
-class VisitStatsBlockService extends BaseBlockService
+class VisitStatsBlockService extends AbstractBlockService
 {
     /**
      * @var EntityManager
@@ -37,7 +37,7 @@ class VisitStatsBlockService extends BaseBlockService
     }
 
     /**
-     * Execute
+     * Execute.
      *
      * @param BlockContextInterface $blockContext
      * @param Response              $response
@@ -51,8 +51,8 @@ class VisitStatsBlockService extends BaseBlockService
         return $this->renderResponse(
             $blockContext->getTemplate(),
             array(
-                'block'                => $blockContext->getBlock(),
-                'settings'             => $blockContext->getSettings(),
+                'block' => $blockContext->getBlock(),
+                'settings' => $blockContext->getSettings(),
                 'topVisitedProperties' => $entities,
             ),
             $response
@@ -60,7 +60,7 @@ class VisitStatsBlockService extends BaseBlockService
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string
      */
@@ -70,7 +70,7 @@ class VisitStatsBlockService extends BaseBlockService
     }
 
     /**
-     * Set defaultSettings
+     * Set defaultSettings.
      *
      * @param OptionsResolver $resolver
      */
@@ -78,8 +78,8 @@ class VisitStatsBlockService extends BaseBlockService
     {
         $resolver->setDefaults(
             array(
-                'title'    => 'Default title',
-                'content'  => 'Default content',
+                'title' => 'Default title',
+                'content' => 'Default content',
                 'template' => '::Admin/Block/block_visit_stats.html.twig',
             )
         );

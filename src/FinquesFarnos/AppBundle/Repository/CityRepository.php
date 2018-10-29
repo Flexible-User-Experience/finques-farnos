@@ -73,6 +73,7 @@ class CityRepository extends EntityRepository
                 ->andWhere('t.id = :tid')
                 ->andWhere('p.enabled = 1')
                 ->setParameter('tid', $typeId)
+                ->orderBy('c.name', 'ASC')
             ;
         } else {
             $query = $this->createQueryBuilder('c')
@@ -82,7 +83,8 @@ class CityRepository extends EntityRepository
                 ->andWhere('p.enabled = :enabled')
                 ->setParameter('enabled', true)
                 ->orderBy('c.name', 'ASC')
-                ->groupBy('c.name');
+                ->groupBy('c.name')
+            ;
         }
 
         return $query->getQuery()->getResult();
