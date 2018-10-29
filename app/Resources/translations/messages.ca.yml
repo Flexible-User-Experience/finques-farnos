@@ -63,7 +63,7 @@ properties:
     select:
       any:
         type: tots els tipus
-        city: totes les població
+        city: totes les poblacions
         room: totes les habitacions
         price: totes els preus
 
