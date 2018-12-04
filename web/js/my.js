@@ -14,8 +14,8 @@ angular.module('propertiesApp', [
         $interpolateProvider.endSymbol(']]');
     }]).config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
-            key: 'AIzaSyB332MhD5g142kIo79ZagVcXUidQwHbWwk',
-            v: '3.31',
+            key: 'AIzaSyCpZkgUPZNnkE0MDxFP3Vx6WmDoiMPoJ74',
+            v: '3.35',
             language: 'es',
             libraries: ''
         });
@@ -174,7 +174,7 @@ angular.module('propertiesApp')
 
             return ss;
         };
-        
+
         $scope.getRoomsArray = function () {
             var result = [];
             for (var i = 1; i <= $scope.form.rooms.max; i++) {
