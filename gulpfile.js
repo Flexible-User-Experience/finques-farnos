@@ -6,7 +6,7 @@ var config = require('./gulp-config.json');
 var jshint      = require('gulp-jshint');
 var less        = require('gulp-less');
 var concat      = require('gulp-concat');
-var minifycss   = require('gulp-minify-css');
+var cleanCSS    = require('gulp-clean-css');
 var browserSync = require('browser-sync');
 var uglify      = require('gulp-uglify');
 var rename      = require('gulp-rename');
@@ -35,7 +35,7 @@ gulp.task('less', function() {
     return gulp.src(['app/Resources/public/css/**/*.less'])
         .pipe(concat('main.css'))
         .pipe(less({ sourceMap: true,  paths: ['./bower_components']})).on('error', gutil.log)
-        .pipe(minifycss())
+        .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('web/css'));
 });
 
@@ -84,17 +84,17 @@ gulp.task('myjs', function() {
 });
 
 // Watch with Browser Sync
-gulp.task('bswatch', ['browser-sync'], function() {
+gulp.task('bswatch', gulp.series(['browser-sync'], function() {
     gulp.watch('app/Resources/views/Front/**/*.twig', ['bs-reload']);
     gulp.watch('app/Resources/public/js/**/*.js', ['lint', 'myjs', 'bs-reload']);
     gulp.watch('app/Resources/public/css/**/*.less', ['less', 'bs-reload']);
-});
+}));
 
 // Watch
-gulp.task('watch', function() {
+gulp.task('watch', gulp.series(['myjs', 'less'], function() {
     gulp.watch('app/Resources/public/js/**/*.js', ['lint', 'myjs']);
     gulp.watch('app/Resources/public/css/**/*.less', ['less']);
-});
+}));
 
 // Default Task
-gulp.task('default', ['lint', 'fonts', 'less', 'scripts', 'myjs']);
+gulp.task('default', gulp.series(['lint', 'fonts', 'less', 'scripts', 'myjs']));

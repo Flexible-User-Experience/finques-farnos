@@ -14,8 +14,8 @@ angular.module('propertiesApp', [
         $interpolateProvider.endSymbol(']]');
     }]).config(function(uiGmapGoogleMapApiProvider) {
         uiGmapGoogleMapApiProvider.configure({
-            key: 'AIzaSyB332MhD5g142kIo79ZagVcXUidQwHbWwk',
-            v: '3.31',
+            key: 'AIzaSyCpZkgUPZNnkE0MDxFP3Vx6WmDoiMPoJ74',
+            v: '3.35',
             language: 'es',
             libraries: ''
         });
