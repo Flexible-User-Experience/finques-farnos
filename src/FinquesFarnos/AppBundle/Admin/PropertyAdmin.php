@@ -10,23 +10,23 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
- * PropertyAdmin class
+ * PropertyAdmin class.
  *
  * @category Admin
- * @package  FinquesFarnos\AppBundle\Admin
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class PropertyAdmin extends BaseAdmin
 {
     /**
-     * Base admin route pattern
+     * Base admin route pattern.
      *
      * @var string
      */
     protected $baseRoutePattern = 'property';
 
     /**
-     * Datagrid list view
+     * Datagrid list view.
      *
      * @var array
      */
@@ -35,7 +35,7 @@ class PropertyAdmin extends BaseAdmin
     );
 
     /**
-     * Form view
+     * Form view.
      *
      * @param FormMapper $formMapper
      */
@@ -94,8 +94,8 @@ class PropertyAdmin extends BaseAdmin
             ->add('showInHomepage', 'checkbox', array('label' => 'Mostrar l\'immoble a la homepage', 'required' => false))
             ->add('showPriceOnlyWithNumbers', 'checkbox', array('label' => 'Mostrar el preu només amb números', 'required' => false))
             ->add('hidePrice', 'checkbox', array('label' => 'Mostrar el text \'consultar\' enlloc del preu', 'required' => false))
-            ->add('offerDiscount', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb descompte', 'required' => false))
-            ->add('offerSpecial', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb preu rebaixat', 'required' => false))
+            ->add('offerDiscount', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb preu rebaixat', 'required' => false))
+            ->add('offerSpecial', 'checkbox', array('label' => 'Mostrar marca d\'oferta amb descompte', 'required' => false))
             ->add('enabled', 'checkbox', array('label' => 'Actiu', 'required' => false))
             ->end();
         if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
@@ -106,7 +106,7 @@ class PropertyAdmin extends BaseAdmin
                     ), array(
                         'edit' => 'inline',
                         'inline' => 'table',
-                        'sortable'  => 'position',
+                        'sortable' => 'position',
                     ))
                 ->end();
             $formMapper->setHelps(array('images' => 'Màxim 10MB amb format PNG, JPG o GIF. Imatge amb amplada mínima de 1.200px'));
@@ -152,7 +152,7 @@ class PropertyAdmin extends BaseAdmin
     }
 
     /**
-     * List view
+     * List view.
      *
      * @param ListMapper $listMapper
      */
@@ -192,7 +192,7 @@ class PropertyAdmin extends BaseAdmin
     }
 
     /**
-     * List filters
+     * List filters.
      *
      * @param DatagridMapper $datagridMapper
      */
@@ -217,7 +217,7 @@ class PropertyAdmin extends BaseAdmin
     }
 
     /**
-     * Available routes
+     * Available routes.
      *
      * @param RouteCollection $collection
      */
@@ -232,7 +232,7 @@ class PropertyAdmin extends BaseAdmin
     }
 
     /**
-     * Get Visits Helper Form Mapper
+     * Get Visits Helper Form Mapper.
      *
      * @return string
      */
@@ -241,7 +241,7 @@ class PropertyAdmin extends BaseAdmin
         /** @var ArrayCollection $visits */
         $visits = $this->getSubject()->getVisits();
         if ($visits->count() > 0) {
-            return '<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapsedVisitsList" data-aria-expanded="false" data-aria-controls="collapseExample">Mostrar llistat de visites</button><div class="collapse" id="collapsedVisitsList"><div class="well">' . implode(' ||| ', $visits->toArray()) . '</div></div>';
+            return '<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapsedVisitsList" data-aria-expanded="false" data-aria-controls="collapseExample">Mostrar llistat de visites</button><div class="collapse" id="collapsedVisitsList"><div class="well">'.implode(' ||| ', $visits->toArray()).'</div></div>';
         }
 
         return '';
