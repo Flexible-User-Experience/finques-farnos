@@ -91,13 +91,8 @@ class FrontendMenu
         $menu->addChild('properties', array(
                 'label' => $this->translator->trans('menu.properties'),
                 'route' => 'front_properties',
-                'current' => $request->get('_route') == 'front_properties' || $request->get('_route') == 'front_property',
+                'current' => 'front_properties' == $request->get('_route') || 'front_property' == $request->get('_route'),
             ));
-        $menu->addChild('immoebre', array(
-            'label' => $this->translator->trans('menu.immoebre'),
-            'uri' => $this->iuls->getUriFromLocale($this->rs->getCurrentRequest()->getLocale()),
-            'linkAttributes' => array('target' => '_blank'),
-        ));
         $menu->addChild('about', array(
                 'label' => $this->translator->trans('menu.about'),
                 'route' => 'front_about',
@@ -106,6 +101,11 @@ class FrontendMenu
                 'label' => $this->translator->trans('menu.contact'),
                 'route' => 'front_contact',
             ));
+        $menu->addChild('immoebre', array(
+            'label' => $this->translator->trans('menu.immoebre'),
+            'uri' => $this->iuls->getUriFromLocale($this->rs->getCurrentRequest()->getLocale()),
+            'linkAttributes' => array('target' => '_blank'),
+        ));
         if ($this->ts->getToken() && $this->ac->isGranted('IS_AUTHENTICATED_FULLY')) {
             $menu->addChild('admin', array(
                 'label' => '<i class="fa fa-cog"></i>',
