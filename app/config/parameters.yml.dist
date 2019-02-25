@@ -15,6 +15,7 @@ parameters:
     google_analytics_enabled: false
     google_analytics_account: "UA-xxxxxxxx-x"
     google_maps_api_key:      "xxxxxxxxxxxxx"
+    metricool_api_hash_key:   "xxxxxxxxxxxxx"
     secret:            ThisTokenIsNotSoSecretChangeIt
     email_notifications_sender_domain: "finquesfarnos.com"
     private_admin_test_user: admin
