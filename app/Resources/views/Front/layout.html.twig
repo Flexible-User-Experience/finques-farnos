@@ -132,6 +132,7 @@
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
         ga('create', '{{ google_analytics_account }}', 'auto'); ga('send', 'pageview');
+        function loadScript(a){var b=document.getElementsByTagName('head')[0],c=document.createElement('script');c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"{{ metricool_api_hash_key }}"})});
     {% endif %}
     jQuery(document).ready(function() {
         jQuery('#accept_cookies_warning_btn').click(function() {
