@@ -125,7 +125,7 @@
                     {% endif %}
                     <hr>
                     <h4 class="font-size-16">{{ 'property.message_us_on_whatsapp' | trans | upper }}</h4>
-                    <a href="https://wa.me/34629419591" target="_blank"><img src="{{ asset('bundles/app/svg/whatsapp_logo_orange.svg') }}" alt="WhatsApp logo" style="width:20%"></a>
+                    <a href="https://wa.me/34629419591?text={{ 'Ref. ' ~ property.reference | url_encode }}" target="_blank"><img src="{{ asset('bundles/app/svg/whatsapp_logo_orange.svg') }}" alt="WhatsApp logo" style="width:20%"></a>
                     <hr>
                     <div class="ribbon-wrapper">
                         {% if app.session.flashbag.get('success') | length == 1 %}
