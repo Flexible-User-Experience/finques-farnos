@@ -124,6 +124,8 @@
                         <img class="eeb{% if property.energyClass == 8 %} current{% endif %}" src="{{ asset('bundles/app/images/icones/eficiencia_energetica/EF_G.png') }}" alt="{{ 'property.energy.efficiency' | trans }} G"/>
                     {% endif %}
                     <hr>
+                    <h4 class="font-size-16">{{ 'property.message_us_on_whatsapp' | trans | upper }}</h4>
+                    <hr>
                     <div class="ribbon-wrapper">
                         {% if app.session.flashbag.get('success') | length == 1 %}
                             <h4>{{ 'contact.form.thankyou.title' | trans | upper }}</h4>

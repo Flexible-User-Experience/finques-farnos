@@ -68,6 +68,7 @@ properties:
         price: all prices
 
 property:
+  message_us_on_whatsapp: message us on WhatsApp
   localization: localization
   form: contact request
   energy:
