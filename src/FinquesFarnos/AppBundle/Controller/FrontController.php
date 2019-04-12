@@ -231,7 +231,7 @@ class FrontController extends Controller
         /** @var Slugify $slugger */
         $slugger = $this->get('sonata.core.slugify.cocur');
 
-        return new Response($pdf->getNativeObject()->Output($slugger->slugify($property->getReference()).'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
+        return new Response($pdf->getNativeObject()->Output('Ref-'.$slugger->slugify($property->getReference()).'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
     }
 
     /**

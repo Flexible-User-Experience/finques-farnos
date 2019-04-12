@@ -67,7 +67,7 @@ class PropertyAdminController extends Controller
         /** @var Slugify $slugger */
         $slugger = $this->get('sonata.core.slugify.cocur');
 
-        return new Response($pdf->getNativeObject()->Output($slugger->slugify($object->getReference()).'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
+        return new Response($pdf->getNativeObject()->Output('Ref-'.$slugger->slugify($object->getReference()).'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
     }
 
     /**
