@@ -3,6 +3,7 @@
 namespace FinquesFarnos\AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
 use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\Entity\PropertyVisit;
 use FinquesFarnos\AppBundle\Form\Type\ContactType;
@@ -162,7 +163,7 @@ class FrontController extends Controller
      *
      * @return Response
      *
-     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws OptimisticLockException
      */
     public function propertyAction(Request $request, Property $property)
     {
@@ -172,7 +173,7 @@ class FrontController extends Controller
 
         $adminListPropertiesRoute = $this->generateUrl('admin_finquesfarnos_app_property_list');
         $frontRoute = $this->generateUrl('front_homepage', array(), true);
-        if (strpos($request->headers->get('referer'), $adminListPropertiesRoute) == 0) {
+        if (0 == strpos($request->headers->get('referer'), $adminListPropertiesRoute)) {
             // Referer request is not an admin route so add a visit record
             /** @var EntityManager $em */
             $em = $this->getDoctrine()->getManager();
