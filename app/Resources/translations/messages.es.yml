@@ -68,7 +68,7 @@ properties:
         price: todos los precios
 
 property:
-  message_us_on_whatsapp: envíenos un mensaje en WhatsApp
+  message_us_on_whatsapp: Estoy interesado en el inmueble con referencia %ref%, y quiero recibir más información.
   localization: localización
   form: solicitud de contacto
   energy:
