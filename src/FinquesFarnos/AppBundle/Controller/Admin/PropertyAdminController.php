@@ -2,6 +2,7 @@
 
 namespace FinquesFarnos\AppBundle\Controller\Admin;
 
+use Cocur\Slugify\Slugify;
 use FinquesFarnos\AppBundle\Entity\ImageProperty;
 use FinquesFarnos\AppBundle\Entity\Property;
 use FinquesFarnos\AppBundle\PdfGenerator\PropertyShowcasePdfGenerator;
@@ -63,7 +64,10 @@ class PropertyAdminController extends Controller
         $generator = $this->get('app.property_showcase_pdf_generator');
         $pdf = $generator->generate(array('property' => $object));
 
-        return new Response($pdf->getNativeObject()->Output($object->getReference().'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
+        /** @var Slugify $slugger */
+        $slugger = $this->get('sonata.core.slugify.cocur');
+
+        return new Response($pdf->getNativeObject()->Output($slugger->slugify($object->getReference()).'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
     }
 
     /**
