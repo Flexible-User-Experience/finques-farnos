@@ -68,7 +68,7 @@ properties:
         price: totes els preus
 
 property:
-  message_us_on_whatsapp: envieu-nos un missatge a WhatsApp
+  message_us_on_whatsapp: Estic interessat en l'immoble amb referència %ref%, i en vull rebre més informació.
   localization: localització
   form: sol·licitud de contacte
   energy:
