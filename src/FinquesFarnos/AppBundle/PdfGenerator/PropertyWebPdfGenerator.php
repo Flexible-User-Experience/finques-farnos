@@ -23,6 +23,8 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
      * @param array $options    An array of options to be passed to the underlying PdfFactory
      *
      * @return PdfInterface
+     *
+     * @throws \Exception
      */
     protected function doGenerate(array $parameters, array $options)
     {
@@ -169,26 +171,26 @@ class PropertyWebPdfGenerator extends BasePropertyPdfGenerator
         $builder->MultiCell(55, 0, mb_convert_case($this->getTrans('property.energy.efficiency'), MB_CASE_TITLE, 'UTF-8'), 0, 'L', false, 2, 140, $y + 5);
         $y = $y + 15;
         $builder->SetFont('helvetica', '', 10, '', true);
-        if ($property->getEnergyClass() == 0) {
+        if (0 == $property->getEnergyClass()) {
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'warning.png', 140, $builder->getY() + 2, 4, 4, 'PNG', '', '', false, 150);
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.noclass'), 0, 'L', false, 2, 145, $y);
-        } elseif ($property->getEnergyClass() == 1) {
+        } elseif (1 == $property->getEnergyClass()) {
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'warning.png', 140, $builder->getY() + 2, 4, 4, 'PNG', '', '', false, 150);
             $builder->MultiCell(55, 0, $this->getTrans('property.energy.pending'), 0, 'L', false, 2, 145, $y);
         } elseif ($property->getEnergyClass() > 1) {
-            $builder->SetAlpha($property->getEnergyClass() == 2 ? 1 : 0.35);
+            $builder->SetAlpha(2 == $property->getEnergyClass() ? 1 : 0.35);
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'EF_A.png', 140, $y, 14, 5, 'PNG', '', '', false, 150);
-            $builder->SetAlpha($property->getEnergyClass() == 3 ? 1 : 0.35);
+            $builder->SetAlpha(3 == $property->getEnergyClass() ? 1 : 0.35);
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'EF_B.png', 140, $y + 8, 20, 5, 'PNG', '', '', false, 150);
-            $builder->SetAlpha($property->getEnergyClass() == 4 ? 1 : 0.35);
+            $builder->SetAlpha(4 == $property->getEnergyClass() ? 1 : 0.35);
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'EF_C.png', 140, $y + 16, 28, 5, 'PNG', '', '', false, 150);
-            $builder->SetAlpha($property->getEnergyClass() == 5 ? 1 : 0.35);
+            $builder->SetAlpha(5 == $property->getEnergyClass() ? 1 : 0.35);
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'EF_D.png', 140, $y + 24, 35, 5, 'PNG', '', '', false, 150);
-            $builder->SetAlpha($property->getEnergyClass() == 6 ? 1 : 0.35);
+            $builder->SetAlpha(6 == $property->getEnergyClass() ? 1 : 0.35);
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'EF_E.png', 140, $y + 32, 43, 5, 'PNG', '', '', false, 150);
-            $builder->SetAlpha($property->getEnergyClass() == 7 ? 1 : 0.35);
+            $builder->SetAlpha(7 == $property->getEnergyClass() ? 1 : 0.35);
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'EF_F.png', 140, $y + 40, 50, 5, 'PNG', '', '', false, 150);
-            $builder->SetAlpha($property->getEnergyClass() == 8 ? 1 : 0.35);
+            $builder->SetAlpha(8 == $property->getEnergyClass() ? 1 : 0.35);
             $builder->Image(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'Resources'.DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'icones'.DIRECTORY_SEPARATOR.'eficiencia_energetica'.DIRECTORY_SEPARATOR.'EF_G.png', 140, $y + 48, 57, 5, 'PNG', '', '', false, 150);
             $builder->SetAlpha(1);
         }

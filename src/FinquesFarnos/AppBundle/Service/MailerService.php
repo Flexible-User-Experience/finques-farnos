@@ -10,10 +10,10 @@ use FinquesFarnos\AppBundle\Entity\ContactMessage;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 
 /**
- * Class MailerService
+ * Class MailerService.
  *
  * @category Service
- * @package  FinquesFarnos\AppBundle\Service
+ *
  * @author   David Romaní <david@flux.cat>
  */
 class MailerService
@@ -39,7 +39,7 @@ class MailerService
     private $ensd;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param EntityManager $em
      * @param TwigEngine    $templating
@@ -55,11 +55,13 @@ class MailerService
     }
 
     /**
-     * Perform frontend property detail page delivery email notification action
+     * Perform frontend property detail page delivery email notification action.
      *
      * @param Contact  $contactForm
      * @param          $textMessage
      * @param Property $property
+     *
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function performPropertyDeliveryAction(Contact $contactForm, $textMessage, Property $property)
     {
@@ -68,10 +70,12 @@ class MailerService
     }
 
     /**
-     * Perform frontend contact page delivery email notification action
+     * Perform frontend contact page delivery email notification action.
      *
      * @param Contact $contactForm
      * @param         $textMessage
+     *
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function performContactDeliveryAction(Contact $contactForm, $textMessage)
     {
@@ -86,6 +90,8 @@ class MailerService
      * @param Contact       $contactForm
      * @param string        $textMessage
      * @param Property|null $property
+     *
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     private function manageModel(Contact $contactForm, $textMessage, Property $property = null)
     {
@@ -112,27 +118,29 @@ class MailerService
     }
 
     /**
-     * Deliver email notifitacion task
+     * Deliver email notifitacion task.
      *
      * @param Contact       $contactForm
      * @param string        $textMessage
      * @param Property|null $property
+     *
+     * @throws \Twig\Error\Error
      */
     private function delivery(Contact $contactForm, $textMessage, Property $property = null)
     {
         /** @var \Swift_Message $emailMessage */
         $emailMessage = \Swift_Message::newInstance()
-            ->setSubject('Formulari de contacte pàgina web www.' . $this->ensd)
-            ->setFrom('webapp@' . $this->ensd)
-            ->setTo('info@' . $this->ensd)
+            ->setSubject('Formulari de contacte pàgina web www.'.$this->ensd)
+            ->setFrom('webapp@'.$this->ensd)
+            ->setTo('info@'.$this->ensd)
             ->setBody(
                 $this->templating->render(
                     'Front/contact.email.html.twig',
                     array(
-                        'form'     => $contactForm,
-                        'message'  => $textMessage,
+                        'form' => $contactForm,
+                        'message' => $textMessage,
                         'property' => $property,
-                        'ensd'     => $this->ensd,
+                        'ensd' => $this->ensd,
                     )
                 )
             )
