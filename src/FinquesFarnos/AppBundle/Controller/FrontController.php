@@ -227,7 +227,7 @@ class FrontController extends Controller
         $generator = $this->get('app.property_web_pdf_generator');
         $pdf = $generator->generate(array('property' => $property));
 
-        return new Response($pdf->getContents(), 200, array('Content-type' => 'application/pdf'));
+        return new Response($pdf->getNativeObject()->Output($property->getReference().'.pdf', 'I'), 200, array('Content-type' => 'application/pdf'));
     }
 
     /**
@@ -244,6 +244,8 @@ class FrontController extends Controller
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws OptimisticLockException
      */
     public function contactAction(Request $request)
     {
