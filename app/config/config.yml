@@ -40,7 +40,7 @@ twig:
         metricool_api_hash_key:   "%metricool_api_hash_key%"
         inmopc_customer_code:     "%inmopc_customer_code%"
         project_title:            "%project_title%"
-        admin_tag_version:        "2.9.5"
+        admin_tag_version:        "2.9.6"
 
 # Assetic
 assetic:
