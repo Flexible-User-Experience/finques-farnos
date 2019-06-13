@@ -156,7 +156,7 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/{type}/{city}/{name}/{reference}", name="front_property", options={"expose"=true})
+     * @Route("/{type}/{city}/{name}/{reference}/{homepage}", name="front_property", options={"expose"=true})
      * @ParamConverter("property", class="AppBundle:Property", options={"mapping": {"reference": "reference"}})
      *
      * @param Request  $request
@@ -166,7 +166,7 @@ class FrontController extends Controller
      *
      * @throws OptimisticLockException
      */
-    public function propertyAction(Request $request, Property $property)
+    public function propertyAction(Request $request, Property $property, $homepage = false)
     {
         if (!$property->getEnabled()) {
             throw new NotFoundHttpException();
@@ -207,6 +207,7 @@ class FrontController extends Controller
                 'property' => $property,
                 'localization' => json_encode($localization),
                 'form' => $form->createView(),
+                'homepageReferrer' => $request->get('hr'),
             ));
     }
 
