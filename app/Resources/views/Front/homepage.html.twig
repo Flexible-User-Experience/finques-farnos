@@ -62,12 +62,12 @@
                                     {% elseif property.reserved %}
                                         <img class="extra-label" src="{{ asset('bundles/app/images/extra_ribbons/reserved-small-' ~ app.request.locale ~ '.png') }}" alt="reserved label"/>
                                     {% endif %}
-                                    <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
+                                    <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference, hr: true}) }}">
                                         <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x400') }}" alt="{{ image.metaAlt }}"{% if image.metaTitle %} title="{{ image.metaTitle }}"{% endif %}>
                                     </a>
                                 </div>
                             {% endif %}
-                            <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference}) }}">
+                            <a href="{{ path('front_property', {type: property.type.nameSlug, city: property.city.nameSlug, name: property.nameSlug, reference: property.reference, hr: true}) }}">
                                 <div class="caption">
                                     <h2 class="no-m-top no-bold-font">Ref. {{ property.reference }}</h2>
                                     <h2 class="no-m-top">{{ property.name | upper }}</h2>

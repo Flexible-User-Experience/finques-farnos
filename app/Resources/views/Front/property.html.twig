@@ -36,7 +36,7 @@
     <div class="container" data-ng-controller="PropertyDetailCtrl" data-ng-init="init('{{ localization }}')">
         <div class="row">
             <div class="col-md-8">
-                <div class="nav-control"><a href="{{ path('front_property_return') }}"><span class="list-page"></span> {{ 'properties.list.button.back' | trans | upper }}</a></div>
+                <div class="nav-control"><a href="{% if homepageReferrer %}{{ path('front_homepage') }}{% else %}{{ path('front_property_return') }}{% endif %}"><span class="list-page"></span> {{ 'properties.list.button.back' | trans | upper }}</a></div>
             </div>
             <div class="col-md-4">
                 {% if showNavigationArrows %}
