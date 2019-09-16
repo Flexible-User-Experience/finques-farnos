@@ -11,10 +11,10 @@ namespace FinquesFarnos\AppBundle\Service;
  */
 class InmoebreUriLocaleService
 {
-    const URI_IMMOEBRE_CA = 'http://www.immoebre.com/catalan/index.html';
-    const URI_IMMOEBRE_ES = 'http://www.immoebre.com/index.html';
-    const URI_IMMOEBRE_EN = 'http://www.immoebre.com/ingles/index.html';
-    const URI_IMMOEBRE_FR = 'http://www.immoebre.com/frances/index.html';
+    const URI_IMMOEBRE_CA = 'https://immoebre.com';
+    const URI_IMMOEBRE_ES = 'https://immoebre.com/es';
+    const URI_IMMOEBRE_EN = 'https://immoebre.com/en';
+    const URI_IMMOEBRE_FR = 'https://immoebre.com/fr';
 
     /**
      * Methods.
@@ -29,11 +29,11 @@ class InmoebreUriLocaleService
     {
         $result = self::URI_IMMOEBRE_CA;
 
-        if ($locale == 'es') {
+        if ('es' == $locale) {
             $result = self::URI_IMMOEBRE_ES;
-        } elseif ($locale == 'en') {
+        } elseif ('en' == $locale) {
             $result = self::URI_IMMOEBRE_EN;
-        } elseif ($locale == 'fr') {
+        } elseif ('fr' == $locale) {
             $result = self::URI_IMMOEBRE_FR;
         }
 
